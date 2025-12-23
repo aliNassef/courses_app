@@ -7,8 +7,24 @@ environment:
   sdk: ^3.10.1
 
 dependencies:
+  animate_do: ^4.2.0
+  bloc: ^9.1.0
+  cached_network_image: ^3.4.1
+  dropdown_button2: ^2.3.9
+  easy_localization: ^3.0.8
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^10.0.0
+  fluttertoast: ^9.0.0
+  gap: ^3.0.1
+  get_it: ^9.2.0
+  google_fonts: ^6.3.3
+  image_picker: ^1.2.1
+  shared_preferences: ^2.5.4
+  skeletonizer: ^2.1.2
 
 dev_dependencies:
   flutter_test:
