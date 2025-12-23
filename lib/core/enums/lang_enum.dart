@@ -1,3 +1,5 @@
+import '../constants.dart';
+
 enum LangEnum {
   en,
   ar;
@@ -5,9 +7,9 @@ enum LangEnum {
   String get value {
     switch (this) {
       case LangEnum.en:
-        return 'en';
+        return Constants.en;
       case LangEnum.ar:
-        return 'ar';
+        return Constants.ar;
     }
   }
 }
