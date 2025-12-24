@@ -3,6 +3,7 @@ import 'package:courses_app/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 
+import '../../../home/presentation/views/home_view.dart';
 import '../bottom_nav_bar_item_data.dart';
 
 class LayoutView extends StatefulWidget {
@@ -20,9 +21,7 @@ class _LayoutViewState extends State<LayoutView> {
   void initState() {
     super.initState();
     _screens = [
-      Container(
-        color: Colors.red,
-      ),
+      const HomeView(),
       Container(
         color: Colors.green,
       ),

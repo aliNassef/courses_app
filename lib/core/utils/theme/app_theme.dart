@@ -13,7 +13,7 @@ class AppTheme {
     primaryColor: AppColors.primary,
     primaryContrastingColor: AppColors.grey,
 
-    scaffoldBackgroundColor: CupertinoColors.white,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
 
     barBackgroundColor: CupertinoColors.white.withValues(alpha: 0.95),
 
@@ -41,12 +41,12 @@ class AppTheme {
   static ThemeData materialLightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     textTheme: GoogleFonts.tajawalTextTheme(),
     primarySwatch: Colors.green,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
 
-    progressIndicatorTheme: ProgressIndicatorThemeData(
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
       circularTrackColor: AppColors.primary,
       color: AppColors.grey,
     ),
