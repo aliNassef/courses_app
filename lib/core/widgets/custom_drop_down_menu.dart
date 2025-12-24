@@ -24,7 +24,7 @@ class CustomDropDownMenu extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (val) {
         if (val == null || val.isEmpty) {
-          return LocaleKeys.field_is_required.tr();
+          return "";
         }
         return null;
       },

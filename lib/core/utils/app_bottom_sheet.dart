@@ -51,21 +51,20 @@ class AppBottomSheet {
                           RegExp(r'^\d+\.?\d{0,2}'),
                         ),
                       ],
-                      decoration: InputDecoration(
-                        labelText: LocaleKeys.enter_amount.tr(),
-                        hintText: LocaleKeys.enter_amount.tr(),
-                        border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                        labelText: "",
+                        hintText: "",
+                        border: OutlineInputBorder(),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return LocaleKeys.please_enter_an_amount.tr();
+                          return "";
                         }
                         if (double.tryParse(value) == null) {
-                          return LocaleKeys.please_enter_a_valid_number.tr();
+                          return "";
                         }
                         if (double.parse(value) <= 0) {
-                          return LocaleKeys.amount_must_be_greater_than_zero
-                              .tr();
+                          return "";
                         }
                         return null;
                       },
@@ -137,22 +136,20 @@ class AppBottomSheet {
                               RegExp(r'^\d+\.?\d{0,2}'),
                             ),
                           ],
-                          decoration: InputDecoration(
-                            labelText: LocaleKeys.enter_amount.tr(),
-                            hintText: LocaleKeys.enter_amount.tr(),
-                            border: const OutlineInputBorder(),
+                          decoration: const InputDecoration(
+                            labelText: "",
+                            hintText: "",
+                            border: OutlineInputBorder(),
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return LocaleKeys.please_enter_an_amount.tr();
+                              return "";
                             }
                             if (double.tryParse(value) == null) {
-                              return LocaleKeys.please_enter_a_valid_number
-                                  .tr();
+                              return "";
                             }
                             if (double.parse(value) <= 0) {
-                              return LocaleKeys.amount_must_be_greater_than_zero
-                                  .tr();
+                              return "";
                             }
                             return null;
                           },

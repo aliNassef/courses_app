@@ -5,4 +5,6 @@ class Constants {
   static const Size appDesign = Size(360, 690);
   static const String en = 'en';
   static const String ar = 'ar';
+  static const double hp16 = 16;
+  static const double hp24 = 24;
 }

@@ -50,7 +50,6 @@ class AppTheme {
       circularTrackColor: AppColors.primary,
       color: AppColors.grey,
     ),
-
     textSelectionTheme: const TextSelectionThemeData(
       selectionColor: AppColors.lightGrey,
       selectionHandleColor: AppColors.primary,

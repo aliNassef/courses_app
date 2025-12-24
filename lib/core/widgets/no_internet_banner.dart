@@ -34,7 +34,7 @@ class NoInternetBanner extends StatelessWidget {
             const Gap(12),
             Expanded(
               child: Text(
-                LocaleKeys.no_internet_connection.tr(),
+                "",
                 style: context.appTheme.bold16.copyWith(color: Colors.white),
               ),
             ),

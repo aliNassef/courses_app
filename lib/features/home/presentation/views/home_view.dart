@@ -1,66 +1,36 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/utils/app_assets.dart';
-import 'package:courses_app/core/utils/app_color.dart';
+import 'package:courses_app/core/constants.dart';
+import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/theme/app_theme_extension.dart';
+import 'package:courses_app/core/widgets/custom_search_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../core/translations/locale_keys.g.dart';
+import '../widgets/user_info.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const AdaptiveScaffold(
+    return AdaptiveScaffold(
       body: Column(
+        crossAxisAlignment: .start,
         children: [
-          UserInfo(),
-          Gap(24),
-          
-        ],
-      ),
-    );
-  }
-}
-
-class UserInfo extends StatelessWidget {
-  const UserInfo({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AdaptiveListTile(
-      title: Text(
-        'Welcome back',
-        style: context.appTheme.regular12.copyWith(
-          color: AppColors.grey,
-        ),
-      ),
-      subtitle: Text(
-        'ALi Nassef',
-        style: context.appTheme.bold16.copyWith(
-          color: AppColors.black,
-        ),
-      ),
-      trailing: Material(
-        elevation: 2,
-        shadowColor: AppColors.grey.withValues(alpha: 0.4),
-        shape: const CircleBorder(),
-        child: const CircleAvatar(
-          backgroundColor: AppColors.white,
-          radius: 21,
-          child: Icon(
-            CupertinoIcons.cart_fill,
-            color: AppColors.black,
-            size: 24,
+          const UserInfo(),
+          const Gap(16),
+          const CustomSearchBar(),
+          const Gap(30),
+          Text(
+            LocaleKeys.continue_learning.tr(),
+            style: context.appTheme.bold20,
           ),
-        ),
-      ),
-      leading: const CircleAvatar(
-        radius: 22,
-        backgroundImage: AssetImage(AppAssets.profile),
-      ),
+          const Gap(16),
+        ],
+      ).withHorizontalPadding(Constants.hp16),
     );
   }
 }
