@@ -7,6 +7,7 @@ environment:
   sdk: ^3.10.1
 
 dependencies:
+  cupertino_icons: ^1.0.0
   animate_do: ^4.2.0
   bloc: ^9.1.0
   adaptive_platform_ui: ^0.1.100
@@ -26,6 +27,7 @@ dependencies:
   image_picker: ^1.2.1
   shared_preferences: ^2.5.4
   skeletonizer: ^2.1.2
+  flutter_lazy_indexed_stack: ^0.1.0
 
 dev_dependencies:
   flutter_test:
