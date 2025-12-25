@@ -45,25 +45,21 @@ class HomeViewBody extends StatelessWidget {
             ],
           ).withHorizontalPadding(Constants.hp16),
         ),
-        SliverPadding(
-          padding: EdgeInsetsGeometry.symmetric(
-            horizontal: Constants.hp16,
-          ),
-          sliver: SliverToBoxAdapter(
-            child: SizedBox(
-              height: 280.h,
-              width: context.width,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (_, _) => const Gap(16),
-                itemCount: 6,
-                itemBuilder: (_, index) {
-                  return SizedBox(
-                    width: context.width * 0.8,
-                    child: const ExploreCourseCardItem(),
-                  );
-                },
-              ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 280.h,
+            width: context.width,
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: Constants.hp16),
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (_, _) => const Gap(16),
+              itemCount: 6,
+              itemBuilder: (_, index) {
+                return SizedBox(
+                  width: context.width * 0.8,
+                  child: const ExploreCourseCardItem(),
+                );
+              },
             ),
           ),
         ),
