@@ -7,5 +7,5 @@ class Constants {
   static const String en = 'en';
   static const String ar = 'ar';
   static double hp16 = 16.w;
-  static const double hp24 = 24;
+  static double hp24 = 24.w;
 }

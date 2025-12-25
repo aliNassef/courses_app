@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
+import '../../../../core/widgets/custom_slider.dart';
 import '../../../../core/widgets/widgets.dart';
 
 class ContinuedLearningCardItem extends StatelessWidget {
@@ -65,20 +66,8 @@ class ContinuedLearningCardItem extends StatelessWidget {
           const Gap(16),
           Row(
             children: [
-              Expanded(
-                child: SliderTheme(
-                  data: SliderThemeData(
-                    activeTrackColor: AppColors.primary,
-                    inactiveTrackColor: AppColors.grey.withValues(
-                      alpha: 0.2,
-                    ),
-                    trackHeight: 8.h,
-                    trackShape: const RoundedRectSliderTrackShape(),
-                    thumbShape: SliderComponentShape.noThumb,
-                    overlayShape: SliderComponentShape.noOverlay,
-                  ),
-                  child: Slider(value: 0.4, onChanged: (value) {}),
-                ),
+              const Expanded(
+                child: CustomSlider(),
               ),
               const Gap(16),
               Text(

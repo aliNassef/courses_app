@@ -16,5 +16,6 @@ abstract class  LocaleKeys {
   static const see_all = 'see_all';
   static const best_sellers = 'best_sellers';
   static const browse_categories = 'browse_categories';
+  static const my_learning = 'my_learning';
 
 }

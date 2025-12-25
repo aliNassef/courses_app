@@ -1,5 +1,6 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/utils/app_color.dart';
+import 'package:courses_app/features/my_learning/presentation/views/my_learning_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 
@@ -22,9 +23,7 @@ class _LayoutViewState extends State<LayoutView> {
     super.initState();
     _screens = [
       const HomeView(),
-      Container(
-        color: Colors.green,
-      ),
+      const MyLearningView(),
       Container(
         color: Colors.blue,
       ),

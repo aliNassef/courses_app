@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
-import '../widgets/continued_learning_card_items.dart';
+import 'continued_learning_card_item.dart';
 import '../widgets/explore_course_card_item.dart';
 import '../widgets/user_info.dart';
 import 'category_card_item.dart';
-import 'title_with_see_all.dart';
+import '../../../../core/widgets/title_with_see_all.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({
