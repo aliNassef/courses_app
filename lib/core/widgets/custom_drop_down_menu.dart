@@ -1,10 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import '../utils/utils.dart';
 import 'widgets.dart';
-
-import '../translations/locale_keys.g.dart';
 
 class CustomDropDownMenu extends StatelessWidget {
   const CustomDropDownMenu({

@@ -17,6 +17,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   final TextStyle bold32;
   final TextStyle bold24;
   final TextStyle bold40;
+  final TextStyle bold10;
   final TextStyle semiBold16;
   final TextStyle semiBold20;
   final TextStyle extraBold24;
@@ -36,6 +37,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     required this.bold20,
     required this.bold24,
     required this.bold40,
+    required this.bold10,
     required this.semiBold16,
     required this.semiBold20,
     required this.extraBold24,
@@ -57,12 +59,14 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     TextStyle? bold20,
     TextStyle? bold24,
     TextStyle? bold40,
+    TextStyle? bold10,
     TextStyle? semiBold16,
     TextStyle? semiBold20,
     TextStyle? extraBold24,
   }) {
     return AppTextStyle(
       regular16: regular16 ?? this.regular16,
+      bold10: bold10 ?? this.bold10,
       bold20: bold20 ?? this.bold20,
       bold32: bold32 ?? this.bold32,
       bold24: bold24 ?? this.bold24,
@@ -89,6 +93,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   ) {
     if (other is! AppTextStyle) return this;
     return AppTextStyle(
+      bold10: TextStyle.lerp(bold10, other.bold10, t)!,
       bold20: TextStyle.lerp(bold20, other.bold20, t)!,
       regular16: TextStyle.lerp(regular16, other.regular16, t)!,
       medium16: TextStyle.lerp(medium16, other.medium16, t)!,
@@ -113,6 +118,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     bold20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w700),
     bold24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w700),
     bold40: GoogleFonts.lexend(fontSize: 40.sp, fontWeight: FontWeight.w700),
+    bold10: GoogleFonts.lexend(fontSize: 10.sp, fontWeight: FontWeight.w700),
     semiBold16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w600,
@@ -155,6 +161,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     bold32: GoogleFonts.lexend(fontSize: 32.sp, fontWeight: FontWeight.w700),
     bold24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w700),
     bold40: GoogleFonts.lexend(fontSize: 40.sp, fontWeight: FontWeight.w700),
+    bold10: GoogleFonts.lexend(fontSize: 10.sp, fontWeight: FontWeight.w700),
     semiBold16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w600,

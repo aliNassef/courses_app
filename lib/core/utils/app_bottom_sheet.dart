@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../core/enums/lang_enum.dart';
 
 import '../navigation/app_navigation.dart';
-import '../translations/locale_keys.g.dart';
 import '../widgets/widgets.dart';
 
 class AppBottomSheet {

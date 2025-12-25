@@ -6,5 +6,15 @@ abstract class  LocaleKeys {
   static const welcome_back = 'welcome_back';
   static const what_do_you_want_to_learn = 'what_do_you_want_to_learn';
   static const continue_learning = 'continue_learning';
+  static const lesson = 'lesson';
+  static const from = 'from';
+  static const to = 'to';
+  static const hours = 'hours';
+  static const minutes = 'minutes';
+  static const left = 'left';
+  static const popular_courses = 'popular_courses';
+  static const see_all = 'see_all';
+  static const best_sellers = 'best_sellers';
+  static const browse_categories = 'browse_categories';
 
 }
