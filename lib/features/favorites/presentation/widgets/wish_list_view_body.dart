@@ -1,8 +1,5 @@
-import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/constants.dart';
 import 'package:courses_app/core/extensions/mediaquery_size.dart';
-import 'package:courses_app/core/widgets/custom_network_image.dart';
-import 'package:courses_app/core/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
