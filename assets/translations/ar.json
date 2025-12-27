@@ -12,5 +12,7 @@
     "see_all": "عرض الكل",
     "best_sellers": "أفضل المبيعات",
     "browse_categories": "تصفح الفئات",
-    "my_learning": "التعلم الشخصي"
+    "my_learning": "التعلم الشخصي",
+    "in_progress" : "الجارية",
+    "achivements" : "الإنجازات"
 }
