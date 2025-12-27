@@ -19,5 +19,7 @@ abstract class  LocaleKeys {
   static const my_learning = 'my_learning';
   static const in_progress = 'in_progress';
   static const achivements = 'achivements';
+  static const favorites = 'favorites';
+  static const edit = 'edit';
 
 }
