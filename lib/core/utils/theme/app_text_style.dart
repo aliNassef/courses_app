@@ -7,6 +7,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   final TextStyle medium20;
   final TextStyle medium24;
   final TextStyle medium14;
+  final TextStyle medium12;
   final TextStyle regular12;
   final TextStyle regular14;
   final TextStyle regular16;
@@ -27,6 +28,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     required this.medium20,
     required this.medium24,
     required this.medium14,
+    required this.medium12,
     required this.regular12,
     required this.regular14,
     required this.regular16,
@@ -49,6 +51,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     TextStyle? medium20,
     TextStyle? medium24,
     TextStyle? medium14,
+    TextStyle? medium12,
     TextStyle? regular12,
     TextStyle? regular14,
     TextStyle? regular16,
@@ -78,6 +81,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       medium20: medium20 ?? this.medium20,
       medium24: medium24 ?? this.medium24,
       medium14: medium14 ?? this.medium14,
+      medium12: medium12 ?? this.medium12,
       regular12: regular12 ?? this.regular12,
       regular14: regular14 ?? this.regular14,
       regular10: regular10 ?? this.regular10,
@@ -106,6 +110,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       extraBold24: TextStyle.lerp(extraBold24, other.extraBold24, t)!,
       medium24: TextStyle.lerp(medium24, other.medium24, t)!,
       medium14: TextStyle.lerp(medium14, other.medium14, t)!,
+      medium12: TextStyle.lerp(medium12, other.medium12, t)!,
       regular12: TextStyle.lerp(regular12, other.regular12, t)!,
       regular14: TextStyle.lerp(regular14, other.regular14, t)!,
       regular10: TextStyle.lerp(regular10, other.regular10, t)!,
@@ -140,6 +145,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     bold32: GoogleFonts.lexend(fontSize: 32.sp, fontWeight: FontWeight.w700),
     medium24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w500),
     medium14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w500),
+    medium12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w500),
     regular12: GoogleFonts.lexend(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,
@@ -182,6 +188,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     medium20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w500),
     medium24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w500),
     medium14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w500),
+    medium12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w500),
     regular12: GoogleFonts.lexend(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,

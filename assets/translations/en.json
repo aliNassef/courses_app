@@ -16,5 +16,13 @@
     "in_progress": "In Progress",
     "achivements": "Achivements",
     "favorites": "Favorites",
-    "edit": "Edit"
+    "edit": "Edit",
+    "proceed_to_checkout": "Proceed to Checkout",
+    "total_price": "Total Price",
+    "sub_total": "Subtotal",
+    "discount": "Discount",
+    "tax": "Tax(Estimated)",
+    "enter_coupon_code": "Enter Coupon Code",
+    "apply": "Apply",
+    "order_summary" :"ORDER SUMMARY"
 }

@@ -13,8 +13,16 @@
     "best_sellers": "أفضل المبيعات",
     "browse_categories": "تصفح الفئات",
     "my_learning": "التعلم الشخصي",
-    "in_progress" : "الجارية",
-    "achivements" : "الإنجازات",
-    "favorites" : "المفضلة",
-    "edit" : "تعديل"
+    "in_progress": "الجارية",
+    "achivements": "الإنجازات",
+    "favorites": "المفضلة",
+    "edit": "تعديل",
+    "proceed_to_checkout": "اذهب للدفع",
+    "total_price": "السعر الإجمالي",
+    "sub_total": "الإجمالي",
+    "discount": "الخصم",
+    "tax": "الضريبة",
+    "enter_coupon_code": "أدخل رمز الكوبون",
+    "apply": "تطبيق",
+    "order_summary": "ملخص الطلب"
 }

@@ -21,5 +21,13 @@ abstract class  LocaleKeys {
   static const achivements = 'achivements';
   static const favorites = 'favorites';
   static const edit = 'edit';
+  static const proceed_to_checkout = 'proceed_to_checkout';
+  static const total_price = 'total_price';
+  static const sub_total = 'sub_total';
+  static const discount = 'discount';
+  static const tax = 'tax';
+  static const enter_coupon_code = 'enter_coupon_code';
+  static const apply = 'apply';
+  static const order_summary = 'order_summary';
 
 }

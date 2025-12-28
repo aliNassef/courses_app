@@ -1,6 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../translations/locale_keys.g.dart';
