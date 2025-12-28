@@ -24,5 +24,17 @@
     "tax": "الضريبة",
     "enter_coupon_code": "أدخل رمز الكوبون",
     "apply": "تطبيق",
-    "order_summary": "ملخص الطلب"
+    "order_summary": "ملخص الطلب",
+    "profile": "الملف الشخصي",
+    "courses": "الدورات",
+    "achievements": "الإنجازات",
+    "account": "الحساب",
+    "logout": "تسجيل الخروج",
+    "recent_achievements": "الإنجازات الأخيرة",
+    "account_info": "معلومات الحساب",
+    "personal_information": "معلومات الشخص",
+    "my_cart": "السلة",
+    "subscriptions": "الاشتراكات",
+    "settings": "الإعدادات" ,
+    "certs" : "شهادات"
 }

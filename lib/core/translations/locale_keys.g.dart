@@ -29,5 +29,17 @@ abstract class  LocaleKeys {
   static const enter_coupon_code = 'enter_coupon_code';
   static const apply = 'apply';
   static const order_summary = 'order_summary';
+  static const profile = 'profile';
+  static const courses = 'courses';
+  static const achievements = 'achievements';
+  static const account = 'account';
+  static const logout = 'logout';
+  static const recent_achievements = 'recent_achievements';
+  static const account_info = 'account_info';
+  static const personal_information = 'personal_information';
+  static const my_cart = 'my_cart';
+  static const subscriptions = 'subscriptions';
+  static const settings = 'settings';
+  static const certs = 'certs';
 
 }

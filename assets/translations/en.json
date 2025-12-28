@@ -24,5 +24,15 @@
     "tax": "Tax(Estimated)",
     "enter_coupon_code": "Enter Coupon Code",
     "apply": "Apply",
-    "order_summary" :"ORDER SUMMARY"
+    "order_summary": "ORDER SUMMARY",
+    "profile": "Profile",
+    "courses": "Courses",
+    "achievements": "Achievements",
+    "account": "Account",
+    "logout": "Logout",
+    "personal_information": "Personal Information",
+    "my_cart": "My Cart",
+    "subscriptions": "Subscriptions",
+    "settings": "Settings",
+    "certs": "Certs"
 }

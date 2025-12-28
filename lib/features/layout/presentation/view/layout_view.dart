@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 
 import '../../../home/presentation/views/home_view.dart';
+import '../../../profile/presentation/view/profile_view.dart';
 import '../bottom_nav_bar_item_data.dart';
 
 class LayoutView extends StatefulWidget {
@@ -26,9 +27,7 @@ class _LayoutViewState extends State<LayoutView> {
       const HomeView(),
       const MyLearningView(),
       const WishListView(),
-      Container(
-        color: Colors.orange,
-      ),
+      const ProfileView(),
     ];
   }
 
