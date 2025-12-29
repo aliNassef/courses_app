@@ -1,4 +1,6 @@
 import '../../features/cart/presentation/view/cart_view.dart';
+import '../../features/courses/presentation/view/course_details_view.dart';
+import '../../features/courses/presentation/view/course_view.dart';
 import '../../features/layout/presentation/view/layout_view.dart';
 import 'navigation.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,12 @@ class AppRouter {
         break;
       case CartView.routeName:
         page = const CartView();
+        break;
+      case CourseDetailsView.routeName:
+        page = const CourseDetailsView();
+        break;
+      case CourseView.routeName:
+        page = const CourseView();
         break;
       default:
         page = const Scaffold(body: Center(child: Text('Page not found')));

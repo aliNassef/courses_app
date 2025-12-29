@@ -1,6 +1,7 @@
 import 'package:courses_app/core/constants.dart';
 import 'package:courses_app/core/extensions/mediaquery_size.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
+import 'package:courses_app/core/navigation/navigation.dart';
 import 'package:courses_app/core/widgets/custom_search_bar.dart';
 import 'package:courses_app/core/widgets/widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../courses/presentation/view/course_details_view.dart';
 import 'continued_learning_card_item.dart';
 import '../widgets/explore_course_card_item.dart';
 import '../widgets/user_info.dart';
@@ -57,7 +59,15 @@ class HomeViewBody extends StatelessWidget {
               itemBuilder: (_, index) {
                 return SizedBox(
                   width: context.width * 0.8,
-                  child: const ExploreCourseCardItem(),
+                  child: GestureDetector(
+                    onTap: () => context.pushNamed(
+                      CourseDetailsView.routeName,
+                      arguments: const NavArgs(
+                        animation: NavAnimation.fade,
+                      ),
+                    ),
+                    child: const ExploreCourseCardItem(),
+                  ),
                 );
               },
             ),
