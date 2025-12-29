@@ -1,7 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../translations/locale_keys.g.dart';
 import '../utils/utils.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -45,7 +43,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       obscuringCharacter: '●',
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return LocaleKeys.field_is_required.tr();
+          return  "";
         }
         return null;
       },

@@ -1,0 +1,117 @@
+import 'package:courses_app/core/constants.dart';
+import 'package:courses_app/core/extensions/mediaquery_size.dart';
+import 'package:courses_app/core/extensions/padding_extension.dart';
+import 'package:courses_app/core/utils/utils.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import '../../../../core/translations/locale_keys.g.dart';
+import 'account_info.dart';
+import 'achivements_user_info.dart';
+import 'logout_button.dart';
+import 'profile_image.dart';
+import 'recent_achivements_items.dart';
+
+class ProfileViewBody extends StatelessWidget {
+  const ProfileViewBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.backgroundColor,
+      height: context.height,
+      width: context.width,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: .start,
+          children: [
+            const Gap(10),
+            Row(
+              children: [
+                const Spacer(),
+                const Gap(32),
+                Text(
+                  LocaleKeys.profile.tr(),
+                  style: context.appTheme.bold16.copyWith(
+                    color: AppColors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const Spacer(),
+                const Icon(
+                  Icons.edit_square,
+                  color: AppColors.primary,
+                ),
+              ],
+            ),
+            const Gap(16),
+            const Align(
+              alignment: Alignment.center,
+              child: ProfileImage(),
+            ),
+            Row(
+              mainAxisAlignment: .center,
+              children: [
+                Text(
+                  'Ali Nassef',
+                  style: context.appTheme.bold20.copyWith(
+                    color: AppColors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            const Gap(4),
+            Row(
+              mainAxisAlignment: .center,
+              children: [
+                Text(
+                  'Computer Science Student',
+                  style: context.appTheme.regular14.copyWith(
+                    color: AppColors.grey,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            const Gap(16),
+            Row(
+              mainAxisAlignment: .spaceAround,
+              children: [
+                AchivementUserInfo(
+                  number: '12',
+                  text: LocaleKeys.courses.tr(),
+                ),
+                AchivementUserInfo(
+                  number: '12',
+                  text: LocaleKeys.achievements.tr(),
+                ),
+                AchivementUserInfo(
+                  number: '12',
+                  text: LocaleKeys.certs.tr(),
+                ),
+              ],
+            ),
+            const Gap(16),
+            Text(
+              LocaleKeys.recent_achievements.tr(),
+              style: context.appTheme.bold16.copyWith(color: AppColors.black),
+            ),
+            const Gap(16),
+            const RecentAchivementsItems(),
+            const Gap(16),
+            Text(
+              LocaleKeys.account.tr(),
+              style: context.appTheme.bold16.copyWith(color: AppColors.black),
+            ),
+            const Gap(16),
+            const AccountsInfo(),
+            const Gap(16),
+            const LogoutButton(),
+            const Gap(30),
+          ],
+        ).withHorizontalPadding(Constants.hp16),
+      ),
+    );
+  }
+}

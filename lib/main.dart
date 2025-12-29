@@ -1,20 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:courses_app/core/utils/app_starter.dart';
+import 'core/constants.dart';
+import 'courses_app.dart';
 
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+void main() async {
+  await AppStarter.start();
+  runApp(
+    EasyLocalization(
+      supportedLocales: [
+        const Locale(Constants.en),
+        const Locale(Constants.ar),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: const Locale(Constants.en),
+      child: const CoursesApp(),
+    ),
+  );
 }

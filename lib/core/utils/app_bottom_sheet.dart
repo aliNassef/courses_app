@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../core/enums/lang_enum.dart';
 
 import '../navigation/app_navigation.dart';
-import '../translations/locale_keys.g.dart';
 import '../widgets/widgets.dart';
 
 class AppBottomSheet {
@@ -51,21 +49,20 @@ class AppBottomSheet {
                           RegExp(r'^\d+\.?\d{0,2}'),
                         ),
                       ],
-                      decoration: InputDecoration(
-                        labelText: LocaleKeys.enter_amount.tr(),
-                        hintText: LocaleKeys.enter_amount.tr(),
-                        border: const OutlineInputBorder(),
+                      decoration: const InputDecoration(
+                        labelText: "",
+                        hintText: "",
+                        border: OutlineInputBorder(),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return LocaleKeys.please_enter_an_amount.tr();
+                          return "";
                         }
                         if (double.tryParse(value) == null) {
-                          return LocaleKeys.please_enter_a_valid_number.tr();
+                          return "";
                         }
                         if (double.parse(value) <= 0) {
-                          return LocaleKeys.amount_must_be_greater_than_zero
-                              .tr();
+                          return "";
                         }
                         return null;
                       },
@@ -137,22 +134,20 @@ class AppBottomSheet {
                               RegExp(r'^\d+\.?\d{0,2}'),
                             ),
                           ],
-                          decoration: InputDecoration(
-                            labelText: LocaleKeys.enter_amount.tr(),
-                            hintText: LocaleKeys.enter_amount.tr(),
-                            border: const OutlineInputBorder(),
+                          decoration: const InputDecoration(
+                            labelText: "",
+                            hintText: "",
+                            border: OutlineInputBorder(),
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return LocaleKeys.please_enter_an_amount.tr();
+                              return "";
                             }
                             if (double.tryParse(value) == null) {
-                              return LocaleKeys.please_enter_a_valid_number
-                                  .tr();
+                              return "";
                             }
                             if (double.parse(value) <= 0) {
-                              return LocaleKeys.amount_must_be_greater_than_zero
-                                  .tr();
+                              return "";
                             }
                             return null;
                           },

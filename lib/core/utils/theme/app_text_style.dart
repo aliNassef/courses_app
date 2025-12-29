@@ -7,6 +7,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   final TextStyle medium20;
   final TextStyle medium24;
   final TextStyle medium14;
+  final TextStyle medium12;
   final TextStyle regular12;
   final TextStyle regular14;
   final TextStyle regular16;
@@ -17,6 +18,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   final TextStyle bold32;
   final TextStyle bold24;
   final TextStyle bold40;
+  final TextStyle bold10;
   final TextStyle semiBold16;
   final TextStyle semiBold20;
   final TextStyle extraBold24;
@@ -26,6 +28,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     required this.medium20,
     required this.medium24,
     required this.medium14,
+    required this.medium12,
     required this.regular12,
     required this.regular14,
     required this.regular16,
@@ -36,6 +39,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     required this.bold20,
     required this.bold24,
     required this.bold40,
+    required this.bold10,
     required this.semiBold16,
     required this.semiBold20,
     required this.extraBold24,
@@ -47,6 +51,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     TextStyle? medium20,
     TextStyle? medium24,
     TextStyle? medium14,
+    TextStyle? medium12,
     TextStyle? regular12,
     TextStyle? regular14,
     TextStyle? regular16,
@@ -57,12 +62,14 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     TextStyle? bold20,
     TextStyle? bold24,
     TextStyle? bold40,
+    TextStyle? bold10,
     TextStyle? semiBold16,
     TextStyle? semiBold20,
     TextStyle? extraBold24,
   }) {
     return AppTextStyle(
       regular16: regular16 ?? this.regular16,
+      bold10: bold10 ?? this.bold10,
       bold20: bold20 ?? this.bold20,
       bold32: bold32 ?? this.bold32,
       bold24: bold24 ?? this.bold24,
@@ -74,6 +81,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       medium20: medium20 ?? this.medium20,
       medium24: medium24 ?? this.medium24,
       medium14: medium14 ?? this.medium14,
+      medium12: medium12 ?? this.medium12,
       regular12: regular12 ?? this.regular12,
       regular14: regular14 ?? this.regular14,
       regular10: regular10 ?? this.regular10,
@@ -89,6 +97,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   ) {
     if (other is! AppTextStyle) return this;
     return AppTextStyle(
+      bold10: TextStyle.lerp(bold10, other.bold10, t)!,
       bold20: TextStyle.lerp(bold20, other.bold20, t)!,
       regular16: TextStyle.lerp(regular16, other.regular16, t)!,
       medium16: TextStyle.lerp(medium16, other.medium16, t)!,
@@ -101,6 +110,7 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       extraBold24: TextStyle.lerp(extraBold24, other.extraBold24, t)!,
       medium24: TextStyle.lerp(medium24, other.medium24, t)!,
       medium14: TextStyle.lerp(medium14, other.medium14, t)!,
+      medium12: TextStyle.lerp(medium12, other.medium12, t)!,
       regular12: TextStyle.lerp(regular12, other.regular12, t)!,
       regular14: TextStyle.lerp(regular14, other.regular14, t)!,
       regular10: TextStyle.lerp(regular10, other.regular10, t)!,
@@ -110,84 +120,88 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   }
 
   static final light = AppTextStyle(
-    bold20: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w700),
-    bold24: GoogleFonts.poppins(fontSize: 24.sp, fontWeight: FontWeight.w700),
-    bold40: GoogleFonts.poppins(fontSize: 40.sp, fontWeight: FontWeight.w700),
-    semiBold16: GoogleFonts.poppins(
+    bold20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w700),
+    bold24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w700),
+    bold40: GoogleFonts.lexend(fontSize: 40.sp, fontWeight: FontWeight.w700),
+    bold10: GoogleFonts.lexend(fontSize: 10.sp, fontWeight: FontWeight.w700),
+    semiBold16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w600,
     ),
-    semiBold20: GoogleFonts.poppins(
+    semiBold20: GoogleFonts.lexend(
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,
     ),
-    extraBold24: GoogleFonts.poppins(
+    extraBold24: GoogleFonts.lexend(
       fontSize: 24.sp,
       fontWeight: FontWeight.w800,
     ),
-    regular16: GoogleFonts.poppins(
+    regular16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w400,
     ),
-    medium16: GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w500),
-    medium20: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w500),
-    bold32: GoogleFonts.poppins(fontSize: 32.sp, fontWeight: FontWeight.w700),
-    medium24: GoogleFonts.poppins(fontSize: 24.sp, fontWeight: FontWeight.w500),
-    medium14: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w500),
-    regular12: GoogleFonts.poppins(
+    medium16: GoogleFonts.lexend(fontSize: 16.sp, fontWeight: FontWeight.w500),
+    medium20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w500),
+    bold32: GoogleFonts.lexend(fontSize: 32.sp, fontWeight: FontWeight.w700),
+    medium24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w500),
+    medium14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w500),
+    medium12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w500),
+    regular12: GoogleFonts.lexend(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,
     ),
-    regular14: GoogleFonts.poppins(
+    regular14: GoogleFonts.lexend(
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
     ),
-    regular10: GoogleFonts.poppins(
+    regular10: GoogleFonts.lexend(
       fontSize: 10.sp,
       fontWeight: FontWeight.w400,
     ),
-    bold16: GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w700),
-    bold14: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w700),
+    bold16: GoogleFonts.lexend(fontSize: 16.sp, fontWeight: FontWeight.w700),
+    bold14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w700),
   );
 
   static final dark = AppTextStyle(
-    bold20: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w700),
-    bold32: GoogleFonts.poppins(fontSize: 32.sp, fontWeight: FontWeight.w700),
-    bold24: GoogleFonts.poppins(fontSize: 24.sp, fontWeight: FontWeight.w700),
-    bold40: GoogleFonts.poppins(fontSize: 40.sp, fontWeight: FontWeight.w700),
-    semiBold16: GoogleFonts.poppins(
+    bold20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w700),
+    bold32: GoogleFonts.lexend(fontSize: 32.sp, fontWeight: FontWeight.w700),
+    bold24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w700),
+    bold40: GoogleFonts.lexend(fontSize: 40.sp, fontWeight: FontWeight.w700),
+    bold10: GoogleFonts.lexend(fontSize: 10.sp, fontWeight: FontWeight.w700),
+    semiBold16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w600,
     ),
-    semiBold20: GoogleFonts.poppins(
+    semiBold20: GoogleFonts.lexend(
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,
     ),
-    extraBold24: GoogleFonts.poppins(
+    extraBold24: GoogleFonts.lexend(
       fontSize: 24.sp,
       fontWeight: FontWeight.w800,
     ),
-    regular16: GoogleFonts.poppins(
+    regular16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w400,
     ),
-    medium16: GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w500),
-    medium20: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w500),
-    medium24: GoogleFonts.poppins(fontSize: 24.sp, fontWeight: FontWeight.w500),
-    medium14: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w500),
-    regular12: GoogleFonts.poppins(
+    medium16: GoogleFonts.lexend(fontSize: 16.sp, fontWeight: FontWeight.w500),
+    medium20: GoogleFonts.lexend(fontSize: 20.sp, fontWeight: FontWeight.w500),
+    medium24: GoogleFonts.lexend(fontSize: 24.sp, fontWeight: FontWeight.w500),
+    medium14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w500),
+    medium12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w500),
+    regular12: GoogleFonts.lexend(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,
     ),
-    regular14: GoogleFonts.poppins(
+    regular14: GoogleFonts.lexend(
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
     ),
-    regular10: GoogleFonts.poppins(
+    regular10: GoogleFonts.lexend(
       fontSize: 10.sp,
       fontWeight: FontWeight.w400,
     ),
-    bold16: GoogleFonts.poppins(fontSize: 16.sp, fontWeight: FontWeight.w700),
-    bold14: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w700),
+    bold16: GoogleFonts.lexend(fontSize: 16.sp, fontWeight: FontWeight.w700),
+    bold14: GoogleFonts.lexend(fontSize: 14.sp, fontWeight: FontWeight.w700),
   );
 }

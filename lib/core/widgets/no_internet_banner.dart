@@ -1,10 +1,7 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../core/utils/utils.dart';
-
-import '../translations/locale_keys.g.dart';
 
 class NoInternetBanner extends StatelessWidget {
   const NoInternetBanner({super.key});
@@ -34,7 +31,7 @@ class NoInternetBanner extends StatelessWidget {
             const Gap(12),
             Expanded(
               child: Text(
-                LocaleKeys.no_internet_connection.tr(),
+                "",
                 style: context.appTheme.bold16.copyWith(color: Colors.white),
               ),
             ),

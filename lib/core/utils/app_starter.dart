@@ -9,8 +9,8 @@ import '../logging/app_logger.dart';
 import '../logging/custom_bloc_observer.dart';
  import 'app_color.dart';
 
-class AppInitializer {
-  static Future<void> init() async {
+class AppStarter {
+  static Future<void> start() async {
    WidgetsFlutterBinding.ensureInitialized();
 
     await EasyLocalization.ensureInitialized();

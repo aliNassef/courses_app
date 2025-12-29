@@ -1,6 +1,6 @@
+import '../../features/cart/presentation/view/cart_view.dart';
+import '../../features/layout/presentation/view/layout_view.dart';
 import 'navigation.dart';
-import 'nav_animation_enum.dart';
-import 'nav_args.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -10,6 +10,12 @@ class AppRouter {
 
     late final Widget page;
     switch (settings.name) {
+      case LayoutView.routeName:
+        page = const LayoutView();
+        break;
+      case CartView.routeName:
+        page = const CartView();
+        break;
       default:
         page = const Scaffold(body: Center(child: Text('Page not found')));
     }
