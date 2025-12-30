@@ -1,3 +1,4 @@
+import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/cart/presentation/view/cart_view.dart';
@@ -31,6 +32,9 @@ class AppRouter {
         break;
       case CourseView.routeName:
         page = const CourseView();
+        break;
+      case ForgetPasswordView.routeName:
+        page = const ForgetPasswordView();
         break;
       default:
         page = const Scaffold(body: Center(child: Text('Page not found')));

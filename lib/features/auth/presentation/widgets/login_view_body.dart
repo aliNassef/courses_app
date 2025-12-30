@@ -1,3 +1,6 @@
+import 'package:courses_app/core/navigation/app_navigation.dart';
+import 'package:courses_app/core/navigation/navigation.dart';
+import 'package:courses_app/features/auth/presentation/views/forget_password_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -60,7 +63,7 @@ class LoginViewBody extends StatelessWidget {
           mainAxisAlignment: .end,
           children: [
             TextButton(
-              onPressed: () {},
+              onPressed: () => _goToForgetPassword(context),
               child: Text(
                 'Forgot Password?',
                 style: context.appTheme.regular12.copyWith(
@@ -82,6 +85,15 @@ class LoginViewBody extends StatelessWidget {
           onTap: () {},
         ),
       ],
+    );
+  }
+
+  void _goToForgetPassword(BuildContext context) {
+    context.pushNamed(
+      ForgetPasswordView.routeName,
+      arguments: const NavArgs(
+        animation: NavAnimation.fade,
+      ),
     );
   }
 }
