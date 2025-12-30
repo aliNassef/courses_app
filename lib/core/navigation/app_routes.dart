@@ -1,3 +1,5 @@
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/cart/presentation/view/cart_view.dart';
 import '../../features/courses/presentation/view/course_details_view.dart';
 import '../../features/courses/presentation/view/course_view.dart';
@@ -12,6 +14,12 @@ class AppRouter {
 
     late final Widget page;
     switch (settings.name) {
+      case SignupView.routeName:
+        page = const SignupView();
+        break;
+      case LoginView.routeName:
+        page = const LoginView();
+        break;
       case LayoutView.routeName:
         page = const LayoutView();
         break;

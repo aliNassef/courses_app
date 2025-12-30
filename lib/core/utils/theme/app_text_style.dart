@@ -21,7 +21,11 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
   final TextStyle bold10;
   final TextStyle semiBold16;
   final TextStyle semiBold20;
+  final TextStyle semiBold14;
+  final TextStyle semiBold12;
+  final TextStyle semiBold10;
   final TextStyle extraBold24;
+  final TextStyle bold12;
 
   const AppTextStyle({
     required this.medium16,
@@ -42,7 +46,11 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     required this.bold10,
     required this.semiBold16,
     required this.semiBold20,
+    required this.semiBold14,
+    required this.semiBold12,
+    required this.semiBold10,
     required this.extraBold24,
+    required this.bold12,
   });
 
   @override
@@ -65,7 +73,11 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
     TextStyle? bold10,
     TextStyle? semiBold16,
     TextStyle? semiBold20,
+    TextStyle? semiBold14,
+    TextStyle? semiBold12,
+    TextStyle? semiBold10,
     TextStyle? extraBold24,
+    TextStyle? bold12,
   }) {
     return AppTextStyle(
       regular16: regular16 ?? this.regular16,
@@ -76,7 +88,11 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       bold40: bold40 ?? this.bold40,
       semiBold16: semiBold16 ?? this.semiBold16,
       semiBold20: semiBold20 ?? this.semiBold20,
+      semiBold14: semiBold14 ?? this.semiBold14,
+      semiBold12: semiBold12 ?? this.semiBold12,
+      semiBold10: semiBold10 ?? this.semiBold10,
       extraBold24: extraBold24 ?? this.extraBold24,
+      bold12: bold12 ?? this.bold12,
       medium16: medium16 ?? this.medium16,
       medium20: medium20 ?? this.medium20,
       medium24: medium24 ?? this.medium24,
@@ -107,7 +123,11 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       bold40: TextStyle.lerp(bold40, other.bold40, t)!,
       semiBold16: TextStyle.lerp(semiBold16, other.semiBold16, t)!,
       semiBold20: TextStyle.lerp(semiBold20, other.semiBold20, t)!,
+      semiBold14: TextStyle.lerp(semiBold14, other.semiBold14, t)!,
+      semiBold12: TextStyle.lerp(semiBold12, other.semiBold12, t)!,
+      semiBold10: TextStyle.lerp(semiBold10, other.semiBold10, t)!,
       extraBold24: TextStyle.lerp(extraBold24, other.extraBold24, t)!,
+      bold12: TextStyle.lerp(bold12, other.bold12, t)!,
       medium24: TextStyle.lerp(medium24, other.medium24, t)!,
       medium14: TextStyle.lerp(medium14, other.medium14, t)!,
       medium12: TextStyle.lerp(medium12, other.medium12, t)!,
@@ -132,10 +152,23 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,
     ),
+    semiBold14: GoogleFonts.lexend(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    semiBold12: GoogleFonts.lexend(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    semiBold10: GoogleFonts.lexend(
+      fontSize: 10.sp,
+      fontWeight: FontWeight.w600,
+    ),
     extraBold24: GoogleFonts.lexend(
       fontSize: 24.sp,
       fontWeight: FontWeight.w800,
     ),
+    bold12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w700),
     regular16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w400,
@@ -176,10 +209,23 @@ class AppTextStyle extends ThemeExtension<AppTextStyle> {
       fontSize: 20.sp,
       fontWeight: FontWeight.w600,
     ),
+    semiBold14: GoogleFonts.lexend(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    semiBold12: GoogleFonts.lexend(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    semiBold10: GoogleFonts.lexend(
+      fontSize: 10.sp,
+      fontWeight: FontWeight.w600,
+    ),
     extraBold24: GoogleFonts.lexend(
       fontSize: 24.sp,
       fontWeight: FontWeight.w800,
     ),
+    bold12: GoogleFonts.lexend(fontSize: 12.sp, fontWeight: FontWeight.w700),
     regular16: GoogleFonts.lexend(
       fontSize: 16.sp,
       fontWeight: FontWeight.w400,
