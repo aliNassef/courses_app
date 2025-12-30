@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_check_box.dart';
@@ -19,25 +21,25 @@ class TermsAndConditionsWithCheckBox extends StatelessWidget {
         Flexible(
           child: RichText(
             text: TextSpan(
-              text: 'By creating an account, you agree to our ',
+              text: LocaleKeys.terms_agreement_start.tr(),
               style: context.appTheme.bold12.copyWith(
                 color: AppColors.grey,
               ),
               children: [
                 TextSpan(
-                  text: 'Terms and Conditions',
+                  text: LocaleKeys.terms_and_conditions.tr(),
                   style: context.appTheme.bold12.copyWith(
                     color: AppColors.primary,
                   ),
                 ),
                 TextSpan(
-                  text: ' and ',
+                  text: LocaleKeys.and.tr(),
                   style: context.appTheme.bold12.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
                 TextSpan(
-                  text: 'Privacy Policy',
+                  text: LocaleKeys.privacy_policy.tr(),
                   style: context.appTheme.bold12.copyWith(
                     color: AppColors.primary,
                   ),
