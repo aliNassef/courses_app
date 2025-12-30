@@ -35,5 +35,4 @@ extension DateTimeExtension on DateTime {
     final amPm = hour < 12 ? 'AM' : 'PM';
     return '${hour12.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $amPm';
   }
-
 }
