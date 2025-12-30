@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const welcome_back = 'welcome_back';
   static const what_do_you_want_to_learn = 'what_do_you_want_to_learn';
   static const continue_learning = 'continue_learning';
@@ -41,4 +41,28 @@ abstract class LocaleKeys {
   static const subscriptions = 'subscriptions';
   static const settings = 'settings';
   static const certs = 'certs';
+  static const welcome_back_title = 'welcome_back_title';
+  static const continue_your_learning_journey = 'continue_your_learning_journey';
+  static const email_address = 'email_address';
+  static const enter_your_email = 'enter_your_email';
+  static const password = 'password';
+  static const enter_your_password = 'enter_your_password';
+  static const forgot_password_question = 'forgot_password_question';
+  static const log_in = 'log_in';
+  static const dont_have_an_account = 'dont_have_an_account';
+  static const sign_up = 'sign_up';
+  static const create_account = 'create_account';
+  static const start_journey_learning_today = 'start_journey_learning_today';
+  static const full_name = 'full_name';
+  static const enter_your_full_name = 'enter_your_full_name';
+  static const create_a_password = 'create_a_password';
+  static const terms_agreement_start = 'terms_agreement_start';
+  static const terms_and_conditions = 'terms_and_conditions';
+  static const and = 'and';
+  static const privacy_policy = 'privacy_policy';
+  static const already_have_an_account = 'already_have_an_account';
+  static const forgot_password_title = 'forgot_password_title';
+  static const forgot_password_description = 'forgot_password_description';
+  static const send_reset_link = 'send_reset_link';
+
 }

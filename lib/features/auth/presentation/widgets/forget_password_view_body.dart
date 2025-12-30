@@ -1,6 +1,8 @@
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/widgets.dart';
@@ -24,14 +26,14 @@ class ForgetPasswordViewBody extends StatelessWidget {
         ),
         const Gap(20),
         Text(
-          'Forgot Password?',
+          LocaleKeys.forgot_password_title.tr(),
           style: context.appTheme.bold24.copyWith(
             color: AppColors.black,
           ),
         ),
         const Gap(20),
         Text(
-          'Don\'t worry! It happens. Please enter your email associated with your account and we will send you a link to reset your password.',
+          LocaleKeys.forgot_password_description.tr(),
           style: context.appTheme.medium14.copyWith(
             color: AppColors.grey,
           ),
@@ -42,7 +44,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
           mainAxisAlignment: .start,
           children: [
             Text(
-              'Email Address',
+              LocaleKeys.email_address.tr(),
               style: context.appTheme.medium14.copyWith(
                 color: AppColors.black,
               ),
@@ -50,12 +52,12 @@ class ForgetPasswordViewBody extends StatelessWidget {
           ],
         ),
         const Gap(4),
-        const CustomTextFormField(
-          hintText: 'Email Address',
+        CustomTextFormField(
+          hintText: LocaleKeys.email_address.tr(),
         ),
         const Gap(50),
         DefaultAppButton(
-          text: 'Send Reset Link',
+          text: LocaleKeys.send_reset_link.tr(),
           onPressed: () {},
         ),
       ],
