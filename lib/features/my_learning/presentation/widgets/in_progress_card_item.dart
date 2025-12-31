@@ -1,4 +1,4 @@
-import 'package:courses_app/core/constants.dart';
+import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

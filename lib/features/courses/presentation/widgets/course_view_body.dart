@@ -1,5 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/constants.dart';
+import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:courses_app/core/widgets/widgets.dart';

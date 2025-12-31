@@ -1,4 +1,4 @@
-import 'package:courses_app/core/constants.dart';
+import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/mediaquery_size.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
