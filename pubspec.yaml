@@ -28,8 +28,8 @@ dependencies:
   shared_preferences: ^2.5.4
   skeletonizer: ^2.1.2
   flutter_lazy_indexed_stack: ^0.1.0
-  # flutter_switch: ^0.3.2
   flutter_advanced_switch: ^3.1.0
+  firebase_core: ^4.3.0
 
 dev_dependencies:
   flutter_test:

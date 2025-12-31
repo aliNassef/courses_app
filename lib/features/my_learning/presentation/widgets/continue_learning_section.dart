@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/constants.dart';
+import '../../../../core/constants/constants.dart';
 import 'continue_learning_section_item.dart';
 
 class ContinueLearningSection extends StatelessWidget {

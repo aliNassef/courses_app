@@ -1,12 +1,12 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/widgets/widgets.dart';
-import 'package:courses_app/features/auth/presentation/views/login_view.dart';
- import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'core/constants.dart';
+import 'core/constants/constants.dart';
 import 'core/navigation/navigation.dart';
 import 'core/utils/theme/app_theme.dart';
+import 'features/layout/presentation/view/layout_view.dart';
 
 class CoursesApp extends StatelessWidget {
   const CoursesApp({super.key});
@@ -19,7 +19,7 @@ class CoursesApp extends StatelessWidget {
       builder: (context, child) => AdaptiveApp(
         title: Constants.appName,
         onGenerateRoute: (settings) => AppRouter.onGenerateRoute(settings),
-        initialRoute: LoginView.routeName,
+        initialRoute: LayoutView.routeName,
         materialLightTheme: AppTheme.materialLightTheme,
         cupertinoLightTheme: AppTheme.cupertinoLightTheme,
         localizationsDelegates: context.localizationDelegates,
