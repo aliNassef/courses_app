@@ -1,3 +1,4 @@
+import 'package:courses_app/core/errors/server_exception.dart';
 import 'package:courses_app/features/auth/data/source/auth_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,8 +17,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       final user = await _remoteDataSource.signIn(userInput);
       return Right(user!);
-    } catch (e) {
-      return Left(Failure(errMessage: e.toString()));
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
     }
   }
 
@@ -26,8 +27,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       final user = await _remoteDataSource.signUp(userInput);
       return Right(user!);
-    } catch (e) {
-      return Left(Failure(errMessage: e.toString()));
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
     }
   }
 }

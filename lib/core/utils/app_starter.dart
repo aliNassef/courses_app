@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../firebase_options.dart';
 import '../di/service_locator.dart';
 import '../helpers/cache_helper.dart';
 import '../logging/app_logger.dart';
@@ -12,7 +14,9 @@ import 'app_color.dart';
 class AppStarter {
   static Future<void> start() async {
     WidgetsFlutterBinding.ensureInitialized();
-
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     await EasyLocalization.ensureInitialized();
     Bloc.observer = CustomBlocObserver();
     await CacheHelper.init();

@@ -31,4 +31,8 @@ class AuthCubit extends Cubit<AuthState> {
       (user) => emit(AuthSuccess(user: user)),
     );
   }
+
+  void acceptTermsAndConditions(bool value) {
+    emit(AcceptTermsAndConditions(termsAndConditions: value));
+  }
 }

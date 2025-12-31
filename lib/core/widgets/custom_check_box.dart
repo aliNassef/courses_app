@@ -6,8 +6,9 @@ import 'widgets.dart';
 class CustomCheckBox extends StatefulWidget {
   const CustomCheckBox({
     super.key,
+    this.onChanged,
   });
-
+  final ValueChanged<bool>? onChanged;
   @override
   State<CustomCheckBox> createState() => _CustomCheckBoxState();
 }
@@ -20,6 +21,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
       onTap: () {
         setState(() {
           isChecked = !isChecked;
+          widget.onChanged?.call(isChecked);
         });
       },
       child: AnimatedContainer(

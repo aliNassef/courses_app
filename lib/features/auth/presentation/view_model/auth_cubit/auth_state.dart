@@ -28,3 +28,11 @@ final class AuthFailure extends AuthState {
   @override
   List<Object> get props => [failure];
 }
+
+final class AcceptTermsAndConditions extends AuthState {
+  final bool termsAndConditions;
+  const AcceptTermsAndConditions({required this.termsAndConditions});
+
+  @override
+  List<Object> get props => [termsAndConditions];
+}

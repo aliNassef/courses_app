@@ -9,14 +9,17 @@ import '../../../../core/widgets/custom_check_box.dart';
 class TermsAndConditionsWithCheckBox extends StatelessWidget {
   const TermsAndConditionsWithCheckBox({
     super.key,
+    this.onChanged,
   });
-
+  final ValueChanged<bool>? onChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: .start,
       children: [
-        const CustomCheckBox(),
+        CustomCheckBox(
+          onChanged: onChanged,
+        ),
         const Gap(12),
         Flexible(
           child: RichText(
