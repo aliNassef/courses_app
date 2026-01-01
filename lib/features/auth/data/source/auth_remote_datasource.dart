@@ -7,4 +7,8 @@ abstract class AuthRemoteDataSource {
   Future<User?> signIn(SigninRequest userInput);
 
   Future<User?> signUp(SignupRequest userInput);
+
+  User? getUser();
+
+  Future<void> signOut();
 }

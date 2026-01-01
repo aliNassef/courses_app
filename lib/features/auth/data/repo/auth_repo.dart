@@ -9,4 +9,8 @@ abstract class AuthRepo {
   Future<Either<Failure, User>> signIn(SigninRequest userInput);
 
   Future<Either<Failure, User>> signUp(SignupRequest userInput);
+
+  User? getUser();
+
+  Future<Either<Failure, void>> signOut();
 }

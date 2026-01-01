@@ -31,4 +31,19 @@ class AuthRepoImpl implements AuthRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  User? getUser() {
+    return _remoteDataSource.getUser();
+  }
+
+  @override
+  Future<Either<Failure, void>> signOut() async {
+    try {
+      await _remoteDataSource.signOut();
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

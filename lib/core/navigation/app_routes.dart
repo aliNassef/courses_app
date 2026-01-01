@@ -5,6 +5,7 @@ import '../../features/cart/presentation/view/cart_view.dart';
 import '../../features/courses/presentation/view/course_details_view.dart';
 import '../../features/courses/presentation/view/course_view.dart';
 import '../../features/layout/presentation/view/layout_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 import 'navigation.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,9 @@ class AppRouter {
 
     late final Widget page;
     switch (settings.name) {
+      case SplashView.routeName:
+        page = const SplashView();
+        break;
       case SignupView.routeName:
         page = const SignupView();
         break;

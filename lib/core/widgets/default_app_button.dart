@@ -26,7 +26,7 @@ class DefaultAppButton extends StatelessWidget {
     return AdaptiveButton.child(
       color: bgColor ?? AppColors.primary,
       borderRadius: BorderRadius.circular(radius ?? 12.r),
-      minSize: Size(width ?? context.width, 48.h),
+      minSize: Size(width ?? context.width, 40.h),
       onPressed: onPressed,
       child: Text(
         text,

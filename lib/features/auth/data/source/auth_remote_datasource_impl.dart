@@ -24,4 +24,14 @@ class AuthRemoteDatasourceImpl extends AuthRemoteDataSource {
       name: userInput.name,
     );
   }
+
+  @override
+  User? getUser() {
+    return _authService.currentUser;
+  }
+
+  @override
+  Future<void> signOut() async {
+    return _authService.signOut();
+  }
 }

@@ -35,4 +35,22 @@ class AuthCubit extends Cubit<AuthState> {
   void acceptTermsAndConditions(bool value) {
     emit(AcceptTermsAndConditions(termsAndConditions: value));
   }
+
+  void checkAuthState() {
+    final user = _authRepo.getUser();
+    if (user != null) {
+      emit(Authenticated());
+    } else {
+      emit(UnAuthenticated());
+    }
+  }
+
+  Future<void> signOut() async {
+    emit(AuthLoading());
+    final failureOrUnit = await _authRepo.signOut();
+    failureOrUnit.fold(
+      (failure) => emit(AuthFailure(failure: failure)),
+      (unit) => emit(UnAuthenticated()),
+    );
+  }
 }

@@ -88,6 +88,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             hintText: LocaleKeys.enter_your_password.tr(),
             controller: _passwordController,
             validator: Validators.passwordValidator,
+            isPassowrd: true,
           ),
           const Gap(8),
           Row(
