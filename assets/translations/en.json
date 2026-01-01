@@ -57,5 +57,16 @@
     "already_have_an_account": "Already have an account? ",
     "forgot_password_title": "Forgot Password?",
     "forgot_password_description": "Don't worry! It happens. Please enter your email associated with your account and we will send you a link to reset your password.",
-    "send_reset_link": "Send Reset Link"
+    "send_reset_link": "Send Reset Link",
+    "unknown_error": "Unknown error occurred",
+    "weak_password": "The password provided is too weak.",
+    "email_already_in_use": "The account already exists for that email.",
+    "user_not_found": "No user found for that email.",
+    "wrong_password": "Wrong password provided for that user.",
+    "invalid_email": "The email address is invalid.",
+    "validation_email_required": "Email is required",
+    "validation_email_invalid": "Email must contain @",
+    "validation_password_required": "Password is required",
+    "validation_password_length": "Password must be at least 8 characters long",
+    "validation_fullname_required": "Full name is required"
 }

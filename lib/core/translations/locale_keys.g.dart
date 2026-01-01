@@ -64,5 +64,16 @@ abstract class  LocaleKeys {
   static const forgot_password_title = 'forgot_password_title';
   static const forgot_password_description = 'forgot_password_description';
   static const send_reset_link = 'send_reset_link';
+  static const unknown_error = 'unknown_error';
+  static const weak_password = 'weak_password';
+  static const email_already_in_use = 'email_already_in_use';
+  static const user_not_found = 'user_not_found';
+  static const wrong_password = 'wrong_password';
+  static const invalid_email = 'invalid_email';
+  static const validation_email_required = 'validation_email_required';
+  static const validation_email_invalid = 'validation_email_invalid';
+  static const validation_password_required = 'validation_password_required';
+  static const validation_password_length = 'validation_password_length';
+  static const validation_fullname_required = 'validation_fullname_required';
 
 }

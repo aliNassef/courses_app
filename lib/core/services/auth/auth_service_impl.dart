@@ -1,10 +1,12 @@
 import 'package:courses_app/core/constants/firesstore_collections_strings.dart';
- import 'package:courses_app/core/logging/app_logger.dart';
+import 'package:courses_app/core/logging/app_logger.dart';
 import 'package:courses_app/core/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import 'package:easy_localization/easy_localization.dart';
+import '../../translations/locale_keys.g.dart';
 import '../../errors/server_exception.dart';
 
 class AuthServiceImpl implements AuthService {
@@ -41,9 +43,12 @@ class AuthServiceImpl implements AuthService {
             });
       }
       return user!;
+    } on FirebaseAuthException catch (e) {
+      AppLogger.error('SignUp Error: ${e.code}');
+      throw ServerException(_mapFirebaseAuthErrorToMessage(e.code));
     } catch (e) {
       AppLogger.error('SignUp Error: $e');
-      throw ServerException('SignUp Error: $e');
+      throw ServerException(LocaleKeys.unknown_error.tr());
     }
   }
 
@@ -72,9 +77,12 @@ class AuthServiceImpl implements AuthService {
         }
       }
       return user!;
+    } on FirebaseAuthException catch (e) {
+      AppLogger.error('SignIn Error: ${e.code}');
+      throw ServerException(_mapFirebaseAuthErrorToMessage(e.code));
     } catch (e) {
       AppLogger.error('SignIn Error: $e');
-      throw ServerException('SignIn Error: $e');
+      throw ServerException(LocaleKeys.unknown_error.tr());
     }
   }
 
@@ -98,5 +106,22 @@ class AuthServiceImpl implements AuthService {
             });
       }
     });
+  }
+
+  String _mapFirebaseAuthErrorToMessage(String code) {
+    switch (code) {
+      case 'weak-password':
+        return LocaleKeys.weak_password.tr();
+      case 'email-already-in-use':
+        return LocaleKeys.email_already_in_use.tr();
+      case 'user-not-found':
+        return LocaleKeys.user_not_found.tr();
+      case 'wrong-password':
+        return LocaleKeys.wrong_password.tr();
+      case 'invalid-email':
+        return LocaleKeys.invalid_email.tr();
+      default:
+        return LocaleKeys.unknown_error.tr();
+    }
   }
 }
