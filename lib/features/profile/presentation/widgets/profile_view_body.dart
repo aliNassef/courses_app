@@ -1,5 +1,4 @@
 import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/extensions/mediaquery_size.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:courses_app/core/utils/utils.dart';
@@ -21,125 +20,118 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.backgroundColor,
-      height: context.height,
-      width: context.width,
-      child: SingleChildScrollView(
-        child: BlocBuilder<AuthCubit, AuthState>(
-          buildWhen: (previous, current) =>
-              current is GetUserProfileFailure ||
-              current is GetUserProfileLoading ||
-              current is GetUserProfileLoaded,
+    return BlocBuilder<AuthCubit, AuthState>(
+      buildWhen: (previous, current) =>
+          current is GetUserProfileFailure ||
+          current is GetUserProfileLoading ||
+          current is GetUserProfileLoaded,
 
-          builder: (context, state) {
-            if (state is GetUserProfileLoading) {
-              return _buildLoadingProfile(context);
-            }
-            if (state is GetUserProfileFailure) {
-              return Center(child: Text(state.failure.errMessage));
-            }
-            if (state is GetUserProfileLoaded) {
-              return Column(
-                crossAxisAlignment: .start,
+      builder: (context, state) {
+        if (state is GetUserProfileLoading) {
+          return _buildLoadingProfile(context);
+        }
+        if (state is GetUserProfileFailure) {
+          return Center(child: Text(state.failure.errMessage));
+        }
+        if (state is GetUserProfileLoaded) {
+          return Column(
+            crossAxisAlignment: .start,
+            children: [
+              const Gap(10),
+              Row(
                 children: [
-                  const Gap(10),
-                  Row(
-                    children: [
-                      const Spacer(),
-                      const Gap(32),
-                      Text(
-                        LocaleKeys.profile.tr(),
-                        style: context.appTheme.bold16.copyWith(
-                          color: AppColors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.edit_square,
-                        color: AppColors.primary,
-                      ),
-                    ],
-                  ),
-                  const Gap(16),
-                  Align(
-                    alignment: Alignment.center,
-                    child: ProfileImage(image: state.user.image),
-                  ),
-                  Row(
-                    mainAxisAlignment: .center,
-                    children: [
-                      Text(
-                        state.user.name,
-                        style: context.appTheme.bold20.copyWith(
-                          color: AppColors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  const Gap(4),
-                  Row(
-                    mainAxisAlignment: .center,
-                    children: [
-                      Text(
-                        state.user.description.isNullOrEmpty
-                            ? LocaleKeys.student.tr()
-                            : state.user.description!,
-                        style: context.appTheme.regular14.copyWith(
-                          color: AppColors.grey,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  const Gap(16),
-                  Row(
-                    mainAxisAlignment: .spaceAround,
-                    children: [
-                      AchivementUserInfo(
-                        number: state.user.numberOfCourses.toString(),
-                        text: LocaleKeys.courses.tr(),
-                      ),
-                      AchivementUserInfo(
-                        number: state.user.numberOfAchievements.toString(),
-                        text: LocaleKeys.achievements.tr(),
-                      ),
-                      AchivementUserInfo(
-                        number: state.user.numberOfCerts.toString(),
-                        text: LocaleKeys.certs.tr(),
-                      ),
-                    ],
-                  ),
-                  const Gap(16),
+                  const Spacer(),
+                  const Gap(32),
                   Text(
-                    LocaleKeys.recent_achievements.tr(),
+                    LocaleKeys.profile.tr(),
                     style: context.appTheme.bold16.copyWith(
                       color: AppColors.black,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                  const Gap(16),
-                  const RecentAchivementsItems(),
-                  const Gap(16),
-                  Text(
-                    LocaleKeys.account.tr(),
-                    style: context.appTheme.bold16.copyWith(
-                      color: AppColors.black,
-                    ),
+                  const Spacer(),
+                  const Icon(
+                    Icons.edit_square,
+                    color: AppColors.primary,
                   ),
-                  const Gap(16),
-                  const AccountsInfo(),
-                  const Gap(16),
-                  const LogoutButton(),
-                  const Gap(30),
                 ],
-              ).withHorizontalPadding(Constants.hp16);
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-      ),
+              ),
+              const Gap(16),
+              Align(
+                alignment: Alignment.center,
+                child: ProfileImage(image: state.user.image),
+              ),
+              Row(
+                mainAxisAlignment: .center,
+                children: [
+                  Text(
+                    state.user.name,
+                    style: context.appTheme.bold20.copyWith(
+                      color: AppColors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              const Gap(4),
+              Row(
+                mainAxisAlignment: .center,
+                children: [
+                  Text(
+                    state.user.description.isNullOrEmpty
+                        ? LocaleKeys.student.tr()
+                        : state.user.description!,
+                    style: context.appTheme.regular14.copyWith(
+                      color: AppColors.grey,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              const Gap(16),
+              Row(
+                mainAxisAlignment: .spaceAround,
+                children: [
+                  AchivementUserInfo(
+                    number: state.user.numberOfCourses.toString(),
+                    text: LocaleKeys.courses.tr(),
+                  ),
+                  AchivementUserInfo(
+                    number: state.user.numberOfAchievements.toString(),
+                    text: LocaleKeys.achievements.tr(),
+                  ),
+                  AchivementUserInfo(
+                    number: state.user.numberOfCerts.toString(),
+                    text: LocaleKeys.certs.tr(),
+                  ),
+                ],
+              ),
+              const Gap(16),
+              Text(
+                LocaleKeys.recent_achievements.tr(),
+                style: context.appTheme.bold16.copyWith(
+                  color: AppColors.black,
+                ),
+              ),
+              const Gap(16),
+              const RecentAchivementsItems(),
+              const Gap(16),
+              Text(
+                LocaleKeys.account.tr(),
+                style: context.appTheme.bold16.copyWith(
+                  color: AppColors.black,
+                ),
+              ),
+              const Gap(16),
+              const AccountsInfo(),
+              const Gap(16),
+              const LogoutButton(),
+              const Gap(30),
+            ],
+          ).withHorizontalPadding(Constants.hp16);
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 
