@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:courses_app/core/errors/failure.dart';
 import 'package:courses_app/features/auth/data/models/signup_request.dart';
+import 'package:courses_app/features/auth/data/models/user_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -51,6 +52,15 @@ class AuthCubit extends Cubit<AuthState> {
     failureOrUnit.fold(
       (failure) => emit(AuthFailure(failure: failure)),
       (unit) => emit(UnAuthenticated()),
+    );
+  }
+
+  void getUserProfile(String id) async {
+    emit(const GetUserProfileLoading());
+    final userOrFailure = await _authRepo.getUserProfile(id);
+    userOrFailure.fold(
+      (failure) => emit(GetUserProfileFailure(failure: failure)),
+      (user) => emit(GetUserProfileLoaded(user: user)),
     );
   }
 }

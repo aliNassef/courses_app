@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/errors/failure.dart';
 import '../models/signin_request.dart';
 import '../models/signup_request.dart';
+import '../models/user_model.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, User>> signIn(SigninRequest userInput);
@@ -13,4 +14,6 @@ abstract class AuthRepo {
   User? getUser();
 
   Future<Either<Failure, void>> signOut();
+
+  Future<Either<Failure, UserModel>> getUserProfile(String userId);
 }
