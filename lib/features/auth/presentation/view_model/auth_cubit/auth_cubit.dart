@@ -54,10 +54,11 @@ class AuthCubit extends Cubit<AuthState> {
       (unit) => emit(UnAuthenticated()),
     );
   }
-
-  void getUserProfile(String id) async {
+  
+  String get userId => _authRepo.getUser()!.uid;
+  void getUserProfile() async {
     emit(const GetUserProfileLoading());
-    final userOrFailure = await _authRepo.getUserProfile(id);
+    final userOrFailure = await _authRepo.getUserProfile(userId);
     userOrFailure.fold(
       (failure) => emit(GetUserProfileFailure(failure: failure)),
       (user) => emit(GetUserProfileLoaded(user: user)),

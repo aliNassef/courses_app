@@ -3,8 +3,10 @@ import 'package:courses_app/core/utils/app_color.dart';
 import 'package:courses_app/features/favorites/presentation/view/wish_list_view.dart';
 import 'package:courses_app/features/my_learning/presentation/views/my_learning_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 
+import '../../../../core/di/di.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../profile/presentation/view/profile_view.dart';
 import '../bottom_nav_bar_item_data.dart';
@@ -29,6 +31,8 @@ class _LayoutViewState extends State<LayoutView> {
       const WishListView(),
       const ProfileView(),
     ];
+
+    context.read<AuthCubit>().getUserProfile();
   }
 
   @override

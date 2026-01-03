@@ -70,5 +70,6 @@
     "validation_email_invalid": "البريد الإلكتروني يجب أن يحتوي على @",
     "validation_password_required": "كلمة المرور مطلوبة",
     "validation_password_length": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
-    "validation_fullname_required": "الاسم الكامل مطلوب"
+    "validation_fullname_required": "الاسم الكامل مطلوب",
+    "student": "طالب"
 }

@@ -1,12 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
-  final String createdAt;
+  final DateTime createdAt;
   final String? description;
   final String email;
-  final String fcmTokens;
+  final Map<String, dynamic> fcmTokens;
   final String? image;
   final String name;
+  final int numberOfCourses;
+  final int numberOfAchievements;
+  final int numberOfCerts;
 
   const UserModel({
     required this.createdAt,
@@ -15,14 +19,20 @@ class UserModel extends Equatable {
     required this.fcmTokens,
     this.image,
     required this.name,
+    required this.numberOfCourses,
+    required this.numberOfAchievements,
+    required this.numberOfCerts,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      createdAt: json['createdAt'],
+      numberOfCourses: json['numberOfCourses'],
+      numberOfAchievements: json['numberOfAchievements'],
+      numberOfCerts: json['numberOfCerts'],
+      createdAt: (json['createdAt'] as Timestamp).toDate(),
       description: json['description'],
       email: json['email'],
-      fcmTokens: json['fcmTokens'],
+      fcmTokens: json['fcmTokens'] as Map<String, dynamic>,
       image: json['image'],
       name: json['name'],
     );
@@ -36,6 +46,9 @@ class UserModel extends Equatable {
       'fcmTokens': fcmTokens,
       'image': image,
       'name': name,
+      'numberOfCourses': numberOfCourses,
+      'numberOfAchievements': numberOfAchievements,
+      'numberOfCerts': numberOfCerts,
     };
   }
 

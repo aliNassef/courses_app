@@ -40,6 +40,9 @@ class AuthServiceImpl implements AuthService {
               'description': '',
               'createdAt': FieldValue.serverTimestamp(),
               'fcmTokens': token != null ? {token: true} : {},
+              "numberOfCourses": 0,
+              "numberOfAchievements": 0,
+              "numberOfCerts": 0,
             });
       }
       return user!;

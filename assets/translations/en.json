@@ -68,5 +68,7 @@
     "validation_email_invalid": "Email must contain @",
     "validation_password_required": "Password is required",
     "validation_password_length": "Password must be at least 8 characters long",
-    "validation_fullname_required": "Full name is required"
+    "validation_fullname_required": "Full name is required",
+    "student": "Student",
+    "recent_achievements": "Recent Achievements"
 }
