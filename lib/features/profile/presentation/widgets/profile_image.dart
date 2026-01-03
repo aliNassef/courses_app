@@ -1,3 +1,4 @@
+import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../core/utils/utils.dart';
@@ -6,8 +7,9 @@ import '../../../../core/widgets/widgets.dart';
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
     super.key,
+    this.image,
   });
-
+  final String? image;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -22,8 +24,10 @@ class ProfileImage extends StatelessWidget {
               width: 6,
             ),
             shape: BoxShape.circle,
-            image: const DecorationImage(
-              image: AssetImage(AppAssets.profile),
+            image: DecorationImage(
+              image: !image.isNullOrEmpty
+                  ? NetworkImage(image!)
+                  : const AssetImage(AppAssets.profile),
               fit: BoxFit.cover,
             ),
           ),

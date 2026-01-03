@@ -75,5 +75,6 @@ abstract class  LocaleKeys {
   static const validation_password_required = 'validation_password_required';
   static const validation_password_length = 'validation_password_length';
   static const validation_fullname_required = 'validation_fullname_required';
+  static const student = 'student';
 
 }

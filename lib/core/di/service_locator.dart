@@ -1,3 +1,4 @@
+
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -19,6 +20,7 @@ void _setupAuthFeature() {
   injector.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDatasourceImpl(
       injector<AuthService>(),
+      injector<Database>(),
     ),
   );
 }
@@ -26,5 +28,9 @@ void _setupAuthFeature() {
 void _setupExternalServices() {
   injector.registerLazySingleton<AuthService>(
     () => AuthServiceImpl(),
+  );
+
+  injector.registerLazySingleton<Database>(
+    () => FirestoreDBImpl(),
   );
 }

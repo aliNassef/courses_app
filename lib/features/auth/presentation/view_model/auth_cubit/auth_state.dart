@@ -40,3 +40,28 @@ final class AcceptTermsAndConditions extends AuthState {
   @override
   List<Object> get props => [termsAndConditions];
 }
+
+final class GetUserProfileLoaded extends AuthState {
+  final UserModel user;
+
+  const GetUserProfileLoaded({required this.user});
+
+  @override
+  List<Object> get props => [user];
+}
+
+final class GetUserProfileFailure extends AuthState {
+  final Failure failure;
+
+  const GetUserProfileFailure({required this.failure});
+
+  @override
+  List<Object> get props => [failure];
+}
+
+final class GetUserProfileLoading extends AuthState {
+  const GetUserProfileLoading();
+
+  @override
+  List<Object> get props => [];
+}
