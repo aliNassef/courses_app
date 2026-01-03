@@ -277,4 +277,21 @@ class FirestoreDBImpl implements Database {
         .doc(notificationId)
         .set(data);
   }
+
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getCourses() async {
+    return await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs);
+  }
+  
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getBestSellerCourses() async {
+    return await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .where('bestSeller', isEqualTo: true)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs);
+  }
 }

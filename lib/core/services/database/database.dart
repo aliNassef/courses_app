@@ -14,6 +14,8 @@ abstract class Database {
   });
   Future<void> updateCourse(String courseId, Map<String, dynamic> data);
   Future<DocumentSnapshot> getCourse(String courseId);
+  Future<List<DocumentSnapshot>> getCourses();
+  Future<List<DocumentSnapshot>> getBestSellerCourses();
 
   Future<void> createLesson({
     required String courseId,

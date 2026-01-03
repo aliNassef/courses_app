@@ -1,7 +1,10 @@
+import 'package:courses_app/features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
+
 import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/cart/presentation/view/cart_view.dart';
+import '../../features/courses/presentation/view/all_courses_view.dart';
 import '../../features/courses/presentation/view/course_details_view.dart';
 import '../../features/courses/presentation/view/course_view.dart';
 import '../../features/layout/presentation/view/layout_view.dart';
@@ -21,6 +24,10 @@ class AppRouter {
         break;
       case SignupView.routeName:
         page = const SignupView();
+        break;
+      case AllCoursesView.routeName:
+        final coursesCubit = navArgs.data as CoursesCubit;
+        page = AllCoursesView(coursesCubit: coursesCubit);
         break;
       case LoginView.routeName:
         page = const LoginView();

@@ -8,10 +8,11 @@ import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../courses/data/models/course_model.dart';
 
 class ExploreCourseCardItem extends StatelessWidget {
-  const ExploreCourseCardItem({super.key});
-
+  const ExploreCourseCardItem({super.key, required this.course});
+  final CourseModel course;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,8 +26,7 @@ class ExploreCourseCardItem extends StatelessWidget {
             crossAxisAlignment: .start,
             children: [
               CustomNetworkImage(
-                img:
-                    'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+                img: course.imageUrl,
                 height: 140.h,
                 width: context.width,
                 topStartRadius: 12.r,
@@ -55,7 +55,7 @@ class ExploreCourseCardItem extends StatelessWidget {
               ).withHorizontalPadding(10),
               const Gap(8),
               Text(
-                'FuLL STACK DEVELOPMENT',
+                course.title,
                 style: context.appTheme.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
@@ -70,7 +70,7 @@ class ExploreCourseCardItem extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   Text(
-                    '\$4.5',
+                    '${course.price} EGP',
                     style: context.appTheme.bold16.copyWith(
                       color: AppColors.primary,
                     ),
@@ -89,22 +89,26 @@ class ExploreCourseCardItem extends StatelessWidget {
                   ),
                 ],
               ).withHorizontalPadding(10),
+              const Gap(8),
             ],
           ),
 
           Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: AppColors.white.withValues(alpha: 0.85),
-                  borderRadius: BorderRadius.circular(6.r),
-                ),
-                child: Text(
-                  LocaleKeys.best_sellers.tr(),
-                  style: context.appTheme.medium14.copyWith(
-                    color: AppColors.primary,
+              Visibility(
+                visible: course.bestSeller,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: AppColors.white.withValues(alpha: 0.85),
+                    borderRadius: BorderRadius.circular(6.r),
+                  ),
+                  child: Text(
+                    LocaleKeys.best_sellers.tr(),
+                    style: context.appTheme.medium14.copyWith(
+                      color: AppColors.primary,
+                    ),
                   ),
                 ),
               ),

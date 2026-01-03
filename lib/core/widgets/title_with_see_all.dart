@@ -9,9 +9,11 @@ class TitleWithSeeAll extends StatelessWidget {
     super.key,
     required this.title,
     this.hasIcon = true,
+    this.onTap,
   });
   final String title;
   final bool hasIcon;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,22 +23,25 @@ class TitleWithSeeAll extends StatelessWidget {
           title,
           style: context.appTheme.bold20,
         ),
-        Row(
-          children: [
-            Text(
-              LocaleKeys.see_all.tr(),
-              style: context.appTheme.bold16.copyWith(
-                color: AppColors.primary,
+        GestureDetector(
+          onTap: onTap,
+          child: Row(
+            children: [
+              Text(
+                LocaleKeys.see_all.tr(),
+                style: context.appTheme.bold16.copyWith(
+                  color: AppColors.primary,
+                ),
               ),
-            ),
-            hasIcon
-                ? const Icon(
-                    Icons.arrow_forward,
-                    color: AppColors.primary,
-                    size: 19,
-                  )
-                : const SizedBox.shrink(),
-          ],
+              hasIcon
+                  ? const Icon(
+                      Icons.arrow_forward,
+                      color: AppColors.primary,
+                      size: 19,
+                    )
+                  : const SizedBox.shrink(),
+            ],
+          ),
         ),
       ],
     );
