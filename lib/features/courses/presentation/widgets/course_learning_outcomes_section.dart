@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class CourseLearningOutcomesSection extends StatelessWidget {
-  const CourseLearningOutcomesSection({super.key});
-
+  const CourseLearningOutcomesSection({
+    super.key,
+    required this.learningOutcomes,
+  });
+  final List<String> learningOutcomes;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +30,7 @@ class CourseLearningOutcomesSection extends StatelessWidget {
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5,
+            itemCount: learningOutcomes.length,
             separatorBuilder: (context, index) {
               return const Gap(16);
             },
@@ -49,7 +52,7 @@ class CourseLearningOutcomesSection extends StatelessWidget {
                   const Gap(8),
                   Flexible(
                     child: Text(
-                      'Lorem ipsum dolor sit amet,  .',
+                      learningOutcomes[index],
                       style: context.appTheme.medium12.copyWith(
                         color: AppColors.black,
                       ),

@@ -3,7 +3,6 @@ import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:courses_app/core/widgets/widgets.dart';
-import 'package:courses_app/features/courses/presentation/widgets/course_intro_video.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -19,7 +18,7 @@ class CourseViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: .start,
       children: [
-        const CourseIntroVideo(),
+        // const CourseIntroVideo(),
         DecoratedBox(
           decoration: const BoxDecoration(
             color: AppColors.white,

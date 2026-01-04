@@ -8,7 +8,7 @@ void main() async {
   await AppStarter.start();
   runApp(
     EasyLocalization(
-      supportedLocales: [
+      supportedLocales: [ 
         const Locale(Constants.en),
         const Locale(Constants.ar),
       ],

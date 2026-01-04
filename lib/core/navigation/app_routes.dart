@@ -4,6 +4,7 @@ import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/cart/presentation/view/cart_view.dart';
+import '../../features/courses/data/models/course_model.dart';
 import '../../features/courses/presentation/view/all_courses_view.dart';
 import '../../features/courses/presentation/view/course_details_view.dart';
 import '../../features/courses/presentation/view/course_view.dart';
@@ -39,7 +40,8 @@ class AppRouter {
         page = const CartView();
         break;
       case CourseDetailsView.routeName:
-        page = const CourseDetailsView();
+        final course = navArgs.data as CourseModel;
+        page = CourseDetailsView(course: course);
         break;
       case CourseView.routeName:
         page = const CourseView();

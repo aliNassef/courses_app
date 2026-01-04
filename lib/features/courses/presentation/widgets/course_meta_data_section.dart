@@ -5,28 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/extensions/duration_extension.dart';
+import '../../data/models/course_model.dart';
 import 'instructor_info.dart';
 
 class CourseMetaDataSection extends StatelessWidget {
-  const CourseMetaDataSection({super.key});
-
+  const CourseMetaDataSection({super.key, required this.course});
+  final CourseModel course;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const Gap(16),
         Row(
+          mainAxisAlignment: .spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Flexible(
               child: Text(
-                'Mastering Flutter And Ui Design',
+                course.title,
                 style: context.appTheme.bold20.copyWith(
                   color: AppColors.black,
                 ),
               ),
             ),
-            const Gap(16),
             const Icon(
               Icons.bookmark_add,
               color: AppColors.grey,
@@ -43,7 +45,7 @@ class CourseMetaDataSection extends StatelessWidget {
               size: 16,
             ),
             Text(
-              '4.5',
+              course.rating.toString(),
               style: context.appTheme.bold10,
             ),
             Text(
@@ -58,7 +60,7 @@ class CourseMetaDataSection extends StatelessWidget {
               color: AppColors.grey,
             ),
             Text(
-              '12k Students',
+              '${course.subscribersCount} Students',
               style: context.appTheme.regular12.copyWith(
                 color: AppColors.grey,
               ),
@@ -74,7 +76,7 @@ class CourseMetaDataSection extends StatelessWidget {
             ),
             const Gap(8),
             Text(
-              '10 hours',
+              course.duration.toHours,
               style: context.appTheme.regular14.copyWith(
                 color: AppColors.grey,
               ),

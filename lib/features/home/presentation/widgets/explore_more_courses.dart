@@ -44,16 +44,8 @@ class ExploreMoreCourses extends StatelessWidget {
                   itemBuilder: (_, index) {
                     return SizedBox(
                       width: context.width * 0.8,
-                      child: GestureDetector(
-                        onTap: () => context.pushNamed(
-                          CourseDetailsView.routeName,
-                          arguments: const NavArgs(
-                            animation: NavAnimation.fade,
-                          ),
-                        ),
-                        child: ExploreCourseCardItem(
-                          course: CourseModel.dummyData[index],
-                        ),
+                      child: ExploreCourseCardItem(
+                        course: CourseModel.dummyData[index],
                       ),
                     );
                   },
@@ -70,12 +62,7 @@ class ExploreMoreCourses extends StatelessWidget {
                   return SizedBox(
                     width: context.width * 0.8,
                     child: GestureDetector(
-                      onTap: () => context.pushNamed(
-                        CourseDetailsView.routeName,
-                        arguments: const NavArgs(
-                          animation: NavAnimation.fade,
-                        ),
-                      ),
+                      onTap: () => _goToCourseDetails(context, state, index),
                       child: ExploreCourseCardItem(
                         course: state.courses[index],
                       ),
@@ -87,6 +74,20 @@ class ExploreMoreCourses extends StatelessWidget {
             return const SizedBox.shrink();
           },
         ),
+      ),
+    );
+  }
+
+  Future<Object?> _goToCourseDetails(
+    BuildContext context,
+    GetAllCoursesSuccess state,
+    int index,
+  ) {
+    return context.pushNamed(
+      CourseDetailsView.routeName,
+      arguments: NavArgs(
+        animation: NavAnimation.fade,
+        data: state.courses[index],
       ),
     );
   }
