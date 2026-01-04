@@ -3,6 +3,7 @@ import 'package:courses_app/features/courses/data/source/courses_remote_datasour
 import '../../features/courses/data/repo/courses_repo.dart';
 import '../../features/courses/data/repo/courses_repo_impl.dart';
 import '../../features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
+import '../../features/courses/presentation/view_model/instructor_cubit/instructor_cubit.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -16,6 +17,10 @@ Future<void> setupServiceLocator() async {
 void _setupCoursesFeature() {
   injector.registerFactory<CoursesCubit>(
     () => CoursesCubit(injector<CoursesRepo>()),
+  );
+
+  injector.registerFactory<InstructorCubit>(
+    () => InstructorCubit(injector<CoursesRepo>()),
   );
 
   injector.registerLazySingleton<CoursesRepo>(

@@ -2,11 +2,14 @@ import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/duration_extension.dart';
 import '../../data/models/course_model.dart';
+import '../view_model/instructor_cubit/instructor_cubit.dart';
 import 'instructor_info.dart';
 
 class CourseMetaDataSection extends StatelessWidget {
@@ -84,7 +87,10 @@ class CourseMetaDataSection extends StatelessWidget {
           ],
         ).withHorizontalPadding(Constants.hp16),
         const Gap(16),
-        const InstructorInfo(),
+        BlocProvider(
+          create: (context) => injector<InstructorCubit>()..getInstructorInfo(course.instructorId),
+          child: const InstructorInfo(),
+        ),
       ],
     );
   }

@@ -1,9 +1,11 @@
 import '../../../../core/di/di.dart';
 import '../models/course_model.dart';
+import '../models/instructor_model.dart';
 
 abstract class CoursesRemoteDatasource {
   Future<List<CourseModel>> getCourses();
   Future<List<CourseModel>> getBestSellerCourses();
+  Future<InstructorModel> getInstructorInfo(String instructorId);
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -31,5 +33,11 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
               CourseModel.fromJson(course.data() as Map<String, dynamic>),
         )
         .toList();
+  }
+
+  @override
+  Future<InstructorModel> getInstructorInfo(String instructorId) async {
+    final instructor = await database.getInstructor(instructorId);
+    return InstructorModel.fromMap(instructor.data() as Map<String, dynamic>);
   }
 }
