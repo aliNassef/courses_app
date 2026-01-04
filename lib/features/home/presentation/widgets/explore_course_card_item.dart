@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:courses_app/core/widgets/custom_network_image.dart';
 import 'package:gap/gap.dart';
-
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../courses/data/models/course_model.dart';
+import 'instructor_name.dart';
 
 class ExploreCourseCardItem extends StatelessWidget {
   const ExploreCourseCardItem({super.key, required this.course});
@@ -42,11 +42,11 @@ class ExploreCourseCardItem extends StatelessWidget {
                     size: 16,
                   ),
                   Text(
-                    '4.5',
+                    '${course.rating}',
                     style: context.appTheme.bold10,
                   ),
                   Text(
-                    '(1.2k)',
+                    '(${course.numOfRating})',
                     style: context.appTheme.bold10.copyWith(
                       color: AppColors.grey,
                     ),
@@ -59,11 +59,8 @@ class ExploreCourseCardItem extends StatelessWidget {
                 style: context.appTheme.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
-              Text(
-                'Ali Nassef',
-                style: context.appTheme.regular12.copyWith(
-                  color: AppColors.grey,
-                ),
+              InstructorName(
+                instructorId: course.instructorId,
               ).withHorizontalPadding(10),
               const Gap(16),
               Row(

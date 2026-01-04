@@ -28,51 +28,7 @@ class InstructorInfo extends StatelessWidget {
         }
 
         if (state is InstructorLoading) {
-          return Skeletonizer(
-            enabled: true,
-            child: AdaptiveListTile(
-              title: Text(
-                'Ali Nassef',
-                style: context.appTheme.bold14,
-              ),
-              subtitle: Text(
-                'Senior Mobile Developer @Google',
-                style: context.appTheme.regular12.copyWith(
-                  color: AppColors.grey,
-                ),
-              ),
-              trailing: const Icon(
-                CupertinoIcons.forward,
-                color: AppColors.grey,
-              ),
-              leading: Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 20.r,
-                    backgroundImage: const AssetImage(
-                      AppAssets.profile,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      padding: EdgeInsets.all(4.r),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.primary,
-                      ),
-                      child: const Icon(
-                        Icons.check,
-                        color: AppColors.white,
-                        size: 10,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+          return _buildLoadingInstructor(context);
         }
         if (state is InstructorLoaded) {
           return AdaptiveListTile(
@@ -122,6 +78,54 @@ class InstructorInfo extends StatelessWidget {
         }
         return const SizedBox.shrink();
       },
+    );
+  }
+
+  Skeletonizer _buildLoadingInstructor(BuildContext context) {
+    return Skeletonizer(
+      enabled: true,
+      child: AdaptiveListTile(
+        title: Text(
+          'Ali Nassef',
+          style: context.appTheme.bold14,
+        ),
+        subtitle: Text(
+          'Senior Mobile Developer @Google',
+          style: context.appTheme.regular12.copyWith(
+            color: AppColors.grey,
+          ),
+        ),
+        trailing: const Icon(
+          CupertinoIcons.forward,
+          color: AppColors.grey,
+        ),
+        leading: Stack(
+          children: [
+            CircleAvatar(
+              radius: 20.r,
+              backgroundImage: const AssetImage(
+                AppAssets.profile,
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.all(4.r),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary,
+                ),
+                child: const Icon(
+                  Icons.check,
+                  color: AppColors.white,
+                  size: 10,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

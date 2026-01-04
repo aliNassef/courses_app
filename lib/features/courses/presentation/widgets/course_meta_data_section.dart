@@ -52,7 +52,7 @@ class CourseMetaDataSection extends StatelessWidget {
               style: context.appTheme.bold10,
             ),
             Text(
-              '(1.2k)',
+              '(${course.numOfRating})',
               style: context.appTheme.bold10.copyWith(
                 color: AppColors.grey,
               ),
@@ -88,7 +88,9 @@ class CourseMetaDataSection extends StatelessWidget {
         ).withHorizontalPadding(Constants.hp16),
         const Gap(16),
         BlocProvider(
-          create: (context) => injector<InstructorCubit>()..getInstructorInfo(course.instructorId),
+          create: (context) =>
+              injector<InstructorCubit>()
+                ..getInstructorInfo(course.instructorId),
           child: const InstructorInfo(),
         ),
       ],

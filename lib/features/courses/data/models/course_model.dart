@@ -16,6 +16,7 @@ class CourseModel extends Equatable {
   final String imageUrl;
   final DateTime createdAt;
   final bool bestSeller;
+  final int numOfRating;
 
   const CourseModel({
     required this.id,
@@ -32,6 +33,7 @@ class CourseModel extends Equatable {
     required this.createdAt,
     required this.bestSeller,
     required this.imageUrl,
+    required this.numOfRating,
   });
 
   Map<String, dynamic> toMap() {
@@ -49,6 +51,7 @@ class CourseModel extends Equatable {
       'createdAt': createdAt,
       'bestSeller': bestSeller,
       'imageUrl': imageUrl,
+      'numOfRating': numOfRating,
     };
   }
 
@@ -68,10 +71,12 @@ class CourseModel extends Equatable {
       instructorId: json['instructorId'],
       createdAt: (json['createdAt'] as Timestamp).toDate(),
       bestSeller: json['bestSeller'],
+      numOfRating: json['numOfRating'],
     );
   }
   static List<CourseModel> dummyData = [
     CourseModel(
+      numOfRating: 0,
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
       description: 'تعلم Flutter من البداية للاحتراف',
@@ -89,6 +94,8 @@ class CourseModel extends Equatable {
       bestSeller: false,
     ),
     CourseModel(
+      numOfRating: 0,
+
       imageUrl:
           "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
 
@@ -107,6 +114,8 @@ class CourseModel extends Equatable {
       bestSeller: false,
     ),
     CourseModel(
+      numOfRating: 0,
+
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
       description: 'تعلم Flutter من البداية للاحتراف',
@@ -125,6 +134,8 @@ class CourseModel extends Equatable {
       bestSeller: false,
     ),
     CourseModel(
+      numOfRating: 0,
+
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
       imageUrl:
