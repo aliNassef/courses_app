@@ -53,9 +53,11 @@ class CourseDetailsViewBody extends StatelessWidget {
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           bottom: 0,
-          child: CourseEnrollmentBar(),
+          child: CourseEnrollmentBar(
+            price: course.price,
+          ),
         ),
       ],
     );

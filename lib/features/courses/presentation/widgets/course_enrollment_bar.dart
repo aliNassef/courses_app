@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class CourseEnrollmentBar extends StatelessWidget {
-  const CourseEnrollmentBar({super.key});
-
+  const CourseEnrollmentBar({super.key, required this.price});
+  final double price;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +27,7 @@ class CourseEnrollmentBar extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$99.99',
+                '\$${price.toStringAsFixed(1)}',
                 style: context.appTheme.bold20.copyWith(
                   color: AppColors.black,
                 ),
