@@ -4,6 +4,7 @@ import 'package:courses_app/features/courses/presentation/view_model/courses_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -13,8 +14,15 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       body: SafeArea(
-        child: BlocProvider(
-          create: (context) => injector<CoursesCubit>()..getAllCourses(),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => injector<CoursesCubit>()..getAllCourses(),
+            ),
+            BlocProvider(
+              create: (context) => injector<CartCubit>(),
+            ),
+          ],
           child: const HomeViewBody(),
         ),
       ),

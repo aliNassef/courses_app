@@ -87,7 +87,7 @@ class CourseModel extends Equatable {
       objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
       introVideoUrl: 'https://video-url.com/intro.mp4',
       categoryId: 'mobile-dev',
-      instructorId: 'instructor_123',
+      instructorId: '',
       createdAt: DateTime.now(),
       imageUrl:
           "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
@@ -109,7 +109,7 @@ class CourseModel extends Equatable {
       objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
       introVideoUrl: 'https://video-url.com/intro.mp4',
       categoryId: 'mobile-dev',
-      instructorId: 'instructor_123',
+      instructorId: '',
       createdAt: DateTime.now(),
       bestSeller: false,
     ),
@@ -126,7 +126,7 @@ class CourseModel extends Equatable {
       objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
       introVideoUrl: 'https://video-url.com/intro.mp4',
       categoryId: 'mobile-dev',
-      instructorId: 'instructor_123',
+      instructorId: '',
       imageUrl:
           "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
 
@@ -149,7 +149,7 @@ class CourseModel extends Equatable {
       objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
       introVideoUrl: 'https://video-url.com/intro.mp4',
       categoryId: 'mobile-dev',
-      instructorId: 'instructor_123',
+      instructorId: '',
       createdAt: DateTime.now(),
       bestSeller: false,
     ),

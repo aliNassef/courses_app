@@ -1,5 +1,9 @@
 import 'package:courses_app/features/courses/data/source/courses_remote_datasource.dart';
 
+import '../../features/cart/data/repo/cart_repo.dart';
+import '../../features/cart/data/repo/cart_repo_impl.dart';
+import '../../features/cart/data/source/cart_remote_datasource.dart';
+import '../../features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import '../../features/courses/data/repo/courses_repo.dart';
 import '../../features/courses/data/repo/courses_repo_impl.dart';
 import '../../features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
@@ -12,6 +16,21 @@ Future<void> setupServiceLocator() async {
   _setupExternalServices();
   _setupAuthFeature();
   _setupCoursesFeature();
+  _setupCartFeature();
+}
+
+void _setupCartFeature() {
+  injector.registerFactory<CartCubit>(
+    () => CartCubit(injector<CartRepo>()),
+  );
+
+  injector.registerLazySingleton<CartRepo>(
+    () => CartRepoImpl(remoteDataSource: injector<CartRemoteDataSource>()),
+  );
+
+  injector.registerLazySingleton<CartRemoteDataSource>(
+    () => CartRemoteDataSourceImpl(db: injector<Database>()),
+  );
 }
 
 void _setupCoursesFeature() {

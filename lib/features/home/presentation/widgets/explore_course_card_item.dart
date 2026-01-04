@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:courses_app/core/widgets/custom_network_image.dart';
 import 'package:gap/gap.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../cart/data/models/cart_model.dart';
+import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import '../../../courses/data/models/course_model.dart';
 import 'instructor_name.dart';
 
@@ -59,9 +63,11 @@ class ExploreCourseCardItem extends StatelessWidget {
                 style: context.appTheme.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
-              InstructorName(
-                instructorId: course.instructorId,
-              ).withHorizontalPadding(10),
+              course.instructorId.isNotEmpty
+                  ? InstructorName(
+                      instructorId: course.instructorId,
+                    ).withHorizontalPadding(10)
+                  : const SizedBox.shrink(),
               const Gap(16),
               Row(
                 mainAxisAlignment: .spaceBetween,
@@ -72,16 +78,21 @@ class ExploreCourseCardItem extends StatelessWidget {
                       color: AppColors.primary,
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffe7f2fd),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: AppColors.primary,
-                      size: 24,
+                  GestureDetector(
+                    onTap: () {
+                      _addToCart(context);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffe7f2fd),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(
+                        Icons.add,
+                        color: AppColors.primary,
+                        size: 24,
+                      ),
                     ),
                   ),
                 ],
@@ -123,6 +134,21 @@ class ExploreCourseCardItem extends StatelessWidget {
           ).withAllPadding(10.r),
         ],
       ),
+    );
+  }
+
+  void _addToCart(BuildContext context) {
+    var cart = CartModel(
+      courseId: course.id,
+      addedAt: DateTime.now(),
+      image: course.imageUrl,
+      price: course.price,
+      title: course.title,
+    );
+    final userId = context.read<AuthCubit>().userId;
+    context.read<CartCubit>().addToCart(
+      userId: userId,
+      cart: cart,
     );
   }
 }
