@@ -4,11 +4,12 @@ import 'package:gap/gap.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../data/models/category_model.dart';
 
 class CategoryCardItem extends StatelessWidget {
-  const CategoryCardItem({super.key});
-
-  @override
+  const CategoryCardItem({super.key, required this.category});
+  final CategoryModel category;
+  @override 
   Widget build(BuildContext context) {
     return Card(
       color: AppColors.white,
@@ -25,7 +26,7 @@ class CategoryCardItem extends StatelessWidget {
           const Gap(10),
           Flexible(
             child: Text(
-              "Category",
+              category.name,
               style: context.appTheme.bold16,
             ),
           ),

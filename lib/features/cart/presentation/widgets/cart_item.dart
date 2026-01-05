@@ -1,18 +1,21 @@
+import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../../home/presentation/widgets/instructor_name.dart';
+import '../../data/models/cart_model.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
+    required this.cart,
   });
-
+  final CartModel cart;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,8 +23,7 @@ class CartItem extends StatelessWidget {
       child: Row(
         children: [
           CustomNetworkImage(
-            img:
-                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+            img: cart.image,
 
             height: 85.h,
             width: 100.w,
@@ -38,7 +40,7 @@ class CartItem extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        'AAAAAAAAAAAAAAA',
+                        cart.title,
                         style: context.appTheme.bold16,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -53,12 +55,11 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 const Gap(8),
-                Text(
-                  'AA',
-                  style: context.appTheme.regular14.copyWith(
-                    color: AppColors.grey,
-                  ),
-                ),
+                cart.instructorId.isNullOrEmpty
+                    ? const SizedBox.shrink()
+                    : InstructorName(
+                        instructorId: cart.instructorId,
+                      ),
                 const Gap(8),
                 Row(
                   children: [
@@ -69,14 +70,14 @@ class CartItem extends StatelessWidget {
                     ),
                     const Gap(8),
                     Text(
-                      '4.5',
+                      cart.rating.toString(),
                       style: context.appTheme.regular14.copyWith(
                         color: const Color(0xffFFC107),
                       ),
                     ),
                     const Spacer(),
                     Text(
-                      '\$49.99',
+                      '\$${cart.price}',
                       style: context.appTheme.bold16.copyWith(
                         color: AppColors.primary,
                       ),

@@ -38,4 +38,24 @@ class CartCubit extends Cubit<CartState> {
   void updateCartItemsCount(int count) {
     emit(GetCartItemsCountSuccess(count));
   }
+
+  void getCart(String userId) async {
+    emit(GetCartLoading());
+    final cartOrFailure = await _cartRepo.getCart(userId);
+    cartOrFailure.fold(
+      (failure) => emit(GetCartFailure(failure)),
+      (cart) {
+        final totalPrice = calcTotalPrice(cart);
+        emit(GetCartLoaded(cart, totalPrice));
+      },
+    );
+  }
+
+  num calcTotalPrice(List<CartModel> carts) {
+    num total = 0;
+    for (var cart in carts) {
+      total += cart.price;
+    }
+    return total;
+  }
 }

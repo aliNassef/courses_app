@@ -63,6 +63,7 @@ abstract class Database {
     required Map<String, dynamic> data,
   });
   Future<DocumentSnapshot> getCategory(String categoryId);
+  Future<List<DocumentSnapshot>> getCategories();
 
   Future<void> addToCart({
     required String userId,
@@ -71,6 +72,7 @@ abstract class Database {
   });
 
   Future<int> getCartItemsCount(String userId);
+  Future<List<DocumentSnapshot>> getCartItems(String userId);
   Future<void> addToWishlist({
     required String userId,
     required String courseId,

@@ -1,15 +1,19 @@
 import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/navigation/navigation.dart';
+import 'package:courses_app/core/widgets/custom_failure_widget.dart';
 import 'package:courses_app/core/widgets/custom_search_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../courses/presentation/view/all_courses_view.dart';
 import '../../../courses/presentation/view_model/courses_cubit/courses_cubit.dart';
+import '../../data/models/category_model.dart';
+import '../view_model/category_cubit/category_cubit.dart';
 import 'continued_learning_card_item.dart';
 import '../widgets/user_info.dart';
 import 'category_card_item.dart';
@@ -63,19 +67,65 @@ class HomeViewBody extends StatelessWidget {
           padding: EdgeInsetsGeometry.symmetric(
             horizontal: Constants.hp16,
           ),
-          sliver: SliverGrid(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 2.2,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return const CategoryCardItem();
-              },
-              childCount: 6,
-            ),
+          sliver: BlocBuilder<CategoryCubit, CategoryState>(
+            buildWhen: (previous, current) =>
+                current is CategorySuccess ||
+                current is CategoryError ||
+                current is CategoryLoading,
+
+            builder: (context, state) {
+              if (state is CategoryError) {
+                return CustomFailureWidget(meesage: state.failure.errMessage);
+              }
+
+              if (state is CategoryLoading) {
+                return SliverSkeletonizer(
+                  enabled: true,
+                  child: SliverGrid(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          childAspectRatio: 2.2,
+                        ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        return CategoryCardItem(
+                          category: CategoryModel(
+                            createdAt: DateTime.now(),
+                            id: "",
+                            name: "",
+                            image:
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8-GVMiL1m8kmsRR2BD6NOtFr-aZvm3IVXjA&s',
+                          ),
+                        );
+                      },
+                      childCount: 6,
+                    ),
+                  ),
+                );
+              }
+              if (state is CategorySuccess) {
+                return SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: 2.2,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return CategoryCardItem(
+                        category: state.categories[index],
+                      );
+                    },
+                    childCount: state.categories.length,
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
         ),
         const SliverGap(16),
