@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
+import '../view_model/category_cubit/category_cubit.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,6 +37,9 @@ class _HomeViewState extends State<HomeView> {
                 ..getCartItemsCount(
                   context.read<AuthCubit>().userId,
                 ),
+            ),
+            BlocProvider(
+              create: (context) => injector<CategoryCubit>()..getCategories(),
             ),
           ],
           child: Builder(
