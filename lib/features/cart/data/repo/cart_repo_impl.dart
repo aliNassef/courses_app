@@ -34,4 +34,14 @@ class CartRepoImpl extends CartRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<CartModel>>> getCart(String userId) async {
+    try {
+      final carts = await _remoteDataSource.getCart(userId);
+      return Right(carts);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

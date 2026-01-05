@@ -1,7 +1,11 @@
 import 'dart:io';
+import 'package:courses_app/core/di/di.dart';
+import 'package:courses_app/core/di/service_locator.dart';
 import 'package:courses_app/core/utils/utils.dart';
+import 'package:courses_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/logging/app_logger.dart';
 import '../../../../core/navigation/navigation.dart';
 import '../widgets/cart_view_body.dart';
@@ -12,16 +16,20 @@ class CartView extends StatelessWidget {
   static const String routeName = 'cart_view';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: _buildCartAppBar(context),
-      ),
-      body: const SafeArea(
-        child: CartViewBody(),
-      ),
+    final userId = injector<AuthCubit>().userId;
+    return BlocProvider(
+      create: (context) => injector<CartCubit>()..getCart(userId),
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: _buildCartAppBar(context),
+        ),
+        body: const SafeArea(
+          child: CartViewBody(),
+        ),
 
-      bottomNavigationBar: const TotalPriceAndCheckoutButton(),
+        bottomNavigationBar: const TotalPriceAndCheckoutButton(),
+      ),
     );
   }
 

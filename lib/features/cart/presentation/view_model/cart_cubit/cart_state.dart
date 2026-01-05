@@ -26,6 +26,26 @@ final class AddToCartFailure extends CartState {
 
 final class GetCartItemsCountLoading extends CartState {}
 
+final class GetCartLoading extends CartState {}
+
+final class GetCartLoaded extends CartState {
+  final List<CartModel> cart;
+
+  const GetCartLoaded(this.cart);
+
+  @override
+  List<Object> get props => [cart];
+}
+
+final class GetCartFailure extends CartState {
+  final Failure failure;
+
+  const GetCartFailure(this.failure);
+
+  @override
+  List<Object> get props => [failure];
+}
+
 final class GetCartItemsCountSuccess extends CartState {
   final int count;
 

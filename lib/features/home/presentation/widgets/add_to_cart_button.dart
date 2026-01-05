@@ -69,6 +69,8 @@ class AddToCartButton extends StatelessWidget {
   void _addToCart(BuildContext context) {
     var cart = CartModel(
       courseId: course.id,
+      instructorId: course.instructorId,
+      rating: course.rating,
       addedAt: DateTime.now(),
       image: course.imageUrl,
       price: course.price,

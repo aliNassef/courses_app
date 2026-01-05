@@ -71,6 +71,7 @@ abstract class Database {
   });
 
   Future<int> getCartItemsCount(String userId);
+  Future<List<DocumentSnapshot>> getCartItems(String userId);
   Future<void> addToWishlist({
     required String userId,
     required String courseId,

@@ -10,4 +10,5 @@ abstract class CartRepo {
   });
 
   Future<Either<Failure, int>> getCartItemsCount(String userId);
+  Future<Either<Failure, List<CartModel>>> getCart(String userId);
 }

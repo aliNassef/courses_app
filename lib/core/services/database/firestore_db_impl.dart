@@ -305,4 +305,15 @@ class FirestoreDBImpl implements Database {
 
     return snapshot.docs.length;
   }
+  
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getCartItems(String userId) async {
+    final snapshot = await _firestore
+        .collection(FirestoreCollectionsStrings.users)
+        .doc(userId)
+        .collection(FirestoreCollectionsStrings.cart)
+        .get();
+
+    return snapshot.docs;
+  }
 }

@@ -6,6 +6,8 @@ class CartModel {
   final double price;
   final String image;
   final DateTime addedAt;
+  final double rating;
+  final String instructorId;
 
   const CartModel({
     required this.courseId,
@@ -13,6 +15,8 @@ class CartModel {
     required this.price,
     required this.image,
     required this.addedAt,
+    required this.rating,
+    required this.instructorId,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,6 +26,8 @@ class CartModel {
       'price': price,
       'image': image,
       'addedAt': Timestamp.fromDate(addedAt),
+      'rating': rating,
+      'instructorName': instructorId,
     };
   }
 
@@ -34,6 +40,8 @@ class CartModel {
       price: (map['price'] as num).toDouble(),
       image: map['image'] as String,
       addedAt: (map['addedAt'] as Timestamp).toDate(),
+      rating: (map['rating'] as num).toDouble(),
+      instructorId: map['instructorName'] as String,
     );
   }
 
@@ -43,6 +51,8 @@ class CartModel {
     double? price,
     String? image,
     DateTime? addedAt,
+    double? rating,
+    String? instructorName,
   }) {
     return CartModel(
       courseId: courseId ?? this.courseId,
@@ -50,6 +60,8 @@ class CartModel {
       price: price ?? this.price,
       image: image ?? this.image,
       addedAt: addedAt ?? this.addedAt,
+      rating: rating ?? this.rating,
+      instructorId: instructorName ?? instructorId,
     );
   }
 }
