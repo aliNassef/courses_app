@@ -69,6 +69,8 @@ abstract class Database {
     required String courseId,
     required Map<String, dynamic> data,
   });
+
+  Future<int> getCartItemsCount(String userId);
   Future<void> addToWishlist({
     required String userId,
     required String courseId,

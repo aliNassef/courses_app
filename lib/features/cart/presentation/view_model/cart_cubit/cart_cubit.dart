@@ -23,4 +23,19 @@ class CartCubit extends Cubit<CartState> {
       (cart) => emit(const AddToCartSuccess()),
     );
   }
+
+  void getCartItemsCount(String userId) async {
+    emit(GetCartItemsCountLoading());
+    final countOrFailure = await _cartRepo.getCartItemsCount(userId);
+    countOrFailure.fold(
+      (failure) => emit(GetCartItemsCountFailure(failure)),
+      (count) {
+        emit(GetCartItemsCountSuccess(count));
+      },
+    );
+  }
+
+  void updateCartItemsCount(int count) {
+    emit(GetCartItemsCountSuccess(count));
+  }
 }

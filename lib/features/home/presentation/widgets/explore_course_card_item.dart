@@ -1,24 +1,35 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:courses_app/core/widgets/custom_network_image.dart';
 import 'package:gap/gap.dart';
-import '../../../../core/di/di.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
-import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../cart/data/models/cart_model.dart';
-import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import '../../../courses/data/models/course_model.dart';
+import 'add_to_cart_button.dart';
+import 'cart_animation_scope.dart';
+import 'favoruite_button_and_best_seller.dart';
 import 'instructor_name.dart';
 
-class ExploreCourseCardItem extends StatelessWidget {
-  const ExploreCourseCardItem({super.key, required this.course});
+class ExploreCourseCardItem extends StatefulWidget {
+  const ExploreCourseCardItem({
+    super.key,
+    required this.course,
+  });
   final CourseModel course;
+
+  @override
+  State<ExploreCourseCardItem> createState() => _ExploreCourseCardItemState();
+}
+
+class _ExploreCourseCardItemState extends State<ExploreCourseCardItem> {
+  final GlobalKey imageKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    final cartAnimationScope = CartAnimationScope.of(
+      context,
+    );
     return Card(
       color: AppColors.white,
       shape: RoundedRectangleBorder(
@@ -29,12 +40,15 @@ class ExploreCourseCardItem extends StatelessWidget {
           Column(
             crossAxisAlignment: .start,
             children: [
-              CustomNetworkImage(
-                img: course.imageUrl,
-                height: 140.h,
-                width: context.width,
-                topStartRadius: 12.r,
-                topEndRadius: 12.r,
+              Container(
+                key: imageKey,
+                child: CustomNetworkImage(
+                  img: widget.course.imageUrl,
+                  height: 140.h,
+                  width: context.width,
+                  topStartRadius: 12.r,
+                  topEndRadius: 12.r,
+                ),
               ),
               const Gap(16),
               Row(
@@ -46,11 +60,11 @@ class ExploreCourseCardItem extends StatelessWidget {
                     size: 16,
                   ),
                   Text(
-                    '${course.rating}',
+                    '${widget.course.rating}',
                     style: context.appTheme.bold10,
                   ),
                   Text(
-                    '(${course.numOfRating})',
+                    '(${widget.course.numOfRating})',
                     style: context.appTheme.bold10.copyWith(
                       color: AppColors.grey,
                     ),
@@ -59,13 +73,13 @@ class ExploreCourseCardItem extends StatelessWidget {
               ).withHorizontalPadding(10),
               const Gap(8),
               Text(
-                course.title,
+                widget.course.title,
                 style: context.appTheme.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
-              course.instructorId.isNotEmpty
+              widget.course.instructorId.isNotEmpty
                   ? InstructorName(
-                      instructorId: course.instructorId,
+                      instructorId: widget.course.instructorId,
                     ).withHorizontalPadding(10)
                   : const SizedBox.shrink(),
               const Gap(16),
@@ -73,82 +87,24 @@ class ExploreCourseCardItem extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   Text(
-                    '${course.price} EGP',
+                    '${widget.course.price} EGP',
                     style: context.appTheme.bold16.copyWith(
                       color: AppColors.primary,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _addToCart(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffe7f2fd),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                        color: AppColors.primary,
-                        size: 24,
-                      ),
-                    ),
+                  AddToCartButton(
+                    cartAnimationScope: cartAnimationScope,
+                    imageKey: imageKey,
+                    course: widget.course,
                   ),
                 ],
               ).withHorizontalPadding(10),
               const Gap(8),
             ],
           ),
-
-          Row(
-            mainAxisAlignment: .spaceBetween,
-            children: [
-              Visibility(
-                visible: course.bestSeller,
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: AppColors.white.withValues(alpha: 0.85),
-                    borderRadius: BorderRadius.circular(6.r),
-                  ),
-                  child: Text(
-                    LocaleKeys.best_sellers.tr(),
-                    style: context.appTheme.medium14.copyWith(
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const CircleAvatar(
-                  backgroundColor: AppColors.primary,
-                  child: Icon(
-                    Icons.favorite,
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
-            ],
-          ).withAllPadding(10.r),
+          FavoruiteButtonAndBestSeller(widget: widget).withAllPadding(10.r),
         ],
       ),
-    );
-  }
-
-  void _addToCart(BuildContext context) {
-    var cart = CartModel(
-      courseId: course.id,
-      addedAt: DateTime.now(),
-      image: course.imageUrl,
-      price: course.price,
-      title: course.title,
-    );
-    final userId = context.read<AuthCubit>().userId;
-    context.read<CartCubit>().addToCart(
-      userId: userId,
-      cart: cart,
     );
   }
 }

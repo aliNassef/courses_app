@@ -7,6 +7,8 @@ abstract class CartRemoteDataSource {
     required String userId,
     required CartModel cart,
   });
+
+  Future<int> getCartItemsCount(String userId);
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -23,5 +25,11 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       courseId: cart.courseId,
       data: cart.toMap(),
     );
+  }
+
+  @override
+  Future<int> getCartItemsCount(String userId) async {
+    final count = await _db.getCartItemsCount(userId);
+    return count;
   }
 }

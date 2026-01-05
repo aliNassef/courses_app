@@ -1,4 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:courses_app/core/widgets/custom_failure_widget.dart';
 import 'package:courses_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
@@ -12,6 +13,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/navigation/navigation.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
+import 'cart_animation_scope.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({
@@ -84,26 +86,35 @@ class UserInfo extends StatelessWidget {
                 color: AppColors.black,
               ),
             ),
-            trailing: Material(
-              elevation: 2,
-              shadowColor: AppColors.grey.withValues(alpha: 0.4),
-              shape: const CircleBorder(),
-              child: CircleAvatar(
-                backgroundColor: AppColors.white,
-                radius: 21,
-                child: GestureDetector(
-                  onTap: () {
-                    context.pushNamed(
-                      CartView.routeName,
-                      arguments: const NavArgs(
-                        animation: NavAnimation.fade,
-                      ),
-                    );
-                  },
-                  child: const Icon(
-                    CupertinoIcons.cart_fill,
-                    color: AppColors.black,
-                    size: 24,
+            trailing: AddToCartIcon(
+              key: CartAnimationScope.of(context).cartKey,
+              badgeOptions: const BadgeOptions(
+                active: true,
+                backgroundColor: AppColors.red,
+                fontSize: 16,
+                foregroundColor: AppColors.light,
+              ),
+              icon: Material(
+                elevation: 2,
+                shadowColor: AppColors.grey.withValues(alpha: 0.4),
+                shape: const CircleBorder(),
+                child: CircleAvatar(
+                  backgroundColor: AppColors.white,
+                  radius: 21,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                        CartView.routeName,
+                        arguments: const NavArgs(
+                          animation: NavAnimation.fade,
+                        ),
+                      );
+                    },
+                    child: const Icon(
+                      CupertinoIcons.cart_fill,
+                      color: AppColors.black,
+                      size: 24,
+                    ),
                   ),
                 ),
               ),

@@ -23,3 +23,31 @@ final class AddToCartFailure extends CartState {
   @override
   List<Object> get props => [failure];
 }
+
+final class GetCartItemsCountLoading extends CartState {}
+
+final class GetCartItemsCountSuccess extends CartState {
+  final int count;
+
+  const GetCartItemsCountSuccess(this.count);
+
+  GetCartItemsCountSuccess copyWith({
+    int? count,
+  }) {
+    return GetCartItemsCountSuccess(
+      count ?? this.count,
+    );
+  }
+
+  @override
+  List<Object> get props => [count];
+}
+
+final class GetCartItemsCountFailure extends CartState {
+  final Failure failure;
+
+  const GetCartItemsCountFailure(this.failure);
+
+  @override
+  List<Object> get props => [failure];
+}

@@ -285,7 +285,7 @@ class FirestoreDBImpl implements Database {
         .get()
         .then((querySnapshot) => querySnapshot.docs);
   }
-  
+
   @override
   Future<List<DocumentSnapshot<Object?>>> getBestSellerCourses() async {
     return await _firestore
@@ -293,5 +293,16 @@ class FirestoreDBImpl implements Database {
         .where('bestSeller', isEqualTo: true)
         .get()
         .then((querySnapshot) => querySnapshot.docs);
+  }
+
+  @override
+  Future<int> getCartItemsCount(String userId) async {
+    final snapshot = await _firestore
+        .collection(FirestoreCollectionsStrings.users)
+        .doc(userId)
+        .collection(FirestoreCollectionsStrings.cart)
+        .get();
+
+    return snapshot.docs.length;
   }
 }

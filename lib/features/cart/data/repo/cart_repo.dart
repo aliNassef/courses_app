@@ -8,4 +8,6 @@ abstract class CartRepo {
     required String userId,
     required CartModel cart,
   });
+
+  Future<Either<Failure, int>> getCartItemsCount(String userId);
 }
