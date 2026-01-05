@@ -34,26 +34,7 @@ class CartViewBody extends StatelessWidget {
               child: BlocBuilder<CartCubit, CartState>(
                 builder: (context, state) {
                   if (state is GetCartLoading) {
-                    return Skeletonizer(
-                      enabled: true,
-                      child: ListView.separated(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        itemBuilder: (context, index) => CartItem(
-                          cart: CartModel(
-                            addedAt: DateTime.now(),
-                            instructorId: "AAAAAAAA",
-                            rating: 0,
-                            courseId: 'aaa',
-                            title: 'Ali Nassef',
-                            price: 100,
-                            image:
-                                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
-                          ),
-                        ),
-                        separatorBuilder: (context, index) => const Gap(16),
-                        itemCount: 6,
-                      ),
-                    );
+                    return _buildCartLoading();
                   }
 
                   if (state is GetCartFailure) {
@@ -81,6 +62,29 @@ class CartViewBody extends StatelessWidget {
             Gap(16.h),
           ],
         ),
+      ),
+    );
+  }
+
+  Skeletonizer _buildCartLoading() {
+    return Skeletonizer(
+      enabled: true,
+      child: ListView.separated(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        itemBuilder: (context, index) => CartItem(
+          cart: CartModel(
+            addedAt: DateTime.now(),
+            instructorId: "",
+            rating: 0,
+            courseId: 'aaa',
+            title: 'Ali Nassef',
+            price: 100,
+            image:
+                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+          ),
+        ),
+        separatorBuilder: (context, index) => const Gap(16),
+        itemCount: 6,
       ),
     );
   }

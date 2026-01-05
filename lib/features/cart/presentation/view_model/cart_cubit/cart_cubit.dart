@@ -45,8 +45,17 @@ class CartCubit extends Cubit<CartState> {
     cartOrFailure.fold(
       (failure) => emit(GetCartFailure(failure)),
       (cart) {
-        emit(GetCartLoaded(cart));
+        final totalPrice = calcTotalPrice(cart);
+        emit(GetCartLoaded(cart, totalPrice));
       },
     );
+  }
+
+  num calcTotalPrice(List<CartModel> carts) {
+    num total = 0;
+    for (var cart in carts) {
+      total += cart.price;
+    }
+    return total;
   }
 }

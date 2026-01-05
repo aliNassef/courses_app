@@ -30,11 +30,11 @@ final class GetCartLoading extends CartState {}
 
 final class GetCartLoaded extends CartState {
   final List<CartModel> cart;
-
-  const GetCartLoaded(this.cart);
+  final num totalPrice;
+  const GetCartLoaded(this.cart, this.totalPrice);
 
   @override
-  List<Object> get props => [cart];
+  List<Object> get props => [cart, totalPrice];
 }
 
 final class GetCartFailure extends CartState {

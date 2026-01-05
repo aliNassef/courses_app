@@ -1,3 +1,4 @@
+import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -54,9 +55,11 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 const Gap(8),
-                InstructorName(
-                  instructorId: cart.instructorId,
-                ),
+                cart.instructorId.isNullOrEmpty
+                    ? const SizedBox.shrink()
+                    : InstructorName(
+                        instructorId: cart.instructorId,
+                      ),
                 const Gap(8),
                 Row(
                   children: [
