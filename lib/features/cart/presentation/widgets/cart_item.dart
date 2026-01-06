@@ -1,6 +1,8 @@
+import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/padding_extension.dart';
@@ -9,6 +11,7 @@ import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../../home/presentation/widgets/instructor_name.dart';
 import '../../data/models/cart_model.dart';
+import '../view_model/cart_cubit/cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -47,10 +50,15 @@ class CartItem extends StatelessWidget {
                       ),
                     ),
 
-                    const Icon(
-                      CupertinoIcons.delete_solid,
-                      color: AppColors.grey,
-                      size: 20,
+                    GestureDetector(
+                      onTap: () {
+                        _removeCartItem(context);
+                      },
+                      child: const Icon(
+                        CupertinoIcons.delete_solid,
+                        color: AppColors.grey,
+                        size: 20,
+                      ),
                     ),
                   ],
                 ),
@@ -89,6 +97,13 @@ class CartItem extends StatelessWidget {
           ),
         ],
       ).withHorizontalPadding(12.w).withVerticalPadding(10.h),
+    );
+  }
+
+  void _removeCartItem(BuildContext context) {
+    context.read<CartCubit>().removeCartItem(
+      context.read<AuthCubit>().userId,
+      cart.courseId,
     );
   }
 }
