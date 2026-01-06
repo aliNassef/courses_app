@@ -11,6 +11,7 @@ abstract class CartRemoteDataSource {
   Future<int> getCartItemsCount(String userId);
 
   Future<List<CartModel>> getCart(String userId);
+  Future<void> removeCartItem(String userId, String courseId);
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -42,4 +43,8 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         .map((e) => CartModel.fromMap(e.data() as Map<String, dynamic>))
         .toList();
   }
+
+  @override
+  Future<void> removeCartItem(String userId, String courseId) async =>
+      _db.removeCartItem(userId, courseId);
 }

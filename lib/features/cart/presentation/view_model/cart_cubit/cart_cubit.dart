@@ -58,4 +58,36 @@ class CartCubit extends Cubit<CartState> {
     }
     return total;
   }
+
+  void removeCartItem(String userId, String courseId) async {
+    if (state is! GetCartLoaded) return;
+
+    final currentState = (state as GetCartLoaded);
+    final previousCarts = currentState.cart;
+
+    final updatedCarts = previousCarts
+        .where((cart) => cart.courseId != courseId)
+        .toList();
+    emit(
+      GetCartLoaded(
+        updatedCarts,
+        calcTotalPrice(updatedCarts),
+      ),
+    );
+
+    final removedOrFailure = await _cartRepo.removeCartItem(userId, courseId);
+
+    removedOrFailure.fold(
+      (failure) {
+        emit(
+          GetCartLoaded(
+            previousCarts,
+            calcTotalPrice(previousCarts),
+          ),
+        );
+        emit(RemoveCartItemFailure(failure));
+      },
+      (_) {},
+    );
+  }
 }
