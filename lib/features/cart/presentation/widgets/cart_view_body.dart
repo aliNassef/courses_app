@@ -13,7 +13,6 @@ import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../data/models/cart_model.dart';
-import 'order_summary_price.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -57,8 +56,6 @@ class CartViewBody extends StatelessWidget {
             ),
             Gap(16.h),
             const CouponTextField().withHorizontalPadding(Constants.hp16),
-            Gap(16.h),
-            const OrderSummaryPrice().withHorizontalPadding(Constants.hp16),
             Gap(16.h),
           ],
         ),

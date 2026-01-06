@@ -11,13 +11,16 @@ class AccountTile extends StatelessWidget {
     required this.text,
     this.type,
     required this.icon,
+    this.onTap,
   });
   final String text;
   final IconData icon;
   final String? type;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return AdaptiveListTile(
+      onTap: onTap,
       leading: Container(
         padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
