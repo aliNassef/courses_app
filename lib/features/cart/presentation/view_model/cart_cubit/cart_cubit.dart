@@ -58,4 +58,9 @@ class CartCubit extends Cubit<CartState> {
     }
     return total;
   }
+
+  void removeCartItem(String userId, String courseId) async {
+    await _cartRepo.removeCartItem(userId, courseId);
+    getCart(userId);
+  }
 }
