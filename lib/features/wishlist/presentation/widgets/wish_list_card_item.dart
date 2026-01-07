@@ -1,4 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/core/extensions/strings_extensions.dart';
+import 'package:courses_app/features/courses/data/models/course_model.dart';
+import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -10,8 +13,8 @@ import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/widgets.dart';
 
 class WishListCardItem extends StatelessWidget {
-  const WishListCardItem({super.key});
-
+  const WishListCardItem({super.key, required this.course});
+  final CourseModel course;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,8 +26,7 @@ class WishListCardItem extends StatelessWidget {
       child: Column(
         children: [
           CustomNetworkImage(
-            img:
-                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+            img: course.imageUrl,
             height: 140.h,
             width: context.width,
             radius: 12.r,
@@ -33,15 +35,12 @@ class WishListCardItem extends StatelessWidget {
           AdaptiveListTile(
             padding: EdgeInsets.zero,
             title: Text(
-              'Introducing to Flutter',
+              course.title,
               style: context.appTheme.semiBold16,
             ),
-            subtitle: Text(
-              'by Google',
-              style: context.appTheme.regular12.copyWith(
-                color: AppColors.grey,
-              ),
-            ),
+            subtitle: course.instructorId.isNullOrEmpty
+                ? const SizedBox.shrink()
+                : InstructorName(instructorId: course.instructorId),
             trailing: const Icon(
               CupertinoIcons.heart_fill,
               color: AppColors.primary,
@@ -57,11 +56,11 @@ class WishListCardItem extends StatelessWidget {
                 size: 16,
               ),
               Text(
-                '4.5',
+                course.rating.toString(),
                 style: context.appTheme.bold10,
               ),
               Text(
-                '(1.2k)',
+                course.numOfRating.toString(),
                 style: context.appTheme.bold10.copyWith(
                   color: AppColors.grey,
                 ),
@@ -73,7 +72,7 @@ class WishListCardItem extends StatelessWidget {
             mainAxisAlignment: .spaceBetween,
             children: [
               Text(
-                '\$100',
+                '${course.price} EGP',
                 style: context.appTheme.bold16.copyWith(
                   color: AppColors.black,
                 ),

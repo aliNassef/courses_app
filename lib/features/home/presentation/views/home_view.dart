@@ -41,6 +41,9 @@ class _HomeViewState extends State<HomeView> {
             BlocProvider(
               create: (context) => injector<CategoryCubit>()..getCategories(),
             ),
+            BlocProvider(
+              create: (context) => injector<WishlistCubit>(),
+            ),
           ],
           child: Builder(
             builder: (context) {

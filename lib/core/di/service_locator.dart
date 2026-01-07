@@ -1,17 +1,4 @@
-import 'package:courses_app/features/courses/data/source/courses_remote_datasource.dart';
-import 'package:courses_app/features/home/data/repo/home_repo.dart';
 
-import '../../features/cart/data/repo/cart_repo.dart';
-import '../../features/cart/data/repo/cart_repo_impl.dart';
-import '../../features/cart/data/source/cart_remote_datasource.dart';
-import '../../features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
-import '../../features/courses/data/repo/courses_repo.dart';
-import '../../features/courses/data/repo/courses_repo_impl.dart';
-import '../../features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
-import '../../features/courses/presentation/view_model/instructor_cubit/instructor_cubit.dart';
-import '../../features/home/data/repo/home_repo_impl.dart';
-import '../../features/home/data/source/home_remote_datasource.dart';
-import '../../features/home/presentation/view_model/category_cubit/category_cubit.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -22,6 +9,23 @@ Future<void> setupServiceLocator() async {
   _setupCoursesFeature();
   _setupCartFeature();
   _setupHomeFeature();
+  _setupWishlistFeature();
+}
+
+void _setupWishlistFeature() {
+  injector.registerFactory<WishlistCubit>(
+    () => WishlistCubit(injector<WishlistRepo>()),
+  );
+
+  injector.registerLazySingleton<WishlistRepo>(
+    () => WishlistRepoImpl(
+      remoteDatasource: injector<WishlistRemoteDatasource>(),
+    ),
+  );
+
+  injector.registerLazySingleton<WishlistRemoteDatasource>(
+    () => WishlistRemoteDatasoureImpl(db: injector<Database>()),
+  );
 }
 
 void _setupHomeFeature() {

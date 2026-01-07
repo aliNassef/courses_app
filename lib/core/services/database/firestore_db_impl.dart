@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:courses_app/core/errors/server_exception.dart';
 import 'package:courses_app/core/services/database/database.dart';
 import '../../constants/firesstore_collections_strings.dart';
+import '../../logging/app_logger.dart';
 
 class FirestoreDBImpl implements Database {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -447,6 +448,53 @@ class FirestoreDBImpl implements Database {
           .collection(FirestoreCollectionsStrings.cart)
           .doc(courseId)
           .delete();
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getWishlistCourses(
+    String userId,
+  ) async {
+    final wishlistSnapshot = await _firestore
+        .collection(FirestoreCollectionsStrings.users)
+        .doc(userId)
+        .collection(FirestoreCollectionsStrings.wishlist)
+        .get();
+
+    if (wishlistSnapshot.docs.isEmpty) return [];
+    AppLogger.info(wishlistSnapshot.docs.first.id.toString());
+    final List<Map<String, dynamic>> courses = [];
+
+    for (final wishlistDoc in wishlistSnapshot.docs) {
+      final courseDoc = await getCourseById(wishlistDoc.id);
+      AppLogger.info(courseDoc.id.toString());
+
+      AppLogger.info(courseDoc.metadata.toString());
+
+      courses.add(courseDoc.data() as Map<String, dynamic>);
+    }
+    AppLogger.info(courses.length.toString());
+    for (var course in courses) {
+      AppLogger.info(course.toString());
+    }
+    return courses;
+  }
+
+  @override
+  Future<DocumentSnapshot> getCourseById(String courseId) async {
+    try {
+      final courseSnapshot = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId.trim())
+          .get();
+
+      if (!courseSnapshot.exists) {
+        throw ServerException('Course not found');
+      }
+
+      return courseSnapshot;
     } on Exception catch (e) {
       throw ServerException(e.toString());
     }

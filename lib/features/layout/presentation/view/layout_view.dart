@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/features/favorites/presentation/view/wish_list_view.dart';
+import 'package:courses_app/features/wishlist/presentation/view/wish_list_view.dart';
 import 'package:courses_app/features/my_learning/presentation/views/my_learning_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

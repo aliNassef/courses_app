@@ -17,7 +17,7 @@ abstract class Database {
   Future<List<DocumentSnapshot>> getCourses();
   Future<void> removeCartItem(String userId, String courseId);
   Future<List<DocumentSnapshot>> getBestSellerCourses();
-
+  Future<DocumentSnapshot> getCourseById(String courseId);
   Future<void> createLesson({
     required String courseId,
     required String lessonId,
@@ -79,6 +79,8 @@ abstract class Database {
     required String courseId,
     required Map<String, dynamic> data,
   });
+
+  Future<List<Map<String, dynamic>>> getWishlistCourses(String userId);
   Future<void> enrollInCourse({
     required String userId,
     required String courseId,
