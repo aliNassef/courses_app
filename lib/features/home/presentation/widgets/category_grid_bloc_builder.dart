@@ -1,9 +1,11 @@
+import 'package:courses_app/core/navigation/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/widgets/custom_failure_widget.dart';
+import '../../../courses/presentation/view/courses_by_category_view.dart';
 import '../../data/models/category_model.dart';
 import 'category_card_item.dart';
 
@@ -62,8 +64,15 @@ class CategoryGridBlocBuilder extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return CategoryCardItem(
-                  category: state.categories[index],
+                return GestureDetector(
+                  onTap: () {
+                    context.pushNamed(
+                      CoursesByCategoryView.routeName,
+                    );
+                  },
+                  child: CategoryCardItem(
+                    category: state.categories[index],
+                  ),
                 );
               },
               childCount: state.categories.length,

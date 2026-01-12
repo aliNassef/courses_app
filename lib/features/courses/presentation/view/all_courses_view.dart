@@ -1,14 +1,12 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
-import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:courses_app/core/di/service_locator.dart';
-import 'package:courses_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:courses_app/features/courses/presentation/widgets/all_courses_view_body.dart';
 import 'package:courses_app/features/home/presentation/widgets/cart_animation_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../view_model/courses_cubit/courses_cubit.dart';
+import '../../../../core/di/di.dart';
 
 class AllCoursesView extends StatefulWidget {
   const AllCoursesView({super.key, required this.coursesCubit});
@@ -34,6 +32,9 @@ class _AllCoursesViewState extends State<AllCoursesView> {
             ),
             BlocProvider(
               create: (context) => injector<CartCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => injector<WishlistCubit>(),
             ),
           ],
           child: AddToCartAnimation(
