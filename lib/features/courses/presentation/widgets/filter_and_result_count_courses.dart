@@ -1,12 +1,16 @@
+import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/padding_extension.dart';
+
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_failure_widget.dart';
-import '../../../courses/presentation/view_model/courses_category_cubit/courses_category_cubit.dart';
+import '../filter_enum.dart';
+import '../view_model/courses_category_cubit/courses_category_cubit.dart';
 
 class FilterAndResultCountCourses extends StatelessWidget {
   const FilterAndResultCountCourses({
@@ -55,10 +59,32 @@ class FilterAndResultCountCourses extends StatelessWidget {
                   color: AppColors.grey,
                 ),
               ),
-              const Icon(
-                Icons.filter_list_sharp,
-                color: AppColors.primary,
-              ),
+              AdaptivePopupMenuButton.icon<Filter>(
+                icon: Icons.filter_list_sharp,
+                tint: AppColors.primary,
+                buttonStyle: PopupButtonStyle.filled,
+                items: [
+                  const AdaptivePopupMenuItem(
+                    label: 'Name',
+                    value: Filter.name,
+                  ),
+                  const AdaptivePopupMenuDivider(),
+                  const AdaptivePopupMenuItem(
+                    label: 'Price',
+                    value: Filter.price,
+                  ),
+                  const AdaptivePopupMenuDivider(),
+                  const AdaptivePopupMenuItem(
+                    label: 'Rating',
+                    value: Filter.rating,
+                  ),
+                ],
+                onSelected: (index, item) {
+                  context.read<CoursesCategoryCubit>().onFilterChange(
+                    item.value ?? Filter.name,
+                  );
+                },
+              ).backInLeft(),
             ],
           ).withHorizontalPadding(Constants.hp16);
         }

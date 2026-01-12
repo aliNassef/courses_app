@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/widgets/custom_failure_widget.dart';
-import '../../../home/presentation/widgets/filter_and_result_count_courses.dart';
+import 'filter_and_result_count_courses.dart';
 import '../view_model/courses_category_cubit/courses_category_cubit.dart';
 import 'category_course_item.dart';
 import 'course_level_chip.dart';

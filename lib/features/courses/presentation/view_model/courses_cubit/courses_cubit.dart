@@ -20,7 +20,6 @@ class CoursesCubit extends Cubit<CoursesState> {
     );
   }
 
-
   void getBestSellerCourses() async {
     emit(GetBestSellerCoursesLoading());
     final coursesOrFailure = await repo.getBestSellerCourses();

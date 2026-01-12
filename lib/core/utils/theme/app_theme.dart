@@ -45,7 +45,17 @@ class AppTheme {
     textTheme: GoogleFonts.tajawalTextTheme(),
     primarySwatch: Colors.green,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
-
+    popupMenuTheme: PopupMenuThemeData(
+      color: AppColors.grey,
+      iconColor: AppColors.primary,
+      labelTextStyle: WidgetStatePropertyAll(
+        GoogleFonts.tajawal(
+          fontSize: 15,
+          color: AppColors.primary,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       circularTrackColor: AppColors.primary,
       color: AppColors.grey,

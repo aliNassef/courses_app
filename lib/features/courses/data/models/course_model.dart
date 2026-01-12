@@ -5,7 +5,7 @@ class CourseModel extends Equatable {
   final String id;
   final String title;
   final String description;
-  final double price;
+  final num price;
   final int duration;
   final double rating;
   final int subscribersCount;

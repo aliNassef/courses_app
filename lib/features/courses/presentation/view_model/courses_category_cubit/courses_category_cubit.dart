@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/core/errors/failure.dart';
-import 'package:equatable/equatable.dart';
 
 import '../../../data/models/course_model.dart';
+import '../../filter_enum.dart';
 
 part 'courses_category_state.dart';
 
@@ -19,6 +19,28 @@ class CoursesCategoryCubit extends Cubit<CoursesCategoryState> {
       (failure) => emit(CoursesCategoryError(failure: failure)),
       (courses) => emit(
         CoursesCategorySuccess(courses: courses),
+      ),
+    );
+  }
+
+  void onFilterChange(Filter filter) {
+    if (state is! CoursesCategorySuccess) return;
+
+    final courses = (state as CoursesCategorySuccess).courses;
+    switch (filter) {
+      case Filter.name:
+        courses.sort((a, b) => a.title.compareTo(b.title));
+        break;
+      case Filter.price:
+        courses.sort((a, b) => a.price.compareTo(b.price));
+        break;
+      case Filter.rating:
+        courses.sort((a, b) => a.rating.compareTo(b.rating));
+        break;
+    }
+    emit(
+      CoursesCategorySuccess(
+        courses: courses,
       ),
     );
   }

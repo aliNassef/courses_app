@@ -9,7 +9,7 @@ import '../../data/models/category_model.dart';
 class CategoryCardItem extends StatelessWidget {
   const CategoryCardItem({super.key, required this.category});
   final CategoryModel category;
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Card(
       color: AppColors.white,

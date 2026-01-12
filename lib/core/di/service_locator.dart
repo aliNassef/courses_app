@@ -1,6 +1,4 @@
 
-import 'package:courses_app/features/courses/presentation/view_model/courses_category_cubit/courses_category_cubit.dart';
-
 import 'di.dart';
 
 final injector = GetIt.instance;

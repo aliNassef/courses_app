@@ -500,9 +500,10 @@ class FirestoreDBImpl implements Database {
     }
   }
 
-
   @override
-  Future<List<DocumentSnapshot<Object?>>> getCoursesByCategory(String categoryId) async {
+  Future<List<DocumentSnapshot<Object?>>> getCoursesByCategory(
+    String categoryId,
+  ) async {
     try {
       return await _firestore
           .collection(FirestoreCollectionsStrings.courses)

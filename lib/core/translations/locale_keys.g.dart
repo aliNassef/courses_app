@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const welcome_back = 'welcome_back';
   static const what_do_you_want_to_learn = 'what_do_you_want_to_learn';
   static const continue_learning = 'continue_learning';
@@ -42,7 +42,8 @@ abstract class  LocaleKeys {
   static const settings = 'settings';
   static const certs = 'certs';
   static const welcome_back_title = 'welcome_back_title';
-  static const continue_your_learning_journey = 'continue_your_learning_journey';
+  static const continue_your_learning_journey =
+      'continue_your_learning_journey';
   static const email_address = 'email_address';
   static const enter_your_email = 'enter_your_email';
   static const password = 'password';
@@ -76,5 +77,4 @@ abstract class  LocaleKeys {
   static const validation_password_length = 'validation_password_length';
   static const validation_fullname_required = 'validation_fullname_required';
   static const student = 'student';
-
 }
