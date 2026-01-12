@@ -1,6 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/extensions/strings_extensions.dart';
-import 'package:courses_app/features/courses/data/models/course_model.dart';
+ import 'package:courses_app/features/courses/data/models/course_model.dart';
 import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +37,7 @@ class WishListCardItem extends StatelessWidget {
               course.title,
               style: context.appTheme.semiBold16,
             ),
-            subtitle: course.instructorId.isNullOrEmpty
-                ? const SizedBox.shrink()
-                : InstructorName(instructorId: course.instructorId),
+            subtitle: InstructorName(instructorId: course.instructorId),
             trailing: const Icon(
               CupertinoIcons.heart_fill,
               color: AppColors.primary,

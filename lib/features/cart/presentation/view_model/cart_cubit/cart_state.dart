@@ -71,6 +71,7 @@ final class GetCartItemsCountFailure extends CartState {
   @override
   List<Object> get props => [failure];
 }
+
 final class RemoveCartItemFailure extends CartState {
   final Failure failure;
 

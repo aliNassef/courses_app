@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:courses_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../cart/data/models/cart_model.dart';
-import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import '../../../courses/data/models/course_model.dart';
 import 'cart_animation_scope.dart';
 
@@ -73,7 +71,7 @@ class AddToCartButton extends StatelessWidget {
       rating: course.rating,
       addedAt: DateTime.now(),
       image: course.imageUrl,
-      price: course.price,
+      price: course.price.toDouble(),
       title: course.title,
     );
     final userId = context.read<AuthCubit>().userId;

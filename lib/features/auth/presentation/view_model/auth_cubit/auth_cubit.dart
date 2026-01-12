@@ -54,7 +54,7 @@ class AuthCubit extends Cubit<AuthState> {
       (unit) => emit(UnAuthenticated()),
     );
   }
-  
+
   String get userId => _authRepo.getUser()!.uid;
   void getUserProfile() async {
     emit(const GetUserProfileLoading());

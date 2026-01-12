@@ -499,4 +499,19 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getCoursesByCategory(
+    String categoryId,
+  ) async {
+    try {
+      return await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .where('categoryId', isEqualTo: categoryId.trim())
+          .get()
+          .then((querySnapshot) => querySnapshot.docs);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

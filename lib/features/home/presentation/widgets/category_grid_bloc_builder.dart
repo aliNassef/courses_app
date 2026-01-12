@@ -7,6 +7,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/widgets/custom_failure_widget.dart';
 import '../../../courses/presentation/view/courses_by_category_view.dart';
 import '../../data/models/category_model.dart';
+import '../../data/models/category_nav_args.dart';
 import 'category_card_item.dart';
 
 class CategoryGridBlocBuilder extends StatelessWidget {
@@ -66,9 +67,7 @@ class CategoryGridBlocBuilder extends StatelessWidget {
               (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    context.pushNamed(
-                      CoursesByCategoryView.routeName,
-                    );
+                    _goToCoursesByCategory(context, state, index);
                   },
                   child: CategoryCardItem(
                     category: state.categories[index],
@@ -81,6 +80,23 @@ class CategoryGridBlocBuilder extends StatelessWidget {
         }
         return const SizedBox.shrink();
       },
+    );
+  }
+
+  void _goToCoursesByCategory(
+    BuildContext context,
+    CategorySuccess state,
+    int index,
+  ) {
+    context.pushNamed(
+      CoursesByCategoryView.routeName,
+      arguments: NavArgs(
+        animation: NavAnimation.fade,
+        data: CategoryNavArgs(
+          categoryId: state.categories[index].id,
+          categoryName: state.categories[index].name,
+        ),
+      ),
     );
   }
 }

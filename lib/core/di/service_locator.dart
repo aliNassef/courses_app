@@ -60,7 +60,9 @@ void _setupCoursesFeature() {
   injector.registerFactory<CoursesCubit>(
     () => CoursesCubit(injector<CoursesRepo>()),
   );
-
+  injector.registerFactory<CoursesCategoryCubit>(
+    () => CoursesCategoryCubit(injector<CoursesRepo>()),
+  );
   injector.registerFactory<InstructorCubit>(
     () => InstructorCubit(injector<CoursesRepo>()),
   );

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class SigninRequest  extends Equatable{
+class SigninRequest extends Equatable {
   final String email;
   final String password;
 

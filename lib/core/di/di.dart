@@ -29,3 +29,4 @@ export 'package:courses_app/features/wishlist/presentation/view_model/wishlist_c
 
 export '../../features/wishlist/data/repo/wishlist_repo_impl.dart';
 export '../../features/wishlist/data/source/wishlist_remote_datasoure.dart';
+export 'package:courses_app/features/courses/presentation/view_model/courses_category_cubit/courses_category_cubit.dart';

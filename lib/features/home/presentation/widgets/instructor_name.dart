@@ -1,3 +1,4 @@
+import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -14,43 +15,45 @@ class InstructorName extends StatelessWidget {
   final String instructorId;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          injector<InstructorCubit>()..getInstructorInfo(instructorId),
-      child: Builder(
-        builder: (context) {
-          final state = context.watch<InstructorCubit>().state;
+    return instructorId.isNullOrEmpty
+        ? const SizedBox.shrink()
+        : BlocProvider(
+            create: (context) =>
+                injector<InstructorCubit>()..getInstructorInfo(instructorId),
+            child: Builder(
+              builder: (context) {
+                final state = context.watch<InstructorCubit>().state;
 
-          if (state is InstructorLoading) {
-            return Skeletonizer(
-              enabled: true,
-              child: Text(
-                'Ali Nassef',
-                style: context.appTheme.regular12.copyWith(
-                  color: AppColors.grey,
-                ),
-              ),
-            );
-          }
-          if (state is InstructorLoaded) {
-            return Text(
-              "By ${state.instructor.name}",
-              style: context.appTheme.regular12.copyWith(
-                color: AppColors.grey,
-              ),
-            );
-          }
-          if (state is InstructorError) {
-            return Text(
-              state.failure.errMessage,
-              style: context.appTheme.regular12.copyWith(
-                color: AppColors.grey,
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        },
-      ),
-    );
+                if (state is InstructorLoading) {
+                  return Skeletonizer(
+                    enabled: true,
+                    child: Text(
+                      'Ali Nassef',
+                      style: context.appTheme.regular12.copyWith(
+                        color: AppColors.grey,
+                      ),
+                    ),
+                  );
+                }
+                if (state is InstructorLoaded) {
+                  return Text(
+                    "By ${state.instructor.name}",
+                    style: context.appTheme.regular12.copyWith(
+                      color: AppColors.grey,
+                    ),
+                  );
+                }
+                if (state is InstructorError) {
+                  return Text(
+                    state.failure.errMessage,
+                    style: context.appTheme.regular12.copyWith(
+                      color: AppColors.grey,
+                    ),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+          );
   }
 }

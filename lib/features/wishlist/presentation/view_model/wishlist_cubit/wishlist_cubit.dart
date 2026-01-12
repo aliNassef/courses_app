@@ -3,7 +3,7 @@ import 'package:courses_app/core/errors/failure.dart';
 import 'package:courses_app/features/courses/data/models/course_model.dart';
 import 'package:equatable/equatable.dart';
 
- import '../../../data/models/wishlist_model.dart';
+import '../../../data/models/wishlist_model.dart';
 import '../../../data/repo/wishlist_repo.dart';
 
 part 'wishlist_state.dart';

@@ -1,5 +1,4 @@
 import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +10,6 @@ import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../../home/presentation/widgets/instructor_name.dart';
 import '../../data/models/cart_model.dart';
-import '../view_model/cart_cubit/cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -63,11 +61,9 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 const Gap(8),
-                cart.instructorId.isNullOrEmpty
-                    ? const SizedBox.shrink()
-                    : InstructorName(
-                        instructorId: cart.instructorId,
-                      ),
+                InstructorName(
+                  instructorId: cart.instructorId,
+                ),
                 const Gap(8),
                 Row(
                   children: [

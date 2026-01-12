@@ -44,9 +44,12 @@ class CartRepoImpl extends CartRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
-  
+
   @override
-  Future<Either<Failure, void>> removeCartItem(String userId, String courseId) async {
+  Future<Either<Failure, void>> removeCartItem(
+    String userId,
+    String courseId,
+  ) async {
     try {
       await _remoteDataSource.removeCartItem(userId, courseId);
       return const Right(null);

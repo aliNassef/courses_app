@@ -4,12 +4,17 @@ import 'package:courses_app/core/navigation/app_navigation.dart';
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/di/service_locator.dart';
+import '../../../home/data/models/category_nav_args.dart';
+import '../view_model/courses_category_cubit/courses_category_cubit.dart';
 import '../widgets/courses_by_category_view_body.dart';
 
 class CoursesByCategoryView extends StatelessWidget {
-  const CoursesByCategoryView({super.key});
+  const CoursesByCategoryView({super.key, required this.categoryNavArgs});
   static const String routeName = 'courses_by_category_view';
+  final CategoryNavArgs categoryNavArgs;
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
@@ -19,7 +24,12 @@ class CoursesByCategoryView extends StatelessWidget {
           height: context.height,
           width: context.width,
           color: AppColors.white,
-          child: const CoursesByCategoryViewBody(),
+          child: BlocProvider(
+            create: (context) =>
+                injector<CoursesCategoryCubit>()
+                  ..getCoursesByCategory(categoryNavArgs.categoryId),
+            child: const CoursesByCategoryViewBody(),
+          ),
         ),
       ),
     );
@@ -29,7 +39,7 @@ class CoursesByCategoryView extends StatelessWidget {
     return AdaptiveAppBar(
       appBar: AppBar(
         title: Text(
-          'Courses By Category',
+          categoryNavArgs.categoryName,
           style: context.appTheme.bold16.copyWith(
             color: AppColors.black,
           ),
@@ -64,7 +74,7 @@ class CoursesByCategoryView extends StatelessWidget {
       ),
       cupertinoNavigationBar: CupertinoNavigationBar(
         middle: Text(
-          'Courses By Category',
+          categoryNavArgs.categoryName,
           style: context.appTheme.bold16.copyWith(
             color: AppColors.black,
           ),

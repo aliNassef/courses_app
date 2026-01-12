@@ -6,6 +6,7 @@ abstract class CoursesRemoteDatasource {
   Future<List<CourseModel>> getCourses();
   Future<List<CourseModel>> getBestSellerCourses();
   Future<InstructorModel> getInstructorInfo(String instructorId);
+  Future<List<CourseModel>> getCoursesByCategory(String categoryId);
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -39,5 +40,16 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
   Future<InstructorModel> getInstructorInfo(String instructorId) async {
     final instructor = await database.getInstructor(instructorId);
     return InstructorModel.fromMap(instructor.data() as Map<String, dynamic>);
+  }
+
+  @override
+  Future<List<CourseModel>> getCoursesByCategory(String categoryId) async {
+    final courses = await database.getCoursesByCategory(categoryId);
+    return courses
+        .map(
+          (course) =>
+              CourseModel.fromJson(course.data() as Map<String, dynamic>),
+        )
+        .toList();
   }
 }

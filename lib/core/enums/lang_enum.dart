@@ -2,7 +2,8 @@ import '../constants/constants.dart';
 
 enum LangEnum {
   en,
-  ar;
+  ar
+  ;
 
   String get value {
     switch (this) {
