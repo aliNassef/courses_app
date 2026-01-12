@@ -18,27 +18,41 @@ class CoursesRepoImpl implements CoursesRepo {
       final courses = await remoteDatasource.getCourses();
       return Right(courses);
     } on ServerException catch (e) {
-      return Left(Failure(errMessage: e.toString()));
-    }
-  }
-  
-  @override
-  Future<Either<Failure, List<CourseModel>>> getBestSellerCourses()async {
-    try {
-      final courses = await remoteDatasource.getBestSellerCourses();
-      return Right(courses);
-    } on ServerException catch (e) {
-      return Left(Failure(errMessage: e.toString()));
+      return Left(Failure(errMessage: e.message));
     }
   }
 
   @override
-  Future<Either<Failure, InstructorModel>> getInstructorInfo(String instructorId)async {
+  Future<Either<Failure, List<CourseModel>>> getBestSellerCourses() async {
+    try {
+      final courses = await remoteDatasource.getBestSellerCourses();
+      return Right(courses);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, InstructorModel>> getInstructorInfo(
+    String instructorId,
+  ) async {
     try {
       final instructor = await remoteDatasource.getInstructorInfo(instructorId);
       return Right(instructor);
     } on ServerException catch (e) {
-      return Left(Failure(errMessage: e.toString()));
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CourseModel>>> getCoursesByCategory(
+    String categoryId,
+  ) async {
+    try {
+      final courses = await remoteDatasource.getCoursesByCategory(categoryId);
+      return Right(courses);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
     }
   }
 }

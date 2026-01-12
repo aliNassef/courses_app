@@ -38,9 +38,7 @@ class WishListCardItem extends StatelessWidget {
               course.title,
               style: context.appTheme.semiBold16,
             ),
-            subtitle: course.instructorId.isNullOrEmpty
-                ? const SizedBox.shrink()
-                : InstructorName(instructorId: course.instructorId),
+            subtitle: InstructorName(instructorId: course.instructorId),
             trailing: const Icon(
               CupertinoIcons.heart_fill,
               color: AppColors.primary,

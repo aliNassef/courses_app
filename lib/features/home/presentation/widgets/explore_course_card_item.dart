@@ -77,11 +77,9 @@ class _ExploreCourseCardItemState extends State<ExploreCourseCardItem> {
                 style: context.appTheme.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
-              widget.course.instructorId.isNotEmpty
-                  ? InstructorName(
-                      instructorId: widget.course.instructorId,
-                    ).withHorizontalPadding(10)
-                  : const SizedBox.shrink(),
+              InstructorName(
+                instructorId: widget.course.instructorId,
+              ).withHorizontalPadding(10),
               const Gap(16),
               Row(
                 mainAxisAlignment: .spaceBetween,

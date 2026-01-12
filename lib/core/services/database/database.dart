@@ -18,6 +18,7 @@ abstract class Database {
   Future<void> removeCartItem(String userId, String courseId);
   Future<List<DocumentSnapshot>> getBestSellerCourses();
   Future<DocumentSnapshot> getCourseById(String courseId);
+  Future<List<DocumentSnapshot>> getCoursesByCategory(String categoryId);
   Future<void> createLesson({
     required String courseId,
     required String lessonId,

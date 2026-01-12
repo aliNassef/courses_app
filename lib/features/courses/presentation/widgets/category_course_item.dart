@@ -1,3 +1,4 @@
+import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -5,12 +6,14 @@ import 'package:gap/gap.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../data/models/course_model.dart';
 
 class CategoryCourseItem extends StatelessWidget {
   const CategoryCourseItem({
     super.key,
+    required this.course,
   });
-
+  final CourseModel course;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,9 +21,7 @@ class CategoryCourseItem extends StatelessWidget {
       child: Row(
         children: [
           CustomNetworkImage(
-            img:
-                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
-
+            img: course.imageUrl,
             height: 80.h,
             width: 100.w,
             radius: 16.r,
@@ -35,7 +36,7 @@ class CategoryCourseItem extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        'data data data data datadatadatadatadata',
+                        course.title,
                         style: context.appTheme.medium14.copyWith(
                           color: AppColors.black,
                         ),
@@ -43,18 +44,15 @@ class CategoryCourseItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    const Gap(8),
                     const Icon(
                       Icons.bookmark,
                       color: AppColors.grey,
                     ),
                   ],
                 ),
-                Text(
-                  'By Ali Nassef',
-                  style: context.appTheme.medium12.copyWith(
-                    color: AppColors.grey,
-                  ),
-                ),
+                const Gap(8),
+                InstructorName(instructorId: course.instructorId),
                 const Gap(10),
                 Row(
                   children: [
@@ -65,14 +63,14 @@ class CategoryCourseItem extends StatelessWidget {
                     ),
                     const Gap(8),
                     Text(
-                      '4.5',
+                      course.rating.toString(),
                       style: context.appTheme.regular14.copyWith(
                         color: const Color(0xffFFC107),
                       ),
                     ),
                     const Spacer(),
                     Text(
-                      '1000 EGP',
+                      '${course.price} EGP',
                       style: context.appTheme.bold14.copyWith(
                         color: AppColors.primary,
                       ),

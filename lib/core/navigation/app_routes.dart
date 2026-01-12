@@ -9,6 +9,7 @@ import '../../features/courses/presentation/view/all_courses_view.dart';
 import '../../features/courses/presentation/view/course_details_view.dart';
 import '../../features/courses/presentation/view/course_view.dart';
 import '../../features/courses/presentation/view/courses_by_category_view.dart';
+import '../../features/home/data/models/category_nav_args.dart';
 import '../../features/layout/presentation/view/layout_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import 'navigation.dart';
@@ -51,7 +52,8 @@ class AppRouter {
         page = const ForgetPasswordView();
         break;
       case CoursesByCategoryView.routeName:
-        page = const CoursesByCategoryView();
+        final categoryNavArgs = navArgs.data as CategoryNavArgs;
+        page = CoursesByCategoryView(categoryNavArgs: categoryNavArgs);
         break;
       default:
         page = const Scaffold(body: Center(child: Text('Page not found')));

@@ -8,4 +8,5 @@ abstract class CoursesRepo {
   Future<Either<Failure, List<CourseModel>>> getCourses();
   Future<Either<Failure, List<CourseModel>>> getBestSellerCourses();
   Future<Either<Failure, InstructorModel>> getInstructorInfo(String instructorId);
+  Future<Either<Failure, List<CourseModel>>> getCoursesByCategory(String categoryId);
 }
