@@ -566,4 +566,71 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<void> addCourseToMyLearning({
+    required String userId,
+    required String courseId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .doc(courseId)
+          .set(data);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> updateProgress({
+    required String userId,
+    required String courseId,
+    required String lessonId,
+  }) async {
+    try {
+      final docRef = _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .doc(courseId);
+
+      final snapshot = await docRef.get();
+      final data = snapshot.data()!;
+
+      final completedLessons = data['completedLessons'] + 1;
+      final totalLessons = data['totalLessons'];
+
+      final progress = (completedLessons / totalLessons) * 100;
+
+      await docRef.update({
+        'completedLessons': completedLessons,
+        'progress': progress,
+        'lastLessonId': lessonId,
+        'status': progress == 100 ? 'completed' : 'ongoing',
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getMyLearningCourses(
+    String userId,
+  ) async {
+    try {
+      return await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .get()
+          .then((querySnapshot) => querySnapshot.docs);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

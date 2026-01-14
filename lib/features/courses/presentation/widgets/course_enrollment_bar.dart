@@ -56,7 +56,7 @@ class CourseEnrollmentBar extends StatelessWidget {
           AdaptiveButton.child(
             color: AppColors.primary,
             borderRadius: BorderRadius.circular(12.r),
-            minSize: Size(context.width * 0.5, 46.r),
+            minSize: Size(context.width * 0.45, 46.r),
             onPressed: () {},
             child: Text(
               'Enroll Now',
