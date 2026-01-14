@@ -1,15 +1,12 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
 import 'package:courses_app/features/home/presentation/widgets/cart_animation_scope.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
-import '../../../cart/presentation/view_model/cart_cubit/cart_cubit.dart';
-import '../view_model/category_cubit/category_cubit.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {

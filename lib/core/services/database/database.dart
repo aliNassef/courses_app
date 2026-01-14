@@ -108,4 +108,15 @@ abstract class Database {
     required String notificationId,
     required Map<String, dynamic> data,
   });
+  Future<void> addLessonToCourse({
+    required String courseId,
+    required String lessonId,
+    required Map<String, dynamic> data,
+  });
+
+  Future<List<DocumentSnapshot>> getLessonsByCourseId(String courseId);
+  Future<DocumentSnapshot<Object?>> getLessonByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  );
 }

@@ -44,3 +44,41 @@ final class GetBestSellerCoursesError extends CoursesState {
   @override
   List<Object> get props => [failure];
 }
+
+// for all lessons
+final class GetLessonsByCourseIdLoading extends CoursesState {}
+
+final class GetLessonsByCourseIdError extends CoursesState {
+  final Failure failure;
+  const GetLessonsByCourseIdError({required this.failure});
+
+  @override
+  List<Object> get props => [failure];
+}
+
+final class GetLessonsByCourseIdSuccess extends CoursesState {
+  final List<LessonModel> lessons;
+  const GetLessonsByCourseIdSuccess({required this.lessons});
+
+  @override
+  List<Object> get props => [lessons];
+}
+
+// for one lesson
+final class GetLessonsByCourseIdAndLessonNumnerLoading extends CoursesState {}
+
+final class GetLessonByCourseIdAndLessonNumnerSuccess extends CoursesState {
+  final LessonModel lesson;
+  const GetLessonByCourseIdAndLessonNumnerSuccess({required this.lesson});
+
+  @override
+  List<Object> get props => [lesson];
+}
+
+final class GetLessonByCourseIdAndLessonNumnerError extends CoursesState {
+  final Failure failure;
+  const GetLessonByCourseIdAndLessonNumnerError({required this.failure});
+
+  @override
+  List<Object> get props => [failure];
+}

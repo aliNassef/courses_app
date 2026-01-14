@@ -1,4 +1,5 @@
 import 'package:courses_app/core/errors/server_exception.dart';
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -51,6 +52,34 @@ class CoursesRepoImpl implements CoursesRepo {
     try {
       final courses = await remoteDatasource.getCoursesByCategory(categoryId);
       return Right(courses);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<LessonModel>>> getLessonsByCourseId(
+    String courseId,
+  ) async {
+    try {
+      final lessons = await remoteDatasource.getLessonsByCourseId(courseId);
+      return Right(lessons);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LessonModel>> getLessonsByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  ) async {
+    try {
+      final lesson = await remoteDatasource.getLessonByCourseIdAndLessonNumber(
+        courseId,
+        lessonNumber,
+      );
+      return Right(lesson);
     } on ServerException catch (e) {
       return Left(Failure(errMessage: e.message));
     }

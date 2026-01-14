@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:courses_app/core/errors/failure.dart';
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../data/models/course_model.dart';
@@ -26,6 +27,32 @@ class CoursesCubit extends Cubit<CoursesState> {
     coursesOrFailure.fold(
       (failure) => emit(GetBestSellerCoursesError(failure: failure)),
       (courses) => emit(GetBestSellerCoursesSuccess(courses: courses)),
+    );
+  }
+
+  void getLessonsByCourseId(String courseId) async {
+    emit(GetLessonsByCourseIdLoading());
+    final lessonsOrFailure = await repo.getLessonsByCourseId(courseId);
+    lessonsOrFailure.fold(
+      (failure) => emit(GetLessonsByCourseIdError(failure: failure)),
+      (lessons) => emit(GetLessonsByCourseIdSuccess(lessons: lessons)),
+    );
+  }
+
+  void getLessonsByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  ) async {
+    emit(GetLessonsByCourseIdAndLessonNumnerLoading());
+    final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonNumber(
+      courseId,
+      lessonNumber,
+    );
+    lessonsOrFailure.fold(
+      (failure) =>
+          emit(GetLessonByCourseIdAndLessonNumnerError(failure: failure)),
+      (lesson) =>
+          emit(GetLessonByCourseIdAndLessonNumnerSuccess(lesson: lesson)),
     );
   }
 }

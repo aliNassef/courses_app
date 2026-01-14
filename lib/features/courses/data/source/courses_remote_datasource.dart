@@ -1,3 +1,5 @@
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
+
 import '../../../../core/di/di.dart';
 import '../models/course_model.dart';
 import '../models/instructor_model.dart';
@@ -7,6 +9,11 @@ abstract class CoursesRemoteDatasource {
   Future<List<CourseModel>> getBestSellerCourses();
   Future<InstructorModel> getInstructorInfo(String instructorId);
   Future<List<CourseModel>> getCoursesByCategory(String categoryId);
+  Future<List<LessonModel>> getLessonsByCourseId(String courseId);
+  Future<LessonModel> getLessonByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  );
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -51,5 +58,31 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
               CourseModel.fromJson(course.data() as Map<String, dynamic>),
         )
         .toList();
+  }
+
+  @override
+  Future<List<LessonModel>> getLessonsByCourseId(String courseId) async {
+    final lessons = await database.getLessonsByCourseId(courseId);
+    return lessons
+        .map(
+          (lesson) => LessonModel.fromJson(
+            lesson.data() as Map<String, dynamic>,
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Future<LessonModel> getLessonByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  ) async {
+    final lesson = await database.getLessonByCourseIdAndLessonNumber(
+      courseId,
+      lessonNumber,
+    );
+    return LessonModel.fromJson(
+      lesson.data() as Map<String, dynamic>,
+    );
   }
 }

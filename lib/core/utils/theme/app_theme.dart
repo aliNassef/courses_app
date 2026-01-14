@@ -46,7 +46,7 @@ class AppTheme {
     primarySwatch: Colors.green,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
     popupMenuTheme: PopupMenuThemeData(
-      color: AppColors.grey,
+      color: AppColors.grey.withValues(alpha: 0.5),
       iconColor: AppColors.primary,
       labelTextStyle: WidgetStatePropertyAll(
         GoogleFonts.tajawal(

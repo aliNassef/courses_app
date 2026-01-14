@@ -514,4 +514,56 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<void> addLessonToCourse({
+    required String courseId,
+    required String lessonId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.lessons)
+          .doc(lessonId)
+          .set(data);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<DocumentSnapshot<Object?>>> getLessonsByCourseId(
+    String courseId,
+  ) async {
+    try {
+      return await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.lessons)
+          .orderBy('order')
+          .get()
+          .then((querySnapshot) => querySnapshot.docs);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<DocumentSnapshot<Object?>> getLessonByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
+  ) async {
+    try {
+      final lessons = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.lessons)
+          .get();
+      return lessons.docs.where((l) => l.data()['order'] == lessonNumber).first;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

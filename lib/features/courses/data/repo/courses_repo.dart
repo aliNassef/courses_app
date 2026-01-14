@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../models/course_model.dart';
 import '../models/instructor_model.dart';
+import '../models/lesson_model.dart';
 
 abstract class CoursesRepo {
   Future<Either<Failure, List<CourseModel>>> getCourses();
@@ -12,5 +13,14 @@ abstract class CoursesRepo {
   );
   Future<Either<Failure, List<CourseModel>>> getCoursesByCategory(
     String categoryId,
+  );
+
+  Future<Either<Failure, List<LessonModel>>> getLessonsByCourseId(
+    String courseId,
+  );
+
+  Future<Either<Failure, LessonModel>> getLessonsByCourseIdAndLessonNumber(
+    String courseId,
+    int lessonNumber,
   );
 }
