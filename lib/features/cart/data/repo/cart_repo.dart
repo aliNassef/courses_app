@@ -1,4 +1,4 @@
-import 'package:courses_app/core/errors/failure.dart';
+import '../../../../core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
 
 import '../models/cart_model.dart';

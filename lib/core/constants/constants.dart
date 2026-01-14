@@ -1,4 +1,4 @@
-import 'package:courses_app/core/widgets/widgets.dart';
+import '../widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Constants {

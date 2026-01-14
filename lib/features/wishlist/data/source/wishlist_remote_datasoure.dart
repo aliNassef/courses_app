@@ -1,4 +1,4 @@
-import 'package:courses_app/features/courses/data/models/course_model.dart';
+import '../../../courses/data/models/course_model.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/logging/app_logger.dart';

@@ -1,6 +1,6 @@
-import 'package:courses_app/core/errors/server_exception.dart';
-import 'package:courses_app/features/auth/data/models/user_model.dart';
-import 'package:courses_app/features/auth/data/source/auth_remote_datasource.dart';
+import '../../../../core/errors/server_exception.dart';
+import '../models/user_model.dart';
+import '../source/auth_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

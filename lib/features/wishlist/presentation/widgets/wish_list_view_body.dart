@@ -1,6 +1,6 @@
-import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/extensions/mediaquery_size.dart';
-import 'package:courses_app/core/widgets/custom_failure_widget.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/extensions/mediaquery_size.dart';
+import '../../../../core/widgets/custom_failure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';

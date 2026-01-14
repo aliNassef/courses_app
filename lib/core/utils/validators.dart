@@ -1,4 +1,4 @@
-import 'package:courses_app/core/extensions/strings_extensions.dart';
+import '../extensions/strings_extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../translations/locale_keys.g.dart';
 

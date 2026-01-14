@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/core/errors/failure.dart';
+import '../../../../../core/di/di.dart';
+import '../../../../../core/errors/failure.dart';
 
 import '../../../data/models/course_model.dart';
 import '../../filter_enum.dart';

@@ -1,6 +1,6 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/core/widgets/widgets.dart';
+import 'core/di/di.dart';
+import 'core/widgets/widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';

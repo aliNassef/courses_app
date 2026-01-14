@@ -1,5 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/features/splash/presentation/widgets/splash_view_body.dart';
+import '../widgets/splash_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:courses_app/core/constants/firesstore_collections_strings.dart';
-import 'package:courses_app/core/logging/app_logger.dart';
-import 'package:courses_app/core/services/auth/auth_service.dart';
+import '../../constants/firesstore_collections_strings.dart';
+import '../../logging/app_logger.dart';
+import 'auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:courses_app/core/errors/server_exception.dart';
-import 'package:courses_app/core/services/database/database.dart';
+import '../../errors/server_exception.dart';
+import 'database.dart';
 import '../../constants/firesstore_collections_strings.dart';
 import '../../logging/app_logger.dart';
 

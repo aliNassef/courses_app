@@ -1,11 +1,11 @@
-import 'package:courses_app/core/errors/failure.dart';
-import 'package:courses_app/core/errors/server_exception.dart';
-import 'package:courses_app/features/my_learning/data/model/my_learning_model.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/errors/server_exception.dart';
+import '../model/my_learning_model.dart';
 
-import 'package:courses_app/features/my_learning/data/model/my_learning_request_model.dart';
+import '../model/my_learning_request_model.dart';
 
-import 'package:courses_app/features/my_learning/data/model/progress_request_model.dart';
-import 'package:courses_app/features/my_learning/data/source/my_learning_remote_datasource.dart';
+import '../model/progress_request_model.dart';
+import '../source/my_learning_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
 
 import 'my_learning_repo.dart';

@@ -1,7 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/di/service_locator.dart';
-import 'package:courses_app/features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
-import 'package:courses_app/features/courses/presentation/widgets/course_app_bar.dart';
+import '../../../../core/di/service_locator.dart';
+import '../view_model/courses_cubit/courses_cubit.dart';
+import '../widgets/course_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

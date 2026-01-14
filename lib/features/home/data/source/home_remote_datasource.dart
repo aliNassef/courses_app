@@ -1,5 +1,5 @@
-import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/features/home/data/models/category_model.dart';
+import '../../../../core/di/di.dart';
+import '../models/category_model.dart';
 
 abstract class HomeRemoteDatasource {
   Future<List<CategoryModel>> getCategories();

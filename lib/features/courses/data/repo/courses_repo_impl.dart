@@ -1,5 +1,5 @@
-import 'package:courses_app/core/errors/server_exception.dart';
-import 'package:courses_app/features/courses/data/models/lesson_model.dart';
+import '../../../../core/errors/server_exception.dart';
+import '../models/lesson_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';

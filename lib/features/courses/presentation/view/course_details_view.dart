@@ -1,5 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
+import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

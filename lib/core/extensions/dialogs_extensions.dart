@@ -1,4 +1,4 @@
-import 'package:courses_app/core/utils/app_dilagos.dart';
+import '../utils/app_dilagos.dart';
 import 'package:flutter/material.dart';
 
 extension Dialogs on BuildContext {

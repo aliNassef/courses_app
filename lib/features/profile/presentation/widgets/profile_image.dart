@@ -1,4 +1,4 @@
-import 'package:courses_app/core/extensions/strings_extensions.dart';
+import '../../../../core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../core/utils/utils.dart';

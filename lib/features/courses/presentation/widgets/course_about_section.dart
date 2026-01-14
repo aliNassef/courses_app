@@ -1,5 +1,5 @@
-import 'package:courses_app/core/utils/utils.dart';
-import 'package:courses_app/core/widgets/expandable_text.dart';
+import '../../../../core/utils/utils.dart';
+import '../../../../core/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:easy_localization/easy_localization.dart';

@@ -1,4 +1,4 @@
-import 'package:courses_app/features/courses/presentation/widgets/course_enrollment_bar.dart';
+import 'course_enrollment_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

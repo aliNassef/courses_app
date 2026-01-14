@@ -1,7 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/extensions/mediaquery_size.dart';
-import 'package:courses_app/core/navigation/app_navigation.dart';
-import 'package:courses_app/core/utils/utils.dart';
+import '../../../../core/extensions/mediaquery_size.dart';
+import '../../../../core/navigation/app_navigation.dart';
+import '../../../../core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

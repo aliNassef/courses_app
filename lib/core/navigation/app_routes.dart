@@ -1,20 +1,5 @@
-import 'package:courses_app/features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
-
-import '../../features/auth/presentation/views/forget_password_view.dart';
-import '../../features/auth/presentation/views/login_view.dart';
-import '../../features/auth/presentation/views/signup_view.dart';
-import '../../features/cart/presentation/view/cart_view.dart';
-import '../../features/courses/data/models/course_args.dart';
-import '../../features/courses/data/models/course_model.dart';
-import '../../features/courses/presentation/view/all_courses_view.dart';
-import '../../features/courses/presentation/view/course_details_view.dart';
-import '../../features/courses/presentation/view/course_view.dart';
-import '../../features/courses/presentation/view/courses_by_category_view.dart';
-import '../../features/home/data/models/category_nav_args.dart';
-import '../../features/layout/presentation/view/layout_view.dart';
-import '../../features/splash/presentation/views/splash_view.dart';
-import 'navigation.dart';
 import 'package:flutter/material.dart';
+import 'navigation.dart';
 
 class AppRouter {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

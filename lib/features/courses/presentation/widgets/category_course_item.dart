@@ -1,4 +1,4 @@
-import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
+import '../../../home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

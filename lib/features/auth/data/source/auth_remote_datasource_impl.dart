@@ -1,8 +1,8 @@
-import 'package:courses_app/core/services/auth/auth_service.dart';
-import 'package:courses_app/features/auth/data/models/signin_request.dart';
-import 'package:courses_app/features/auth/data/models/signup_request.dart';
-import 'package:courses_app/features/auth/data/models/user_model.dart';
-import 'package:courses_app/features/auth/data/source/auth_remote_datasource.dart';
+import '../../../../core/services/auth/auth_service.dart';
+import '../models/signin_request.dart';
+import '../models/signup_request.dart';
+import '../models/user_model.dart';
+import 'auth_remote_datasource.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/services/database/database.dart';

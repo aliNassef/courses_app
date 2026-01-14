@@ -1,7 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/extensions/padding_extension.dart';
-import 'package:courses_app/core/utils/utils.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/extensions/padding_extension.dart';
+import '../../../../core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';

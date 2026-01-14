@@ -1,7 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/extensions/dialogs_extensions.dart';
-import 'package:courses_app/core/navigation/navigation.dart';
-import 'package:courses_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
+import '../../../../core/extensions/dialogs_extensions.dart';
+import '../../../../core/navigation/navigation.dart';
+import '../../../auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

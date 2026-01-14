@@ -1,7 +1,7 @@
-import 'package:courses_app/core/errors/failure.dart';
-import 'package:courses_app/core/errors/server_exception.dart';
+import '../../../../core/errors/failure.dart';
+import '../../../../core/errors/server_exception.dart';
 
-import 'package:courses_app/features/home/data/models/category_model.dart';
+import '../models/category_model.dart';
 
 import 'package:dartz/dartz.dart';
 

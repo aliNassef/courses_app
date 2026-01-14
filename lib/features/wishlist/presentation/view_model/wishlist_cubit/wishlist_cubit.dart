@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:courses_app/core/errors/failure.dart';
-import 'package:courses_app/features/courses/data/models/course_model.dart';
+import '../../../../../core/errors/failure.dart';
+import '../../../../courses/data/models/course_model.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../data/models/wishlist_model.dart';

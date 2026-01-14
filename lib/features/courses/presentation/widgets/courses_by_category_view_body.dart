@@ -1,6 +1,6 @@
-import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/widgets/widgets.dart';
-import 'package:courses_app/features/courses/data/models/course_model.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/widgets/widgets.dart';
+import '../../data/models/course_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';

@@ -1,5 +1,5 @@
-import 'package:courses_app/features/courses/data/models/course_model.dart';
-import 'package:courses_app/features/wishlist/data/models/wishlist_model.dart';
+import '../../../courses/data/models/course_model.dart';
+import '../models/wishlist_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';

@@ -1,5 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/extensions/duration_extension.dart';
+import '../../../../core/extensions/duration_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/utils.dart';

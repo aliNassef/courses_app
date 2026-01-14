@@ -1,4 +1,4 @@
-import 'package:courses_app/core/di/di.dart';
+import '../../../../core/di/di.dart';
 
 import '../models/cart_model.dart';
 

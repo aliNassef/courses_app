@@ -1,5 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/utils/app_color.dart';
+import '../../../../core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/mediaquery_size.dart';

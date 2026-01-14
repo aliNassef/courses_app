@@ -1,6 +1,6 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/extensions/padding_extension.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/extensions/padding_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/mediaquery_size.dart';

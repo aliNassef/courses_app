@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:courses_app/core/errors/failure.dart';
-import 'package:courses_app/features/auth/data/models/signup_request.dart';
-import 'package:courses_app/features/auth/data/models/user_model.dart';
+import '../../../../../core/errors/failure.dart';
+import '../../../data/models/signup_request.dart';
+import '../../../data/models/user_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

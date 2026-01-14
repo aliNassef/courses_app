@@ -1,8 +1,8 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import 'package:courses_app/core/di/di.dart';
-import 'package:courses_app/core/di/service_locator.dart';
-import 'package:courses_app/core/extensions/padding_extension.dart';
-import 'package:courses_app/core/utils/utils.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/di/service_locator.dart';
+import '../../../../core/extensions/padding_extension.dart';
+import '../../../../core/utils/utils.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

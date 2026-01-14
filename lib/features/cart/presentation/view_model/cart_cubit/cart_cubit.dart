@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:courses_app/features/cart/data/repo/cart_repo.dart';
+import '../../../data/repo/cart_repo.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/errors/failure.dart';

@@ -1,8 +1,8 @@
-import 'package:courses_app/core/constants/constants.dart';
-import 'package:courses_app/core/extensions/padding_extension.dart';
-import 'package:courses_app/core/navigation/navigation.dart';
-import 'package:courses_app/core/widgets/custom_failure_widget.dart';
-import 'package:courses_app/core/widgets/custom_search_bar.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/extensions/padding_extension.dart';
+import '../../../../core/navigation/navigation.dart';
+import '../../../../core/widgets/custom_failure_widget.dart';
+import '../../../../core/widgets/custom_search_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

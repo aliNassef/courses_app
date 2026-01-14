@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:courses_app/core/errors/failure.dart';
-import 'package:courses_app/features/my_learning/data/model/my_learning_model.dart';
-import 'package:courses_app/features/my_learning/data/repo/my_learning_repo.dart';
+import '../../../../../core/errors/failure.dart';
+import '../../../data/model/my_learning_model.dart';
+import '../../../data/repo/my_learning_repo.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../data/model/my_learning_request_model.dart';

@@ -1,4 +1,4 @@
-import 'package:courses_app/core/utils/utils.dart';
+import '../../../../core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:easy_localization/easy_localization.dart';
