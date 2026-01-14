@@ -118,7 +118,7 @@ class CourseEnrollmentBar extends StatelessWidget {
       progress: 0,
       completedLessons: 0,
       totalLessons: course.duration,
-      status: MyLearningEnum.ongoing.value,
+      status: MyLearningEnum.inProgress.value,
       enrolledAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
