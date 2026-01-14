@@ -56,7 +56,7 @@ class CourseDetailsViewBody extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: CourseEnrollmentBar(
-            price: course.price.toDouble(),
+            course: course,
           ),
         ),
       ],

@@ -13,7 +13,7 @@ abstract class AppDilagos {
       gravity: ToastGravity.TOP,
       backgroundColor: AppColors.primary,
       textColor: Colors.white,
-      fontSize: 18.sp,
+      fontSize: 14.sp,
     );
   }
 

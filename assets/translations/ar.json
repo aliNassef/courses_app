@@ -71,5 +71,11 @@
     "validation_password_required": "كلمة المرور مطلوبة",
     "validation_password_length": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
     "validation_fullname_required": "الاسم الكامل مطلوب",
-    "student": "طالب"
+    "student": "طالب",
+    "enroll_now": "سجل الآن",
+    "course_added_success": "تم إضافة الدورة إلى تعلمي",
+    "about_this_course": "عن هذه الدورة",
+    "what_you_will_learn": "ماذا ستتعلم",
+    "students": "طلاب",
+    "course_details": "تفاصيل الدورة"
 }

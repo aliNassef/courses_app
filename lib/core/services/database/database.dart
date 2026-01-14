@@ -119,4 +119,17 @@ abstract class Database {
     String courseId,
     int lessonNumber,
   );
+
+  Future<void> addCourseToMyLearning({
+    required String userId,
+    required String courseId,
+    required Map<String, dynamic> data,
+  });
+  Future<void> updateProgress({
+    required String userId,
+    required String courseId,
+    required String lessonId,
+  });
+
+  Future<List<DocumentSnapshot>> getMyLearningCourses(String userId);
 }

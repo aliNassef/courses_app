@@ -1,4 +1,7 @@
-
+import '../../features/my_learning/data/repo/my_learning_repo.dart';
+import '../../features/my_learning/data/repo/my_learning_repo_impl.dart';
+import '../../features/my_learning/data/source/my_learning_remote_datasource.dart';
+import '../../features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -10,6 +13,23 @@ Future<void> setupServiceLocator() async {
   _setupCartFeature();
   _setupHomeFeature();
   _setupWishlistFeature();
+  _setupMyLearningFeature();
+}
+
+void _setupMyLearningFeature() {
+  injector.registerFactory<MyLeaningCubit>(
+    () => MyLeaningCubit(injector<MyLearningRepo>()),
+  );
+
+  injector.registerLazySingleton<MyLearningRepo>(
+    () => MyLearningRepoImpl(
+      remoteDatasource: injector<MyLearningRemoteDatasource>(),
+    ),
+  );
+
+  injector.registerLazySingleton<MyLearningRemoteDatasource>(
+    () => MyLearningRemoteDatasourceImpl(database: injector<Database>()),
+  );
 }
 
 void _setupWishlistFeature() {
