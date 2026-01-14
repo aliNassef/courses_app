@@ -3,7 +3,6 @@ import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/core/di/service_locator.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
-import 'package:courses_app/features/wishlist/presentation/view_model/wishlist_cubit/wishlist_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

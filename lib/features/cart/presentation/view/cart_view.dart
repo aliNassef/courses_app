@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/core/di/service_locator.dart';
 import 'package:courses_app/core/utils/utils.dart';
-import 'package:courses_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

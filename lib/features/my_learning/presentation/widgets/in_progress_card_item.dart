@@ -1,5 +1,6 @@
 import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
+import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -7,10 +8,11 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/custom_slider.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../data/model/my_learning_model.dart';
 
 class InProgreeCardItem extends StatelessWidget {
-  const InProgreeCardItem({super.key});
-
+  const InProgreeCardItem({super.key, required this.learning});
+  final MyLearningModel learning;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,8 +20,7 @@ class InProgreeCardItem extends StatelessWidget {
       child: Row(
         children: [
           CustomNetworkImage(
-            img:
-                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+            img: learning.courseImage,
             height: 80.h,
             width: 100.w,
             radius: 12.r,
@@ -31,24 +32,25 @@ class InProgreeCardItem extends StatelessWidget {
               mainAxisAlignment: .spaceAround,
               children: [
                 Text(
-                  'Flutter',
+                  learning.courseTitle,
                   style: context.appTheme.bold16,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
                 const Gap(8),
-                Text(
-                  'Flutter',
-                  style: context.appTheme.regular12.copyWith(
-                    color: AppColors.grey,
-                  ),
-                ),
+                InstructorName(instructorId: learning.instructorId),
                 const Gap(8),
                 Row(
                   children: [
-                    const CustomSlider(),
+                    CustomSlider(
+                      value: learning.progress,
+                      onChanged: (value) {},
+                    ),
                     const Gap(12),
-                    Text('40%', style: context.appTheme.bold10),
+                    Text(
+                      '${learning.progress}%',
+                      style: context.appTheme.bold10,
+                    ),
                   ],
                 ),
               ],

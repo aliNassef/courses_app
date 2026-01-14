@@ -6,7 +6,7 @@ import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
 
-AdaptiveAppBar buildCourseAppBar(BuildContext context) {
+AdaptiveAppBar buildCourseAppBar(BuildContext context , String courseTitle) {
   return AdaptiveAppBar(
     appBar: AppBar(
       leading: const Icon(
@@ -15,7 +15,7 @@ AdaptiveAppBar buildCourseAppBar(BuildContext context) {
       ).withHorizontalPadding(Constants.hp16),
       centerTitle: true,
       title: Text(
-        'Course Name',
+        courseTitle,
         style: context.appTheme.bold14.copyWith(
           color: AppColors.black,
         ),
@@ -33,7 +33,7 @@ AdaptiveAppBar buildCourseAppBar(BuildContext context) {
         color: AppColors.black,
       ).withHorizontalPadding(Constants.hp16),
       middle: Text(
-        'Course Name',
+        courseTitle,
         style: context.appTheme.bold14.copyWith(
           color: AppColors.black,
         ),

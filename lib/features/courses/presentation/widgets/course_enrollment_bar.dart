@@ -66,13 +66,13 @@ class CourseEnrollmentBar extends StatelessWidget {
             ),
           ),
           const Gap(16),
-          BlocListener<MyLeaningCubit, MyLeaningState>(
+          BlocListener<MyLearningCubit, MyLearningState>(
             listenWhen: (previous, current) =>
-                current is AddCourseToMyLeaningFailure ||
-                current is AddCourseToMyLeaningLoading ||
-                current is AddCourseToMyLeaningSuccess,
+                current is AddCourseToMyLearningFailure ||
+                current is AddCourseToMyLearningLoading ||
+                current is AddCourseToMyLearningSuccess,
             listener: (context, state) {
-              if (state is AddCourseToMyLeaningFailure) {
+              if (state is AddCourseToMyLearningFailure) {
                 context.pop();
                 AppDilagos.showErrorMessage(
                   context,
@@ -80,12 +80,12 @@ class CourseEnrollmentBar extends StatelessWidget {
                 );
               }
 
-              if (state is AddCourseToMyLeaningLoading) {
+              if (state is AddCourseToMyLearningLoading) {
                 AppLogger.info("message");
                 AppDilagos.showLoadingBox(context);
               }
 
-              if (state is AddCourseToMyLeaningSuccess) {
+              if (state is AddCourseToMyLearningSuccess) {
                 context.pop();
                 AppDilagos.showToast(
                   text: LocaleKeys.course_added_success.tr(),
@@ -115,6 +115,10 @@ class CourseEnrollmentBar extends StatelessWidget {
   void _addCourseToMyLearning(BuildContext context) {
     var mylearning = MyLearningModel(
       courseId: course.id,
+      description: course.description,
+      instructorId: course.instructorId,
+      courseTitle: course.title,
+      courseImage: course.imageUrl,
       progress: 0,
       completedLessons: 0,
       totalLessons: course.duration,
@@ -127,7 +131,7 @@ class CourseEnrollmentBar extends StatelessWidget {
       userId: context.read<AuthCubit>().userId,
       data: mylearning.toMap(),
     );
-    context.read<MyLeaningCubit>().addCourseToLearning(
+    context.read<MyLearningCubit>().addCourseToLearning(
       myLearningRequestModel,
     );
   }

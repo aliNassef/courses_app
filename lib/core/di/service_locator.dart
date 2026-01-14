@@ -17,8 +17,8 @@ Future<void> setupServiceLocator() async {
 }
 
 void _setupMyLearningFeature() {
-  injector.registerFactory<MyLeaningCubit>(
-    () => MyLeaningCubit(injector<MyLearningRepo>()),
+  injector.registerFactory<MyLearningCubit>(
+    () => MyLearningCubit(injector<MyLearningRepo>()),
   );
 
   injector.registerLazySingleton<MyLearningRepo>(

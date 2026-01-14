@@ -627,10 +627,27 @@ class FirestoreDBImpl implements Database {
           .collection(FirestoreCollectionsStrings.users)
           .doc(userId)
           .collection(FirestoreCollectionsStrings.myLearning)
+          .orderBy("enrolledAt", descending: true)
           .get()
           .then((querySnapshot) => querySnapshot.docs);
     } on Exception catch (e) {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<DocumentSnapshot> getLastLearningCourse(String userId) async {
+    try {
+      return await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .orderBy("updatedAt", descending: true)
+          .get()
+          .then((querySnapshot) => querySnapshot.docs.first);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
 }

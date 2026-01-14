@@ -52,4 +52,18 @@ class MyLearningRepoImpl implements MyLearningRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, MyLearningModel>> getLastLearningCourse(
+    String userId,
+  ) async {
+    try {
+      final lastLearningCourse = await remoteDatasource.getLastLearningCourse(
+        userId,
+      );
+      return Right(lastLearningCourse);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

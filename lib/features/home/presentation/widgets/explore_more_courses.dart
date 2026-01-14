@@ -6,7 +6,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/navigation/navigation.dart';
-import '../../../../core/widgets/custom_failure_widget.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../../courses/data/models/course_model.dart';
 import '../../../courses/presentation/view/course_details_view.dart';
