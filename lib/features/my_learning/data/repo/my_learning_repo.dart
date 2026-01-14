@@ -15,4 +15,7 @@ abstract class MyLearningRepo {
   Future<Either<Failure, List<MyLearningModel>>> getMyLearningCourses(
     String userId,
   );
+  Future<Either<Failure, MyLearningModel>> getLastLearningCourse(
+    String userId,
+  );
 }

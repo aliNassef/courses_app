@@ -9,6 +9,7 @@ abstract class MyLearningRemoteDatasource {
   );
   Future<void> updateProgress(ProgressRequestModel progressRequestModel);
   Future<List<MyLearningModel>> getMyLearningCourses(String userId);
+  Future<MyLearningModel> getLastLearningCourse(String userId);
 }
 
 class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
@@ -45,5 +46,13 @@ class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
               MyLearningModel.fromMap(course.data() as Map<String, dynamic>),
         )
         .toList();
+  }
+
+  @override
+  Future<MyLearningModel> getLastLearningCourse(String userId) async {
+    final lastLearningCourse = await database.getLastLearningCourse(userId);
+    return MyLearningModel.fromMap(
+      lastLearningCourse.data() as Map<String, dynamic>,
+    );
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
+import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
@@ -40,6 +41,11 @@ class _HomeViewState extends State<HomeView> {
             ),
             BlocProvider(
               create: (context) => injector<WishlistCubit>(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  injector<MyLearningCubit>()
+                    ..getLastCourse(context.read<AuthCubit>().userId),
             ),
           ],
           child: Builder(

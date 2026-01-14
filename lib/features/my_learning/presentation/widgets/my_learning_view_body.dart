@@ -76,6 +76,7 @@ class MyLearningViewBody extends StatelessWidget {
                           ),
                           updatedAt: DateTime.now(),
                           instructorId: '',
+                          description: 'Flutter From Zero to Hero',
                         ),
                       ),
                       separatorBuilder: (_, _) => const Gap(16),

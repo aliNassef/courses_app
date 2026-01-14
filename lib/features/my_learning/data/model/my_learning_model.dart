@@ -10,10 +10,12 @@ class MyLearningModel {
   final int totalLessons;
   final String? lastLessonId;
   final String status;
+  final String description;
   final DateTime enrolledAt;
   final DateTime updatedAt;
 
   MyLearningModel({
+    required this.description,
     required this.courseId,
     required this.instructorId,
     required this.courseTitle,
@@ -29,6 +31,7 @@ class MyLearningModel {
 
   factory MyLearningModel.fromMap(Map<String, dynamic> map) {
     return MyLearningModel(
+      description: map['description'],
       courseId: map['courseId'],
       instructorId: map['instructorId'],
       courseTitle: map['courseTitle'],
@@ -45,6 +48,7 @@ class MyLearningModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'description': description,
       'courseId': courseId,
       'instructorId': instructorId,
       'courseTitle': courseTitle,

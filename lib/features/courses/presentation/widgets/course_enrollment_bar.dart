@@ -115,6 +115,7 @@ class CourseEnrollmentBar extends StatelessWidget {
   void _addCourseToMyLearning(BuildContext context) {
     var mylearning = MyLearningModel(
       courseId: course.id,
+      description: course.description,
       instructorId: course.instructorId,
       courseTitle: course.title,
       courseImage: course.imageUrl,

@@ -1,4 +1,6 @@
 import 'package:courses_app/core/constants/constants.dart';
+import 'package:courses_app/features/home/presentation/widgets/instructor_name.dart';
+import 'package:courses_app/features/my_learning/data/model/my_learning_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -8,20 +10,28 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/custom_slider.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../../courses/data/models/course_args.dart';
 import '../../../courses/presentation/view/course_view.dart';
 
 class ContinuedLearningCardItem extends StatelessWidget {
   const ContinuedLearningCardItem({
     super.key,
+    required this.course,
   });
+  final MyLearningModel course;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(
         CourseView.routeName,
-        arguments: const NavArgs(
+        arguments: NavArgs(
           animation: NavAnimation.fade,
+          data: CourseArgs(
+            courseId: course.courseId,
+            lessonNumber: course.completedLessons + 1,
+            courseTitle: course.courseTitle,
+          ),
         ),
       ),
       child: Card(
@@ -36,8 +46,7 @@ class ContinuedLearningCardItem extends StatelessWidget {
               mainAxisAlignment: .start,
               children: [
                 CustomNetworkImage(
-                  img:
-                      'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+                  img: course.courseImage,
                   height: 85.h,
                   width: 100.w,
                   radius: 12.r,
@@ -48,25 +57,20 @@ class ContinuedLearningCardItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'UI/UX Designer',
+                        course.courseTitle,
                         style: context.appTheme.bold16.copyWith(
                           color: AppColors.primary,
                         ),
                       ),
                       const Gap(4),
                       Text(
-                        'AAAAAAAAAAA AAAAAAAAAAAAAAAAAAAA',
+                        course.description,
                         style: context.appTheme.regular14.copyWith(
                           color: AppColors.black,
                         ),
                       ),
                       const Gap(4),
-                      Text(
-                        'AAA',
-                        style: context.appTheme.regular12.copyWith(
-                          color: AppColors.grey,
-                        ),
-                      ),
+                      InstructorName(instructorId: course.instructorId),
                     ],
                   ),
                 ),
@@ -77,13 +81,13 @@ class ContinuedLearningCardItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: CustomSlider(
-                    value: 0.4,
+                    value: course.progress,
                     onChanged: (value) {},
                   ),
                 ),
                 const Gap(16),
                 Text(
-                  '40%',
+                  '${course.progress}%',
                   style: context.appTheme.bold14.copyWith(
                     color: AppColors.black,
                   ),

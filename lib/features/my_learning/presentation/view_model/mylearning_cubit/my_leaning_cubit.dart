@@ -37,4 +37,15 @@ class MyLearningCubit extends Cubit<MyLearningState> {
   }
 
   void updateCourseProgress() {}
+
+
+  void getLastCourse(String userId) async {
+    emit(GetLastLearningCourseLoading());
+    final getLastLearningCourseOrFailure = await myLearningRepo
+        .getLastLearningCourse(userId);
+    getLastLearningCourseOrFailure.fold(
+      (failure) => emit(GetLastLearningCourseFailure(failure: failure)),
+      (learning) => emit(GetLastLearningCourseSuccess(learning: learning)),
+    );
+  }
 }
