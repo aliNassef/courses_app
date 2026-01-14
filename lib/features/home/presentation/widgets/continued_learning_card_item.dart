@@ -75,8 +75,11 @@ class ContinuedLearningCardItem extends StatelessWidget {
             const Gap(16),
             Row(
               children: [
-                const Expanded(
-                  child: CustomSlider(),
+                Expanded(
+                  child: CustomSlider(
+                    value: 0.4,
+                    onChanged: (value) {},
+                  ),
                 ),
                 const Gap(16),
                 Text(

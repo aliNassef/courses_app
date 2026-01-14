@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyLearningModel {
   final String courseId;
+  final String instructorId;
+  final String courseTitle;
+  final String courseImage;
   final double progress;
   final int completedLessons;
   final int totalLessons;
@@ -12,6 +15,9 @@ class MyLearningModel {
 
   MyLearningModel({
     required this.courseId,
+    required this.instructorId,
+    required this.courseTitle,
+    required this.courseImage,
     required this.progress,
     required this.completedLessons,
     required this.totalLessons,
@@ -24,6 +30,9 @@ class MyLearningModel {
   factory MyLearningModel.fromMap(Map<String, dynamic> map) {
     return MyLearningModel(
       courseId: map['courseId'],
+      instructorId: map['instructorId'],
+      courseTitle: map['courseTitle'],
+      courseImage: map['courseImage'],
       progress: (map['progress'] as num).toDouble(),
       completedLessons: map['completedLessons'],
       totalLessons: map['totalLessons'],
@@ -37,6 +46,9 @@ class MyLearningModel {
   Map<String, dynamic> toMap() {
     return {
       'courseId': courseId,
+      'instructorId': instructorId,
+      'courseTitle': courseTitle,
+      'courseImage': courseImage,
       'progress': progress,
       'completedLessons': completedLessons,
       'totalLessons': totalLessons,

@@ -6,7 +6,11 @@ import '../utils/utils.dart';
 class CustomSlider extends StatelessWidget {
   const CustomSlider({
     super.key,
+    required this.value,
+    required this.onChanged,
   });
+  final double value;
+  final Function(double) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class CustomSlider extends StatelessWidget {
         thumbShape: SliderComponentShape.noThumb,
         overlayShape: SliderComponentShape.noOverlay,
       ),
-      child: Slider(value: 0.4, onChanged: (value) {}),
+      child: Slider(value: value, onChanged: onChanged),
     );
   }
 }

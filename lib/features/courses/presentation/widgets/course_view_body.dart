@@ -2,7 +2,6 @@ import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/constants/constants.dart';
 import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
-import 'package:courses_app/core/widgets/custom_failure_widget.dart';
 import 'package:courses_app/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

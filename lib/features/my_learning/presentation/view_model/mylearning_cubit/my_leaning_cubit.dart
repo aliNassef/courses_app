@@ -8,31 +8,31 @@ import '../../../data/model/my_learning_request_model.dart';
 
 part 'my_leaning_state.dart';
 
-class MyLeaningCubit extends Cubit<MyLeaningState> {
-  MyLeaningCubit(this.myLearningRepo) : super(MyLeaningInitial());
+class MyLearningCubit extends Cubit<MyLearningState> {
+  MyLearningCubit(this.myLearningRepo) : super(MyLearningInitial());
   final MyLearningRepo myLearningRepo;
 
   void getAllLearning(String userId) async {
-    emit(MyLeaningLoading());
+    emit(MyLearningLoading());
     final getMyLearningCoursesOrFailure = await myLearningRepo
         .getMyLearningCourses(userId);
     getMyLearningCoursesOrFailure.fold(
-      (failure) => emit(MyLeaningFailure(failure: failure)),
-      (learning) => emit(MyLeaningSuccess(learning: learning)),
+      (failure) => emit(MyLearningFailure(failure: failure)),
+      (learning) => emit(MyLearningSuccess(learning: learning)),
     );
   }
 
   void addCourseToLearning(
     MyLearningRequestModel myLearningRequestModel,
   ) async {
-    emit(AddCourseToMyLeaningLoading());
+    emit(AddCourseToMyLearningLoading());
     final addCourseToMyLearningOrFailure = await myLearningRepo
         .addCourseToMyLearning(
           myLearningRequestModel,
         );
     addCourseToMyLearningOrFailure.fold(
-      (failure) => emit(AddCourseToMyLeaningFailure(failure: failure)),
-      (success) => emit(AddCourseToMyLeaningSuccess()),
+      (failure) => emit(AddCourseToMyLearningFailure(failure: failure)),
+      (success) => emit(AddCourseToMyLearningSuccess()),
     );
   }
 

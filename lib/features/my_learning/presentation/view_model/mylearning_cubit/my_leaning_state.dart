@@ -1,42 +1,42 @@
 part of 'my_leaning_cubit.dart';
 
-sealed class MyLeaningState extends Equatable {
-  const MyLeaningState();
+sealed class MyLearningState extends Equatable {
+  const MyLearningState();
 
   @override
   List<Object> get props => [];
 }
 
-final class MyLeaningInitial extends MyLeaningState {}
+final class MyLearningInitial extends MyLearningState {}
 
-final class MyLeaningLoading extends MyLeaningState {}
+final class MyLearningLoading extends MyLearningState {}
 
-final class MyLeaningSuccess extends MyLeaningState {
+final class MyLearningSuccess extends MyLearningState {
   final List<MyLearningModel> learning;
 
-  const MyLeaningSuccess({required this.learning});
+  const MyLearningSuccess({required this.learning});
 
   @override
   List<Object> get props => [learning];
 }
 
-final class MyLeaningFailure extends MyLeaningState {
+final class MyLearningFailure extends MyLearningState {
   final Failure failure;
 
-  const MyLeaningFailure({required this.failure});
+  const MyLearningFailure({required this.failure});
 
   @override
   List<Object> get props => [failure];
 }
 
-final class AddCourseToMyLeaningLoading extends MyLeaningState {}
+final class AddCourseToMyLearningLoading extends MyLearningState {}
 
-final class AddCourseToMyLeaningSuccess extends MyLeaningState {}
+final class AddCourseToMyLearningSuccess extends MyLearningState {}
 
-final class AddCourseToMyLeaningFailure extends MyLeaningState {
+final class AddCourseToMyLearningFailure extends MyLearningState {
   final Failure failure;
 
-  const AddCourseToMyLeaningFailure({required this.failure});
+  const AddCourseToMyLearningFailure({required this.failure});
 
   @override
   List<Object> get props => [failure];

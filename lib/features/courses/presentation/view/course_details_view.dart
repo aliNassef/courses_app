@@ -18,7 +18,7 @@ class CourseDetailsView extends StatelessWidget {
       appBar: buildCourseDetailsAppBar(context),
       body: SafeArea(
         child: BlocProvider(
-          create: (context) => injector<MyLeaningCubit>(),
+          create: (context) => injector<MyLearningCubit>(),
           child: CourseDetailsViewBody(
             course: course,
           ),

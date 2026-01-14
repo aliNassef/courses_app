@@ -64,7 +64,10 @@ class ContinueLearningSectionItem extends StatelessWidget {
               ),
             ).withHorizontalPadding(Constants.hp16),
             const Gap(16),
-            const CustomSlider().withHorizontalPadding(Constants.hp16),
+            CustomSlider(
+              value: 0.4,
+              onChanged: (value) {},
+            ).withHorizontalPadding(Constants.hp16),
           ],
         ),
       ),

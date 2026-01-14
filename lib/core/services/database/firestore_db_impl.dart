@@ -627,6 +627,7 @@ class FirestoreDBImpl implements Database {
           .collection(FirestoreCollectionsStrings.users)
           .doc(userId)
           .collection(FirestoreCollectionsStrings.myLearning)
+          .orderBy("enrolledAt", descending: true)
           .get()
           .then((querySnapshot) => querySnapshot.docs);
     } on Exception catch (e) {
