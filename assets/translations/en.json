@@ -70,5 +70,11 @@
     "validation_password_length": "Password must be at least 8 characters long",
     "validation_fullname_required": "Full name is required",
     "student": "Student",
-    "recent_achievements": "Recent Achievements"
+    "recent_achievements": "Recent Achievements",
+    "enroll_now": "Enroll Now",
+    "course_added_success": "Course added to my learning",
+    "about_this_course": "About This Course",
+    "what_you_will_learn": "What You Will Learn",
+    "students": "Students",
+    "course_details": "Course Details"
 }

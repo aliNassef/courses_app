@@ -2,6 +2,8 @@ import 'package:courses_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 
 class CourseLearningOutcomesSection extends StatelessWidget {
   const CourseLearningOutcomesSection({
@@ -23,7 +25,7 @@ class CourseLearningOutcomesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'What You Will Learn',
+            LocaleKeys.what_you_will_learn.tr(),
             style: context.appTheme.bold16,
           ),
           const Gap(16),

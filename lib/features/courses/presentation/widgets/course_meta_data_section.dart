@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/extensions/duration_extension.dart';
@@ -63,7 +65,7 @@ class CourseMetaDataSection extends StatelessWidget {
               color: AppColors.grey,
             ),
             Text(
-              '${course.subscribersCount} Students',
+              '${course.subscribersCount} ${LocaleKeys.students.tr()}',
               style: context.appTheme.regular12.copyWith(
                 color: AppColors.grey,
               ),

@@ -4,6 +4,8 @@ import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 
 AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
   return AdaptiveAppBar(
@@ -14,7 +16,7 @@ AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
       ).withHorizontalPadding(Constants.hp16),
       centerTitle: true,
       title: Text(
-        'Course Details',
+        LocaleKeys.course_details.tr(),
         style: context.appTheme.bold14.copyWith(
           color: AppColors.black,
         ),
@@ -32,7 +34,7 @@ AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
         color: AppColors.black,
       ).withHorizontalPadding(Constants.hp16),
       middle: Text(
-        'Course Details',
+        LocaleKeys.course_details.tr(),
         style: context.appTheme.bold14.copyWith(
           color: AppColors.black,
         ),
