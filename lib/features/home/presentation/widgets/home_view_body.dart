@@ -10,8 +10,6 @@ import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../courses/presentation/view/all_courses_view.dart';
-import '../../../courses/presentation/view_model/courses_cubit/courses_cubit.dart';
 import '../../../my_learning/data/model/my_learning_model.dart';
 import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'category_grid_bloc_builder.dart';

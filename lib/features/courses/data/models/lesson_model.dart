@@ -4,7 +4,7 @@ class LessonModel {
   final String videoUrl;
   final int duration;
   final int order;
-  final bool isFree;
+  final bool isCompleted;
 
   LessonModel({
     required this.id,
@@ -12,7 +12,7 @@ class LessonModel {
     required this.videoUrl,
     required this.duration,
     required this.order,
-    required this.isFree,
+    required this.isCompleted,
   });
 
   factory LessonModel.fromJson(Map<String, dynamic> json) {
@@ -22,7 +22,7 @@ class LessonModel {
       videoUrl: json['videoUrl'],
       duration: json['duration'],
       order: json['order'],
-      isFree: json['isFree'],
+      isCompleted: json['isFree'],
     );
   }
 
@@ -32,7 +32,7 @@ class LessonModel {
       'videoUrl': videoUrl,
       'duration': duration,
       'order': order,
-      'isFree': isFree,
+      'isFree': isCompleted,
     };
   }
 }

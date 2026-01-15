@@ -39,7 +39,7 @@ class CoursesCubit extends Cubit<CoursesState> {
     );
   }
 
-  void getLessonsByCourseIdAndLessonNumber(
+  Future<void> getLessonsByCourseIdAndLessonNumber(
     String courseId,
     int lessonNumber,
   ) async {
@@ -55,4 +55,6 @@ class CoursesCubit extends Cubit<CoursesState> {
           emit(GetLessonByCourseIdAndLessonNumnerSuccess(lesson: lesson)),
     );
   }
+
+
 }

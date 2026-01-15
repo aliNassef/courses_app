@@ -7,8 +7,9 @@ import '../../../../core/widgets/widgets.dart';
 import '../../data/models/lesson_model.dart';
 
 class CourseLessonCard extends StatelessWidget {
-  const CourseLessonCard({super.key, required this.lesson});
+  const CourseLessonCard({super.key, required this.lesson, required this.isCompleted});
   final LessonModel lesson;
+  final bool isCompleted;
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -31,7 +32,7 @@ class CourseLessonCard extends StatelessWidget {
         ),
         leading: CircleAvatar(
           backgroundColor: const Color(0xffe7f2fd),
-          child: lesson.isFree
+          child: isCompleted
               ? const Icon(
                   Icons.check,
                   color: AppColors.primary,

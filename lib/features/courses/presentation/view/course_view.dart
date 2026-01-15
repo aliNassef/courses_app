@@ -1,6 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/core/di/di.dart';
 import '../../../../core/di/service_locator.dart';
-import '../view_model/courses_cubit/courses_cubit.dart';
+import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import '../widgets/course_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,13 +19,23 @@ class CourseView extends StatelessWidget {
     return AdaptiveScaffold(
       appBar: buildCourseAppBar(context, courseArgs.courseTitle),
       body: SafeArea(
-        child: BlocProvider(
-          create: (context) => injector<CoursesCubit>()
-            ..getLessonsByCourseIdAndLessonNumber(
-              courseArgs.courseId,
-              courseArgs.lessonNumber,
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) =>
+                  injector<CoursesCubit>()..getLessonsByCourseIdAndLessonNumber(
+                    courseArgs.courseId,
+                    courseArgs.lessonNumber,
+                  ),
             ),
-          child: const CourseViewBody(),
+            BlocProvider(
+              create: (context) => injector<MyLearningCubit>()..getCompletedLessonsIds(
+                userId: context.read<AuthCubit>().userId,
+                courseId: courseArgs.courseId,
+              ),
+            ),
+          ],
+          child: CourseViewBody(courseId: courseArgs.courseId),
         ),
       ),
     );

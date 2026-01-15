@@ -1,8 +1,13 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/features/my_learning/data/model/progress_request_model.dart';
+import 'package:courses_app/features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/extensions/duration_extension.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
@@ -16,8 +21,10 @@ class CourseVideoAndMetaData extends StatelessWidget {
   const CourseVideoAndMetaData({
     super.key,
     required this.lesson,
+    required this.courseId,
   });
   final LessonModel lesson;
+  final String courseId;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -91,7 +98,44 @@ class CourseVideoAndMetaData extends StatelessWidget {
                       color: AppColors.grey,
                     ),
                   ),
-                  trailing: const CustomSwitch(),
+                  trailing: BlocBuilder<MyLearningCubit, MyLearningState>(
+                    buildWhen: (previous, current) =>
+                        current is GetCompletedLessonsIdsLoading ||
+                        current is GetCompletedLessonsIdsSuccess ||
+                        current is GetCompletedLessonsIdsError,
+                    builder: (context, state) {
+                      if (state is GetCompletedLessonsIdsError) {
+                        return const Icon(Icons.error);
+                      }
+                      if (state is GetCompletedLessonsIdsLoading) {
+                        return Skeletonizer(
+                          enabled: true,
+                          child: CustomSwitch(
+                            value: true,
+                            onChanged: (value) {},
+                          ),
+                        );
+                      }
+                      if (state is GetCompletedLessonsIdsSuccess) {
+                        return CustomSwitch(
+                          value: state.lessonsIds.contains(lesson.id),
+                          onChanged: (value) {
+                            final progressRequestModel = ProgressRequestModel(
+                              courseId: courseId,
+                              lessonId: lesson.id,
+                              userId: context.read<AuthCubit>().userId,
+                            );
+                            context
+                                .read<MyLearningCubit>()
+                                .updateCourseProgress(
+                                  progressRequestModel,
+                                );
+                          },
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
+                  ),
                 ),
               ),
               const Gap(25),

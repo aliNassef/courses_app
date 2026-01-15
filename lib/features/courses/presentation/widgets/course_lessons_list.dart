@@ -13,8 +13,11 @@ import 'course_lesson_card.dart';
 class CourseLessonsList extends StatefulWidget {
   const CourseLessonsList({
     super.key,
+    required this.courseId,
+    required this.completedLessonsIds,
   });
-
+  final String courseId;
+  final Set<String> completedLessonsIds;
   @override
   State<CourseLessonsList> createState() => _CourseLessonsListState();
 }
@@ -23,7 +26,7 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
   @override
   void initState() {
     super.initState();
-    context.read<CoursesCubit>().getLessonsByCourseId('FqYm0B33vjXLJHggr3Cs');
+    context.read<CoursesCubit>().getLessonsByCourseId(widget.courseId);
   }
 
   @override
@@ -36,30 +39,7 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
             current is GetLessonsByCourseIdLoading,
         builder: (context, state) {
           if (state is GetLessonsByCourseIdLoading) {
-            return Skeletonizer(
-              enabled: true,
-              child: ListView.separated(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Constants.hp16,
-                ),
-                itemBuilder: (context, index) {
-                  return CourseLessonCard(
-                    lesson: LessonModel(
-                      id: '2',
-                      name: "Ali Nassef",
-                      videoUrl: "",
-                      duration: 40,
-                      order: 1,
-                      isFree: true,
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const Gap(16);
-                },
-                itemCount: 10,
-              ),
-            );
+            return _buildLoadingCourseLesson();
           }
 
           if (state is GetLessonsByCourseIdError) {
@@ -75,11 +55,11 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    if (state.lessons[index].isFree) {
+                    if (state.lessons[index].isCompleted) {
                       context
                           .read<CoursesCubit>()
                           .getLessonsByCourseIdAndLessonNumber(
-                            "FqYm0B33vjXLJHggr3Cs",
+                            widget.courseId,
                             state.lessons[index].order,
                           );
                     } else {
@@ -89,6 +69,9 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
                     }
                   },
                   child: CourseLessonCard(
+                    isCompleted: widget.completedLessonsIds.contains(
+                      state.lessons[index].id,
+                    ),
                     lesson: state.lessons[index],
                   ),
                 );
@@ -101,6 +84,34 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
           }
           return const SizedBox.shrink();
         },
+      ),
+    );
+  }
+
+  Skeletonizer _buildLoadingCourseLesson() {
+    return Skeletonizer(
+      enabled: true,
+      child: ListView.separated(
+        padding: EdgeInsets.symmetric(
+          horizontal: Constants.hp16,
+        ),
+        itemBuilder: (context, index) {
+          return CourseLessonCard(
+            isCompleted: false,
+            lesson: LessonModel(
+              id: '2',
+              name: "Ali Nassef",
+              videoUrl: "",
+              duration: 40,
+              order: 1,
+              isCompleted: true,
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Gap(16);
+        },
+        itemCount: 10,
       ),
     );
   }

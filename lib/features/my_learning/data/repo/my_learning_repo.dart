@@ -18,4 +18,9 @@ abstract class MyLearningRepo {
   Future<Either<Failure, MyLearningModel>> getLastLearningCourse(
     String userId,
   );
+  
+  Future<Either<Failure, Set<String>>> getCompletedLessonsIds({
+    required String userId,
+    required String courseId,
+  });
 }

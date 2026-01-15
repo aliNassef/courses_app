@@ -17,6 +17,7 @@ abstract class FirestoreCollectionsStrings {
   // Course subcollections
   static const String lessons = 'lessons';
   static const String reviews = 'reviews';
+  static const String completedLessons = 'completed_lessons';
 
   // Lesson subcollections
   static const String notes = 'notes';

@@ -66,4 +66,19 @@ class MyLearningRepoImpl implements MyLearningRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+   @override
+  Future<Either<Failure, Set<String>>> getCompletedLessonsIds({
+    required String userId,
+    required String courseId,
+  }) async {
+    try {
+      final lessonsIds = await remoteDatasource.getCompletedLessonsIds(
+        userId: userId,
+        courseId: courseId,
+      );
+      return Right(lessonsIds);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

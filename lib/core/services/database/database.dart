@@ -133,4 +133,11 @@ abstract class Database {
 
   Future<List<DocumentSnapshot>> getMyLearningCourses(String userId);
   Future<DocumentSnapshot> getLastLearningCourse(String userId);
+
+  Future<Set<String>> getCompletedLessonsIds({
+    required String userId,
+    required String courseId,
+  });
+
+  Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(String userId);
 }

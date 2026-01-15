@@ -57,32 +57,7 @@ class MyLearningViewBody extends StatelessWidget {
                   current is MyLearningFailure,
               builder: (context, state) {
                 if (state is MyLearningLoading) {
-                  return SliverSkeletonizer(
-                    enabled: true,
-                    child: SliverList.separated(
-                      itemBuilder: (_, _) => InProgreeCardItem(
-                        learning: MyLearningModel(
-                          courseId: 'course_001',
-                          courseTitle: 'Flutter From Zero to Hero',
-                          courseImage:
-                              'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
-                          progress: 35.0,
-                          completedLessons: 7,
-                          totalLessons: 20,
-                          lastLessonId: 'lesson_07',
-                          status: 'ongoing',
-                          enrolledAt: DateTime.now().subtract(
-                            const Duration(days: 10),
-                          ),
-                          updatedAt: DateTime.now(),
-                          instructorId: '',
-                          description: 'Flutter From Zero to Hero',
-                        ),
-                      ),
-                      separatorBuilder: (_, _) => const Gap(16),
-                      itemCount: 5,
-                    ),
-                  );
+                  return _buildMyLearningInProgressLoading();
                 }
 
                 if (state is MyLearningFailure) {
@@ -109,6 +84,35 @@ class MyLearningViewBody extends StatelessWidget {
           ),
           const SliverGap(30),
         ],
+      ),
+    );
+  }
+
+  SliverSkeletonizer _buildMyLearningInProgressLoading() {
+    return SliverSkeletonizer(
+      enabled: true,
+      child: SliverList.separated(
+        itemBuilder: (_, _) => InProgreeCardItem(
+          learning: MyLearningModel(
+            courseId: 'course_001',
+            courseTitle: 'Flutter From Zero to Hero',
+            courseImage:
+                'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+            progress: 35.0,
+            completedLessons: 7,
+            totalLessons: 20,
+            lastLessonId: 'lesson_07',
+            status: 'ongoing',
+            enrolledAt: DateTime.now().subtract(
+              const Duration(days: 10),
+            ),
+            updatedAt: DateTime.now(),
+            instructorId: '',
+            description: 'Flutter From Zero to Hero',
+          ),
+        ),
+        separatorBuilder: (_, _) => const Gap(16),
+        itemCount: 5,
       ),
     );
   }

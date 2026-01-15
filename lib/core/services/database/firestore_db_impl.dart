@@ -592,26 +592,41 @@ class FirestoreDBImpl implements Database {
     required String lessonId,
   }) async {
     try {
-      final docRef = _firestore
+      final userCourseRef = _firestore
           .collection(FirestoreCollectionsStrings.users)
           .doc(userId)
           .collection(FirestoreCollectionsStrings.myLearning)
           .doc(courseId);
 
-      final snapshot = await docRef.get();
-      final data = snapshot.data()!;
+      final completedLessonRef = userCourseRef
+          .collection(FirestoreCollectionsStrings.completedLessons)
+          .doc(lessonId);
 
-      final completedLessons = data['completedLessons'] + 1;
-      final totalLessons = data['totalLessons'];
+      await _firestore.runTransaction((transaction) async {
+        final completedSnapshot = await transaction.get(completedLessonRef);
 
-      final progress = (completedLessons / totalLessons) * 100;
+        if (completedSnapshot.exists) return;
 
-      await docRef.update({
-        'completedLessons': completedLessons,
-        'progress': progress,
-        'lastLessonId': lessonId,
-        'status': progress == 100 ? 'completed' : 'ongoing',
-        'updatedAt': FieldValue.serverTimestamp(),
+        final courseSnapshot = await transaction.get(userCourseRef);
+
+        final data = courseSnapshot.data()!;
+        final int completedLessons = data['completedLessons'] + 1;
+        final int totalLessons = data['totalLessons'];
+
+        final double progress = (completedLessons / totalLessons) * 100;
+
+        transaction.set(completedLessonRef, {
+          'lessonId': lessonId,
+          'completedAt': FieldValue.serverTimestamp(),
+        });
+
+        transaction.update(userCourseRef, {
+          'completedLessons': completedLessons,
+          'progress': progress,
+          'lastLessonId': lessonId,
+          'status': progress == 100 ? 'Completed' : 'In Progress',
+          'updatedAt': FieldValue.serverTimestamp(),
+        });
       });
     } on Exception catch (e) {
       throw ServerException(e.toString());
@@ -650,4 +665,36 @@ class FirestoreDBImpl implements Database {
     }
   }
 
+  @override
+  Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(
+    String userId,
+  ) async {
+    try {
+      final myLearningCourses = await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .get();
+      // todo get last learning course lessons
+      return [];
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<Set<String>> getCompletedLessonsIds({
+    required String userId,
+    required String courseId,
+  }) async {
+    final snapshot = await _firestore
+        .collection(FirestoreCollectionsStrings.users)
+        .doc(userId)
+        .collection(FirestoreCollectionsStrings.myLearning)
+        .doc(courseId)
+        .collection(FirestoreCollectionsStrings.completedLessons)
+        .get();
+
+    return snapshot.docs.map((e) => e.id).toSet();
+  }
 }

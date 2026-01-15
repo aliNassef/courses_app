@@ -10,11 +10,13 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/widgets/custom_switch.dart';
+import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'course_lessons_list.dart';
 import 'course_video_and_meta_data.dart';
 
 class CourseViewBody extends StatelessWidget {
-  const CourseViewBody({super.key});
+  const CourseViewBody({super.key, required this.courseId});
+  final String courseId;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +38,13 @@ class CourseViewBody extends StatelessWidget {
             if (state is GetLessonByCourseIdAndLessonNumnerSuccess) {
               return CourseVideoAndMetaData(
                 lesson: state.lesson,
+                courseId: courseId,
               );
             }
             return const SizedBox.shrink();
           },
         ),
-        const CourseLessonsList(),
+        CourseLessonsListBlocBuilder(courseId: courseId),
       ],
     );
   }
@@ -121,7 +124,9 @@ class CourseViewBody extends StatelessWidget {
                         color: AppColors.grey,
                       ),
                     ),
-                    trailing: const CustomSwitch(),
+                    trailing: const CustomSwitch(
+                      value: false,
+                    ),
                   ),
                 ),
               ],
@@ -130,6 +135,41 @@ class CourseViewBody extends StatelessWidget {
           const Gap(16),
         ],
       ),
+    );
+  }
+}
+
+class CourseLessonsListBlocBuilder extends StatelessWidget {
+  const CourseLessonsListBlocBuilder({
+    super.key,
+    required this.courseId,
+  });
+
+  final String courseId;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MyLearningCubit, MyLearningState>(
+      buildWhen: (previous, current) =>
+          current is GetCompletedLessonsIdsLoading ||
+          current is GetCompletedLessonsIdsSuccess ||
+          current is GetCompletedLessonsIdsError,
+      builder: (context, state) {
+        if (state is GetCompletedLessonsIdsError) {
+          return CustomFailureWidget(meesage: state.failure.errMessage);
+        }
+        if (state is GetCompletedLessonsIdsLoading) {
+          return const SizedBox.shrink();
+        }
+
+        if (state is GetCompletedLessonsIdsSuccess) {
+          return CourseLessonsList(
+            courseId: courseId,
+            completedLessonsIds: state.lessonsIds,
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

@@ -10,8 +10,6 @@ import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/custom_slider.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../courses/data/models/course_args.dart';
-import '../../../courses/presentation/view/course_view.dart';
 
 class ContinuedLearningCardItem extends StatelessWidget {
   const ContinuedLearningCardItem({
@@ -87,7 +85,7 @@ class ContinuedLearningCardItem extends StatelessWidget {
                 ),
                 const Gap(16),
                 Text(
-                  '${course.progress}%',
+                  '${course.progress.toStringAsFixed(2)}%',
                   style: context.appTheme.bold14.copyWith(
                     color: AppColors.black,
                   ),
