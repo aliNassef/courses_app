@@ -46,9 +46,9 @@ class InProgreeCardItem extends StatelessWidget {
                       value: learning.progress,
                       onChanged: (value) {},
                     ),
-                    const Gap(12),
+                    const Gap(4),
                     Text(
-                      '${learning.progress}%',
+                      '${learning.progress.toStringAsFixed(2)}%',
                       style: context.appTheme.bold10,
                     ),
                   ],

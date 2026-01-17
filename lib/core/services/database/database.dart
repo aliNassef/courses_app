@@ -139,5 +139,10 @@ abstract class Database {
     required String courseId,
   });
 
-  Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(String userId);
+  // Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(String userId);
+  Future<DocumentSnapshot?> getNextLesson(String courseId, int lessonNumber);
+  Future<DocumentSnapshot?> getNextLessonByLastLessonId(
+    String courseId,
+    String lessonId,
+  );
 }

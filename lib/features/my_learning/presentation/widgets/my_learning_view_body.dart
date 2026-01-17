@@ -98,7 +98,7 @@ class MyLearningViewBody extends StatelessWidget {
             courseTitle: 'Flutter From Zero to Hero',
             courseImage:
                 'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
-            progress: 35.0,
+            progress: 0.0,
             completedLessons: 7,
             totalLessons: 20,
             lastLessonId: 'lesson_07',

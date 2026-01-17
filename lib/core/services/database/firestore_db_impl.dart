@@ -665,22 +665,22 @@ class FirestoreDBImpl implements Database {
     }
   }
 
-  @override
-  Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(
-    String userId,
-  ) async {
-    try {
-      final myLearningCourses = await _firestore
-          .collection(FirestoreCollectionsStrings.users)
-          .doc(userId)
-          .collection(FirestoreCollectionsStrings.myLearning)
-          .get();
-      // todo get last learning course lessons
-      return [];
-    } on Exception catch (e) {
-      throw ServerException(e.toString());
-    }
-  }
+  // @override
+  // Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(
+  //   String userId,
+  // ) async {
+  //   try {
+  //     final myLearningCourses = await _firestore
+  //         .collection(FirestoreCollectionsStrings.users)
+  //         .doc(userId)
+  //         .collection(FirestoreCollectionsStrings.myLearning)
+  //         .get();
+  //     // todo get last learning course lessons
+  //     return [];
+  //   } on Exception catch (e) {
+  //     throw ServerException(e.toString());
+  //   }
+  // }
 
   @override
   Future<Set<String>> getCompletedLessonsIds({
@@ -696,5 +696,51 @@ class FirestoreDBImpl implements Database {
         .get();
 
     return snapshot.docs.map((e) => e.id).toSet();
+  }
+
+  @override
+  Future<DocumentSnapshot?> getNextLesson(
+    String courseId,
+    int lessonNumber,
+  ) async {
+    try {
+      final snapshot = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.lessons)
+          .where('order', isGreaterThan: lessonNumber)
+          .orderBy('order')
+          .limit(1)
+          .get();
+
+      if (snapshot.docs.isEmpty) return null;
+
+      return snapshot.docs.first;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<DocumentSnapshot?> getNextLessonByLastLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    try {
+      final lessonSnapshot = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.lessons)
+          .doc(lessonId)
+          .get();
+
+      if (!lessonSnapshot.exists) return null;
+
+      final lessonOrder = lessonSnapshot.data()!['order'] as int;
+
+      return await getNextLesson(courseId, lessonOrder);
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 }
