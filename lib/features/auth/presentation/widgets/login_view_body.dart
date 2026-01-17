@@ -1,6 +1,4 @@
 import '../../../../core/navigation/navigation.dart';
-import '../views/forget_password_view.dart';
-import '../views/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:easy_localization/easy_localization.dart';

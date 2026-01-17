@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
-import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatefulWidget {
@@ -28,7 +27,8 @@ class _HomeViewState extends State<HomeView> {
         child: MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => injector<CoursesCubit>()..getAllCourses(),
+              create: (context) =>
+                  injector<CourseDiscoveryCubit>()..getAllCourses(),
             ),
             BlocProvider(
               create: (context) => injector<CartCubit>()

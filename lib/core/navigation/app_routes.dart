@@ -15,8 +15,9 @@ class AppRouter {
         page = const SignupView();
         break;
       case AllCoursesView.routeName:
-        final coursesCubit = navArgs.data as CoursesCubit;
-        page = AllCoursesView(coursesCubit: coursesCubit);
+        final CourseDiscoveryCubit discoveryCubit =
+            navArgs.data as CourseDiscoveryCubit;
+        page = AllCoursesView(courseDiscoveryCubit: discoveryCubit);
         break;
       case LoginView.routeName:
         page = const LoginView();
@@ -31,9 +32,9 @@ class AppRouter {
         final course = navArgs.data as CourseModel;
         page = CourseDetailsView(course: course);
         break;
-      case CourseView.routeName:
+      case CourseWatchView.routeName:
         final courseArgs = navArgs.data as CourseArgs;
-        page = CourseView(courseArgs: courseArgs);
+        page = CourseWatchView(courseArgs: courseArgs);
         break;
       case ForgetPasswordView.routeName:
         page = const ForgetPasswordView();

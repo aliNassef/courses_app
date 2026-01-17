@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/navigation/navigation.dart';
-import '../../../auth/presentation/views/login_view.dart';
-import '../../../layout/presentation/view/layout_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({

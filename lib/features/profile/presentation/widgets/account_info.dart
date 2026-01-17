@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/navigation/navigation.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../cart/presentation/view/cart_view.dart';
 import 'account_tile.dart';
 
 class AccountsInfo extends StatelessWidget {

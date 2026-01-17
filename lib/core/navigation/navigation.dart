@@ -2,7 +2,8 @@ export 'app_navigation.dart';
 export 'app_routes.dart';
 export 'nav_args.dart';
 export 'nav_animation_enum.dart';
-export '../../features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
+export '../../features/courses/presentation/view_model/course_discovery_cubit/course_discovery_cubit.dart';
+export '../../features/courses/presentation/view_model/course_watch_cubit/course_watch_cubit.dart';
 
 export '../../features/auth/presentation/views/forget_password_view.dart';
 export '../../features/auth/presentation/views/login_view.dart';
@@ -12,7 +13,7 @@ export '../../features/courses/data/models/course_args.dart';
 export '../../features/courses/data/models/course_model.dart';
 export '../../features/courses/presentation/view/all_courses_view.dart';
 export '../../features/courses/presentation/view/course_details_view.dart';
-export '../../features/courses/presentation/view/course_view.dart';
+export '../../features/courses/presentation/view/course_watch_view.dart';
 export '../../features/courses/presentation/view/courses_by_category_view.dart';
 export '../../features/home/data/models/category_nav_args.dart';
 export '../../features/layout/presentation/view/layout_view.dart';

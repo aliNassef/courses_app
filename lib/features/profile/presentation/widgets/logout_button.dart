@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../auth/presentation/views/login_view.dart';
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({

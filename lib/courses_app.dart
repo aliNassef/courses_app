@@ -9,7 +9,6 @@ import 'core/constants/constants.dart';
 import 'core/di/service_locator.dart';
 import 'core/navigation/navigation.dart';
 import 'core/utils/theme/app_theme.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 
 class CoursesApp extends StatelessWidget {
   const CoursesApp({super.key});

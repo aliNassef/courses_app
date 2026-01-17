@@ -1,3 +1,4 @@
+import '../../../../core/di/di.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/navigation/navigation.dart';
@@ -11,10 +12,9 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../my_learning/data/model/my_learning_model.dart';
-import '../../../my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'category_grid_bloc_builder.dart';
 import 'continued_learning_card_item.dart';
-import '../widgets/user_info.dart';
+import 'user_info.dart';
 import '../../../../core/widgets/title_with_see_all.dart';
 import 'explore_more_courses.dart';
 
@@ -121,7 +121,7 @@ class HomeViewBody extends StatelessWidget {
       AllCoursesView.routeName,
       arguments: NavArgs(
         animation: NavAnimation.fade,
-        data: context.read<CoursesCubit>(),
+        data: context.read<CourseDiscoveryCubit>(),
       ),
     );
   }

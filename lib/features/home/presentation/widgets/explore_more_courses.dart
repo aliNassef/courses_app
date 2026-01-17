@@ -6,10 +6,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/navigation/navigation.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../courses/data/models/course_model.dart';
-import '../../../courses/presentation/view/course_details_view.dart';
-import '../../../courses/presentation/view_model/courses_cubit/courses_cubit.dart';
 import 'explore_course_card_item.dart';
 
 class ExploreMoreCourses extends StatelessWidget {
@@ -23,7 +21,7 @@ class ExploreMoreCourses extends StatelessWidget {
       child: SizedBox(
         height: 280.h,
         width: context.width,
-        child: BlocBuilder<CoursesCubit, CoursesState>(
+        child: BlocBuilder<CourseDiscoveryCubit, CourseDiscoveryState>(
           buildWhen: (_, current) =>
               current is GetAllCoursesLoading ||
               current is GetAllCoursesError ||

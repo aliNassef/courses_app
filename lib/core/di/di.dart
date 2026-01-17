@@ -19,7 +19,8 @@ export '../../features/cart/data/source/cart_remote_datasource.dart';
 export '../../features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 export '../../features/courses/data/repo/courses_repo.dart';
 export '../../features/courses/data/repo/courses_repo_impl.dart';
-export '../../features/courses/presentation/view_model/courses_cubit/courses_cubit.dart';
+export '../../features/courses/presentation/view_model/course_discovery_cubit/course_discovery_cubit.dart';
+export '../../features/courses/presentation/view_model/course_watch_cubit/course_watch_cubit.dart';
 export '../../features/courses/presentation/view_model/instructor_cubit/instructor_cubit.dart';
 export '../../features/home/data/repo/home_repo_impl.dart';
 export '../../features/home/data/source/home_remote_datasource.dart';
@@ -30,3 +31,7 @@ export 'package:courses_app/features/wishlist/presentation/view_model/wishlist_c
 export '../../features/wishlist/data/repo/wishlist_repo_impl.dart';
 export '../../features/wishlist/data/source/wishlist_remote_datasoure.dart';
 export 'package:courses_app/features/courses/presentation/view_model/courses_category_cubit/courses_category_cubit.dart';
+export '../../features/my_learning/data/repo/my_learning_repo.dart';
+export '../../features/my_learning/data/repo/my_learning_repo_impl.dart';
+export '../../features/my_learning/data/source/my_learning_remote_datasource.dart';
+export '../../features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';

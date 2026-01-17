@@ -8,7 +8,6 @@ import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/navigation/navigation.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import '../views/login_view.dart';
 import 'have_account.dart';
 import 'signup_button_bloc_listener.dart';
 import 'terms_and_conditions_with_checkbox.dart';

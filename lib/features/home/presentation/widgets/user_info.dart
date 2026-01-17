@@ -3,7 +3,6 @@ import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import '../../../../core/extensions/strings_extensions.dart';
 import '../../../../core/widgets/custom_failure_widget.dart';
 import '../../../auth/presentation/view_model/auth_cubit/auth_cubit.dart';
-import '../../../cart/presentation/view/cart_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,3 @@
-import '../../features/my_learning/data/repo/my_learning_repo.dart';
-import '../../features/my_learning/data/repo/my_learning_repo_impl.dart';
-import '../../features/my_learning/data/source/my_learning_remote_datasource.dart';
-import '../../features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -77,8 +73,11 @@ void _setupCartFeature() {
 }
 
 void _setupCoursesFeature() {
-  injector.registerFactory<CoursesCubit>(
-    () => CoursesCubit(injector<CoursesRepo>()),
+  injector.registerFactory<CourseDiscoveryCubit>(
+    () => CourseDiscoveryCubit(injector<CoursesRepo>()),
+  );
+  injector.registerFactory<CourseWatchCubit>(
+    () => CourseWatchCubit(injector<CoursesRepo>()),
   );
   injector.registerFactory<CoursesCategoryCubit>(
     () => CoursesCategoryCubit(injector<CoursesRepo>()),

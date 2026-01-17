@@ -7,7 +7,6 @@ import '../../../../core/extensions/dialogs_extensions.dart';
 import '../../../../core/navigation/navigation.dart';
 import '../../../../core/translations/locale_keys.g.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../layout/presentation/view/layout_view.dart';
 import '../../data/models/signup_request.dart';
 
 class SignupButtonBlocListener extends StatelessWidget {
