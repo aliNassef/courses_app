@@ -42,9 +42,8 @@ final class AddCourseToMyLearningFailure extends MyLearningState {
   List<Object> get props => [failure];
 }
 
-
-
 final class GetLastLearningCourseLoading extends MyLearningState {}
+
 final class GetLastLearningCourseSuccess extends MyLearningState {
   final MyLearningModel learning;
 
@@ -53,6 +52,7 @@ final class GetLastLearningCourseSuccess extends MyLearningState {
   @override
   List<Object> get props => [learning];
 }
+
 final class GetLastLearningCourseFailure extends MyLearningState {
   final Failure failure;
 
@@ -62,8 +62,8 @@ final class GetLastLearningCourseFailure extends MyLearningState {
   List<Object> get props => [failure];
 }
 
-
 final class UpdateCourseProgressSuccess extends MyLearningState {}
+
 final class UpdateCourseProgressFailure extends MyLearningState {
   final Failure failure;
 
@@ -89,4 +89,12 @@ final class GetCompletedLessonsIdsError extends MyLearningState {
 
   @override
   List<Object> get props => [failure];
+}
+
+final class OpenNextLesson extends MyLearningState {
+  final String lessonId;
+  const OpenNextLesson({required this.lessonId});
+
+  @override
+  List<Object> get props => [lessonId];
 }

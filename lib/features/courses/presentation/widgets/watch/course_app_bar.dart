@@ -2,9 +2,9 @@ import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/extensions/padding_extension.dart';
-import '../../../../core/utils/utils.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/extensions/padding_extension.dart';
+import '../../../../../core/utils/utils.dart';
 
 AdaptiveAppBar buildCourseAppBar(BuildContext context , String courseTitle) {
   return AdaptiveAppBar(

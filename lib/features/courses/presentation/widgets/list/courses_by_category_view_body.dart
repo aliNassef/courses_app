@@ -1,14 +1,14 @@
-import '../../../../core/constants/constants.dart';
-import '../../../../core/widgets/widgets.dart';
-import '../../data/models/course_model.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/widgets/widgets.dart';
+import '../../../data/models/course_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'filter_and_result_count_courses.dart';
-import '../view_model/courses_category_cubit/courses_category_cubit.dart';
+import '../../view_model/courses_category_cubit/courses_category_cubit.dart';
 import 'category_course_item.dart';
-import 'course_level_chip.dart';
+import '../common/course_level_chip.dart';
 
 class CoursesByCategoryViewBody extends StatelessWidget {
   const CoursesByCategoryViewBody({super.key});

@@ -1,12 +1,12 @@
-import '../../../home/presentation/widgets/instructor_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/custom_network_image.dart';
-import '../../../../core/widgets/widgets.dart';
-import '../../data/models/course_model.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../../../core/widgets/widgets.dart';
+import '../../../../home/presentation/widgets/instructor_name.dart';
+import '../../../data/models/course_model.dart';
 
 class CategoryCourseItem extends StatelessWidget {
   const CategoryCourseItem({

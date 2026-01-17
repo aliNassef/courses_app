@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/service_locator.dart';
 import '../../data/models/course_model.dart';
-import '../widgets/course_details_app_bar.dart';
-import '../widgets/course_details_view_body.dart';
+import '../widgets/details/course_details_app_bar.dart';
+import '../widgets/details/course_details_view_body.dart';
 
 class CourseDetailsView extends StatelessWidget {
   const CourseDetailsView({required this.course, super.key});

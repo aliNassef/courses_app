@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/widgets.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/widgets.dart';
 
 class CourseLevelChip extends StatefulWidget {
   const CourseLevelChip({

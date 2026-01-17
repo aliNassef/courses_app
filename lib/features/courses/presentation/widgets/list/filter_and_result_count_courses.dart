@@ -1,15 +1,15 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import '../../../../core/widgets/widgets.dart';
+import '../../../../../core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/extensions/padding_extension.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/extensions/padding_extension.dart';
 
-import '../../../../core/utils/utils.dart';
-import '../filter_enum.dart';
-import '../view_model/courses_category_cubit/courses_category_cubit.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../filter_enum.dart';
+import '../../view_model/courses_category_cubit/courses_category_cubit.dart';
 
 class FilterAndResultCountCourses extends StatelessWidget {
   const FilterAndResultCountCourses({
@@ -53,7 +53,7 @@ class FilterAndResultCountCourses extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "showing ${state.courses.length} courses",
+                '${state.courses.length} Results',
                 style: context.appTheme.medium14.copyWith(
                   color: AppColors.grey,
                 ),

@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../home/data/models/category_nav_args.dart';
 import '../view_model/courses_category_cubit/courses_category_cubit.dart';
-import '../widgets/courses_by_category_view_body.dart';
+import '../widgets/list/courses_by_category_view_body.dart';
 
 class CoursesByCategoryView extends StatelessWidget {
   const CoursesByCategoryView({super.key, required this.categoryNavArgs});

@@ -1,20 +1,19 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/features/my_learning/data/model/progress_request_model.dart';
-import 'package:courses_app/features/my_learning/presentation/view_model/mylearning_cubit/my_leaning_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/extensions/duration_extension.dart';
-import '../../../../core/extensions/padding_extension.dart';
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/custom_switch.dart';
-import '../../../../core/widgets/widgets.dart';
-import '../../data/models/lesson_model.dart';
-import 'course_intro_video.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/di/di.dart';
+import '../../../../../core/extensions/duration_extension.dart';
+import '../../../../../core/extensions/padding_extension.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/custom_switch.dart';
+import '../../../../../core/widgets/widgets.dart';
+import '../../../data/models/lesson_model.dart';
+import '../common/course_intro_video.dart';
 import 'tabs_lessons_notes_discuss.dart';
 
 class CourseVideoAndMetaData extends StatelessWidget {

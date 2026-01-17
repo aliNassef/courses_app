@@ -3,13 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/navigation/navigation.dart';
-import '../../../../core/widgets/custom_failure_widget.dart';
-import '../../../home/presentation/widgets/explore_course_card_item.dart';
-import '../../data/models/course_model.dart';
-import '../view/course_details_view.dart';
-import '../view_model/courses_cubit/courses_cubit.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/navigation/navigation.dart';
+import '../../../../../core/widgets/custom_failure_widget.dart';
+import '../../../../home/presentation/widgets/explore_course_card_item.dart';
 
 class AllCoursesViewBody extends StatelessWidget {
   const AllCoursesViewBody({
@@ -18,8 +15,8 @@ class AllCoursesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CoursesCubit, CoursesState>(
-      buildWhen: (_, current) =>
+    return BlocBuilder<CourseDiscoveryCubit, CourseDiscoveryState>(
+      buildWhen: (previous, current) =>
           current is GetAllCoursesLoading ||
           current is GetAllCoursesError ||
           current is GetAllCoursesSuccess,

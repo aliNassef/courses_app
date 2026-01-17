@@ -1,4 +1,4 @@
-import '../../../../core/extensions/mediaquery_size.dart';
+import '../../../../../core/extensions/mediaquery_size.dart';
 import 'package:flutter/material.dart';
 import 'package:omni_video_player/omni_video_player.dart';
 

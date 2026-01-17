@@ -1,13 +1,14 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
-import '../../../../core/extensions/strings_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/widgets.dart';
-import '../view_model/instructor_cubit/instructor_cubit.dart';
+import '../../../../../core/extensions/strings_extensions.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/widgets.dart';
+import '../../view_model/instructor_cubit/instructor_cubit.dart';
 
 class InstructorInfo extends StatelessWidget {
   const InstructorInfo({

@@ -22,12 +22,12 @@ class ContinuedLearningCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(
-        CourseView.routeName,
+        CourseWatchView.routeName,
         arguments: NavArgs(
           animation: NavAnimation.fade,
           data: CourseArgs(
             courseId: course.courseId,
-            lessonNumber: course.completedLessons + 1,
+            lessonNumber: course.completedLessons,
             courseTitle: course.courseTitle,
           ),
         ),

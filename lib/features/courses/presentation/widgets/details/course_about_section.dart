@@ -1,9 +1,9 @@
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/expandable_text.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../../../../core/translations/locale_keys.g.dart';
+import '../../../../../core/translations/locale_keys.g.dart';
 
 class CourseAboutSection extends StatelessWidget {
   const CourseAboutSection({super.key, required this.description});

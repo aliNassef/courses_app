@@ -1,13 +1,13 @@
-import '../../../../core/utils/app_dilagos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/di/di.dart';
-import '../../../../core/widgets/custom_failure_widget.dart';
-import '../../data/models/lesson_model.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/di/di.dart';
+import '../../../../../core/widgets/custom_failure_widget.dart';
+import '../../../data/models/lesson_model.dart';
+import '../../view_model/course_watch_cubit/course_watch_cubit.dart';
 import 'course_lesson_card.dart';
 
 class CourseLessonsList extends StatefulWidget {
@@ -26,13 +26,13 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
   @override
   void initState() {
     super.initState();
-    context.read<CoursesCubit>().getLessonsByCourseId(widget.courseId);
+    context.read<CourseWatchCubit>().getLessonsByCourseId(widget.courseId);
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: BlocBuilder<CoursesCubit, CoursesState>(
+      child: BlocBuilder<CourseWatchCubit, CourseWatchState>(
         buildWhen: (previous, current) =>
             current is GetLessonsByCourseIdSuccess ||
             current is GetLessonsByCourseIdError ||
@@ -55,18 +55,12 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    if (state.lessons[index].isCompleted) {
-                      context
-                          .read<CoursesCubit>()
-                          .getLessonsByCourseIdAndLessonNumber(
-                            widget.courseId,
-                            state.lessons[index].order,
-                          );
-                    } else {
-                      AppDilagos.showToast(
-                        text: 'Please Enroll in the course first',
-                      );
-                    }
+                    context
+                        .read<CourseWatchCubit>()
+                        .getLessonsByCourseIdAndLessonNumber(
+                          widget.courseId,
+                          state.lessons[index].order,
+                        );
                   },
                   child: CourseLessonCard(
                     isCompleted: widget.completedLessonsIds.contains(

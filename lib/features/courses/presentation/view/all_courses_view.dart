@@ -1,7 +1,7 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import '../../../../core/di/service_locator.dart';
-import '../widgets/all_courses_view_body.dart';
+import '../widgets/list/all_courses_view_body.dart';
 import '../../../home/presentation/widgets/cart_animation_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/di.dart';
 
 class AllCoursesView extends StatefulWidget {
-  const AllCoursesView({super.key, required this.coursesCubit});
-  final CoursesCubit coursesCubit;
+  const AllCoursesView({super.key, required this.courseDiscoveryCubit});
+  final CourseDiscoveryCubit courseDiscoveryCubit;
   static const String routeName = 'all-courses';
 
   @override
@@ -28,7 +28,7 @@ class _AllCoursesViewState extends State<AllCoursesView> {
         child: MultiBlocProvider(
           providers: [
             BlocProvider.value(
-              value: widget.coursesCubit,
+              value: widget.courseDiscoveryCubit,
             ),
             BlocProvider(
               create: (context) => injector<CartCubit>(),

@@ -44,7 +44,13 @@ class MyLearningCubit extends Cubit<MyLearningState> {
     );
     updateCourseProgressOrFailure.fold(
       (failure) => emit(UpdateCourseProgressFailure(failure: failure)),
-      (success) {},
+      (success) {
+        emit(
+          OpenNextLesson(
+            lessonId: progressRequestModel.lessonId,
+          ),
+        );
+      },
     );
   }
 

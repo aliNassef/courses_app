@@ -2,13 +2,13 @@ import 'course_enrollment_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/extensions/padding_extension.dart';
-import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/widgets.dart';
-import '../../data/models/course_model.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/extensions/padding_extension.dart';
+import '../../../../../core/utils/utils.dart';
+import '../../../../../core/widgets/widgets.dart';
+import '../../../data/models/course_model.dart';
 import 'course_about_section.dart';
-import 'course_intro_video.dart';
+import '../common/course_intro_video.dart';
 import 'course_learning_outcomes_section.dart';
 import 'course_meta_data_section.dart';
 
