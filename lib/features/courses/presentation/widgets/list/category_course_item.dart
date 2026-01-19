@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/translations/locale_keys.g.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
 import '../../../../../core/widgets/widgets.dart';
@@ -70,7 +72,7 @@ class CategoryCourseItem extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      '${course.price} EGP',
+                      '${course.price} ${LocaleKeys.egp.tr()}',
                       style: context.appTheme.bold14.copyWith(
                         color: AppColors.primary,
                       ),

@@ -77,5 +77,20 @@
     "about_this_course": "عن هذه الدورة",
     "what_you_will_learn": "ماذا ستتعلم",
     "students": "طلاب",
-    "course_details": "تفاصيل الدورة"
+    "course_details": "تفاصيل الدورة",
+    "mark_as_completed": "علم كمكتمل",
+    "track_your_progress": "اتبع تقدمك",
+    "lessons": "الدروس",
+    "notes": "الملاحظات",
+    "discuss": "النقاش",
+    "egp": "جنيه",
+    "results": "نتائج",
+    "name": "بالاسم",
+    "rating": "بالتقييم",
+    "price": "بالسعر",
+    "all" : "الكل",
+    "beginner" : "مبتدئ",
+    "intermediate" : "متوسط",
+    "advanced" : "متقدم",
+    "expert" : "خبير"
 }

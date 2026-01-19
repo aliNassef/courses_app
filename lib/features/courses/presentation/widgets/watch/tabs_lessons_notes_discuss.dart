@@ -1,3 +1,5 @@
+import 'package:courses_app/core/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/utils.dart';
@@ -17,7 +19,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
         tabs: [
           Tab(
             child: Text(
-              'Lessons',
+              LocaleKeys.lessons.tr(),
               style: context.appTheme.medium12.copyWith(
                 color: AppColors.primary,
               ),
@@ -25,7 +27,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
           ),
           Tab(
             child: Text(
-              'Notes',
+              LocaleKeys.notes.tr(),
               style: context.appTheme.medium12.copyWith(
                 color: AppColors.primary,
               ),
@@ -33,7 +35,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
           ),
           Tab(
             child: Text(
-              'Discuss',
+              LocaleKeys.discuss.tr(),
               style: context.appTheme.medium12.copyWith(
                 color: AppColors.primary,
               ),

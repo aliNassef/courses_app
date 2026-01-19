@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/constants/constants.dart';
+import '../../../../../core/translations/locale_keys.g.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/widgets/widgets.dart';
 
@@ -18,11 +20,11 @@ class _CourseLevelChipState extends State<CourseLevelChip> {
   var selectedChipIndex = 0;
 
   final List<String> courseLevels = [
-    'All',
-    'Beginner',
-    'Intermediate',
-    'Advanced',
-    'Expert',
+    LocaleKeys.all.tr(),
+    LocaleKeys.beginner.tr(),
+    LocaleKeys.intermediate.tr(),
+    LocaleKeys.advanced.tr(),
+    LocaleKeys.expert.tr(),
   ];
   @override
   Widget build(BuildContext context) {

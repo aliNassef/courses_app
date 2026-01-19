@@ -82,5 +82,20 @@ abstract class  LocaleKeys {
   static const what_you_will_learn = 'what_you_will_learn';
   static const students = 'students';
   static const course_details = 'course_details';
+  static const mark_as_completed = 'mark_as_completed';
+  static const track_your_progress = 'track_your_progress';
+  static const lessons = 'lessons';
+  static const notes = 'notes';
+  static const discuss = 'discuss';
+  static const egp = 'egp';
+  static const results = 'results';
+  static const name = 'name';
+  static const rating = 'rating';
+  static const price = 'price';
+  static const all = 'all';
+  static const beginner = 'beginner';
+  static const intermediate = 'intermediate';
+  static const advanced = 'advanced';
+  static const expert = 'expert';
 
 }

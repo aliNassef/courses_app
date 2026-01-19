@@ -76,5 +76,20 @@
     "about_this_course": "About This Course",
     "what_you_will_learn": "What You Will Learn",
     "students": "Students",
-    "course_details": "Course Details"
+    "course_details": "Course Details",
+    "track_your_progress": "Track Your Progress",
+    "mark_as_completed": "Mark as Completed",
+    "lessons": "Lessons",
+    "notes": "Notes",
+    "discuss": "Discuss",
+    "egp": "EGP",
+    "results": "Results",
+    "name": "Name",
+    "rating": "Rating",
+    "price": "Price",
+    "all": "All",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
 }
