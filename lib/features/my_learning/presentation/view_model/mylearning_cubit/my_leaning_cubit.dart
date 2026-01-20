@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../data/model/my_learning_model.dart';
 import '../../../data/model/progress_request_model.dart';
@@ -13,7 +14,7 @@ class MyLearningCubit extends Cubit<MyLearningState> {
   MyLearningCubit(this.myLearningRepo) : super(MyLearningInitial());
   final MyLearningRepo myLearningRepo;
 
-  void getAllLearning(String userId) async {
+  Future<void> getAllLearning(String userId) async {
     emit(MyLearningLoading());
     final getMyLearningCoursesOrFailure = await myLearningRepo
         .getMyLearningCourses(userId);
@@ -77,6 +78,16 @@ class MyLearningCubit extends Cubit<MyLearningState> {
       (failure) => emit(GetCompletedLessonsIdsError(failure: failure)),
       (lessonsIds) =>
           emit(GetCompletedLessonsIdsSuccess(lessonsIds: lessonsIds)),
+    );
+  }
+
+  Future<void> getLastCompletedLessonDetails(String userId) async {
+    emit(GetLastCompletedLessonDetailsLoading());
+    final getLastCompletedLessonDetailsOrFailure = await myLearningRepo
+        .getLastCompletedLessonDetails(userId);
+    getLastCompletedLessonDetailsOrFailure.fold(
+      (failure) => emit(GetLastCompletedLessonDetailsError(failure: failure)),
+      (lessons) => emit(GetLastCompletedLessonDetailsSuccess(lessons: lessons)),
     );
   }
 }

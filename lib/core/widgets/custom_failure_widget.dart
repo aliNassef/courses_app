@@ -11,6 +11,8 @@ class CustomFailureWidget extends StatelessWidget {
       child: Text(
         meesage,
         style: context.appTheme.bold24.copyWith(color: AppColors.red),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
       ),
     );
   }

@@ -25,8 +25,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
         });
       },
       child: AnimatedContainer(
-        width: 24.w,
-        height: 20.h,
+        width: 20.w,
+        height: 24.h,
         duration: const Duration(milliseconds: 300),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),

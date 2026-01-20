@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
+import '../../../courses/data/models/lesson_model.dart';
 import '../model/my_learning_model.dart';
 import '../model/my_learning_request_model.dart';
 import '../model/progress_request_model.dart';
@@ -23,4 +24,8 @@ abstract class MyLearningRepo {
     required String userId,
     required String courseId,
   });
+
+  Future<Either<Failure, List<LessonModel>>> getLastCompletedLessonDetails(
+    String userId,
+  );
 }

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'core/di/di.dart';
 import 'core/widgets/widgets.dart';
@@ -28,13 +29,16 @@ class CoursesApp extends StatelessWidget {
           cupertinoLightTheme: AppTheme.cupertinoLightTheme,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          builder: (context, child) => MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaler: const TextScaler.linear(1),
-            ),
-            child: child!,
-          ),
+          locale: DevicePreview.locale(context),
+          builder: (context, child) {
+            final previewChild = DevicePreview.appBuilder(context, child);
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: const TextScaler.linear(1),
+              ),
+              child: previewChild,
+            );
+          },
         ),
       ),
     );

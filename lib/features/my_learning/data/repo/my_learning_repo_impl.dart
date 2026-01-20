@@ -1,3 +1,5 @@
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
+
 import '../../../../core/errors/failure.dart';
 import '../../../../core/errors/server_exception.dart';
 import '../model/my_learning_model.dart';
@@ -66,7 +68,8 @@ class MyLearningRepoImpl implements MyLearningRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
-   @override
+
+  @override
   Future<Either<Failure, Set<String>>> getCompletedLessonsIds({
     required String userId,
     required String courseId,
@@ -75,6 +78,20 @@ class MyLearningRepoImpl implements MyLearningRepo {
       final lessonsIds = await remoteDatasource.getCompletedLessonsIds(
         userId: userId,
         courseId: courseId,
+      );
+      return Right(lessonsIds);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<LessonModel>>> getLastCompletedLessonDetails(
+    String userId,
+  ) async {
+    try {
+      final lessonsIds = await remoteDatasource.getLastCompletedLessonDetails(
+        userId,
       );
       return Right(lessonsIds);
     } on ServerException catch (e) {

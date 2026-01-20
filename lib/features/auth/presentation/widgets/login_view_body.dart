@@ -115,6 +115,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             action: LocaleKeys.sign_up.tr(),
             onTap: () => _goToSignup(context),
           ),
+          const Gap(30),
         ],
       ),
     );

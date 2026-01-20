@@ -1,3 +1,5 @@
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
+
 import '../../../../core/di/di.dart';
 import '../model/my_learning_model.dart';
 import '../model/my_learning_request_model.dart';
@@ -10,10 +12,14 @@ abstract class MyLearningRemoteDatasource {
   Future<void> updateProgress(ProgressRequestModel progressRequestModel);
   Future<List<MyLearningModel>> getMyLearningCourses(String userId);
   Future<MyLearningModel> getLastLearningCourse(String userId);
-    Future<Set<String>> getCompletedLessonsIds({
+  Future<Set<String>> getCompletedLessonsIds({
     required String userId,
     required String courseId,
   });
+
+  Future<List<LessonModel>> getLastCompletedLessonDetails(
+    String userId,
+  );
 }
 
 class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
@@ -59,6 +65,7 @@ class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
       lastLearningCourse.data() as Map<String, dynamic>,
     );
   }
+
   @override
   Future<Set<String>> getCompletedLessonsIds({
     required String userId,
@@ -69,5 +76,20 @@ class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
       courseId: courseId,
     );
     return lessonsIds;
+  }
+
+  @override
+  Future<List<LessonModel>> getLastCompletedLessonDetails(
+    String userId,
+  ) async {
+    final lessonsIds = await database.getLastCompletedLessonDetails(
+      userId,
+    );
+    return lessonsIds
+        .map(
+          (lesson) =>
+              LessonModel.fromJson(lesson?.data() as Map<String, dynamic>),
+        )
+        .toList();
   }
 }

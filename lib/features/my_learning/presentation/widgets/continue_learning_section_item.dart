@@ -1,3 +1,4 @@
+import 'package:courses_app/core/extensions/duration_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -5,13 +6,13 @@ import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../core/widgets/custom_slider.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../../courses/data/models/lesson_model.dart';
 
 class ContinueLearningSectionItem extends StatelessWidget {
-  const ContinueLearningSectionItem({super.key});
-
+  const ContinueLearningSectionItem({super.key, required this.learning});
+  final LessonModel learning;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,13 +24,12 @@ class ContinueLearningSectionItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                CustomNetworkImage(
-                  img:
-                      'https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
-                  width: context.width,
-                  height: 100.h,
-                  radius: 8.r,
-                ),
+                // ThumbnailVideo(
+                //   videoUrl: learning.videoUrl,
+                //   width: context.width,
+                //   height: 100.h,
+                //   radius: 8.r,
+                // ),
                 Positioned(
                   bottom: 6,
                   right: 6,
@@ -40,7 +40,7 @@ class ContinueLearningSectionItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Text(
-                      "12:50",
+                      learning.duration.toDuration,
                       style: context.appTheme.regular12.copyWith(
                         color: AppColors.white,
                       ),
@@ -51,7 +51,7 @@ class ContinueLearningSectionItem extends StatelessWidget {
             ),
             const Gap(8),
             Text(
-              'Flutter Flutter ',
+              learning.name,
               style: context.appTheme.semiBold16,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,

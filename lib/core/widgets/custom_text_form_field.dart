@@ -61,7 +61,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               )
             : null,
         hintText: widget.hintText,
-        hintStyle: context.appTheme.regular14.copyWith(
+        hintStyle: context.appTheme.regular12.copyWith(
           color: const Color(0xff617589),
         ),
         errorStyle: context.appTheme.bold10.copyWith(

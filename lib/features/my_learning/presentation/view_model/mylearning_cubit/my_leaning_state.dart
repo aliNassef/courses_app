@@ -98,3 +98,21 @@ final class OpenNextLesson extends MyLearningState {
   @override
   List<Object> get props => [lessonId];
 }
+
+final class GetLastCompletedLessonDetailsLoading extends MyLearningState {}
+
+final class GetLastCompletedLessonDetailsSuccess extends MyLearningState {
+  final List<LessonModel> lessons;
+  const GetLastCompletedLessonDetailsSuccess({required this.lessons});
+
+  @override
+  List<Object> get props => [lessons];
+}
+
+final class GetLastCompletedLessonDetailsError extends MyLearningState {
+  final Failure failure;
+  const GetLastCompletedLessonDetailsError({required this.failure});
+
+  @override
+  List<Object> get props => [failure];
+}

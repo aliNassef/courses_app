@@ -18,7 +18,14 @@ class MyLearningView extends StatelessWidget {
   Widget build(BuildContext context) {
     final userId = context.read<AuthCubit>().userId;
     return BlocProvider(
-      create: (context) => injector<MyLearningCubit>()..getAllLearning(userId),
+      create: (context) {
+        final cubit = injector<MyLearningCubit>();
+        Future.wait([
+          cubit.getAllLearning(userId),
+          cubit.getLastCompletedLessonDetails(userId),
+        ]);
+        return cubit;
+      },
       child: AdaptiveScaffold(
         appBar: _buildMyLearningAppbar(context),
         body: const SafeArea(
@@ -31,6 +38,7 @@ class MyLearningView extends StatelessWidget {
   AdaptiveAppBar _buildMyLearningAppbar(BuildContext context) {
     return AdaptiveAppBar(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.white,
         title: Text(
           LocaleKeys.my_learning.tr(),
