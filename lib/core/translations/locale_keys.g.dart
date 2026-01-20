@@ -97,5 +97,11 @@ abstract class  LocaleKeys {
   static const intermediate = 'intermediate';
   static const advanced = 'advanced';
   static const expert = 'expert';
+  static const exit_app = 'exit_app';
+  static const are_you_sure_you_want_to_exit = 'are_you_sure_you_want_to_exit';
+  static const cancel = 'cancel';
+  static const exit = 'exit';
+  static const home = 'home';
+  static const wishlist = 'wishlist';
 
 }

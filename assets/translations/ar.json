@@ -88,9 +88,15 @@
     "name": "بالاسم",
     "rating": "بالتقييم",
     "price": "بالسعر",
-    "all" : "الكل",
-    "beginner" : "مبتدئ",
-    "intermediate" : "متوسط",
-    "advanced" : "متقدم",
-    "expert" : "خبير"
+    "all": "الكل",
+    "beginner": "مبتدئ",
+    "intermediate": "متوسط",
+    "advanced": "متقدم",
+    "expert": "خبير",
+    "exit_app": "خروج من التطبيق",
+    "are_you_sure_you_want_to_exit": "هل أنت متأكد أنك تريد الخروج؟",
+    "cancel": "الغاء",
+    "exit": "خروج",
+    "home": "الرئيسية",
+    "wishlist": "المفضلة"
 }

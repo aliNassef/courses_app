@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../core/translations/locale_keys.g.dart';
 import '../../../wishlist/presentation/view/wish_list_view.dart';
 import '../../../my_learning/presentation/views/my_learning_view.dart';
 import 'package:flutter/material.dart';
@@ -55,22 +57,21 @@ class _LayoutViewState extends State<LayoutView> {
           context: context,
           builder: (context) => AlertDialog.adaptive(
             title: Text(
-              'Exit App',
+              LocaleKeys.exit_app.tr(),
               style: context.appTheme.bold16.copyWith(color: AppColors.red),
             ),
             content: Text(
-              'Are you sure you want to exit?',
+              LocaleKeys.are_you_sure_you_want_to_exit.tr(),
               style: context.appTheme.bold12.copyWith(color: AppColors.primary),
             ),
             actions: [
               TextButton(
                 onPressed: () => context.pop(result: false),
-
                 style: TextButton.styleFrom(
                   foregroundColor: AppColors.primary,
                 ),
                 child: Text(
-                  'Cancel',
+                  LocaleKeys.cancel.tr(),
                   style: context.appTheme.bold12,
                 ),
               ),
@@ -80,7 +81,7 @@ class _LayoutViewState extends State<LayoutView> {
                   foregroundColor: AppColors.red,
                 ),
                 child: Text(
-                  'Exit',
+                  LocaleKeys.exit.tr(),
                   style: context.appTheme.bold12,
                 ),
               ),

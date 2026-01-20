@@ -5,6 +5,7 @@ class LessonModel {
   final int duration;
   final int order;
   final bool isCompleted;
+  final String description;
 
   LessonModel({
     required this.id,
@@ -13,6 +14,7 @@ class LessonModel {
     required this.duration,
     required this.order,
     required this.isCompleted,
+    required this.description,
   });
 
   factory LessonModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class LessonModel {
       duration: json['duration'],
       order: json['order'],
       isCompleted: json['isFree'],
+      description: json['description'],
     );
   }
 
@@ -33,6 +36,7 @@ class LessonModel {
       'duration': duration,
       'order': order,
       'isFree': isCompleted,
+      'description': description,
     };
   }
 }

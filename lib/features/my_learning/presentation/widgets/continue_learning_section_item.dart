@@ -1,7 +1,6 @@
 import 'package:courses_app/core/extensions/duration_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
@@ -60,14 +59,16 @@ class ContinueLearningSectionItem extends StatelessWidget {
             ).withHorizontalPadding(Constants.hp16),
             const Gap(8),
             Text(
-              'Lesson 4 aaa',
+              learning.description,
               style: context.appTheme.regular10.copyWith(
                 color: AppColors.grey,
               ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ).withHorizontalPadding(Constants.hp16),
             const Gap(16),
             CustomSlider(
-              value: 0.4,
+              value: 0.1,
               onChanged: (value) {},
             ).withHorizontalPadding(Constants.hp16),
           ],

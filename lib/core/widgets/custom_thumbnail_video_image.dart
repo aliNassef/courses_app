@@ -24,7 +24,7 @@ class _CustomThumbnailVideoImageState extends State<CustomThumbnailVideoImage> {
   @override
   void initState() {
     super.initState();
-    img = getYoutubeThumbnail(widget.videoUrl);
+    img = _getYoutubeThumbnail(widget.videoUrl);
   }
 
   @override
@@ -37,7 +37,7 @@ class _CustomThumbnailVideoImageState extends State<CustomThumbnailVideoImage> {
     );
   }
 
-  String getYoutubeThumbnail(String url) {
+  String _getYoutubeThumbnail(String url) {
     final uri = Uri.parse(url);
 
     // standard youtube link
