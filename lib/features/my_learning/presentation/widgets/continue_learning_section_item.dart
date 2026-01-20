@@ -7,6 +7,7 @@ import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/widgets/custom_slider.dart';
+import '../../../../core/widgets/custom_thumbnail_video_image.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../../courses/data/models/lesson_model.dart';
 
@@ -24,12 +25,13 @@ class ContinueLearningSectionItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                // ThumbnailVideo(
-                //   videoUrl: learning.videoUrl,
-                //   width: context.width,
-                //   height: 100.h,
-                //   radius: 8.r,
-                // ),
+                CustomThumbnailVideoImage(
+                  videoUrl: learning.videoUrl,
+                  width: context.width,
+                  height: 100.h,
+                  radius: 8.r,
+                ),
+
                 Positioned(
                   bottom: 6,
                   right: 6,

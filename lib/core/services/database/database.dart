@@ -145,4 +145,7 @@ abstract class Database {
     String courseId,
     String lessonId,
   );
+  Future<List<DocumentSnapshot>> getLastCompletedLessonDetails(
+    String userId,
+  );
 }

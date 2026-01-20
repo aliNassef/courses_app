@@ -743,4 +743,40 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<List<DocumentSnapshot>> getLastCompletedLessonDetails(
+    String userId,
+  ) async {
+    try {
+      final myLearningSnapshot = await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .get();
+
+      final List<DocumentSnapshot> result = [];
+
+      for (final doc in myLearningSnapshot.docs) {
+        final lastLessonId = doc.data()['lastLessonId'];
+
+        if (lastLessonId == null) {
+          continue;
+        }
+
+        final lessonSnapshot = await _firestore
+            .collection(FirestoreCollectionsStrings.courses)
+            .doc(doc.id)
+            .collection(FirestoreCollectionsStrings.lessons)
+            .doc(lastLessonId)
+            .get();
+
+        result.add(lessonSnapshot);
+      }
+
+      return result;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

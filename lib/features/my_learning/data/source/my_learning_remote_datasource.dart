@@ -88,7 +88,7 @@ class MyLearningRemoteDatasourceImpl implements MyLearningRemoteDatasource {
     return lessonsIds
         .map(
           (lesson) =>
-              LessonModel.fromJson(lesson?.data() as Map<String, dynamic>),
+              LessonModel.fromJson(lesson.data() as Map<String, dynamic>),
         )
         .toList();
   }
