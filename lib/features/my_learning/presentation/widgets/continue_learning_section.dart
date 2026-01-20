@@ -48,6 +48,7 @@ class ContinueLearningSection extends StatelessWidget {
   Skeletonizer _buildContinueLearningLoading() {
     return Skeletonizer(
       enabled: true,
+      containersColor: Colors.grey.shade50,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, _) => ContinueLearningSectionItem(
@@ -56,7 +57,7 @@ class ContinueLearningSection extends StatelessWidget {
                 'industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic',
             id: 'lesson_1',
             name: 'Introduction to Flutter',
-            videoUrl: 'https://example.com/videos/flutter_intro.mp4',
+            videoUrl: 'https://www.youtube.com/watch?v=0mtA8rSXzuQ',
             duration: 600, // seconds
             order: 1,
             isCompleted: false,

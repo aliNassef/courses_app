@@ -1,4 +1,6 @@
+import 'package:courses_app/features/courses/data/models/lesson_model.dart';
 import 'package:flutter/material.dart';
+import '../../features/my_learning/presentation/views/my_learning_lesson_view.dart';
 import 'navigation.dart';
 
 class AppRouter {
@@ -38,6 +40,10 @@ class AppRouter {
         break;
       case ForgetPasswordView.routeName:
         page = const ForgetPasswordView();
+        break;
+      case MyLearningLessonView.routeName:
+        final lesson = navArgs.data as LessonModel;
+        page = MyLearningLessonView(lesson: lesson);
         break;
       case CoursesByCategoryView.routeName:
         final categoryNavArgs = navArgs.data as CategoryNavArgs;
