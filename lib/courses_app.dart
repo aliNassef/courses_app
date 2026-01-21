@@ -29,7 +29,7 @@ class CoursesApp extends StatelessWidget {
           cupertinoLightTheme: AppTheme.cupertinoLightTheme,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
-          locale: DevicePreview.locale(context),
+          locale: context.locale,
           builder: (context, child) {
             final previewChild = DevicePreview.appBuilder(context, child);
             return MediaQuery(
