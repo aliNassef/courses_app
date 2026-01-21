@@ -45,65 +45,69 @@ class AccountsInfo extends StatelessWidget {
             text: LocaleKeys.settings.tr(),
             icon: Icons.settings,
             onTap: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Container(
-                    height: 200.h,
-                    color: AppColors.white,
-                    child: Column(
-                      children: [
-                        ListTile(
-                          leading: const Icon(
-                            Icons.language,
-                            color: AppColors.primary,
-                          ),
-                          title: const Text('Language'),
-                          titleTextStyle: context.appTheme.bold14.copyWith(
-                            color: AppColors.primary,
-                          ),
-                          onTap: () {
-                            context.pop();
-                          },
-                        ),
-                        const Divider(),
-                        ListTile(
-                          leading: CircleAvatar(
-                            radius: 14,
-                            child: Text(
-                              'AR',
-                              style: context.appTheme.regular12,
-                            ),
-                          ),
-                          title: const Text('العربيه'),
-                          onTap: () {
-                            context.setLocale(Constants.arLocale);
-                            context.pop();
-                          },
-                        ),
-                        ListTile(
-                          leading: CircleAvatar(
-                            radius: 14,
-                            child: Text(
-                              'EN',
-                              style: context.appTheme.regular12,
-                            ),
-                          ),
-                          title: const Text('English'),
-                          onTap: () {
-                            context.setLocale(Constants.enLocale);
-                            context.pop();
-                          },
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
+              _buildApppLanguageBottomSheet(context);
             },
           ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> _buildApppLanguageBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 200.h,
+          color: AppColors.white,
+          child: Column(
+            children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.language,
+                  color: AppColors.primary,
+                ),
+                title: const Text('Language'),
+                titleTextStyle: context.appTheme.bold14.copyWith(
+                  color: AppColors.primary,
+                ),
+                onTap: () {
+                  context.pop();
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: CircleAvatar(
+                  radius: 14,
+                  child: Text(
+                    'AR',
+                    style: context.appTheme.regular12,
+                  ),
+                ),
+                title: const Text('العربيه'),
+                onTap: () {
+                  context.setLocale(Constants.arLocale);
+                  context.pop();
+                },
+              ),
+              ListTile(
+                leading: CircleAvatar(
+                  radius: 14,
+                  child: Text(
+                    'EN',
+                    style: context.appTheme.regular12,
+                  ),
+                ),
+                title: const Text('English'),
+                onTap: () {
+                  context.setLocale(Constants.enLocale);
+                  context.pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

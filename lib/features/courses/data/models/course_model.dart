@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+import 'course_level_enum.dart';
+
 class CourseModel extends Equatable {
   final String id;
   final String title;
@@ -17,8 +19,10 @@ class CourseModel extends Equatable {
   final DateTime createdAt;
   final bool bestSeller;
   final int numOfRating;
+  final CourseLevel level;
 
   const CourseModel({
+    required this.level,
     required this.id,
     required this.title,
     required this.description,
@@ -39,6 +43,7 @@ class CourseModel extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'title': title,
+      'level': level.name,
       'description': description,
       'price': price,
       'duration': duration,
@@ -59,6 +64,7 @@ class CourseModel extends Equatable {
     return CourseModel(
       id: json['id'],
       title: json['title'],
+      level: CourseLevel.values.firstWhere((e) => e.name == json['level']),
       imageUrl: json['imageUrl'],
       description: json['description'],
       price: json['price'],
@@ -77,6 +83,7 @@ class CourseModel extends Equatable {
   static List<CourseModel> dummyData = [
     CourseModel(
       numOfRating: 0,
+      level: CourseLevel.beginner,
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
       description: 'تعلم Flutter من البداية للاحتراف',
@@ -95,6 +102,7 @@ class CourseModel extends Equatable {
     ),
     CourseModel(
       numOfRating: 0,
+      level: CourseLevel.beginner,
 
       imageUrl:
           "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
@@ -115,6 +123,7 @@ class CourseModel extends Equatable {
     ),
     CourseModel(
       numOfRating: 0,
+      level: CourseLevel.beginner,
 
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
@@ -135,6 +144,7 @@ class CourseModel extends Equatable {
     ),
     CourseModel(
       numOfRating: 0,
+      level: CourseLevel.beginner,
 
       id: FirebaseFirestore.instance.collection('courses').doc().id,
       title: 'Flutter From Zero to Hero',
