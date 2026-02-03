@@ -1,5 +1,7 @@
+import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/features/courses/presentation/widgets/watch/course_lesson_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/logging/app_logger.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../data/models/chapter_model.dart';
@@ -9,9 +11,11 @@ class ChapterTileItem extends StatefulWidget {
     super.key,
     required this.chapters,
     required this.completedLessonsIds,
+    required this.courseId,
   });
   final List<ChapterModel> chapters;
   final Set<String> completedLessonsIds;
+  final String courseId;
   @override
   State<ChapterTileItem> createState() => _ChapterTileItemState();
 }
@@ -70,7 +74,15 @@ class _ChapterTileItemState extends State<ChapterTileItem> {
                     physics: const NeverScrollableScrollPhysics(),
                     children: entry.value.lessons.map((lesson) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          AppLogger.info(lesson.id);
+                          context
+                              .read<CourseWatchCubit>()
+                              .getLessonsByCourseIdAndLessonId(
+                                widget.courseId,
+                                lesson.id,
+                              );
+                        },
                         child: CourseLessonCard(
                           lesson: lesson,
                           isCompleted: widget.completedLessonsIds.contains(

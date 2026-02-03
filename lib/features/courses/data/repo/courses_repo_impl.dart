@@ -98,4 +98,20 @@ class CoursesRepoImpl implements CoursesRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, LessonModel>> getLessonsByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    try {
+      final lesson = await remoteDatasource.getLessonByCourseIdAndLessonId(
+        courseId,
+        lessonId,
+      );
+      return Right(lesson);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

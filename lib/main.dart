@@ -14,7 +14,7 @@ void main() async {
       builder: (context) => EasyLocalization(
         supportedLocales: [
           const Locale(Constants.en),
-        const Locale(Constants.ar),
+          const Locale(Constants.ar),
         ],
         path: 'assets/translations',
         fallbackLocale: const Locale(Constants.en),
@@ -23,3 +23,6 @@ void main() async {
     ),
   );
 }
+
+// todo: stop on the last lesson in each course.
+// todo: upgrade last lesson after watch the lesson.

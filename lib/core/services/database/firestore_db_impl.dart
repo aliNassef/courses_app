@@ -779,4 +779,28 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getLessonByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    try {
+      final course = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .get();
+
+      final chapters =
+          course.data()![FirestoreCollectionsStrings.chapters] as List;
+
+      final lesson = chapters
+          .expand((e) => e['lessons'])
+          .firstWhere((lesson) => lesson['id'] == lessonId);
+
+      return lesson;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

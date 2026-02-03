@@ -28,5 +28,8 @@ abstract class CoursesRepo {
     String courseId,
     int lessonNumber,
   );
-
+  Future<Either<Failure, LessonModel>> getLessonsByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  );
 }

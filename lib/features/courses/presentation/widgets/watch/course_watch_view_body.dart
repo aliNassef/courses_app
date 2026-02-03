@@ -18,18 +18,18 @@ class CourseWatchViewBody extends StatelessWidget {
         children: [
           BlocBuilder<CourseWatchCubit, CourseWatchState>(
             buildWhen: (previous, current) =>
-                current is GetLessonsByCourseIdAndLessonNumberLoading ||
-                current is GetLessonByCourseIdAndLessonNumberSuccess ||
-                current is GetLessonByCourseIdAndLessonNumberError,
+                current is GetSpecificLessonLoading ||
+                current is GetSpecificLessonSuccess ||
+                current is GetSpecificLessonError,
             builder: (context, state) {
-              if (state is GetLessonByCourseIdAndLessonNumberError) {
+              if (state is GetSpecificLessonError) {
                 return CustomFailureWidget(meesage: state.failure.errMessage);
               }
-              if (state is GetLessonsByCourseIdAndLessonNumberLoading) {
+              if (state is GetSpecificLessonLoading) {
                 return const CourseWatchLoadingSkeleton();
               }
 
-              if (state is GetLessonByCourseIdAndLessonNumberSuccess) {
+              if (state is GetSpecificLessonSuccess) {
                 return CourseVideoAndMetaData(
                   lesson: state.lesson,
                   courseId: courseId,

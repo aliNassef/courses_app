@@ -122,6 +122,10 @@ abstract class Database {
     String courseId,
     int lessonNumber,
   );
+  Future<Map<String, dynamic>> getLessonByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  );
 
   Future<void> addCourseToMyLearning({
     required String userId,

@@ -16,6 +16,10 @@ abstract class CoursesRemoteDatasource {
     String courseId,
     int lessonNumber,
   );
+  Future<LessonModel> getLessonByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  );
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -91,4 +95,18 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
   @override
   Future<List<ChapterModel>> getChaptersByCourseId(String courseId) async =>
       database.getChaptersByCourseId(courseId);
+
+  @override
+  Future<LessonModel> getLessonByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    final lesson = await database.getLessonByCourseIdAndLessonId(
+      courseId,
+      lessonId,
+    );
+    return LessonModel.fromJson(
+      lesson,
+    );
+  }
 }

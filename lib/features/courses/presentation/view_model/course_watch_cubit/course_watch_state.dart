@@ -27,20 +27,19 @@ final class GetChaptersByCourseIdSuccess extends CourseWatchState {
   List<Object> get props => [chapters];
 }
 
-final class GetLessonsByCourseIdAndLessonNumberLoading
-    extends CourseWatchState {}
+final class GetSpecificLessonLoading extends CourseWatchState {}
 
-final class GetLessonByCourseIdAndLessonNumberSuccess extends CourseWatchState {
+final class GetSpecificLessonSuccess extends CourseWatchState {
   final LessonModel lesson;
-  const GetLessonByCourseIdAndLessonNumberSuccess({required this.lesson});
+  const GetSpecificLessonSuccess({required this.lesson});
 
   @override
   List<Object> get props => [lesson];
 }
 
-final class GetLessonByCourseIdAndLessonNumberError extends CourseWatchState {
+final class GetSpecificLessonError extends CourseWatchState {
   final Failure failure;
-  const GetLessonByCourseIdAndLessonNumberError({required this.failure});
+  const GetSpecificLessonError({required this.failure});
 
   @override
   List<Object> get props => [failure];

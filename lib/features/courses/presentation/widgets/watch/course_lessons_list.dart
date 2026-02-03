@@ -47,6 +47,7 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
         }
         if (state is GetChaptersByCourseIdSuccess) {
           return ChapterTileItem(
+            courseId: widget.courseId,
             chapters: state.chapters,
             completedLessonsIds: widget.completedLessonsIds,
           ).withHorizontalPadding(10);
@@ -87,6 +88,7 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
     return const Skeletonizer(
       enabled: true,
       child: ChapterTileItem(
+        courseId: "",
         chapters: [ChapterModel(id: '1', title: 'Chapter 1', lessons: [])],
         completedLessonsIds: {},
       ),

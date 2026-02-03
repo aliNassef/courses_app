@@ -27,16 +27,29 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
     String courseId,
     int lessonNumber,
   ) async {
-    emit(GetLessonsByCourseIdAndLessonNumberLoading());
+    emit(GetSpecificLessonLoading());
     final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonNumber(
       courseId,
       lessonNumber,
     );
     lessonsOrFailure.fold(
-      (failure) =>
-          emit(GetLessonByCourseIdAndLessonNumberError(failure: failure)),
-      (lesson) =>
-          emit(GetLessonByCourseIdAndLessonNumberSuccess(lesson: lesson)),
+      (failure) => emit(GetSpecificLessonError(failure: failure)),
+      (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
+    );
+  }
+
+  void getLessonsByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    emit(GetSpecificLessonLoading());
+    final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonId(
+      courseId,
+      lessonId,
+    );
+    lessonsOrFailure.fold(
+      (failure) => emit(GetSpecificLessonError(failure: failure)),
+      (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
     );
   }
 }
