@@ -1,3 +1,5 @@
+import 'package:courses_app/features/courses/data/models/chapter_model.dart';
+
 import '../../../../core/errors/server_exception.dart';
 import '../models/lesson_model.dart';
 import 'package:dartz/dartz.dart';
@@ -85,5 +87,15 @@ class CoursesRepoImpl implements CoursesRepo {
     }
   }
 
- 
+  @override
+  Future<Either<Failure, List<ChapterModel>>> getChaptersByCourseId(
+    String courseId,
+  ) async {
+    try {
+      final chapters = await remoteDatasource.getChaptersByCourseId(courseId);
+      return Right(chapters);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

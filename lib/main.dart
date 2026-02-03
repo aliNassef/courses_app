@@ -14,7 +14,7 @@ void main() async {
       builder: (context) => EasyLocalization(
         supportedLocales: [
           const Locale(Constants.en),
-          const Locale(Constants.ar),
+        const Locale(Constants.ar),
         ],
         path: 'assets/translations',
         fallbackLocale: const Locale(Constants.en),

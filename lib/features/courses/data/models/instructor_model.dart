@@ -6,7 +6,7 @@ class InstructorModel extends Equatable {
   final String email;
   final String position;
   final String image;
-  final List<String> coursesProvided;
+  final Map<String, dynamic> coursesProvided;
 
   const InstructorModel({
     required this.id,
@@ -35,8 +35,8 @@ class InstructorModel extends Equatable {
       email: map['email'] as String,
       position: map['position'] as String,
       image: map['image'] as String,
-      coursesProvided: List<String>.from(
-        (map['coursesProvided'] as List<dynamic>),
+      coursesProvided: Map<String, dynamic>.from(
+        (map['coursesProvided'] as Map<String, dynamic>),
       ),
     );
   }

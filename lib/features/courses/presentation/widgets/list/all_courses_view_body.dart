@@ -7,7 +7,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../../core/navigation/navigation.dart';
 import '../../../../../core/widgets/custom_failure_widget.dart';
 import '../../../../home/presentation/widgets/explore_course_card_item.dart';
-
+ 
 class AllCoursesViewBody extends StatelessWidget {
   const AllCoursesViewBody({
     super.key,

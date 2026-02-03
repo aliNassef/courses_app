@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
+import '../models/chapter_model.dart';
 import '../models/course_model.dart';
 import '../models/instructor_model.dart';
 import '../models/lesson_model.dart';
@@ -16,6 +17,10 @@ abstract class CoursesRepo {
   );
 
   Future<Either<Failure, List<LessonModel>>> getLessonsByCourseId(
+    String courseId,
+  );
+
+  Future<Either<Failure, List<ChapterModel>>> getChaptersByCourseId(
     String courseId,
   );
 

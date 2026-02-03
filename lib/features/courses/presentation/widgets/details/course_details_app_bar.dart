@@ -1,4 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/core/navigation/app_navigation.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/extensions/padding_extension.dart';
 import '../../../../../core/utils/utils.dart';
@@ -10,10 +11,15 @@ import '../../../../../core/translations/locale_keys.g.dart';
 AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
   return AdaptiveAppBar(
     appBar: AppBar(
-      leading: const Icon(
-        Icons.arrow_back,
-        color: AppColors.black,
-      ).withHorizontalPadding(Constants.hp16),
+      leading: GestureDetector(
+        onTap: () {
+          context.pop();
+        },
+        child: const Icon(
+          Icons.arrow_back,
+          color: AppColors.black,
+        ).withHorizontalPadding(Constants.hp16),
+      ),
       centerTitle: true,
       title: Text(
         LocaleKeys.course_details.tr(),
@@ -29,10 +35,15 @@ AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
       ],
     ),
     cupertinoNavigationBar: CupertinoNavigationBar(
-      leading: const Icon(
-        CupertinoIcons.back,
-        color: AppColors.black,
-      ).withHorizontalPadding(Constants.hp16),
+      leading: GestureDetector(
+        onTap: () {
+          context.pop();
+        },
+        child: const Icon(
+          CupertinoIcons.back,
+          color: AppColors.black,
+        ).withHorizontalPadding(Constants.hp16),
+      ),
       middle: Text(
         LocaleKeys.course_details.tr(),
         style: context.appTheme.bold14.copyWith(

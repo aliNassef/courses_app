@@ -9,22 +9,22 @@ sealed class CourseWatchState extends Equatable {
 
 final class CourseWatchInitial extends CourseWatchState {}
 
-final class GetLessonsByCourseIdLoading extends CourseWatchState {}
+final class GetChaptersByCourseIdLoading extends CourseWatchState {}
 
-final class GetLessonsByCourseIdError extends CourseWatchState {
+final class GetChaptersByCourseIdError extends CourseWatchState {
   final Failure failure;
-  const GetLessonsByCourseIdError({required this.failure});
+  const GetChaptersByCourseIdError({required this.failure});
 
   @override
   List<Object> get props => [failure];
 }
 
-final class GetLessonsByCourseIdSuccess extends CourseWatchState {
-  final List<LessonModel> lessons;
-  const GetLessonsByCourseIdSuccess({required this.lessons});
+final class GetChaptersByCourseIdSuccess extends CourseWatchState {
+  final List<ChapterModel> chapters;
+  const GetChaptersByCourseIdSuccess({required this.chapters});
 
   @override
-  List<Object> get props => [lessons];
+  List<Object> get props => [chapters];
 }
 
 final class GetLessonsByCourseIdAndLessonNumberLoading

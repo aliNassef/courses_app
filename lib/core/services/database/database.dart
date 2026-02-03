@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../features/courses/data/models/chapter_model.dart';
+
 abstract class Database {
   Future<void> createUser({
     required String userId,
@@ -114,6 +116,7 @@ abstract class Database {
     required Map<String, dynamic> data,
   });
 
+  Future<List<ChapterModel>> getChaptersByCourseId(String courseId);
   Future<List<DocumentSnapshot>> getLessonsByCourseId(String courseId);
   Future<DocumentSnapshot<Object?>> getLessonByCourseIdAndLessonNumber(
     String courseId,

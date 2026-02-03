@@ -1,3 +1,4 @@
+import '../models/chapter_model.dart';
 import '../models/lesson_model.dart';
 
 import '../../../../core/di/di.dart';
@@ -10,11 +11,11 @@ abstract class CoursesRemoteDatasource {
   Future<InstructorModel> getInstructorInfo(String instructorId);
   Future<List<CourseModel>> getCoursesByCategory(String categoryId);
   Future<List<LessonModel>> getLessonsByCourseId(String courseId);
+  Future<List<ChapterModel>> getChaptersByCourseId(String courseId);
   Future<LessonModel> getLessonByCourseIdAndLessonNumber(
     String courseId,
     int lessonNumber,
   );
-
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -87,5 +88,7 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
     );
   }
 
-  
+  @override
+  Future<List<ChapterModel>> getChaptersByCourseId(String courseId) async =>
+      database.getChaptersByCourseId(courseId);
 }

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/errors/failure.dart';
+import '../../../data/models/chapter_model.dart';
 import '../../../data/models/lesson_model.dart';
 import '../../../data/repo/courses_repo.dart';
 
@@ -11,12 +12,14 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
   CourseWatchCubit(this.repo) : super(CourseWatchInitial());
   final CoursesRepo repo;
 
-  void getLessonsByCourseId(String courseId) async {
-    emit(GetLessonsByCourseIdLoading());
-    final lessonsOrFailure = await repo.getLessonsByCourseId(courseId);
-    lessonsOrFailure.fold(
-      (failure) => emit(GetLessonsByCourseIdError(failure: failure)),
-      (lessons) => emit(GetLessonsByCourseIdSuccess(lessons: lessons)),
+  void getChaptersByCourseId(String courseId) async {
+    emit(GetChaptersByCourseIdLoading());
+    final chaptersOrFailure = await repo.getChaptersByCourseId(courseId);
+    chaptersOrFailure.fold(
+      (failure) => emit(GetChaptersByCourseIdError(failure: failure)),
+      (chapters) {
+        emit(GetChaptersByCourseIdSuccess(chapters: chapters));
+      },
     );
   }
 

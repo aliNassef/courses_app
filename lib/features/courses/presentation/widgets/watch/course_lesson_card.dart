@@ -26,8 +26,11 @@ class CourseLessonCard extends StatelessWidget {
       child: AdaptiveListTile(
         title: Text(
           lesson.name,
-          style: context.appTheme.bold16.copyWith(
-            color: AppColors.black,
+          style: context.appTheme.medium16.copyWith(
+            color: isCompleted ? AppColors.grey : AppColors.black,
+            decoration: isCompleted ? TextDecoration.lineThrough : null,
+            decorationThickness: 2,
+            decorationColor: AppColors.grey,
           ),
         ),
         subtitle: Text(
@@ -47,10 +50,17 @@ class CourseLessonCard extends StatelessWidget {
             return CircleAvatar(
               backgroundColor: const Color(0xffe7f2fd),
               child: isCompleted || id == lesson.id
-                  ? const Icon(
-                      Icons.check,
-                      color: AppColors.primary,
-                      size: 18,
+                  ? const CircleAvatar(
+                      backgroundColor: Color(0xffdcfce7),
+                      child: CircleAvatar(
+                        radius: 8,
+                        backgroundColor: AppColors.green,
+                        child: Icon(
+                          Icons.check,
+                          color: AppColors.white,
+                          size: 12,
+                        ),
+                      ),
                     )
                   : const Icon(
                       Icons.lock,

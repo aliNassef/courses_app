@@ -6,7 +6,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/navigation/navigation.dart';
-import '../../../../core/di/di.dart';
 import '../../../../core/widgets/widgets.dart';
 import 'explore_course_card_item.dart';
 

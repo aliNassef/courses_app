@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../../features/courses/data/models/chapter_model.dart';
 import '../../errors/server_exception.dart';
 import 'database.dart';
 import '../../constants/firesstore_collections_strings.dart';
@@ -665,23 +666,6 @@ class FirestoreDBImpl implements Database {
     }
   }
 
-  // @override
-  // Future<List<DocumentSnapshot>> getCurrentLessonOfMyLearning(
-  //   String userId,
-  // ) async {
-  //   try {
-  //     final myLearningCourses = await _firestore
-  //         .collection(FirestoreCollectionsStrings.users)
-  //         .doc(userId)
-  //         .collection(FirestoreCollectionsStrings.myLearning)
-  //         .get();
-  //     // todo get last learning course lessons
-  //     return [];
-  //   } on Exception catch (e) {
-  //     throw ServerException(e.toString());
-  //   }
-  // }
-
   @override
   Future<Set<String>> getCompletedLessonsIds({
     required String userId,
@@ -776,6 +760,22 @@ class FirestoreDBImpl implements Database {
 
       return result;
     } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<ChapterModel>> getChaptersByCourseId(String courseId) async {
+    try {
+      final data = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .get();
+
+      final chapters = data.data()!['chapters'] as List;
+
+      return chapters.map((e) => ChapterModel.fromJson(e)).toList();
+    } catch (e) {
       throw ServerException(e.toString());
     }
   }

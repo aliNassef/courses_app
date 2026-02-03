@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
+import 'chapter_model.dart';
 import 'course_level_enum.dart';
 
 class CourseModel extends Equatable {
@@ -20,6 +21,7 @@ class CourseModel extends Equatable {
   final bool bestSeller;
   final int numOfRating;
   final CourseLevel level;
+  final List<ChapterModel>? chapters;
 
   const CourseModel({
     required this.level,
@@ -38,6 +40,7 @@ class CourseModel extends Equatable {
     required this.bestSeller,
     required this.imageUrl,
     required this.numOfRating,
+    this.chapters,
   });
 
   Map<String, dynamic> toMap() {
@@ -57,6 +60,7 @@ class CourseModel extends Equatable {
       'bestSeller': bestSeller,
       'imageUrl': imageUrl,
       'numOfRating': numOfRating,
+      'chapters': chapters?.map((e) => e.toMap()).toList(),
     };
   }
 
@@ -78,6 +82,9 @@ class CourseModel extends Equatable {
       createdAt: (json['createdAt'] as Timestamp).toDate(),
       bestSeller: json['bestSeller'],
       numOfRating: json['numOfRating'],
+      chapters: (json['chapters'] as List<dynamic>?)
+          ?.map((e) => ChapterModel.fromJson(e))
+          .toList(),
     );
   }
   static List<CourseModel> dummyData = [

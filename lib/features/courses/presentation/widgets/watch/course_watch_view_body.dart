@@ -13,32 +13,34 @@ class CourseWatchViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<CourseWatchCubit, CourseWatchState>(
-          buildWhen: (previous, current) =>
-              current is GetLessonsByCourseIdAndLessonNumberLoading ||
-              current is GetLessonByCourseIdAndLessonNumberSuccess ||
-              current is GetLessonByCourseIdAndLessonNumberError,
-          builder: (context, state) {
-            if (state is GetLessonByCourseIdAndLessonNumberError) {
-              return CustomFailureWidget(meesage: state.failure.errMessage);
-            }
-            if (state is GetLessonsByCourseIdAndLessonNumberLoading) {
-              return const CourseWatchLoadingSkeleton();
-            }
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          BlocBuilder<CourseWatchCubit, CourseWatchState>(
+            buildWhen: (previous, current) =>
+                current is GetLessonsByCourseIdAndLessonNumberLoading ||
+                current is GetLessonByCourseIdAndLessonNumberSuccess ||
+                current is GetLessonByCourseIdAndLessonNumberError,
+            builder: (context, state) {
+              if (state is GetLessonByCourseIdAndLessonNumberError) {
+                return CustomFailureWidget(meesage: state.failure.errMessage);
+              }
+              if (state is GetLessonsByCourseIdAndLessonNumberLoading) {
+                return const CourseWatchLoadingSkeleton();
+              }
 
-            if (state is GetLessonByCourseIdAndLessonNumberSuccess) {
-              return CourseVideoAndMetaData(
-                lesson: state.lesson,
-                courseId: courseId,
-              );
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-        CourseLessonsListBlocBuilder(courseId: courseId),
-      ],
+              if (state is GetLessonByCourseIdAndLessonNumberSuccess) {
+                return CourseVideoAndMetaData(
+                  lesson: state.lesson,
+                  courseId: courseId,
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+          CourseLessonsListBlocBuilder(courseId: courseId),
+        ],
+      ),
     );
   }
 }

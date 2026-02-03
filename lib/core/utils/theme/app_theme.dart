@@ -84,7 +84,7 @@ class AppTheme {
       backgroundColor: Colors.transparent,
       scrolledUnderElevation: 0,
       elevation: 0,
-      leadingWidth: 0,
+      leadingWidth: 42,
     ),
 
     iconTheme: const IconThemeData(color: AppColors.white),
