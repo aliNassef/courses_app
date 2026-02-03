@@ -5,8 +5,13 @@ import '../../../../../core/utils/utils.dart';
 import '../../../data/models/chapter_model.dart';
 
 class ChapterTileItem extends StatefulWidget {
-  const ChapterTileItem({super.key, required this.chapters});
+  const ChapterTileItem({
+    super.key,
+    required this.chapters,
+    required this.completedLessonsIds,
+  });
   final List<ChapterModel> chapters;
+  final Set<String> completedLessonsIds;
   @override
   State<ChapterTileItem> createState() => _ChapterTileItemState();
 }
@@ -64,9 +69,14 @@ class _ChapterTileItemState extends State<ChapterTileItem> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: entry.value.lessons.map((lesson) {
-                      return CourseLessonCard(
-                        lesson: lesson,
-                        isCompleted: true,
+                      return GestureDetector(
+                        onTap: () {},
+                        child: CourseLessonCard(
+                          lesson: lesson,
+                          isCompleted: widget.completedLessonsIds.contains(
+                            lesson.id,
+                          ),
+                        ),
                       );
                     }).toList(),
                   ),

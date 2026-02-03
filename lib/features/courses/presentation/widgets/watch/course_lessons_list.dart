@@ -5,6 +5,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/di/di.dart';
 import '../../../../../core/widgets/custom_failure_widget.dart';
+import '../../../data/models/chapter_model.dart';
 import '../../view_model/course_watch_cubit/course_watch_cubit.dart';
 import 'chapter_tile_item.dart';
 
@@ -47,6 +48,7 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
         if (state is GetChaptersByCourseIdSuccess) {
           return ChapterTileItem(
             chapters: state.chapters,
+            completedLessonsIds: widget.completedLessonsIds,
           ).withHorizontalPadding(10);
           // return ListView.separated(
           //   padding: EdgeInsets.symmetric(
@@ -85,7 +87,8 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
     return const Skeletonizer(
       enabled: true,
       child: ChapterTileItem(
-        chapters: [],
+        chapters: [ChapterModel(id: '1', title: 'Chapter 1', lessons: [])],
+        completedLessonsIds: {},
       ),
     );
   }
