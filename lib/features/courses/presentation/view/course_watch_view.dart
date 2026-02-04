@@ -22,12 +22,8 @@ class CourseWatchView extends StatelessWidget {
         child: MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) =>
-                  injector<CourseWatchCubit>()
-                    ..getLessonsByCourseIdAndLessonNumber(
-                      courseArgs.courseId,
-                      courseArgs.lessonNumber,
-                    ),
+              create: (context) => injector<CourseWatchCubit>()
+                ..init(courseArgs.courseId, context.read<AuthCubit>().userId),
             ),
             BlocProvider(
               create: (context) =>

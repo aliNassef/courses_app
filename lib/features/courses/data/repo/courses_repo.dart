@@ -5,6 +5,7 @@ import '../models/chapter_model.dart';
 import '../models/course_model.dart';
 import '../models/instructor_model.dart';
 import '../models/lesson_model.dart';
+import '../models/review_model.dart';
 
 abstract class CoursesRepo {
   Future<Either<Failure, List<CourseModel>>> getCourses();
@@ -31,5 +32,15 @@ abstract class CoursesRepo {
   Future<Either<Failure, LessonModel>> getLessonsByCourseIdAndLessonId(
     String courseId,
     String lessonId,
+  );
+
+  Future<Either<Failure, void>> addReview(
+    String courseId,
+    ReviewModel reviewModel,
+  );
+
+  Future<Either<Failure, LessonModel>> getLastLessonWatched(
+    String courseId,
+    String userId,
   );
 }

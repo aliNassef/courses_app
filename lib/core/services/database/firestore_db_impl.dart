@@ -803,4 +803,122 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getLastWatchedLesson(
+    String courseId,
+    String userId,
+  ) async {
+    try {
+      final myLearningSnapshot = await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .doc(courseId)
+          .get();
+
+      final lastLessonId = myLearningSnapshot.data()?['lastLessonId'];
+
+      Map<String, dynamic>? lesson;
+
+      if (lastLessonId == null) {
+        lesson = await _getFirstLessonInCourse(courseId);
+      } else {
+        lesson = await _getNextLessonByCourseIdAndLessonId(
+          courseId,
+          lastLessonId,
+        );
+      }
+
+      if (lesson == null) {
+        throw ServerException('No lessons found in course');
+      }
+
+      return lesson;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  Future<Map<String, dynamic>?> _getFirstLessonInCourse(
+    String courseId,
+  ) async {
+    final course = await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .doc(courseId)
+        .get();
+
+    final chapters =
+        course.data()![FirestoreCollectionsStrings.chapters] as List;
+
+    for (final chapter in chapters) {
+      final lessons = List<Map<String, dynamic>>.from(chapter['lessons']);
+
+      if (lessons.isNotEmpty) {
+        return lessons.first;
+      }
+    }
+
+    return null;
+  }
+
+  Future<Map<String, dynamic>?> _getNextLessonByCourseIdAndLessonId(
+    String courseId,
+    String lessonId,
+  ) async {
+    try {
+      final course = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .get();
+
+      final chapters =
+          course.data()![FirestoreCollectionsStrings.chapters] as List;
+
+      Map<String, dynamic>? firstLessonInCourse;
+
+      for (
+        int chapterIndex = 0;
+        chapterIndex < chapters.length;
+        chapterIndex++
+      ) {
+        final lessons = List<Map<String, dynamic>>.from(
+          chapters[chapterIndex]['lessons'],
+        );
+
+        if (firstLessonInCourse == null && lessons.isNotEmpty) {
+          firstLessonInCourse = lessons.first;
+        }
+
+        final lessonIndex = lessons.indexWhere(
+          (lesson) => lesson['id'] == lessonId,
+        );
+
+        if (lessonIndex == -1) continue;
+
+        if (lessonIndex + 1 < lessons.length) {
+          return lessons[lessonIndex + 1];
+        }
+        for (
+          int nextChapterIndex = chapterIndex + 1;
+          nextChapterIndex < chapters.length;
+          nextChapterIndex++
+        ) {
+          final nextLessons = List<Map<String, dynamic>>.from(
+            chapters[nextChapterIndex]['lessons'],
+          );
+
+          if (nextLessons.isNotEmpty) {
+            return nextLessons.first;
+          }
+        }
+
+        return firstLessonInCourse;
+      }
+
+      return firstLessonInCourse;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

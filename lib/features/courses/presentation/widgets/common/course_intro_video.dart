@@ -17,7 +17,11 @@ class CourseIntroVideo extends StatelessWidget {
             preferredQualities: [OmniVideoQuality.high720],
           ),
         ),
-        callbacks: const VideoPlayerCallbacks(),
+        callbacks: VideoPlayerCallbacks(
+          onFinished: (){
+            // todo: mark video as complete and fetch next lesson.
+          }
+        ),
       ),
     );
   }

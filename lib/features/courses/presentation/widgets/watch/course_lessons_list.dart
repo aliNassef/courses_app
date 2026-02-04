@@ -51,33 +51,6 @@ class _CourseLessonsListState extends State<CourseLessonsList> {
             chapters: state.chapters,
             completedLessonsIds: widget.completedLessonsIds,
           ).withHorizontalPadding(10);
-          // return ListView.separated(
-          //   padding: EdgeInsets.symmetric(
-          //     horizontal: Constants.hp16,
-          //   ),
-          //   itemBuilder: (context, index) {
-          //     return GestureDetector(
-          //       onTap: () {
-          //         context
-          //             .read<CourseWatchCubit>()
-          //             .getLessonsByCourseIdAndLessonNumber(
-          //               widget.courseId,
-          //               state.lessons[index].order,
-          //             );
-          //       },
-          //       child: CourseLessonCard(
-          //         isCompleted: widget.completedLessonsIds.contains(
-          //           state.lessons[index].id,
-          //         ),
-          //         lesson: state.lessons[index],
-          //       ),
-          //     );
-          //   },
-          //   separatorBuilder: (context, index) {
-          //     return const Gap(16);
-          //   },
-          //   itemCount: state.lessons.length,
-          // );
         }
         return const SizedBox.shrink();
       },

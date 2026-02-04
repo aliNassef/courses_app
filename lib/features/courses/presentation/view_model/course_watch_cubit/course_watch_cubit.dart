@@ -11,6 +11,14 @@ part 'course_watch_state.dart';
 class CourseWatchCubit extends Cubit<CourseWatchState> {
   CourseWatchCubit(this.repo) : super(CourseWatchInitial());
   final CoursesRepo repo;
+  void init(String courseId, String userId) async {
+    emit(GetSpecificLessonLoading());
+    final lessonsOrFailure = await repo.getLastLessonWatched(courseId, userId);
+    lessonsOrFailure.fold(
+      (failure) => emit(GetSpecificLessonError(failure: failure)),
+      (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
+    );
+  }
 
   void getChaptersByCourseId(String courseId) async {
     emit(GetChaptersByCourseIdLoading());
@@ -23,20 +31,20 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
     );
   }
 
-  Future<void> getLessonsByCourseIdAndLessonNumber(
-    String courseId,
-    int lessonNumber,
-  ) async {
-    emit(GetSpecificLessonLoading());
-    final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonNumber(
-      courseId,
-      lessonNumber,
-    );
-    lessonsOrFailure.fold(
-      (failure) => emit(GetSpecificLessonError(failure: failure)),
-      (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
-    );
-  }
+  // Future<void> getLessonsByCourseIdAndLessonNumber(
+  //   String courseId,
+  //   int lessonNumber,
+  // ) async {
+  //   emit(GetSpecificLessonLoading());
+  //   final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonNumber(
+  //     courseId,
+  //     lessonNumber,
+  //   );
+  //   lessonsOrFailure.fold(
+  //     (failure) => emit(GetSpecificLessonError(failure: failure)),
+  //     (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
+  //   );
+  // }
 
   void getLessonsByCourseIdAndLessonId(
     String courseId,

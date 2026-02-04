@@ -155,4 +155,8 @@ abstract class Database {
   Future<List<DocumentSnapshot>> getLastCompletedLessonDetails(
     String userId,
   );
+  Future<Map<String, dynamic>> getLastWatchedLesson(
+    String courseId,
+    String userId,
+  );
 }

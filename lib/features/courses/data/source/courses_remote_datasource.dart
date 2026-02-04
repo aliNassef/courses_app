@@ -4,6 +4,7 @@ import '../models/lesson_model.dart';
 import '../../../../core/di/di.dart';
 import '../models/course_model.dart';
 import '../models/instructor_model.dart';
+import '../models/review_model.dart';
 
 abstract class CoursesRemoteDatasource {
   Future<List<CourseModel>> getCourses();
@@ -20,6 +21,13 @@ abstract class CoursesRemoteDatasource {
     String courseId,
     String lessonId,
   );
+
+  Future<LessonModel> getLastWatchedLesson(
+    String courseId,
+    String userId,
+  );
+
+  Future<void> addReview(String courseId, ReviewModel reviewModel);
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -108,5 +116,22 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
     return LessonModel.fromJson(
       lesson,
     );
+  }
+
+  @override
+  Future<void> addReview(String courseId, ReviewModel reviewModel) async =>
+      database.addReview(
+        courseId: courseId,
+        reviewId: reviewModel.userId,
+        data: reviewModel.toMap(),
+      );
+
+  @override
+  Future<LessonModel> getLastWatchedLesson(
+    String courseId,
+    String userId,
+  ) async {
+    final lesson = await database.getLastWatchedLesson(courseId, userId);
+    return LessonModel.fromJson(lesson);
   }
 }

@@ -113,7 +113,7 @@ class CourseVideoAndMetaData extends StatelessWidget {
                           enabled: true,
                           child: CustomSwitch(
                             value: true,
-                            onChanged: (value) {},
+                            onChanged: (_) {},
                           ),
                         );
                       }

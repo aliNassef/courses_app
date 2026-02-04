@@ -1,4 +1,5 @@
 import 'package:courses_app/features/courses/data/models/chapter_model.dart';
+import 'package:courses_app/features/courses/data/models/review_model.dart';
 
 import '../../../../core/errors/server_exception.dart';
 import '../models/lesson_model.dart';
@@ -108,6 +109,35 @@ class CoursesRepoImpl implements CoursesRepo {
       final lesson = await remoteDatasource.getLessonByCourseIdAndLessonId(
         courseId,
         lessonId,
+      );
+      return Right(lesson);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addReview(
+    String courseId,
+    ReviewModel reviewModel,
+  ) async {
+    try {
+      await remoteDatasource.addReview(courseId, reviewModel);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LessonModel>> getLastLessonWatched(
+    String courseId,
+    String userId,
+  ) async {
+    try {
+      final lesson = await remoteDatasource.getLastWatchedLesson(
+        courseId,
+        userId,
       );
       return Right(lesson);
     } on ServerException catch (e) {
