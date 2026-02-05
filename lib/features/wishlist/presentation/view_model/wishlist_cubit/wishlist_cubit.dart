@@ -13,18 +13,25 @@ class WishlistCubit extends Cubit<WishlistState> {
   final WishlistRepo _wishlistRepo;
 
   void addToWishlist(String userId, WishlistModel wishlist) async {
-    emit(
-      AddCourseToWishlistSuccess(
-        wishlist.courseId,
-      ),
-    );
-    final addedOrFailed = await _wishlistRepo.addCourseToWishlist(
-      userId,
-      wishlist,
-    );
+    final previousIds = state is AddOrRemoveCourseFromWishlistSuccess
+        ? Set<String>.from((state as AddOrRemoveCourseFromWishlistSuccess).ids)
+        : <String>{};
 
-    addedOrFailed.fold(
-      (failure) => emit(AddCourseToWishlistError(failure)),
+    final updatedIds = Set<String>.from(previousIds)..add(wishlist.courseId);
+
+    emit(AddOrRemoveCourseFromWishlistSuccess(updatedIds));
+
+    final addCourseToWishlistOrfailure = await _wishlistRepo
+        .addCourseToWishlist(
+          userId,
+          wishlist,
+        );
+
+    addCourseToWishlistOrfailure.fold(
+      (failure) {
+        emit(AddOrRemoveCourseFromWishlistSuccess(previousIds));
+        emit(AddCourseToWishlistError(failure));
+      },
       (_) {},
     );
   }
@@ -37,6 +44,30 @@ class WishlistCubit extends Cubit<WishlistState> {
     wishlistCoursesOrFailure.fold(
       (failure) => emit(WishlistError(failure)),
       (courses) => emit(WishlistLoaded(courses)),
+    );
+  }
+
+  void removeFromWishlist(String userId, String courseId) async {
+    final previousIds = state is AddOrRemoveCourseFromWishlistSuccess
+        ? Set<String>.from((state as AddOrRemoveCourseFromWishlistSuccess).ids)
+        : <String>{};
+
+    final updatedIds = Set<String>.from(previousIds)..remove(courseId);
+
+    emit(AddOrRemoveCourseFromWishlistSuccess(updatedIds));
+
+    final removeCourseFromWishlistOrfailure = await _wishlistRepo
+        .removeCourseFromWishlist(
+          userId,
+          courseId,
+        );
+
+    removeCourseFromWishlistOrfailure.fold(
+      (failure) {
+        emit(AddOrRemoveCourseFromWishlistSuccess(previousIds));
+        emit(AddCourseToWishlistError(failure));
+      },
+      (_) {},
     );
   }
 }

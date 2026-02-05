@@ -39,29 +39,32 @@ class FavoruiteButtonAndBestSeller extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            var userId = context.read<AuthCubit>().userId;
-            var wishmodel = WishlistModel(
-              courseId: widget.course.id,
-              createdAt: DateTime.now(),
-            );
-            context.read<WishlistCubit>().addToWishlist(userId, wishmodel);
+            _addOrRemoveFromWishlist(context);
           },
           child: BlocBuilder<WishlistCubit, WishlistState>(
             buildWhen: (previous, current) {
-              return current is AddCourseToWishlistSuccess &&
-                      current.id == widget.course.id ||
+              return current is AddOrRemoveCourseFromWishlistSuccess ||
                   current is AddCourseToWishlistError;
             },
             builder: (context, state) {
-              if (state is AddCourseToWishlistSuccess &&
-                  state.id == widget.course.id) {
-                return const CircleAvatar(
-                  backgroundColor: AppColors.backgroundColor,
-                  child: Icon(
-                    Icons.favorite,
-                    color: AppColors.primary,
-                  ),
-                );
+              if (state is AddOrRemoveCourseFromWishlistSuccess) {
+                if (state.ids.contains(widget.course.id)) {
+                  return const CircleAvatar(
+                    backgroundColor: AppColors.backgroundColor,
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.primary,
+                    ),
+                  );
+                } else {
+                  return const CircleAvatar(
+                    backgroundColor: AppColors.primary,
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.white,
+                    ),
+                  );
+                }
               } else {
                 return const CircleAvatar(
                   backgroundColor: AppColors.primary,
@@ -76,5 +79,23 @@ class FavoruiteButtonAndBestSeller extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _addOrRemoveFromWishlist(BuildContext context) {
+    var userId = context.read<AuthCubit>().userId;
+    var wishmodel = WishlistModel(
+      courseId: widget.course.id,
+      createdAt: DateTime.now(),
+    );
+    var state = context.read<WishlistCubit>().state;
+    if (state is AddOrRemoveCourseFromWishlistSuccess &&
+        state.ids.contains(widget.course.id)) {
+      context.read<WishlistCubit>().removeFromWishlist(
+        userId,
+        widget.course.id,
+      );
+    } else {
+      context.read<WishlistCubit>().addToWishlist(userId, wishmodel);
+    }
   }
 }

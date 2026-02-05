@@ -9,7 +9,10 @@ abstract class WishlistRepo {
     String userId,
     WishlistModel wishlist,
   );
-
+  Future<Either<Failure, void>> removeCourseFromWishlist(
+    String userId,
+    String courseId,
+  );
   Future<Either<Failure, List<CourseModel>>> getWishlistCourses(
     String userId,
   );

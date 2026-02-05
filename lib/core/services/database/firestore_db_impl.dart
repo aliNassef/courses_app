@@ -921,4 +921,20 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
+
+ 
+  
+  @override
+  Future<void> removeFromWishlist({required String userId, required String courseId}) async {
+      try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.wishlist)
+          .doc(courseId)
+          .delete();
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

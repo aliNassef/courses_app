@@ -27,12 +27,12 @@ final class WishlistError extends WishlistState {
   List<Object> get props => [failure];
 }
 
-final class AddCourseToWishlistSuccess extends WishlistState {
-  final String id;
-  const AddCourseToWishlistSuccess(this.id);
+final class AddOrRemoveCourseFromWishlistSuccess extends WishlistState {
+  final Set<String> ids;
+  const AddOrRemoveCourseFromWishlistSuccess(this.ids);
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [ids];
 }
 
 final class AddCourseToWishlistError extends WishlistState {

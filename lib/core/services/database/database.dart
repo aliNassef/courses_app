@@ -159,4 +159,9 @@ abstract class Database {
     String courseId,
     String userId,
   );
+
+  Future<void> removeFromWishlist({
+    required String userId,
+    required String courseId,
+  });
 }

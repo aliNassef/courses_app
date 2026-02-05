@@ -23,6 +23,3 @@ void main() async {
     ),
   );
 }
-
-// todo: stop on the last lesson in each course.
-// todo: upgrade last lesson after watch the lesson.

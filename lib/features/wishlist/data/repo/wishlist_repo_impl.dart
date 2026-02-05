@@ -40,4 +40,17 @@ class WishlistRepoImpl implements WishlistRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> removeCourseFromWishlist(
+    String userId,
+    String courseId,
+  ) async {
+    try {
+      await remoteDatasource.removeCourseFromWishlist(userId, courseId);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

@@ -7,6 +7,7 @@ import '../models/wishlist_model.dart';
 abstract class WishlistRemoteDatasource {
   Future<void> addCourseToWishlist(String userId, WishlistModel wishlist);
   Future<List<CourseModel>> getWishlistCourses(String userId);
+  Future<void> removeCourseFromWishlist(String userId, String courseId);
 }
 
 class WishlistRemoteDatasoureImpl implements WishlistRemoteDatasource {
@@ -33,4 +34,13 @@ class WishlistRemoteDatasoureImpl implements WishlistRemoteDatasource {
       },
     ).toList();
   }
+
+  @override
+  Future<void> removeCourseFromWishlist(
+    String userId,
+    String courseId,
+  ) async => _db.removeFromWishlist(
+    userId: userId,
+    courseId: courseId,
+  );
 }
