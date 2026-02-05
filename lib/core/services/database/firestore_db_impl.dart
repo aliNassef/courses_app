@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../features/courses/data/models/chapter_model.dart';
+import '../../../features/courses/data/models/discuss_model.dart';
+import '../../../features/courses/data/models/reply_model.dart';
 import '../../errors/server_exception.dart';
 import 'database.dart';
 import '../../constants/firesstore_collections_strings.dart';
@@ -262,27 +264,6 @@ class FirestoreDBImpl implements Database {
           .doc(lessonId)
           .collection(FirestoreCollectionsStrings.notes)
           .doc(noteId)
-          .set(data);
-    } on Exception catch (e) {
-      throw ServerException(e.toString());
-    }
-  }
-
-  @override
-  Future<void> addDiscussion({
-    required String courseId,
-    required String lessonId,
-    required String messageId,
-    required Map<String, dynamic> data,
-  }) async {
-    try {
-      await _firestore
-          .collection(FirestoreCollectionsStrings.courses)
-          .doc(courseId)
-          .collection(FirestoreCollectionsStrings.lessons)
-          .doc(lessonId)
-          .collection(FirestoreCollectionsStrings.discuss)
-          .doc(messageId)
           .set(data);
     } on Exception catch (e) {
       throw ServerException(e.toString());
@@ -922,11 +903,12 @@ class FirestoreDBImpl implements Database {
     }
   }
 
- 
-  
   @override
-  Future<void> removeFromWishlist({required String userId, required String courseId}) async {
-      try {
+  Future<void> removeFromWishlist({
+    required String userId,
+    required String courseId,
+  }) async {
+    try {
       await _firestore
           .collection(FirestoreCollectionsStrings.users)
           .doc(userId)
@@ -936,5 +918,73 @@ class FirestoreDBImpl implements Database {
     } catch (e) {
       throw ServerException(e.toString());
     }
+  }
+
+  @override
+  Future<void> addDiscussionToCourse({
+    required String courseId,
+    required DiscussionModel discussion,
+  }) async {
+    try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.discussions)
+          .add(discussion.toMap());
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> addReplyToDiscussion({
+    required String courseId,
+    required String discussionId,
+    required ReplyModel reply,
+  }) async {
+    try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.discussions)
+          .doc(discussionId)
+          .collection(FirestoreCollectionsStrings.replies)
+          .add(reply.toMap());
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<DiscussionModel>> getDiscussions(String courseId) async {
+    final discussionsSnap = await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .doc(courseId)
+        .collection(FirestoreCollectionsStrings.discussions)
+        .orderBy('createdAt', descending: true)
+        .get();
+
+    return discussionsSnap.docs
+        .map((d) => DiscussionModel.fromMap(d.id, d.data()))
+        .toList();
+  }
+
+  @override
+  Future<List<ReplyModel>> getReplies(
+    String courseId,
+    String discussionId,
+  ) async {
+    final repliesSnap = await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .doc(courseId)
+        .collection(FirestoreCollectionsStrings.discussions)
+        .doc(discussionId)
+        .collection(FirestoreCollectionsStrings.replies)
+        .orderBy('createdAt')
+        .get();
+
+    return repliesSnap.docs
+        .map((r) => ReplyModel.fromMap(r.id, r.data()))
+        .toList();
   }
 }

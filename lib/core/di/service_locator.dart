@@ -1,3 +1,4 @@
+import '../../features/courses/presentation/view_model/discuss_cubit/discuss_cubit.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -78,6 +79,9 @@ void _setupCoursesFeature() {
   );
   injector.registerFactory<CourseWatchCubit>(
     () => CourseWatchCubit(injector<CoursesRepo>()),
+  );
+  injector.registerFactory<DiscussCubit>(
+    () => DiscussCubit(injector<CoursesRepo>()),
   );
   injector.registerFactory<CoursesCategoryCubit>(
     () => CoursesCategoryCubit(injector<CoursesRepo>()),

@@ -1,15 +1,37 @@
+import 'package:courses_app/features/courses/presentation/widgets/watch/discuss_section.dart';
+
 import '../../../../../core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/di.dart';
+import '../../sections_enum.dart';
 import '../../view_model/course_watch_cubit/course_watch_cubit.dart';
 import 'course_lessons_list_bloc_builder.dart';
 import 'course_video_and_meta_data.dart';
 import 'course_watch_loading_skeleton.dart';
 
-class CourseWatchViewBody extends StatelessWidget {
+class CourseWatchViewBody extends StatefulWidget {
   const CourseWatchViewBody({super.key, required this.courseId});
   final String courseId;
+
+  @override
+  State<CourseWatchViewBody> createState() => _CourseWatchViewBodyState();
+}
+
+class _CourseWatchViewBodyState extends State<CourseWatchViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  Future<void> _init() async {
+    final cubit = context.read<CourseWatchCubit>();
+    final userId = context.read<AuthCubit>().userId;
+
+    await cubit.init(widget.courseId, userId);
+    cubit.onTapSections(Sections.lessons);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +54,28 @@ class CourseWatchViewBody extends StatelessWidget {
               if (state is GetSpecificLessonSuccess) {
                 return CourseVideoAndMetaData(
                   lesson: state.lesson,
-                  courseId: courseId,
+                  courseId: widget.courseId,
                 );
               }
               return const SizedBox.shrink();
             },
           ),
-          CourseLessonsListBlocBuilder(courseId: courseId),
+          BlocBuilder<CourseWatchCubit, CourseWatchState>(
+            buildWhen: (previous, current) =>
+                current is ShowLessons ||
+                current is ShowDiscuss ||
+                current is ShowNotes,
+            builder: (context, state) {
+              return switch (state) {
+                ShowLessons() => CourseLessonsListBlocBuilder(
+                  courseId: widget.courseId,
+                ),
+                ShowDiscuss() => DiscussSection(courseId: widget.courseId),
+                ShowNotes() => const SizedBox.shrink(),
+                _ => const SizedBox.shrink(),
+              };
+            },
+          ),
         ],
       ),
     );

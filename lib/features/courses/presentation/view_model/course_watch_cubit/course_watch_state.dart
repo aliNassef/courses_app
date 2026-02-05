@@ -44,3 +44,8 @@ final class GetSpecificLessonError extends CourseWatchState {
   @override
   List<Object> get props => [failure];
 }
+
+
+final class ShowLessons extends CourseWatchState {}
+final class ShowDiscuss extends CourseWatchState {}
+final class ShowNotes extends CourseWatchState {}

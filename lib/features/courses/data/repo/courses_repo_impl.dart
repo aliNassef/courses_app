@@ -1,7 +1,9 @@
 import 'package:courses_app/features/courses/data/models/chapter_model.dart';
+import 'package:courses_app/features/courses/data/models/reply_model.dart';
 import 'package:courses_app/features/courses/data/models/review_model.dart';
 
 import '../../../../core/errors/server_exception.dart';
+import '../models/discuss_model.dart';
 import '../models/lesson_model.dart';
 import 'package:dartz/dartz.dart';
 
@@ -140,6 +142,65 @@ class CoursesRepoImpl implements CoursesRepo {
         userId,
       );
       return Right(lesson);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addDiscussion(
+    String courseId,
+    DiscussionModel discussionModel,
+  ) async {
+    try {
+      await remoteDatasource.addDiscussions(
+        courseId,
+        discussionModel,
+      );
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addReplyToDiscussion({
+    required String courseId,
+    required String discussionId,
+    required ReplyModel reply,
+  }) async {
+    try {
+      await remoteDatasource.addReplyToDiscussion(
+        courseId: courseId,
+        discussionId: discussionId,
+        reply: reply,
+      );
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<DiscussionModel>>> getDiscussions(
+    String courseId,
+  ) async {
+    try {
+      final discussions = await remoteDatasource.getDiscussions(courseId);
+      return Right(discussions);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ReplyModel>>> getReplies(
+    String courseId,
+    String discussionId,
+  ) async {
+    try {
+      final replies = await remoteDatasource.getReplies(courseId, discussionId);
+      return Right(replies);
     } on ServerException catch (e) {
       return Left(Failure(errMessage: e.message));
     }

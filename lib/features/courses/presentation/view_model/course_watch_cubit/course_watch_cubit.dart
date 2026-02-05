@@ -5,13 +5,14 @@ import '../../../../../core/errors/failure.dart';
 import '../../../data/models/chapter_model.dart';
 import '../../../data/models/lesson_model.dart';
 import '../../../data/repo/courses_repo.dart';
+import '../../sections_enum.dart';
 
 part 'course_watch_state.dart';
 
 class CourseWatchCubit extends Cubit<CourseWatchState> {
   CourseWatchCubit(this.repo) : super(CourseWatchInitial());
   final CoursesRepo repo;
-  void init(String courseId, String userId) async {
+  Future<void> init(String courseId, String userId) async {
     emit(GetSpecificLessonLoading());
     final lessonsOrFailure = await repo.getLastLessonWatched(courseId, userId);
     lessonsOrFailure.fold(
@@ -31,21 +32,6 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
     );
   }
 
-  // Future<void> getLessonsByCourseIdAndLessonNumber(
-  //   String courseId,
-  //   int lessonNumber,
-  // ) async {
-  //   emit(GetSpecificLessonLoading());
-  //   final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonNumber(
-  //     courseId,
-  //     lessonNumber,
-  //   );
-  //   lessonsOrFailure.fold(
-  //     (failure) => emit(GetSpecificLessonError(failure: failure)),
-  //     (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
-  //   );
-  // }
-
   void getLessonsByCourseIdAndLessonId(
     String courseId,
     String lessonId,
@@ -59,5 +45,17 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
       (failure) => emit(GetSpecificLessonError(failure: failure)),
       (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
     );
+  }
+
+  Future<void> onTapSections(Sections section) async {
+    if (section == Sections.lessons) {
+      emit(ShowLessons());
+    } else if (section == Sections.discuss) {
+      emit(ShowDiscuss());
+    } else if (section == Sections.notes) {
+      emit(ShowNotes());
+    } else {
+      emit(ShowLessons());
+    }
   }
 }

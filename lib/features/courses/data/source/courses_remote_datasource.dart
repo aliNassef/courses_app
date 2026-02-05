@@ -1,4 +1,7 @@
+import 'package:courses_app/features/courses/data/models/reply_model.dart';
+
 import '../models/chapter_model.dart';
+import '../models/discuss_model.dart';
 import '../models/lesson_model.dart';
 
 import '../../../../core/di/di.dart';
@@ -28,6 +31,19 @@ abstract class CoursesRemoteDatasource {
   );
 
   Future<void> addReview(String courseId, ReviewModel reviewModel);
+  Future<void> addDiscussions(String courseId, DiscussionModel discussionModel);
+  Future<void> addReplyToDiscussion({
+    required String courseId,
+    required String discussionId,
+    required ReplyModel reply,
+  });
+
+  Future<List<ReplyModel>> getReplies(
+    String courseId,
+    String discussionId,
+  );
+
+  Future<List<DiscussionModel>> getDiscussions(String courseId);
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -134,4 +150,26 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
     final lesson = await database.getLastWatchedLesson(courseId, userId);
     return LessonModel.fromJson(lesson);
   }
+
+  @override
+  Future<void> addDiscussions(
+    String courseId,
+    DiscussionModel discussionModel,
+  ) async => database.addDiscussionToCourse(
+    courseId: courseId,
+    discussion: discussionModel,
+  );
+  
+  @override
+  Future<void> addReplyToDiscussion({required String courseId, required String discussionId, required ReplyModel reply}) async => database.addReplyToDiscussion(
+    courseId: courseId,
+    discussionId: discussionId,
+    reply: reply,
+  );
+  
+  @override
+  Future<List<DiscussionModel>> getDiscussions(String courseId) async => database.getDiscussions(courseId);
+  
+  @override
+  Future<List<ReplyModel>> getReplies(String courseId, String discussionId) async => database.getReplies(courseId, discussionId);
 }

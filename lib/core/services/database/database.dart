@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courses_app/features/courses/data/models/discuss_model.dart';
 
 import '../../../features/courses/data/models/chapter_model.dart';
+import '../../../features/courses/data/models/reply_model.dart';
 
 abstract class Database {
   Future<void> createUser({
@@ -40,13 +42,6 @@ abstract class Database {
     required String courseId,
     required String lessonId,
     required String noteId,
-    required Map<String, dynamic> data,
-  });
-
-  Future<void> addDiscussion({
-    required String courseId,
-    required String lessonId,
-    required String messageId,
     required Map<String, dynamic> data,
   });
 
@@ -164,4 +159,21 @@ abstract class Database {
     required String userId,
     required String courseId,
   });
+  Future<void> addDiscussionToCourse({
+    required String courseId,
+    required DiscussionModel discussion,
+  });
+
+  Future<void> addReplyToDiscussion({
+    required String courseId,
+    required String discussionId,
+    required ReplyModel reply,
+  });
+
+  Future<List<ReplyModel>> getReplies(
+    String courseId,
+    String discussionId,
+  );
+
+  Future<List<DiscussionModel>> getDiscussions(String courseId);
 }
