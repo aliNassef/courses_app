@@ -176,4 +176,9 @@ abstract class Database {
   );
 
   Future<List<DiscussionModel>> getDiscussions(String courseId);
+  Future<void> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  );
 }

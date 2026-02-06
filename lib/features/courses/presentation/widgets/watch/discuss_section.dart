@@ -99,7 +99,10 @@ class _DiscussSectionState extends State<DiscussSection> {
                 separatorBuilder: (context, index) => const Gap(16),
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return Message(discussion: state.discussions[index]);
+                  return Message(
+                    discussion: state.discussions[index],
+                    courseId: widget.courseId,
+                  );
                 },
               ),
               GetDiscussionsLoading() => Skeletonizer(
@@ -111,6 +114,7 @@ class _DiscussSectionState extends State<DiscussSection> {
                   separatorBuilder: (context, index) => const Gap(16),
                   itemBuilder: (context, index) {
                     return Message(
+                      courseId: '',
                       discussion: DiscussionModel(
                         id: 'id',
                         userId: '',

@@ -957,16 +957,20 @@ class FirestoreDBImpl implements Database {
 
   @override
   Future<List<DiscussionModel>> getDiscussions(String courseId) async {
-    final discussionsSnap = await _firestore
-        .collection(FirestoreCollectionsStrings.courses)
-        .doc(courseId)
-        .collection(FirestoreCollectionsStrings.discussions)
-        .orderBy('createdAt', descending: true)
-        .get();
+    try {
+      final discussionsSnap = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.discussions)
+          .orderBy('createdAt', descending: true)
+          .get();
 
-    return discussionsSnap.docs
-        .map((d) => DiscussionModel.fromMap(d.id, d.data()))
-        .toList();
+      return discussionsSnap.docs
+          .map((d) => DiscussionModel.fromMap(d.id, d.data()))
+          .toList();
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 
   @override
@@ -974,17 +978,61 @@ class FirestoreDBImpl implements Database {
     String courseId,
     String discussionId,
   ) async {
-    final repliesSnap = await _firestore
-        .collection(FirestoreCollectionsStrings.courses)
-        .doc(courseId)
-        .collection(FirestoreCollectionsStrings.discussions)
-        .doc(discussionId)
-        .collection(FirestoreCollectionsStrings.replies)
-        .orderBy('createdAt')
-        .get();
+    try {
+      final repliesSnap = await _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.discussions)
+          .doc(discussionId)
+          .collection(FirestoreCollectionsStrings.replies)
+          .orderBy('createdAt')
+          .get();
 
-    return repliesSnap.docs
-        .map((r) => ReplyModel.fromMap(r.id, r.data()))
-        .toList();
+      return repliesSnap.docs
+          .map((r) => ReplyModel.fromMap(r.id, r.data()))
+          .toList();
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  ) async {
+    try {
+      final discussionRef = _firestore
+          .collection(FirestoreCollectionsStrings.courses)
+          .doc(courseId)
+          .collection(FirestoreCollectionsStrings.discussions)
+          .doc(discussionId);
+
+      final likeRef = discussionRef.collection('likes').doc(userId);
+
+      await _firestore.runTransaction((tx) async {
+        final likeSnap = await tx.get(likeRef);
+
+        if (likeSnap.exists) {
+          // UNLIKE
+          tx.delete(likeRef);
+          tx.update(discussionRef, {
+            'likesCount': FieldValue.increment(-1),
+          });
+        } else {
+          // LIKE
+          tx.set(likeRef, {
+            'userId': userId,
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+          tx.update(discussionRef, {
+            'likesCount': FieldValue.increment(1),
+          });
+        }
+      });
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 }

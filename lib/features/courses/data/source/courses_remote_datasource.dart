@@ -44,6 +44,11 @@ abstract class CoursesRemoteDatasource {
   );
 
   Future<List<DiscussionModel>> getDiscussions(String courseId);
+  Future<void> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  );
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -159,17 +164,32 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
     courseId: courseId,
     discussion: discussionModel,
   );
-  
+
   @override
-  Future<void> addReplyToDiscussion({required String courseId, required String discussionId, required ReplyModel reply}) async => database.addReplyToDiscussion(
+  Future<void> addReplyToDiscussion({
+    required String courseId,
+    required String discussionId,
+    required ReplyModel reply,
+  }) async => database.addReplyToDiscussion(
     courseId: courseId,
     discussionId: discussionId,
     reply: reply,
   );
-  
+
   @override
-  Future<List<DiscussionModel>> getDiscussions(String courseId) async => database.getDiscussions(courseId);
-  
+  Future<List<DiscussionModel>> getDiscussions(String courseId) async =>
+      database.getDiscussions(courseId);
+
   @override
-  Future<List<ReplyModel>> getReplies(String courseId, String discussionId) async => database.getReplies(courseId, discussionId);
+  Future<List<ReplyModel>> getReplies(
+    String courseId,
+    String discussionId,
+  ) async => database.getReplies(courseId, discussionId);
+
+  @override
+  Future<void> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  ) async => database.toggleLike(courseId, discussionId, userId);
 }

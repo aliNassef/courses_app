@@ -48,11 +48,48 @@ class DiscussCubit extends Cubit<DiscussState> {
   }
 
   void addDiscussion(String courseId, DiscussionModel discussion) async {
-    emit(AddDiscussionLoading());
+    List<DiscussionModel> discussions = [];
+    if (state is GetDiscussionsSuccess) {
+      discussions = (state as GetDiscussionsSuccess).discussions;
+      emit(GetDiscussionsSuccess([discussion] + discussions));
+    }
+
     final result = await repo.addDiscussion(courseId, discussion);
     result.fold(
-      (failure) => emit(AddDiscussionFailure(failure)),
-      (_) => emit(const AddDiscussionSuccess()),
+      (failure) {
+        emit(GetDiscussionsSuccess(discussions));
+        emit(GetDiscussionsFailure(failure));
+      },
+      (_) {},
+    );
+  }
+
+  void toggleLike(String courseId, String discussionId, String userId) async {
+    final oldId = state is ToggleLikeSuccess
+        ? Set<String>.from((state as ToggleLikeSuccess).ids)
+        : <String>{};
+    Set<String> newId = Set<String>.from(oldId);
+
+    if (newId.contains(discussionId)) {
+      newId.remove(discussionId);
+    } else {
+      newId.add(discussionId);
+    }
+
+    emit(ToggleLikeSuccess(newId));
+
+    final toggledLikeOrFailure = await repo.toggleLike(
+      courseId,
+      discussionId,
+      userId,
+    );
+
+    toggledLikeOrFailure.fold(
+      (failure) {
+        emit(ToggleLikeSuccess(oldId));
+        emit(ToggleLikeFailure(failure));
+      },
+      (_) {},
     );
   }
 }

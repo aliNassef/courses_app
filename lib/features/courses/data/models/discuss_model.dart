@@ -8,7 +8,7 @@ class DiscussionModel extends Equatable {
   final String userImage;
   final String message;
   final String? lessonId;
-  final List<int>? likes;
+  final int? likes;
   final DateTime createdAt;
 
   const DiscussionModel({
@@ -19,7 +19,7 @@ class DiscussionModel extends Equatable {
     required this.message,
     this.lessonId,
     required this.createdAt,
-    required this.likes,
+    this.likes,
   });
 
   factory DiscussionModel.fromMap(String id, Map<String, dynamic> map) {
@@ -30,7 +30,7 @@ class DiscussionModel extends Equatable {
       userImage: map['userImage'],
       message: map['message'],
       lessonId: map['lessonId'],
-      likes: map['likes'],
+      likes: map['likesCount'] ?? 0,
       createdAt: (map['createdAt'] as Timestamp).toDate(),
     );
   }
@@ -41,7 +41,7 @@ class DiscussionModel extends Equatable {
     'userImage': userImage,
     'message': message,
     'lessonId': lessonId,
-    'likes': likes,
+    'likesCount': likes ?? 0,
     'createdAt': FieldValue.serverTimestamp(),
   };
 

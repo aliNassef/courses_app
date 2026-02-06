@@ -205,4 +205,18 @@ class CoursesRepoImpl implements CoursesRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  ) async {
+    try {
+      await remoteDatasource.toggleLike(courseId, discussionId, userId);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

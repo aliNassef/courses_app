@@ -64,4 +64,10 @@ abstract class CoursesRepo {
     String courseId,
     String userId,
   );
+
+  Future<Either<Failure, void>> toggleLike(
+    String courseId,
+    String discussionId,
+    String userId,
+  );
 }
