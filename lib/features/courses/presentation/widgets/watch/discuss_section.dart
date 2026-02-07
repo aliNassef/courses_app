@@ -26,6 +26,10 @@ class _DiscussSectionState extends State<DiscussSection> {
   void initState() {
     super.initState();
     context.read<DiscussCubit>().getDiscussions(widget.courseId);
+    context.read<DiscussCubit>().loadMyLikes(
+      widget.courseId,
+      context.read<AuthCubit>().userId,
+    );
     _controller = TextEditingController();
   }
 

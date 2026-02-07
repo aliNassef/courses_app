@@ -219,4 +219,20 @@ class CoursesRepoImpl implements CoursesRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, Set<String>>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  }) async {
+    try {
+      final likedDiscussions = await remoteDatasource.getMyLikedDiscussions(
+        courseId: courseId,
+        userId: userId,
+      );
+      return Right(likedDiscussions);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

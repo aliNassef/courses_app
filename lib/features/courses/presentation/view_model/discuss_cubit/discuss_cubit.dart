@@ -92,4 +92,16 @@ class DiscussCubit extends Cubit<DiscussState> {
       (_) {},
     );
   }
+
+  void loadMyLikes(String courseId, String userId) async {
+    emit(ToggleLikeLoading());
+    final result = await repo.getMyLikedDiscussions(
+      courseId: courseId,
+      userId: userId,
+    );
+    result.fold(
+      (failure) => emit(ToggleLikeFailure(failure)),
+      (likes) => emit(ToggleLikeSuccess(likes)),
+    );
+  }
 }

@@ -70,4 +70,9 @@ abstract class CoursesRepo {
     String discussionId,
     String userId,
   );
+
+  Future<Either<Failure, Set<String>>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  });
 }

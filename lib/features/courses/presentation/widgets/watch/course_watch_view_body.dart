@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/di.dart';
 import '../../sections_enum.dart';
-import '../../view_model/course_watch_cubit/course_watch_cubit.dart';
-import 'course_lessons_list_bloc_builder.dart';
+ import 'course_lessons_list_bloc_builder.dart';
 import 'course_video_and_meta_data.dart';
 import 'course_watch_loading_skeleton.dart';
 

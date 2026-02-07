@@ -22,12 +22,8 @@ class CourseWatchView extends StatelessWidget {
       body: SafeArea(
         child: MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (context) => injector<CourseWatchCubit>()
-            ),
-            BlocProvider(
-              create: (context) => injector<DiscussCubit>(),
-            ),
+            BlocProvider(create: (context) => injector<CourseWatchCubit>()),
+            BlocProvider(create: (context) => injector<DiscussCubit>()),
             BlocProvider(
               create: (context) =>
                   injector<MyLearningCubit>()..getCompletedLessonsIds(

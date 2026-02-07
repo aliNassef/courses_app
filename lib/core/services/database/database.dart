@@ -181,4 +181,9 @@ abstract class Database {
     String discussionId,
     String userId,
   );
+
+  Future<Set<String>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  });
 }

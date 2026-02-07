@@ -1009,19 +1009,19 @@ class FirestoreDBImpl implements Database {
           .collection(FirestoreCollectionsStrings.discussions)
           .doc(discussionId);
 
-      final likeRef = discussionRef.collection('likes').doc(userId);
+      final likeRef = discussionRef
+          .collection(FirestoreCollectionsStrings.likes)
+          .doc(userId);
 
       await _firestore.runTransaction((tx) async {
         final likeSnap = await tx.get(likeRef);
 
         if (likeSnap.exists) {
-          // UNLIKE
           tx.delete(likeRef);
           tx.update(discussionRef, {
             'likesCount': FieldValue.increment(-1),
           });
         } else {
-          // LIKE
           tx.set(likeRef, {
             'userId': userId,
             'createdAt': FieldValue.serverTimestamp(),
@@ -1034,5 +1034,32 @@ class FirestoreDBImpl implements Database {
     } catch (e) {
       throw ServerException(e.toString());
     }
+  }
+
+  @override
+  Future<Set<String>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  }) async {
+    final discussionsSnap = await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .doc(courseId)
+        .collection(FirestoreCollectionsStrings.discussions)
+        .get();
+
+    final Set<String> likedDiscussionIds = {};
+
+    for (final doc in discussionsSnap.docs) {
+      final likeDoc = await doc.reference
+          .collection(FirestoreCollectionsStrings.likes)
+          .doc(userId)
+          .get();
+
+      if (likeDoc.exists) {
+        likedDiscussionIds.add(doc.id);
+      }
+    }
+
+    return likedDiscussionIds;
   }
 }

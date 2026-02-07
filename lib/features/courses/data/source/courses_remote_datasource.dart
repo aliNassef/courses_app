@@ -49,6 +49,11 @@ abstract class CoursesRemoteDatasource {
     String discussionId,
     String userId,
   );
+
+  Future<Set<String>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  });
 }
 
 class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
@@ -192,4 +197,13 @@ class CoursesRemoteDatasourceImpl implements CoursesRemoteDatasource {
     String discussionId,
     String userId,
   ) async => database.toggleLike(courseId, discussionId, userId);
+
+  @override
+  Future<Set<String>> getMyLikedDiscussions({
+    required String courseId,
+    required String userId,
+  }) async => database.getMyLikedDiscussions(
+    courseId: courseId,
+    userId: userId,
+  );
 }

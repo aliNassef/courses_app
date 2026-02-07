@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/extensions/padding_extension.dart';
@@ -57,7 +58,8 @@ class Message extends StatelessWidget {
           const Gap(16),
           BlocConsumer<DiscussCubit, DiscussState>(
             listenWhen: (previous, current) => current is ToggleLikeFailure,
-            buildWhen: (previous, current) => current is ToggleLikeSuccess,
+            buildWhen: (previous, current) =>
+                current is ToggleLikeSuccess || current is ToggleLikeLoading,
             listener: (context, state) {
               if (state is ToggleLikeFailure) {
                 context.showErrorMessage(message: state.failure.errMessage);
@@ -76,7 +78,7 @@ class Message extends StatelessWidget {
                         );
                       },
                       child: Icon(
-                        ids.contains(discussion.id) 
+                        ids.contains(discussion.id)
                             ? CupertinoIcons.hand_thumbsup_fill
                             : CupertinoIcons.hand_thumbsup,
                         color: AppColors.primary,
@@ -104,6 +106,45 @@ class Message extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                ToggleLikeLoading() => Skeletonizer(
+                  enabled: true,
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.read<DiscussCubit>().toggleLike(
+                            courseId,
+                            discussion.id,
+                            context.read<AuthCubit>().userId,
+                          );
+                        },
+                        child: const Icon(
+                          CupertinoIcons.hand_thumbsup,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                      const Gap(8),
+                      Text(
+                        discussion.likes.toString(),
+                        style: context.appTheme.medium14.copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                      const Gap(16),
+                      const Icon(
+                        CupertinoIcons.chat_bubble,
+                        color: AppColors.primary,
+                      ),
+                      const Gap(8),
+                      Text(
+                        "10",
+                        style: context.appTheme.medium14.copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 _ => Row(
                   children: [

@@ -25,4 +25,5 @@ abstract class FirestoreCollectionsStrings {
   static const String discuss = 'discuss';
   static const String discussions = 'discussions';
   static const String replies = 'replies';
+  static const String likes = 'likes';
 }

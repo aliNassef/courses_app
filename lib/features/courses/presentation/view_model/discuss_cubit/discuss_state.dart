@@ -70,9 +70,16 @@ final class AddReplyToDiscussionFailure extends DiscussState {
 final class ToggleLikeSuccess extends DiscussState {
   final Set<String> ids;
   const ToggleLikeSuccess(this.ids);
+
+  ToggleLikeSuccess copyWith({Set<String>? ids}) {
+    return ToggleLikeSuccess(ids ?? this.ids);
+  }
+
   @override
   List<Object> get props => [ids];
 }
+
+final class ToggleLikeLoading extends DiscussState {}
 
 final class ToggleLikeFailure extends DiscussState {
   final Failure failure;
