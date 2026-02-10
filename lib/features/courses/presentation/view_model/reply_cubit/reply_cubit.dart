@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:courses_app/features/courses/data/models/reply_model.dart';
-import 'package:courses_app/features/courses/data/repo/courses_repo.dart';
 
+import '../../../data/repo/reply/reply_repo.dart';
 import 'reply_state.dart';
 
 class ReplyCubit extends Cubit<ReplyUiState> {
-  ReplyCubit(this._coursesRepo) : super(const ReplyUiState());
-  final CoursesRepo _coursesRepo;
+  ReplyCubit(this._replyRepo) : super(const ReplyUiState());
+  final ReplyRepo _replyRepo;
 
   void prepareReply(
     String discussionId,
@@ -33,7 +33,7 @@ class ReplyCubit extends Cubit<ReplyUiState> {
         ],
       ),
     );
-    final addReplyOrfailure = await _coursesRepo.addReplyToDiscussion(
+    final addReplyOrfailure = await _replyRepo.addReplyToDiscussion(
       courseId: courseId,
       discussionId: discussionId,
       reply: reply,
@@ -66,7 +66,7 @@ class ReplyCubit extends Cubit<ReplyUiState> {
         replies: [],
       ),
     );
-    final getRepliesOrfailure = await _coursesRepo.getReplies(
+    final getRepliesOrfailure = await _replyRepo.getReplies(
       courseId,
       discussionId,
     );

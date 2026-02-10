@@ -30,7 +30,7 @@ class AllCoursesViewBody extends StatelessWidget {
             child: ListView.separated(
               padding: EdgeInsets.symmetric(horizontal: Constants.hp16),
               separatorBuilder: (_, _) => const Gap(16),
-              itemCount: CourseModel.dummyData.length,
+              itemCount: coursesDummyData.length,
               itemBuilder: (_, index) {
                 return GestureDetector(
                   onTap: () => context.pushNamed(
@@ -40,7 +40,7 @@ class AllCoursesViewBody extends StatelessWidget {
                     ),
                   ),
                   child: ExploreCourseCardItem(
-                    course: CourseModel.dummyData[index],
+                    course: coursesDummyData[index],
                   ),
                 );
               },

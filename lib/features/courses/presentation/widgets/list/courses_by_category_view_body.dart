@@ -48,10 +48,10 @@ class CoursesByCategoryViewBody extends StatelessWidget {
                     separatorBuilder: (context, index) {
                       return const Divider();
                     },
-                    itemCount: CourseModel.dummyData.length,
+                    itemCount: coursesDummyData.length,
                     itemBuilder: (context, index) {
                       return CategoryCourseItem(
-                        course: CourseModel.dummyData[index],
+                        course: coursesDummyData[index],
                       );
                     },
                   ),

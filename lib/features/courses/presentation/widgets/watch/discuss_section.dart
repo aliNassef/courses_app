@@ -3,8 +3,7 @@ import 'package:courses_app/core/extensions/padding_extension.dart';
 import 'package:courses_app/core/logging/app_logger.dart';
 import 'package:courses_app/core/widgets/custom_text_form_field.dart';
 import 'package:courses_app/features/courses/data/models/reply_model.dart';
-import 'package:courses_app/features/courses/presentation/view_model/discuss_cubit/discuss_cubit.dart';
-import 'package:courses_app/features/courses/presentation/view_model/reply_cubit/reply_cubit.dart';
+import 'package:courses_app/features/courses/presentation/view_model/likes_cubit/like_discuss_cubit.dart';
 import 'package:courses_app/features/courses/presentation/view_model/reply_cubit/reply_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class _DiscussSectionState extends State<DiscussSection> {
   void initState() {
     super.initState();
     context.read<DiscussCubit>().getDiscussions(widget.courseId);
-    context.read<DiscussCubit>().loadMyLikes(
+    context.read<LikeDiscussCubit>().loadMyLikes(
       widget.courseId,
       context.read<AuthCubit>().userId,
     );
@@ -81,7 +80,8 @@ class _DiscussSectionState extends State<DiscussSection> {
       children: [
         BlocBuilder<ReplyCubit, ReplyUiState>(
           buildWhen: (previous, current) =>
-              current.state == ReplyState.addReply,
+              current.state == ReplyState.addReply ||
+              current.state == ReplyState.initial,
           builder: (context, state) {
             if (state.state == ReplyState.addReply) {
               return Container(

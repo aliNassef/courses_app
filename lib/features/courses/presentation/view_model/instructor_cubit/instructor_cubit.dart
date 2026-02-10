@@ -3,13 +3,13 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../../data/models/instructor_model.dart';
-import '../../../data/repo/courses_repo.dart';
+import '../../../data/repo/instructor/instructor_repo.dart';
 
 part 'instructor_state.dart';
 
 class InstructorCubit extends Cubit<InstructorState> {
   InstructorCubit(this.repo) : super(InstructorInitial());
-  final CoursesRepo repo;
+  final InstructorRepo repo;
 
   void getInstructorInfo(String instructorId) async {
     emit(InstructorLoading());

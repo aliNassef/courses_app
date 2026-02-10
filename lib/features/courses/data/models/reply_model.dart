@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-class ReplyModel {
+class ReplyModel  extends Equatable {
   final String id;
   final String userId;
   final String userName;
@@ -8,7 +9,7 @@ class ReplyModel {
   final String message;
   final DateTime createdAt;
 
-  ReplyModel({
+  const ReplyModel({
     required this.id,
     required this.userId,
     required this.userName,
@@ -35,4 +36,14 @@ class ReplyModel {
       createdAt: (map['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
     );
   }
+  
+  @override
+  List<Object?> get props => [
+    id,
+    userId,
+    userName,
+    userImage,
+    message,
+    createdAt,
+  ];
 }

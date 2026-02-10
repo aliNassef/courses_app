@@ -4,17 +4,22 @@ import 'package:equatable/equatable.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../data/models/chapter_model.dart';
 import '../../../data/models/lesson_model.dart';
-import '../../../data/repo/courses_repo.dart';
-import '../../sections_enum.dart';
+import '../../../data/repo/course/courses_repo.dart';
+import '../../../data/repo/lesson/lesson_repo.dart';
 
 part 'course_watch_state.dart';
 
 class CourseWatchCubit extends Cubit<CourseWatchState> {
-  CourseWatchCubit(this.repo) : super(CourseWatchInitial());
-  final CoursesRepo repo;
+  CourseWatchCubit(this.courseRepo, {required this.lessonRepo})
+    : super(CourseWatchInitial());
+  final CoursesRepo courseRepo;
+  final LessonRepo lessonRepo;
   Future<void> init(String courseId, String userId) async {
     emit(GetSpecificLessonLoading());
-    final lessonsOrFailure = await repo.getLastLessonWatched(courseId, userId);
+    final lessonsOrFailure = await lessonRepo.getLastLessonWatched(
+      courseId,
+      userId,
+    );
     lessonsOrFailure.fold(
       (failure) => emit(GetSpecificLessonError(failure: failure)),
       (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
@@ -23,7 +28,7 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
 
   void getChaptersByCourseId(String courseId) async {
     emit(GetChaptersByCourseIdLoading());
-    final chaptersOrFailure = await repo.getChaptersByCourseId(courseId);
+    final chaptersOrFailure = await lessonRepo.getChaptersByCourseId(courseId);
     chaptersOrFailure.fold(
       (failure) => emit(GetChaptersByCourseIdError(failure: failure)),
       (chapters) {
@@ -37,7 +42,7 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
     String lessonId,
   ) async {
     emit(GetSpecificLessonLoading());
-    final lessonsOrFailure = await repo.getLessonsByCourseIdAndLessonId(
+    final lessonsOrFailure = await lessonRepo.getLessonsByCourseIdAndLessonId(
       courseId,
       lessonId,
     );
@@ -45,17 +50,5 @@ class CourseWatchCubit extends Cubit<CourseWatchState> {
       (failure) => emit(GetSpecificLessonError(failure: failure)),
       (lesson) => emit(GetSpecificLessonSuccess(lesson: lesson)),
     );
-  }
-
-  Future<void> onTapSections(Sections section) async {
-    if (section == Sections.lessons) {
-      emit(ShowLessons());
-    } else if (section == Sections.discuss) {
-      emit(ShowDiscuss());
-    } else if (section == Sections.notes) {
-      emit(ShowNotes());
-    } else {
-      emit(ShowLessons());
-    }
   }
 }

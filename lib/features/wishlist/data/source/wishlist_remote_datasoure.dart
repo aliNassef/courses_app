@@ -30,7 +30,7 @@ class WishlistRemoteDatasoureImpl implements WishlistRemoteDatasource {
     return wishlistCourses.map(
       (course) {
         AppLogger.info(course.toString());
-        return CourseModel.fromJson(course);
+        return CourseModel.fromMap(course);
       },
     ).toList();
   }

@@ -1,3 +1,4 @@
+import 'package:courses_app/core/logging/app_logger.dart';
 import 'package:courses_app/features/courses/data/models/discuss_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +10,6 @@ import '../../../../../core/di/di.dart';
 import '../../../../../core/extensions/dialogs_extensions.dart';
 import '../../../../../core/extensions/padding_extension.dart';
 import '../../../../../core/utils/utils.dart';
-import '../../view_model/discuss_cubit/discuss_cubit.dart';
-import '../../view_model/reply_cubit/reply_cubit.dart';
 
 class LikesRepliesBlocListener extends StatelessWidget {
   const LikesRepliesBlocListener({
@@ -24,7 +23,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
   final void Function()? onReply;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DiscussCubit, DiscussState>(
+    return BlocConsumer<LikeDiscussCubit, LikeDiscussState>(
       listenWhen: (previous, current) => current is ToggleLikeFailure,
       buildWhen: (previous, current) =>
           current is ToggleLikeSuccess || current is ToggleLikeLoading,
@@ -39,7 +38,8 @@ class LikesRepliesBlocListener extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  context.read<DiscussCubit>().toggleLike(
+                  AppLogger.debug("tap like ");
+                  context.read<LikeDiscussCubit>().toggleLike(
                     courseId,
                     discussion.id,
                     context.read<AuthCubit>().userId,
@@ -85,13 +85,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
             child: Row(
               children: [
                 GestureDetector(
-                  onTap: () {
-                    context.read<DiscussCubit>().toggleLike(
-                      courseId,
-                      discussion.id,
-                      context.read<AuthCubit>().userId,
-                    );
-                  },
+                  onTap: () {},
                   child: const Icon(
                     CupertinoIcons.hand_thumbsup,
                     color: AppColors.primary,
@@ -123,7 +117,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  context.read<DiscussCubit>().toggleLike(
+                  context.read<LikeDiscussCubit>().toggleLike(
                     courseId,
                     discussion.id,
                     context.read<AuthCubit>().userId,

@@ -15,6 +15,7 @@ import '../../../../../core/utils/utils.dart';
 import '../../../../../core/widgets/custom_switch.dart';
 import '../../../../../core/widgets/widgets.dart';
 import '../../../data/models/lesson_model.dart';
+import '../../enums/sections_enum.dart';
 import '../common/course_intro_video.dart';
 import 'tabs_lessons_notes_discuss.dart';
 
@@ -23,9 +24,11 @@ class CourseVideoAndMetaData extends StatelessWidget {
     super.key,
     required this.lesson,
     required this.courseId,
+    required this.sections,
   });
   final LessonModel lesson;
   final String courseId;
+  final ValueNotifier<Sections> sections;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -140,7 +143,7 @@ class CourseVideoAndMetaData extends StatelessWidget {
                 ),
               ),
               const Gap(25),
-              const TabsLessonsNotesDiscuss(),
+              TabsLessonsNotesDiscuss(sections: sections),
             ],
           ).withHorizontalPadding(Constants.hp16),
         ),

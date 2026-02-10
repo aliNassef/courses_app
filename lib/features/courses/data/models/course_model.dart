@@ -64,7 +64,7 @@ class CourseModel extends Equatable {
     };
   }
 
-  factory CourseModel.fromJson(Map<String, dynamic> json) {
+  factory CourseModel.fromMap(Map<String, dynamic> json) {
     return CourseModel(
       id: json['id'],
       title: json['title'],
@@ -87,91 +87,92 @@ class CourseModel extends Equatable {
           .toList(),
     );
   }
-  static List<CourseModel> dummyData = [
-    CourseModel(
-      numOfRating: 0,
-      level: CourseLevel.beginner,
-      id: FirebaseFirestore.instance.collection('courses').doc().id,
-      title: 'Flutter From Zero to Hero',
-      description: 'تعلم Flutter من البداية للاحتراف',
-      price: 499,
-      duration: 1200,
-      rating: 0.0,
-      subscribersCount: 0,
-      objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
-      introVideoUrl: 'https://video-url.com/intro.mp4',
-      categoryId: 'mobile-dev',
-      instructorId: '',
-      createdAt: DateTime.now(),
-      imageUrl:
-          "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-      bestSeller: false,
-    ),
-    CourseModel(
-      numOfRating: 0,
-      level: CourseLevel.beginner,
-
-      imageUrl:
-          "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-
-      id: FirebaseFirestore.instance.collection('courses').doc().id,
-      title: 'Flutter From Zero to Hero',
-      description: 'تعلم Flutter من البداية للاحتراف',
-      price: 499,
-      duration: 1200,
-      rating: 0.0,
-      subscribersCount: 0,
-      objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
-      introVideoUrl: 'https://video-url.com/intro.mp4',
-      categoryId: 'mobile-dev',
-      instructorId: '',
-      createdAt: DateTime.now(),
-      bestSeller: false,
-    ),
-    CourseModel(
-      numOfRating: 0,
-      level: CourseLevel.beginner,
-
-      id: FirebaseFirestore.instance.collection('courses').doc().id,
-      title: 'Flutter From Zero to Hero',
-      description: 'تعلم Flutter من البداية للاحتراف',
-      price: 499,
-      duration: 1200,
-      rating: 0.0,
-      subscribersCount: 0,
-      objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
-      introVideoUrl: 'https://video-url.com/intro.mp4',
-      categoryId: 'mobile-dev',
-      instructorId: '',
-      imageUrl:
-          "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-
-      createdAt: DateTime.now(),
-      bestSeller: false,
-    ),
-    CourseModel(
-      numOfRating: 0,
-      level: CourseLevel.beginner,
-
-      id: FirebaseFirestore.instance.collection('courses').doc().id,
-      title: 'Flutter From Zero to Hero',
-      imageUrl:
-          "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-
-      description: 'تعلم Flutter من البداية للاحتراف',
-      price: 499,
-      duration: 1200,
-      rating: 0.0,
-      subscribersCount: 0,
-      objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
-      introVideoUrl: 'https://video-url.com/intro.mp4',
-      categoryId: 'mobile-dev',
-      instructorId: '',
-      createdAt: DateTime.now(),
-      bestSeller: false,
-    ),
-  ];
 
   @override
   List<Object?> get props => [id];
 }
+
+List<CourseModel> coursesDummyData = [
+  CourseModel(
+    numOfRating: 0,
+    level: CourseLevel.beginner,
+    id: FirebaseFirestore.instance.collection('courses').doc().id,
+    title: 'Flutter From Zero to Hero',
+    description: 'تعلم Flutter من البداية للاحتراف',
+    price: 499,
+    duration: 1200,
+    rating: 0.0,
+    subscribersCount: 0,
+    objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
+    introVideoUrl: 'https://video-url.com/intro.mp4',
+    categoryId: 'mobile-dev',
+    instructorId: '',
+    createdAt: DateTime.now(),
+    imageUrl:
+        "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+    bestSeller: false,
+  ),
+  CourseModel(
+    numOfRating: 0,
+    level: CourseLevel.beginner,
+
+    imageUrl:
+        "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+
+    id: FirebaseFirestore.instance.collection('courses').doc().id,
+    title: 'Flutter From Zero to Hero',
+    description: 'تعلم Flutter من البداية للاحتراف',
+    price: 499,
+    duration: 1200,
+    rating: 0.0,
+    subscribersCount: 0,
+    objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
+    introVideoUrl: 'https://video-url.com/intro.mp4',
+    categoryId: 'mobile-dev',
+    instructorId: '',
+    createdAt: DateTime.now(),
+    bestSeller: false,
+  ),
+  CourseModel(
+    numOfRating: 0,
+    level: CourseLevel.beginner,
+
+    id: FirebaseFirestore.instance.collection('courses').doc().id,
+    title: 'Flutter From Zero to Hero',
+    description: 'تعلم Flutter من البداية للاحتراف',
+    price: 499,
+    duration: 1200,
+    rating: 0.0,
+    subscribersCount: 0,
+    objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
+    introVideoUrl: 'https://video-url.com/intro.mp4',
+    categoryId: 'mobile-dev',
+    instructorId: '',
+    imageUrl:
+        "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+
+    createdAt: DateTime.now(),
+    bestSeller: false,
+  ),
+  CourseModel(
+    numOfRating: 0,
+    level: CourseLevel.beginner,
+
+    id: FirebaseFirestore.instance.collection('courses').doc().id,
+    title: 'Flutter From Zero to Hero',
+    imageUrl:
+        "https://tse3.mm.bing.net/th/id/OIP.Wwk-gQuVkQHi8a5qiNXY9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+
+    description: 'تعلم Flutter من البداية للاحتراف',
+    price: 499,
+    duration: 1200,
+    rating: 0.0,
+    subscribersCount: 0,
+    objectives: ['فهم Flutter', 'بناء UI احترافي', 'التعامل مع Firebase'],
+    introVideoUrl: 'https://video-url.com/intro.mp4',
+    categoryId: 'mobile-dev',
+    instructorId: '',
+    createdAt: DateTime.now(),
+    bestSeller: false,
+  ),
+];

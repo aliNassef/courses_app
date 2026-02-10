@@ -1,5 +1,5 @@
 import 'package:courses_app/features/courses/presentation/view_model/reply_cubit/reply_state.dart';
-import 'package:courses_app/features/courses/presentation/widgets/watch/likes_rreplies_bloclistener.dart';
+import 'package:courses_app/features/courses/presentation/widgets/watch/likes_replies_bloclistener.dart';
 import 'package:courses_app/features/courses/presentation/widgets/watch/reply_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -4,8 +4,8 @@ import '../../../../../core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/di.dart';
-import '../../sections_enum.dart';
- import 'course_lessons_list_bloc_builder.dart';
+import '../../enums/sections_enum.dart';
+import 'course_lessons_list_bloc_builder.dart';
 import 'course_video_and_meta_data.dart';
 import 'course_watch_loading_skeleton.dart';
 
@@ -18,6 +18,7 @@ class CourseWatchViewBody extends StatefulWidget {
 }
 
 class _CourseWatchViewBodyState extends State<CourseWatchViewBody> {
+  final sections = ValueNotifier<Sections>(Sections.lessons);
   @override
   void initState() {
     super.initState();
@@ -29,7 +30,6 @@ class _CourseWatchViewBodyState extends State<CourseWatchViewBody> {
     final userId = context.read<AuthCubit>().userId;
 
     await cubit.init(widget.courseId, userId);
-    cubit.onTapSections(Sections.lessons);
   }
 
   @override
@@ -54,24 +54,21 @@ class _CourseWatchViewBodyState extends State<CourseWatchViewBody> {
                 return CourseVideoAndMetaData(
                   lesson: state.lesson,
                   courseId: widget.courseId,
+                  sections: sections,
                 );
               }
               return const SizedBox.shrink();
             },
           ),
-          BlocBuilder<CourseWatchCubit, CourseWatchState>(
-            buildWhen: (previous, current) =>
-                current is ShowLessons ||
-                current is ShowDiscuss ||
-                current is ShowNotes,
-            builder: (context, state) {
+          ValueListenableBuilder(
+            valueListenable: sections,
+            builder: (context, state, child) {
               return switch (state) {
-                ShowLessons() => CourseLessonsListBlocBuilder(
+                Sections.lessons => CourseLessonsListBlocBuilder(
                   courseId: widget.courseId,
                 ),
-                ShowDiscuss() => DiscussSection(courseId: widget.courseId),
-                ShowNotes() => const SizedBox.shrink(),
-                _ => const SizedBox.shrink(),
+                Sections.discuss => DiscussSection(courseId: widget.courseId),
+                Sections.notes => const SizedBox.shrink(),
               };
             },
           ),

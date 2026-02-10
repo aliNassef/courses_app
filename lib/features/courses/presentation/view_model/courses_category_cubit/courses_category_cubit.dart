@@ -4,7 +4,7 @@ import '../../../../../core/errors/failure.dart';
 
 import '../../../data/models/course_level_enum.dart';
 import '../../../data/models/course_model.dart';
-import '../../filter_enum.dart';
+import '../../enums/filter_enum.dart';
 
 part 'courses_category_state.dart';
 

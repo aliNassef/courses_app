@@ -36,12 +36,12 @@ class ExploreMoreCourses extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: Constants.hp16),
                   scrollDirection: Axis.horizontal,
                   separatorBuilder: (_, _) => const Gap(16),
-                  itemCount: CourseModel.dummyData.length,
+                  itemCount: coursesDummyData.length,
                   itemBuilder: (_, index) {
                     return SizedBox(
                       width: context.width * 0.8,
                       child: ExploreCourseCardItem(
-                        course: CourseModel.dummyData[index],
+                        course: coursesDummyData[index],
                       ),
                     );
                   },

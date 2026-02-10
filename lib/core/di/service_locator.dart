@@ -1,6 +1,4 @@
-import 'package:courses_app/features/courses/presentation/view_model/reply_cubit/reply_cubit.dart';
-
-import '../../features/courses/presentation/view_model/discuss_cubit/discuss_cubit.dart';
+import '../../features/courses/data/repo/reply/reply_repo_impl.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -79,27 +77,75 @@ void _setupCoursesFeature() {
   injector.registerFactory<CourseDiscoveryCubit>(
     () => CourseDiscoveryCubit(injector<CoursesRepo>()),
   );
+
   injector.registerFactory<CourseWatchCubit>(
-    () => CourseWatchCubit(injector<CoursesRepo>()),
+    () => CourseWatchCubit(
+      injector<CoursesRepo>(),
+      lessonRepo: injector<LessonRepo>(),
+    ),
   );
+
   injector.registerFactory<ReplyCubit>(
-    () => ReplyCubit(injector<CoursesRepo>()),
+    () => ReplyCubit(injector<ReplyRepo>()),
   );
+
+  injector.registerFactory<LikeDiscussCubit>(
+    () => LikeDiscussCubit(injector<DiscussionRepo>()),
+  );
+
   injector.registerFactory<DiscussCubit>(
-    () => DiscussCubit(injector<CoursesRepo>()),
+    () => DiscussCubit(injector<DiscussionRepo>()),
   );
+
   injector.registerFactory<CoursesCategoryCubit>(
     () => CoursesCategoryCubit(injector<CoursesRepo>()),
   );
-  injector.registerFactory<InstructorCubit>(
-    () => InstructorCubit(injector<CoursesRepo>()),
-  );
 
+  injector.registerFactory<InstructorCubit>(
+    () => InstructorCubit(injector<InstructorRepo>()),
+  );
+  // - repos
   injector.registerLazySingleton<CoursesRepo>(
     () =>
         CoursesRepoImpl(remoteDatasource: injector<CoursesRemoteDatasource>()),
   );
 
+  injector.registerLazySingleton<LessonRepo>(
+    () => LessonRepoImpl(remoteDatasource: injector<LessonRemoteDatasource>()),
+  );
+  injector.registerLazySingleton<ReplyRepo>(
+    () => ReplyRepoImpl(remoteDatasource: injector<ReplyRemoteDatasource>()),
+  );
+
+  injector.registerLazySingleton<ReviewRepo>(
+    () => ReviewRepoImpl(remoteDatasource: injector<ReviewRemoteDatasource>()),
+  );
+  injector.registerLazySingleton<InstructorRepo>(
+    () => InstructorRepoImpl(
+      remoteDatasource: injector<InstructorRemoteDatasource>(),
+    ),
+  );
+  injector.registerLazySingleton<DiscussionRepo>(
+    () => DiscussionRepoImpl(
+      remoteDatasource: injector<DiscussionRemoteDatasource>(),
+    ),
+  );
+  // - datasources
+  injector.registerLazySingleton<LessonRemoteDatasource>(
+    () => LessonRemoteDatasourceImpl(database: injector<Database>()),
+  );
+  injector.registerLazySingleton<ReplyRemoteDatasource>(
+    () => ReplyRemoteDatasourceImpl(database: injector<Database>()),
+  );
+  injector.registerLazySingleton<DiscussionRemoteDatasource>(
+    () => DiscussionRemoteDatasourceImpl(database: injector<Database>()),
+  );
+  injector.registerLazySingleton<ReviewRemoteDatasource>(
+    () => ReviewRemoteDatasourceImpl(database: injector<Database>()),
+  );
+  injector.registerLazySingleton<InstructorRemoteDatasource>(
+    () => InstructorRemoteDatasourceImpl(database: injector<Database>()),
+  );
   injector.registerLazySingleton<CoursesRemoteDatasource>(
     () => CoursesRemoteDatasourceImpl(database: injector<Database>()),
   );

@@ -32,7 +32,7 @@ class WishListViewBody extends StatelessWidget {
               child: ListView.separated(
                 padding: EdgeInsets.all(Constants.hp16),
                 itemBuilder: (_, _) => WishListCardItem(
-                  course: CourseModel.dummyData[0],
+                  course: coursesDummyData[0],
                 ),
                 separatorBuilder: (_, _) => const Gap(16),
                 itemCount: 10,

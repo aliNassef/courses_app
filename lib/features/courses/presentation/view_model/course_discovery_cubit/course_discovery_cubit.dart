@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../../data/models/course_model.dart';
-import '../../../data/repo/courses_repo.dart';
+import '../../../data/repo/course/courses_repo.dart';
 
 part 'course_discovery_state.dart';
 

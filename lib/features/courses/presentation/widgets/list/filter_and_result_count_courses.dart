@@ -10,7 +10,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../../core/extensions/padding_extension.dart';
 
 import '../../../../../core/utils/utils.dart';
-import '../../filter_enum.dart';
+import '../../enums/filter_enum.dart';
 import '../../view_model/courses_category_cubit/courses_category_cubit.dart';
 
 class FilterAndResultCountCourses extends StatelessWidget {

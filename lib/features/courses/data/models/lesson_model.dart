@@ -1,19 +1,21 @@
-class LessonModel {
+import 'package:equatable/equatable.dart';
+
+class LessonModel extends Equatable {
   final String id;
   final String name;
   final String videoUrl;
   final int duration;
   final int order;
-  final bool isCompleted;
+  final bool isFree;
   final String description;
 
-  LessonModel({
+  const LessonModel({
     required this.id,
     required this.name,
     required this.videoUrl,
     required this.duration,
     required this.order,
-    required this.isCompleted,
+    required this.isFree,
     required this.description,
   });
 
@@ -24,7 +26,7 @@ class LessonModel {
       videoUrl: json['videoUrl'],
       duration: json['duration'],
       order: json['order'],
-      isCompleted: json['isFree'],
+      isFree: json['isFree'],
       description: json['description'],
     );
   }
@@ -35,8 +37,19 @@ class LessonModel {
       'videoUrl': videoUrl,
       'duration': duration,
       'order': order,
-      'isFree': isCompleted,
+      'isFree': isFree,
       'description': description,
     };
   }
+
+  @override
+  List<Object?> get props => [
+    id,
+    name,
+    videoUrl,
+    duration,
+    order,
+    isFree,
+    description,
+  ];
 }

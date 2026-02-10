@@ -51,7 +51,7 @@ class ContinueLearningSection extends StatelessWidget {
       containersColor: Colors.grey.shade50,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (_, _) => ContinueLearningSectionItem(
+        itemBuilder: (_, _) => const ContinueLearningSectionItem(
           learning: LessonModel(
             description:
                 'industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic',
@@ -60,7 +60,7 @@ class ContinueLearningSection extends StatelessWidget {
             videoUrl: 'https://www.youtube.com/watch?v=0mtA8rSXzuQ',
             duration: 600, // seconds
             order: 1,
-            isCompleted: false,
+            isFree: false,
           ),
         ),
         separatorBuilder: (_, _) => const Gap(8),
