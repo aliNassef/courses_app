@@ -21,32 +21,6 @@ class DiscussCubit extends Cubit<DiscussState> {
     );
   }
 
-  void getReplies(String courseId, String discussionId) async {
-    emit(GetRepliesLoading());
-    final result = await repo.getReplies(courseId, discussionId);
-    result.fold(
-      (failure) => emit(GetRepliesFailure(failure)),
-      (replies) => emit(GetRepliesSuccess(replies)),
-    );
-  }
-
-  void addReplyToDiscussion(
-    String courseId,
-    String discussionId,
-    ReplyModel reply,
-  ) async {
-    emit(AddReplyToDiscussionLoading());
-    final result = await repo.addReplyToDiscussion(
-      courseId: courseId,
-      discussionId: discussionId,
-      reply: reply,
-    );
-    result.fold(
-      (failure) => emit(AddReplyToDiscussionFailure(failure)),
-      (_) => emit(const AddReplyToDiscussionSuccess()),
-    );
-  }
-
   void addDiscussion(String courseId, DiscussionModel discussion) async {
     List<DiscussionModel> discussions = [];
     if (state is GetDiscussionsSuccess) {

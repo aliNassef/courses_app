@@ -12,12 +12,14 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.isPassowrd = false,
     this.maxLines,
+    this.focusNode,
   });
   final String hintText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool isPassowrd;
   final int? maxLines;
+  final FocusNode? focusNode;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -35,6 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTextFormField(
+      focusNode: widget.focusNode,
       style: context.appTheme.regular14.copyWith(
         color: AppColors.black,
       ),

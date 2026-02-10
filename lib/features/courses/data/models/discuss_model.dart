@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courses_app/features/courses/data/models/reply_model.dart';
 import 'package:equatable/equatable.dart';
 
 class DiscussionModel extends Equatable {
@@ -55,4 +56,24 @@ class DiscussionModel extends Equatable {
     lessonId,
     createdAt,
   ];
+}
+
+extension DiscussionModelX on DiscussionModel {
+  ReplyModel toReplyModel({
+    String? id,
+    String? userId,
+    String? userName,
+    String? userImage,
+    String? message,
+    DateTime? createdAt,
+  }) {
+    return ReplyModel(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      userName: userName ?? this.userName,
+      userImage: userImage ?? this.userImage,
+      message: message ?? this.message,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
 }

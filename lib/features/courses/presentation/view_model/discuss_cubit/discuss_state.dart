@@ -49,23 +49,7 @@ final class GetRepliesFailure extends DiscussState {
   List<Object> get props => [failure];
 }
 
-final class AddReplyToDiscussionLoading extends DiscussState {}
-
-final class AddReplyToDiscussionSuccess extends DiscussState {
-  const AddReplyToDiscussionSuccess();
-
-  @override
-  List<Object> get props => [];
-}
-
-final class AddReplyToDiscussionFailure extends DiscussState {
-  final Failure failure;
-
-  const AddReplyToDiscussionFailure(this.failure);
-
-  @override
-  List<Object> get props => [failure];
-}
+ 
 
 final class ToggleLikeSuccess extends DiscussState {
   final Set<String> ids;

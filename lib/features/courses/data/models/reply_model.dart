@@ -32,7 +32,7 @@ class ReplyModel {
       userName: map['userName'],
       userImage: map['userImage'],
       message: map['message'],
-      createdAt: (map['createdAt'] as Timestamp).toDate(),
+      createdAt: (map['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
     );
   }
 }

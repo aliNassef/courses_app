@@ -2,6 +2,7 @@ import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/di/di.dart';
 import 'package:courses_app/features/courses/presentation/view_model/discuss_cubit/discuss_cubit.dart';
 import '../../../../core/di/service_locator.dart';
+import '../view_model/reply_cubit/reply_cubit.dart';
 import '../widgets/watch/course_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +25,7 @@ class CourseWatchView extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => injector<CourseWatchCubit>()),
             BlocProvider(create: (context) => injector<DiscussCubit>()),
+            BlocProvider(create: (context) => injector<ReplyCubit>()),
             BlocProvider(
               create: (context) =>
                   injector<MyLearningCubit>()..getCompletedLessonsIds(
