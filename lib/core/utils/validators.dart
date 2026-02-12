@@ -29,4 +29,11 @@ class Validators {
     }
     return null;
   }
+
+  static String? fieldIsRequired(String? value) {
+    if (value.isNullOrEmpty) {
+      return LocaleKeys.validation_fullname_required.tr();
+    }
+    return null;
+  }
 }

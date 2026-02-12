@@ -8,4 +8,9 @@ abstract class ReviewRepo {
     String courseId,
     ReviewModel reviewModel,
   );
+
+  Future<Either<Failure, bool>> hasUserReviewed(
+    String courseId,
+    String userId,
+  );
 }

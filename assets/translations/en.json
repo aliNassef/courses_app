@@ -97,5 +97,10 @@
     "exit": "Exit",
     "cancel": "Cancel",
     "home": "Home",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "submit": "Submit",
+    "write_your_review": "Write Your Review",
+    "rate_this_course": "Rate This Course",
+        "field_is_required" : "This "
+
 }

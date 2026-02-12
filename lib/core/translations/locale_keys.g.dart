@@ -103,5 +103,9 @@ abstract class  LocaleKeys {
   static const exit = 'exit';
   static const home = 'home';
   static const wishlist = 'wishlist';
+  static const submit = 'submit';
+  static const write_your_review = 'write_your_review';
+  static const rate_this_course = 'rate_this_course';
+  static const field_is_required = 'field_is_required';
 
 }

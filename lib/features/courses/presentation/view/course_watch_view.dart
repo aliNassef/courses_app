@@ -1,7 +1,8 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/di/di.dart';
 import '../../../../core/di/service_locator.dart';
-import '../view_model/likes_cubit/like_discuss_cubit.dart';
+import '../view_model/review_cubit/review_cubit.dart';
+import '../widgets/common/review_dialog.dart';
 import '../widgets/watch/course_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +26,13 @@ class CourseWatchView extends StatelessWidget {
             BlocProvider(create: (context) => injector<CourseWatchCubit>()),
             BlocProvider(create: (context) => injector<DiscussCubit>()),
             BlocProvider(create: (context) => injector<LikeDiscussCubit>()),
+            BlocProvider(
+              create: (context) => injector<ReviewCubit>()
+                ..checkShowReview(
+                  courseArgs.courseId,
+                  context.read<AuthCubit>().userId,
+                ),
+            ),
             BlocProvider(create: (context) => injector<ReplyCubit>()),
             BlocProvider(
               create: (context) =>
@@ -34,7 +42,23 @@ class CourseWatchView extends StatelessWidget {
                   ),
             ),
           ],
-          child: CourseWatchViewBody(courseId: courseArgs.courseId),
+          child: Builder(
+            builder: (context) {
+              return BlocListener<ReviewCubit, ReviewState>(
+                listener: (context, state) {
+                  if (state is ReviewShouldShow) {
+                    showReviewDialog(
+                      context,
+                      courseArgs.courseId,
+                      context.read<AuthCubit>().userId,
+                      context.read<ReviewCubit>(),
+                    );
+                  }
+                },
+                child: CourseWatchViewBody(courseId: courseArgs.courseId),
+              );
+            },
+          ),
         ),
       ),
     );

@@ -98,5 +98,9 @@
     "cancel": "الغاء",
     "exit": "خروج",
     "home": "الرئيسية",
-    "wishlist": "المفضلة"
+    "wishlist": "المفضلة",
+    "submit": "إرسال",
+    "write_your_review": "اكتب مراجعتك",
+    "rate_this_course": "قم بتقييم هذه الدورة",
+    "field_is_required" : ""
 }

@@ -3,6 +3,7 @@ import 'package:courses_app/features/courses/data/models/review_model.dart';
 
 abstract class ReviewRemoteDatasource {
   Future<void> addReview(String courseId, ReviewModel reviewModel);
+  Future<bool> hasUserReviewed(String courseId, String userId);
 }
 
 class ReviewRemoteDatasourceImpl implements ReviewRemoteDatasource {
@@ -17,4 +18,7 @@ class ReviewRemoteDatasourceImpl implements ReviewRemoteDatasource {
         data: reviewModel.toMap(),
       );
 
+  @override
+  Future<bool> hasUserReviewed(String courseId, String userId) async =>
+      database.hasUserReviewed(courseId, userId);
 }

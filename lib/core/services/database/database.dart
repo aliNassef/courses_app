@@ -186,4 +186,6 @@ abstract class Database {
     required String courseId,
     required String userId,
   });
+
+  Future<bool> hasUserReviewed(String courseId, String userId);
 }

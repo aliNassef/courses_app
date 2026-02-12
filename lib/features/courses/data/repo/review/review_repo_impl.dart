@@ -25,4 +25,20 @@ class ReviewRepoImpl implements ReviewRepo {
       return Left(Failure(errMessage: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> hasUserReviewed(
+    String courseId,
+    String userId,
+  ) async {
+    try {
+      final result = await remoteDatasource.hasUserReviewed(
+        courseId,
+        userId,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
 }

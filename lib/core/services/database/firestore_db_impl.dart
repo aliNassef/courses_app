@@ -1062,4 +1062,21 @@ class FirestoreDBImpl implements Database {
 
     return likedDiscussionIds;
   }
+
+  @override
+  Future<bool> hasUserReviewed(String courseId, String userId) async {
+    final reviewsSnap = await _firestore
+        .collection(FirestoreCollectionsStrings.courses)
+        .doc(courseId)
+        .collection(FirestoreCollectionsStrings.reviews)
+        .get();
+
+    for (final doc in reviewsSnap.docs) {
+      if (doc.data()['userId'] == userId) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

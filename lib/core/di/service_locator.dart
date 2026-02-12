@@ -1,3 +1,5 @@
+import 'package:courses_app/features/courses/presentation/view_model/review_cubit/review_cubit.dart';
+
 import '../../features/courses/data/repo/reply/reply_repo_impl.dart';
 import 'di.dart';
 
@@ -87,6 +89,10 @@ void _setupCoursesFeature() {
 
   injector.registerFactory<ReplyCubit>(
     () => ReplyCubit(injector<ReplyRepo>()),
+  );
+
+  injector.registerFactory<ReviewCubit>(
+    () => ReviewCubit(injector<ReviewRepo>()),
   );
 
   injector.registerFactory<LikeDiscussCubit>(
