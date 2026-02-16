@@ -1079,4 +1079,19 @@ class FirestoreDBImpl implements Database {
 
     return false;
   }
+
+  @override
+  Future<List<DocumentSnapshot>> getUserCourses(String userId) async {
+    try {
+      final userCoursesSnap = await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .collection(FirestoreCollectionsStrings.myLearning)
+          .get();
+
+      return userCoursesSnap.docs;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
 }

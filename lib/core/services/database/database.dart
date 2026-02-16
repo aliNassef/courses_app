@@ -188,4 +188,6 @@ abstract class Database {
   });
 
   Future<bool> hasUserReviewed(String courseId, String userId);
+
+  Future<List<DocumentSnapshot>> getUserCourses(String userId);
 }

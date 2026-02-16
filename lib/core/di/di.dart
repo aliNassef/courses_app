@@ -55,3 +55,10 @@ export '../../features/courses/data/source/lesson_remote_datasource.dart';
 export '../../features/courses/data/source/reply_remote_datasource.dart';
 export '../../features/courses/data/source/review_remote_datasource.dart';
 export '../../features/courses/presentation/view_model/likes_cubit/like_discuss_cubit.dart';
+export 'package:courses_app/features/courses/presentation/view_model/review_cubit/review_cubit.dart';
+export 'package:courses_app/features/profile/presentation/view_model/user_courses_cubit/user_courses_cubit.dart';
+
+export '../../features/courses/data/repo/reply/reply_repo_impl.dart';
+export '../../features/profile/data/repo/profile_repo.dart';
+export '../../features/profile/data/repo/profile_repo_impl.dart';
+export '../../features/profile/data/source/profile_remote_datasource.dart';

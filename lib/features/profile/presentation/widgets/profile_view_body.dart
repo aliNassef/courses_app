@@ -15,6 +15,7 @@ import 'achivements_user_info.dart';
 import 'logout_button.dart';
 import 'profile_image.dart';
 import 'recent_achivements_items.dart';
+import 'user_courses_and_achievemnets.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -31,7 +32,6 @@ class ProfileViewBody extends StatelessWidget {
               current is GetUserProfileFailure ||
               current is GetUserProfileLoading ||
               current is GetUserProfileLoaded,
-
           builder: (context, state) {
             if (state is GetUserProfileLoading) {
               return _buildLoadingProfile(context);
@@ -95,23 +95,7 @@ class ProfileViewBody extends StatelessWidget {
                     ],
                   ),
                   const Gap(16),
-                  Row(
-                    mainAxisAlignment: .spaceAround,
-                    children: [
-                      AchivementUserInfo(
-                        number: state.user.numberOfCourses.toString(),
-                        text: LocaleKeys.courses.tr(),
-                      ),
-                      AchivementUserInfo(
-                        number: state.user.numberOfAchievements.toString(),
-                        text: LocaleKeys.achievements.tr(),
-                      ),
-                      AchivementUserInfo(
-                        number: state.user.numberOfCerts.toString(),
-                        text: LocaleKeys.certs.tr(),
-                      ),
-                    ],
-                  ),
+                  const UserCoursesAndAchievemnets(),
                   const Gap(16),
                   Text(
                     LocaleKeys.recent_achievements.tr(),

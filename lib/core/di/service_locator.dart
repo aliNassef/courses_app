@@ -1,6 +1,4 @@
-import 'package:courses_app/features/courses/presentation/view_model/review_cubit/review_cubit.dart';
 
-import '../../features/courses/data/repo/reply/reply_repo_impl.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -13,6 +11,22 @@ Future<void> setupServiceLocator() async {
   _setupHomeFeature();
   _setupWishlistFeature();
   _setupMyLearningFeature();
+  _setupProfileFeature();
+}
+
+void _setupProfileFeature() {
+
+  injector.registerFactory<UserCoursesCubit>(
+    () => UserCoursesCubit(injector<ProfileRepo>()),
+  );
+  injector.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(
+      profileRemoteDataSource: injector<ProfileRemoteDataSource>(),
+    ),
+  );
+  injector.registerLazySingleton<ProfileRemoteDataSource>(
+    () => ProfileRemoteDataSourceImpl(database: injector<Database>()),
+  );
 }
 
 void _setupMyLearningFeature() {
