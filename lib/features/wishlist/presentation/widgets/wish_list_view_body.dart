@@ -45,18 +45,26 @@ class WishListViewBody extends StatelessWidget {
 
           if (state is WishlistLoaded) {
             if (state.courses.isEmpty) {
-              return CustomScrollView(
-                slivers: [
-                  const SliverToBoxAdapter(child: SizedBox(height: context.he)),
-                  SliverToBoxAdapter(
-                    child: Center(
-                      child: Text(
-                        'No courses in wishlist',
-                        style: context.appTheme.semiBold16,
+              return RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  final userId = context.read<AuthCubit>().userId;
+                  context.read<WishlistCubit>().getWishlistCourses(userId);
+                },
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: SizedBox(height: context.height * 0.35),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Center(
+                        child: Text(
+                          'No courses in wishlist',
+                          style: context.appTheme.semiBold16,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             }
 
