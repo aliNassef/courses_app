@@ -20,10 +20,8 @@ class MyLearningView extends StatelessWidget {
     return BlocProvider(
       create: (context) {
         final cubit = injector<MyLearningCubit>();
-        Future.wait([
-          cubit.getAllLearning(userId),
-          cubit.getLastCompletedLessonDetails(userId),
-        ]);
+        cubit.getAllLearning(userId);
+        cubit.getLastCompletedLessonDetails(userId);
         return cubit;
       },
       child: AdaptiveScaffold(

@@ -40,7 +40,6 @@ class SignupButtonBlocListener extends StatelessWidget {
           context.pop();
           context.showErrorMessage(message: state.failure.errMessage);
         } else if (state is AuthSuccess) {
-          context.pop();
           context.pushAndRemoveUntil(
             LayoutView.routeName,
             (route) => true,

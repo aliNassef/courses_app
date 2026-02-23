@@ -61,7 +61,13 @@ class MyLearningCubit extends Cubit<MyLearningState> {
         .getLastLearningCourse(userId);
     getLastLearningCourseOrFailure.fold(
       (failure) => emit(GetLastLearningCourseFailure(failure: failure)),
-      (learning) => emit(GetLastLearningCourseSuccess(learning: learning)),
+      (learning) {
+        if (learning == null) {
+          emit(MyLearningInitial());
+        } else {
+          emit(GetLastLearningCourseSuccess(learning: learning));
+        }
+      },
     );
   }
 

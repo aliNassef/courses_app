@@ -1,6 +1,8 @@
 import 'package:courses_app/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../logging/app_logger.dart';
+
 class CustomThumbnailVideoImage extends StatefulWidget {
   const CustomThumbnailVideoImage({
     super.key,
@@ -39,7 +41,7 @@ class _CustomThumbnailVideoImageState extends State<CustomThumbnailVideoImage> {
 
   String _getYoutubeThumbnail(String url) {
     final uri = Uri.parse(url);
-
+    AppLogger.info(uri.toString());
     // standard youtube link
     if (uri.queryParameters.containsKey('v')) {
       return 'https://img.youtube.com/vi/${uri.queryParameters['v']}/0.jpg';

@@ -13,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
     this.isPassowrd = false,
     this.maxLines,
     this.focusNode,
+    this.keyboardType = TextInputType.text,
   });
   final String hintText;
   final TextEditingController? controller;
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassowrd;
   final int? maxLines;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -37,6 +39,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTextFormField(
+      keyboardType: widget.keyboardType,
       focusNode: widget.focusNode,
       style: context.appTheme.regular14.copyWith(
         color: AppColors.black,

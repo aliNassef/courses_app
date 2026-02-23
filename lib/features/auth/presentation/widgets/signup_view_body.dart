@@ -75,6 +75,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             controller: _fullNameController,
             hintText: LocaleKeys.enter_your_full_name.tr(),
             validator: Validators.fullNameValidator,
+            keyboardType: TextInputType.name,
           ),
           const Gap(12),
           Text(
@@ -88,6 +89,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             controller: _emailController,
             hintText: LocaleKeys.enter_your_email.tr(),
             validator: Validators.emailValidator,
+            keyboardType: TextInputType.emailAddress,
           ),
           const Gap(12),
           Text(
@@ -101,6 +103,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             controller: _passwordController,
             hintText: LocaleKeys.create_a_password.tr(),
             validator: Validators.passwordValidator,
+            keyboardType: TextInputType.visiblePassword,
+            maxLines: 1,
+            isPassowrd: true,
           ),
           const Gap(24),
           TermsAndConditionsWithCheckBox(

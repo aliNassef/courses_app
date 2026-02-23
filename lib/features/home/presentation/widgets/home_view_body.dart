@@ -34,55 +34,73 @@ class HomeViewBody extends StatelessWidget {
               const UserInfo(),
               const Gap(16),
               const CustomSearchBar(),
-              const Gap(30),
-              Text(
-                LocaleKeys.continue_learning.tr(),
-                style: context.appTheme.bold20,
-              ),
-              const Gap(16),
+
               BlocBuilder<MyLearningCubit, MyLearningState>(
                 buildWhen: (previous, current) =>
                     current is GetLastLearningCourseSuccess ||
                     current is GetLastLearningCourseFailure ||
-                    current is GetLastLearningCourseLoading,
+                    current is GetLastLearningCourseLoading ||
+                    current is MyLearningInitial,
                 builder: (context, state) {
-                  if (state is GetLastLearningCourseFailure) {
-                    return CustomFailureWidget(
-                      meesage: state.failure.errMessage,
-                    );
-                  }
-                  if (state is GetLastLearningCourseLoading) {
-                    return Skeletonizer(
-                      enabled: true,
-                      child: ContinuedLearningCardItem(
-                        course: MyLearningModel(
-                          courseId: 'course_001',
-                          instructorId: "",
-                          courseTitle: 'Flutter From Zero to Hero',
-                          description:
-                              'A comprehensive course to master Flutter development',
-                          courseImage:
-                              'https://dummyimage.com/600x400/000/fff&text=Flutter+Course',
-                          progress: .5,
-                          completedLessons: 7,
-                          totalLessons: 20,
-                          lastLessonId: 'lesson_07',
-                          status: 'ongoing',
-                          enrolledAt: DateTime.now().subtract(
-                            const Duration(days: 10),
-                          ),
-                          updatedAt: DateTime.now(),
-                        ),
-                      ),
-                    );
-                  }
+                  return switch (state) {
+                    MyLearningInitial() => const SizedBox.shrink(),
 
-                  if (state is GetLastLearningCourseSuccess) {
-                    return ContinuedLearningCardItem(
-                      course: state.learning,
-                    );
-                  }
-                  return const SizedBox.shrink();
+                    GetLastLearningCourseFailure() => CustomFailureWidget(
+                      meesage: state.failure.errMessage,
+                    ),
+
+                    GetLastLearningCourseLoading() => Skeletonizer(
+                      enabled: true,
+                      child: Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          const Gap(30),
+                          Text(
+                            LocaleKeys.continue_learning.tr(),
+                            style: context.appTheme.bold20,
+                          ),
+                          const Gap(16),
+                          ContinuedLearningCardItem(
+                            course: MyLearningModel(
+                              courseId: 'course_001',
+                              instructorId: "",
+                              courseTitle: 'Flutter From Zero to Hero',
+                              description:
+                                  'A comprehensive course to master Flutter development',
+                              courseImage:
+                                  'https://dummyimage.com/600x400/000/fff&text=Flutter+Course',
+                              progress: .5,
+                              completedLessons: 7,
+                              totalLessons: 20,
+                              lastLessonId: 'lesson_07',
+                              status: 'ongoing',
+                              enrolledAt: DateTime.now().subtract(
+                                const Duration(days: 10),
+                              ),
+                              updatedAt: DateTime.now(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    GetLastLearningCourseSuccess() => Column(
+                      crossAxisAlignment: .start,
+                      children: [
+                        const Gap(30),
+                        Text(
+                          LocaleKeys.continue_learning.tr(),
+                          style: context.appTheme.bold20,
+                        ),
+                        const Gap(16),
+                        ContinuedLearningCardItem(
+                          course: state.learning,
+                        ),
+                      ],
+                    ),
+
+                    _ => const SizedBox.shrink(),
+                  };
                 },
               ),
               const Gap(30),

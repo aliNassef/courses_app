@@ -72,6 +72,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           CustomTextFormField(
             controller: _emailController,
             hintText: LocaleKeys.enter_your_email.tr(),
+            keyboardType: TextInputType.emailAddress,
             validator: Validators.emailValidator,
           ),
           const Gap(12),
@@ -85,7 +86,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           CustomTextFormField(
             hintText: LocaleKeys.enter_your_password.tr(),
             controller: _passwordController,
+            keyboardType: TextInputType.visiblePassword,
             validator: Validators.passwordValidator,
+            maxLines: 1,
             isPassowrd: true,
           ),
           const Gap(8),

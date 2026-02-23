@@ -134,7 +134,7 @@ abstract class Database {
   });
 
   Future<List<DocumentSnapshot>> getMyLearningCourses(String userId);
-  Future<DocumentSnapshot> getLastLearningCourse(String userId);
+  Future<DocumentSnapshot?> getLastLearningCourse(String userId);
 
   Future<Set<String>> getCompletedLessonsIds({
     required String userId,
@@ -147,7 +147,7 @@ abstract class Database {
     String courseId,
     String lessonId,
   );
-  Future<List<DocumentSnapshot>> getLastCompletedLessonDetails(
+  Future<List<Map<String, dynamic>>> getLastCompletedLessonDetails(
     String userId,
   );
   Future<Map<String, dynamic>> getLastWatchedLesson(

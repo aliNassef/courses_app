@@ -631,17 +631,22 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
-
-  @override
-  Future<DocumentSnapshot> getLastLearningCourse(String userId) async {
+@override
+  Future<DocumentSnapshot?> getLastLearningCourse(String userId) async {
     try {
-      return await _firestore
+      final querySnapshot = await _firestore
           .collection(FirestoreCollectionsStrings.users)
           .doc(userId)
           .collection(FirestoreCollectionsStrings.myLearning)
           .orderBy("updatedAt", descending: true)
-          .get()
-          .then((querySnapshot) => querySnapshot.docs.first);
+          .limit(1) 
+          .get();
+
+      if (querySnapshot.docs.isEmpty) {
+        return null;
+      }
+
+      return querySnapshot.docs.first;
     } on Exception catch (e) {
       throw ServerException(e.toString());
     }
@@ -710,7 +715,7 @@ class FirestoreDBImpl implements Database {
   }
 
   @override
-  Future<List<DocumentSnapshot>> getLastCompletedLessonDetails(
+  Future<List<Map<String, dynamic>>> getLastCompletedLessonDetails(
     String userId,
   ) async {
     try {
@@ -720,25 +725,12 @@ class FirestoreDBImpl implements Database {
           .collection(FirestoreCollectionsStrings.myLearning)
           .get();
 
-      final List<DocumentSnapshot> result = [];
+      final List<Map<String, dynamic>> result = [];
 
-      for (final doc in myLearningSnapshot.docs) {
-        final lastLessonId = doc.data()['lastLessonId'];
-
-        if (lastLessonId == null) {
-          continue;
-        }
-
-        final lessonSnapshot = await _firestore
-            .collection(FirestoreCollectionsStrings.courses)
-            .doc(doc.id)
-            .collection(FirestoreCollectionsStrings.lessons)
-            .doc(lastLessonId)
-            .get();
-
-        result.add(lessonSnapshot);
+      for (var course in myLearningSnapshot.docs) {
+        final lesson = await getLastWatchedLesson(course.id, userId);
+        result.add(lesson);
       }
-
       return result;
     } on Exception catch (e) {
       throw ServerException(e.toString());

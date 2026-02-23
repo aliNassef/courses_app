@@ -1,3 +1,5 @@
+import 'package:courses_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
+
 import '../../../../core/extensions/mediaquery_size.dart';
 import '../../../../core/extensions/padding_extension.dart';
 import '../../../../core/widgets/widgets.dart';
@@ -25,65 +27,155 @@ class MyLearningViewBody extends StatelessWidget {
       width: context.width,
       height: context.height,
       color: AppColors.white,
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: .start,
-              children: [
-                const Divider(),
-                const Gap(16),
-                TitleWithSeeAll(
-                  title: LocaleKeys.continue_learning.tr(),
-                  hasIcon: false,
-                ).withHorizontalPadding(Constants.hp16),
-                const Gap(16),
-                SizedBox(height: 200.h, child: const ContinueLearningSection()),
-                const Gap(16),
-                Text(
-                  LocaleKeys.in_progress.tr(),
-                  style: context.appTheme.bold20,
-                ).withHorizontalPadding(Constants.hp16),
-                const Gap(16),
-              ],
-            ),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: Constants.hp16),
-            sliver: BlocBuilder<MyLearningCubit, MyLearningState>(
+      child: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          final userId = context.read<AuthCubit>().userId;
+          context.read<MyLearningCubit>().getAllLearning(userId);
+          context.read<MyLearningCubit>().getLastCompletedLessonDetails(
+            userId,
+          );
+        },
+        child: CustomScrollView(
+          slivers: [
+            BlocBuilder<MyLearningCubit, MyLearningState>(
               buildWhen: (previous, current) =>
-                  current is MyLearningSuccess ||
-                  current is MyLearningLoading ||
-                  current is MyLearningFailure,
+                  current is GetLastCompletedLessonDetailsLoading ||
+                  current is GetLastCompletedLessonDetailsSuccess ||
+                  current is GetLastCompletedLessonDetailsError,
               builder: (context, state) {
-                if (state is MyLearningLoading) {
-                  return _buildMyLearningInProgressLoading();
-                }
-
-                if (state is MyLearningFailure) {
-                  return SliverToBoxAdapter(
-                    child: CustomFailureWidget(
-                      meesage: state.failure.errMessage,
+                return switch (state) {
+                  GetLastCompletedLessonDetailsLoading() => SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      children: [
+                        const Divider(),
+                        const Gap(16),
+                        Skeletonizer(
+                          enabled: true,
+                          child: TitleWithSeeAll(
+                            title: LocaleKeys.continue_learning.tr(),
+                            hasIcon: false,
+                          ).withHorizontalPadding(Constants.hp16),
+                        ),
+                        const Gap(16),
+                        SizedBox(
+                          height: 200.h,
+                          child: const ContinueLearningSection(),
+                        ),
+                        const Gap(16),
+                      ],
                     ),
-                  );
-                }
-
-                if (state is MyLearningSuccess) {
-                  return SliverList.separated(
-                    itemBuilder: (context, index) => InProgreeCardItem(
-                      learning: state.learning[index],
+                  ),
+                  GetLastCompletedLessonDetailsSuccess(:final lessons) =>
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          const Divider(),
+                          lessons.isEmpty
+                              ? const SizedBox.shrink()
+                              : const Gap(16),
+                          lessons.isEmpty
+                              ? const SizedBox.shrink()
+                              : TitleWithSeeAll(
+                                  title: LocaleKeys.continue_learning.tr(),
+                                  hasIcon: false,
+                                ).withHorizontalPadding(Constants.hp16),
+                          const Gap(16),
+                          SizedBox(
+                            height: lessons.isEmpty ? 0 : 200.h,
+                            child: const ContinueLearningSection(),
+                          ),
+                          const Gap(16),
+                        ],
+                      ),
                     ),
-                    separatorBuilder: (_, _) => const Gap(16),
-                    itemCount: state.learning.length,
-                  );
-                }
-
-                return const SliverToBoxAdapter(child: SizedBox.shrink());
+                  GetLastCompletedLessonDetailsError() => SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      children: [
+                        const Divider(),
+                        const Gap(16),
+                        TitleWithSeeAll(
+                          title: LocaleKeys.continue_learning.tr(),
+                          hasIcon: false,
+                        ).withHorizontalPadding(Constants.hp16),
+                        const Gap(16),
+                        SizedBox(
+                          height: 200.h,
+                          child: const ContinueLearningSection(),
+                        ),
+                        const Gap(16),
+                      ],
+                    ),
+                  ),
+                  _ => const SliverToBoxAdapter(child: SizedBox.shrink()),
+                };
               },
             ),
-          ),
-          const SliverGap(30),
-        ],
+
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  Text(
+                    LocaleKeys.in_progress.tr(),
+                    style: context.appTheme.bold20,
+                  ).withHorizontalPadding(Constants.hp16),
+                  const Gap(16),
+                ],
+              ),
+            ),
+
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: Constants.hp16),
+              sliver: BlocBuilder<MyLearningCubit, MyLearningState>(
+                buildWhen: (previous, current) =>
+                    current is MyLearningSuccess ||
+                    current is MyLearningLoading ||
+                    current is MyLearningFailure,
+                builder: (context, state) {
+                  if (state is MyLearningLoading) {
+                    return _buildMyLearningInProgressLoading();
+                  }
+
+                  if (state is MyLearningFailure) {
+                    return SliverToBoxAdapter(
+                      child: CustomFailureWidget(
+                        meesage: state.failure.errMessage,
+                      ),
+                    );
+                  }
+
+                  if (state is MyLearningSuccess) {
+                    if (state.learning.isEmpty) {
+                      return SliverToBoxAdapter(
+                        child: Center(
+                          child: Text(
+                            "No courses found",
+                            style: context.appTheme.bold20.copyWith(
+                              color: AppColors.grey,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    return SliverList.separated(
+                      itemBuilder: (context, index) => InProgreeCardItem(
+                        learning: state.learning[index],
+                      ),
+                      separatorBuilder: (_, _) => const Gap(16),
+                      itemCount: state.learning.length,
+                    );
+                  }
+
+                  return const SliverToBoxAdapter(child: SizedBox.shrink());
+                },
+              ),
+            ),
+            const SliverGap(30),
+          ],
+        ),
       ),
     );
   }

@@ -56,7 +56,7 @@ class MyLearningRepoImpl implements MyLearningRepo {
   }
 
   @override
-  Future<Either<Failure, MyLearningModel>> getLastLearningCourse(
+  Future<Either<Failure, MyLearningModel?>> getLastLearningCourse(
     String userId,
   ) async {
     try {
