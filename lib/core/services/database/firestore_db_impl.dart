@@ -26,6 +26,18 @@ class FirestoreDBImpl implements Database {
   }
 
   @override
+  Future<void> updateUserProfileImage(String userId, String imageUrl) async {
+    try {
+      await _firestore
+          .collection(FirestoreCollectionsStrings.users)
+          .doc(userId)
+          .update({'image': imageUrl});
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
   Future<void> updateUser(String userId, Map<String, dynamic> data) async {
     try {
       await _firestore

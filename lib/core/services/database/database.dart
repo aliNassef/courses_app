@@ -11,7 +11,7 @@ abstract class Database {
   });
   Future<void> updateUser(String userId, Map<String, dynamic> data);
   Future<DocumentSnapshot> getUser(String userId);
-
+  Future<void> updateUserProfileImage(String userId, String imageUrl);
   Future<void> createCourse({
     required String courseId,
     required Map<String, dynamic> data,

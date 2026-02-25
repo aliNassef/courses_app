@@ -1,5 +1,4 @@
-import 'dart:io';
-
+ 
 import 'package:courses_app/features/profile/data/repo/profile_repo.dart';
 import 'package:courses_app/features/profile/data/source/profile_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
@@ -37,8 +36,15 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateProfileImage(String userId, File image) {
-    // TODO: implement updateProfileImage
-    throw UnimplementedError();
+  Future<Either<Failure, void>> updateProfileImage(String userId, String imageUrl) async{
+    try {
+      final result = await _profileRemoteDataSource.updateProfileImage(
+        userId,
+        imageUrl,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
   }
 }

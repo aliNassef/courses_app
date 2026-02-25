@@ -1,4 +1,11 @@
+import 'package:courses_app/core/services/image_picker/image_picker_service.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
+import '../../features/profile/presentation/view_model/update_user_profile_image_cubit/update_user_profile_image_cubit.dart';
+import '../services/image_picker/image_picker_service_impl.dart';
+import '../services/storage/storage_service.dart';
+import '../services/storage/storage_service_impl.dart';
 import 'di.dart';
 
 final injector = GetIt.instance;
@@ -15,9 +22,15 @@ Future<void> setupServiceLocator() async {
 }
 
 void _setupProfileFeature() {
-
   injector.registerFactory<UserCoursesCubit>(
     () => UserCoursesCubit(injector<ProfileRepo>()),
+  );
+  injector.registerFactory<UpdateUserProfileImageCubit>(
+    () => UpdateUserProfileImageCubit(
+      injector<ProfileRepo>(),
+      injector<ImagePickerService>(),
+      injector<StorageService>(),
+    ),
   );
   injector.registerLazySingleton<ProfileRepo>(
     () => ProfileRepoImpl(
@@ -195,5 +208,16 @@ void _setupExternalServices() {
 
   injector.registerLazySingleton<Database>(
     () => FirestoreDBImpl(),
+  );
+  injector.registerLazySingleton<StorageService>(
+    () => StorageServiceImpl(
+      injector<FirebaseStorage>(),
+    ),
+  );
+  injector.registerLazySingleton<FirebaseStorage>(
+    () => FirebaseStorage.instance,
+  );
+  injector.registerLazySingleton<ImagePickerService>(
+    () => ImagePickerServiceImpl(ImagePicker()),
   );
 }

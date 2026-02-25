@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:courses_app/core/di/di.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<int> getUserSubscriptions(String userId);
   Future<void> getUserProfile(String userId);
   Future<void> updateProfile(String userId, Map<String, dynamic> data);
-  Future<void> updateProfileImage(String userId, File image);
+  Future<void> updateProfileImage(String userId, String imageUrl);
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -33,8 +31,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
 
   @override
-  Future<void> updateProfileImage(String userId, File image) {
-    // TODO: implement updateProfileImage
-    throw UnimplementedError();
+  Future<void> updateProfileImage(String userId, String imageUrl) async {
+    await _database.updateUserProfileImage(userId, imageUrl);
   }
 }

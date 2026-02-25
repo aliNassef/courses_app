@@ -65,7 +65,7 @@ class ProfileViewBody extends StatelessWidget {
                   const Gap(16),
                   Align(
                     alignment: Alignment.center,
-                    child: ProfileImage(image: state.user.image),
+                    child: ProfileImage(imageUrl: state.user.image),
                   ),
                   Row(
                     mainAxisAlignment: .center,
