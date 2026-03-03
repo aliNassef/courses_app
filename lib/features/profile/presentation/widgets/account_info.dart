@@ -68,7 +68,7 @@ class AccountsInfo extends StatelessWidget {
                   color: AppColors.primary,
                 ),
                 title: const Text('Language'),
-                titleTextStyle: context.appTheme.bold14.copyWith(
+                titleTextStyle: context.typography.bold14.copyWith(
                   color: AppColors.primary,
                 ),
                 onTap: () {
@@ -81,7 +81,7 @@ class AccountsInfo extends StatelessWidget {
                   radius: 14,
                   child: Text(
                     'AR',
-                    style: context.appTheme.regular12,
+                    style: context.typography.regular12,
                   ),
                 ),
                 title: const Text('العربيه'),
@@ -95,7 +95,7 @@ class AccountsInfo extends StatelessWidget {
                   radius: 14,
                   child: Text(
                     'EN',
-                    style: context.appTheme.regular12,
+                    style: context.typography.regular12,
                   ),
                 ),
                 title: const Text('English'),

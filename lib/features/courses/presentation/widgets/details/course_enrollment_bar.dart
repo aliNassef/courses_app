@@ -33,14 +33,14 @@ class CourseEnrollmentBar extends StatelessWidget {
             children: [
               Text(
                 '\$90.00',
-                style: context.appTheme.medium12.copyWith(
+                style: context.typography.medium12.copyWith(
                   color: AppColors.grey,
                   decoration: TextDecoration.lineThrough,
                 ),
               ),
               Text(
                 '\$${course.price.toStringAsFixed(1)}',
-                style: context.appTheme.bold20.copyWith(
+                style: context.typography.bold20.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -100,7 +100,7 @@ class CourseEnrollmentBar extends StatelessWidget {
               },
               child: Text(
                 LocaleKeys.enroll_now.tr(),
-                style: context.appTheme.bold16.copyWith(
+                style: context.typography.bold16.copyWith(
                   color: AppColors.white,
                 ),
               ),

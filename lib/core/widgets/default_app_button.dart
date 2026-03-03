@@ -30,7 +30,7 @@ class DefaultAppButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: context.appTheme.semiBold14.copyWith(
+        style: context.typography.semiBold14.copyWith(
           color: textColor ?? AppColors.white,
         ),
       ),

@@ -35,13 +35,13 @@ class ReplyItem extends StatelessWidget {
             ),
             title: Text(
               "John Doe",
-              style: context.appTheme.medium14.copyWith(
+              style: context.typography.medium14.copyWith(
                 color: AppColors.primary,
               ),
             ),
             subtitle: Text(
               "2 days ago",
-              style: context.appTheme.medium12.copyWith(
+              style: context.typography.medium12.copyWith(
                 color: AppColors.primary.withValues(alpha: 0.5),
               ),
             ),
@@ -56,7 +56,7 @@ class ReplyItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   reply.message,
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.black.withValues(alpha: 0.5),
                   ),
                 ).withHorizontalPadding(Constants.hp16),

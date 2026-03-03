@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courses_app/core/models/search_model.dart';
+import 'package:courses_app/features/my_learning/data/model/my_learning_model.dart';
 import '../../../features/courses/data/models/chapter_model.dart';
+import '../../../features/courses/data/models/course_model.dart';
 import '../../../features/courses/data/models/discuss_model.dart';
 import '../../../features/courses/data/models/reply_model.dart';
 import '../../errors/server_exception.dart';
@@ -643,7 +646,8 @@ class FirestoreDBImpl implements Database {
       throw ServerException(e.toString());
     }
   }
-@override
+
+  @override
   Future<DocumentSnapshot?> getLastLearningCourse(String userId) async {
     try {
       final querySnapshot = await _firestore
@@ -651,7 +655,7 @@ class FirestoreDBImpl implements Database {
           .doc(userId)
           .collection(FirestoreCollectionsStrings.myLearning)
           .orderBy("updatedAt", descending: true)
-          .limit(1) 
+          .limit(1)
           .get();
 
       if (querySnapshot.docs.isEmpty) {
@@ -1094,6 +1098,36 @@ class FirestoreDBImpl implements Database {
           .get();
 
       return userCoursesSnap.docs;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<SearchModel>> searchOnCourses(
+    String query,
+    String userId,
+  ) async {
+    try {
+      final myLearningCoursesSnap = await getMyLearningCourses(userId);
+      final allCoursesSnap = await getCourses();
+      List<SearchModel> searchResult = [];
+      final allCourses = allCoursesSnap
+          .map((c) => CourseModel.fromMap(c.data() as Map<String, dynamic>))
+          .toList();
+      final allLearning = myLearningCoursesSnap
+          .map((c) => MyLearningModel.fromMap(c.data() as Map<String, dynamic>))
+          .toList();
+      final sharedIds = allLearning.map((l) => l.courseId).toList();
+      for (var c in allCourses) {
+        if (sharedIds.contains(c.id)) {
+          searchResult.add(SearchModel(course: c, isSubscribed: true));
+        } else {
+          searchResult.add(SearchModel(course: c, isSubscribed: false));
+        }
+      }
+
+      return searchResult;
     } catch (e) {
       throw ServerException(e.toString());
     }

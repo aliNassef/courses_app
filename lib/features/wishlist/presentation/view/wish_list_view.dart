@@ -33,7 +33,7 @@ class WishListView extends StatelessWidget {
         backgroundColor: AppColors.white,
         title: Text(
           LocaleKeys.favorites.tr(),
-          style: context.appTheme.semiBold20.copyWith(
+          style: context.typography.semiBold20.copyWith(
             color: AppColors.black,
           ),
         ),
@@ -43,7 +43,7 @@ class WishListView extends StatelessWidget {
             onPressed: () {},
             child: Text(
               LocaleKeys.edit.tr(),
-              style: context.appTheme.regular14.copyWith(
+              style: context.typography.regular14.copyWith(
                 color: AppColors.grey,
               ),
             ),
@@ -54,7 +54,7 @@ class WishListView extends StatelessWidget {
         backgroundColor: AppColors.white,
         middle: Text(
           LocaleKeys.favorites.tr(),
-          style: context.appTheme.semiBold20.copyWith(
+          style: context.typography.semiBold20.copyWith(
             color: AppColors.black,
           ),
         ),
@@ -62,7 +62,7 @@ class WishListView extends StatelessWidget {
           onPressed: () {},
           child: Text(
             LocaleKeys.edit.tr(),
-            style: context.appTheme.regular14.copyWith(color: AppColors.grey),
+            style: context.typography.regular14.copyWith(color: AppColors.grey),
           ),
         ).withHorizontalPadding(8),
       ),

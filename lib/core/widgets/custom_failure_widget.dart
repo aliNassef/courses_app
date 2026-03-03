@@ -10,7 +10,7 @@ class CustomFailureWidget extends StatelessWidget {
     return Center(
       child: Text(
         meesage,
-        style: context.appTheme.bold24.copyWith(color: AppColors.red),
+        style: context.typography.bold24.copyWith(color: AppColors.red),
         overflow: TextOverflow.ellipsis,
         maxLines: 3,
       ),

@@ -52,21 +52,21 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           const Gap(32),
           Text(
             LocaleKeys.create_account.tr(),
-            style: context.appTheme.bold20.copyWith(
+            style: context.typography.bold20.copyWith(
               color: AppColors.black,
             ),
           ),
           const Gap(4),
           Text(
             LocaleKeys.start_journey_learning_today.tr(),
-            style: context.appTheme.regular12.copyWith(
+            style: context.typography.regular12.copyWith(
               color: AppColors.grey,
             ),
           ),
           const Gap(24),
           Text(
             LocaleKeys.full_name.tr(),
-            style: context.appTheme.medium14.copyWith(
+            style: context.typography.medium14.copyWith(
               color: AppColors.black,
             ),
           ),
@@ -80,7 +80,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           const Gap(12),
           Text(
             LocaleKeys.email_address.tr(),
-            style: context.appTheme.medium14.copyWith(
+            style: context.typography.medium14.copyWith(
               color: AppColors.black,
             ),
           ),
@@ -94,7 +94,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           const Gap(12),
           Text(
             LocaleKeys.password.tr(),
-            style: context.appTheme.medium14.copyWith(
+            style: context.typography.medium14.copyWith(
               color: AppColors.black,
             ),
           ),

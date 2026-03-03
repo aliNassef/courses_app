@@ -12,4 +12,5 @@ class Constants {
   static Locale enLocale = const Locale(Constants.en);
   static Locale arLocale = const Locale(Constants.ar);
   static const String profileImagesPath = 'profile_images';
+  static const debounceDuration = Duration(milliseconds: 300);
 }

@@ -34,7 +34,7 @@ class CourseWatchLoadingSkeleton extends StatelessWidget {
                 const Gap(20),
                 Text(
                   '03. Introduction to UI Design',
-                  style: context.appTheme.bold20.copyWith(
+                  style: context.typography.bold20.copyWith(
                     color: AppColors.black,
                   ),
                 ),
@@ -48,20 +48,20 @@ class CourseWatchLoadingSkeleton extends StatelessWidget {
                     const Gap(5),
                     Text(
                       '2 min 30 sec',
-                      style: context.appTheme.regular14.copyWith(
+                      style: context.typography.regular14.copyWith(
                         color: AppColors.grey,
                       ),
                     ),
                     Text(
                       '  -  ',
-                      style: context.appTheme.bold20.copyWith(
+                      style: context.typography.bold20.copyWith(
                         color: AppColors.grey,
                       ),
                     ),
                     const Gap(5),
                     Text(
                       'In Progress',
-                      style: context.appTheme.regular14.copyWith(
+                      style: context.typography.regular14.copyWith(
                         color: AppColors.primary,
                       ),
                     ),
@@ -79,13 +79,13 @@ class CourseWatchLoadingSkeleton extends StatelessWidget {
                   child: AdaptiveListTile(
                     title: Text(
                       'Mark as Completed',
-                      style: context.appTheme.bold16.copyWith(
+                      style: context.typography.bold16.copyWith(
                         color: AppColors.black,
                       ),
                     ),
                     subtitle: Text(
                       'track your progress',
-                      style: context.appTheme.regular14.copyWith(
+                      style: context.typography.regular14.copyWith(
                         color: AppColors.grey,
                       ),
                     ),

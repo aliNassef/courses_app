@@ -32,7 +32,7 @@ void showReviewDialog(
             backgroundColor: AppColors.white,
             title: Text(
               "${LocaleKeys.rate_this_course.tr()} ⭐",
-              style: context.appTheme.medium16,
+              style: context.typography.medium16,
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,

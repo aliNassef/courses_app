@@ -29,7 +29,7 @@ class InstructorName extends StatelessWidget {
                     enabled: true,
                     child: Text(
                       'Ali Nassef',
-                      style: context.appTheme.regular12.copyWith(
+                      style: context.typography.regular12.copyWith(
                         color: AppColors.grey,
                       ),
                     ),
@@ -38,7 +38,7 @@ class InstructorName extends StatelessWidget {
                 if (state is InstructorLoaded) {
                   return Text(
                     "By ${state.instructor.name}",
-                    style: context.appTheme.regular12.copyWith(
+                    style: context.typography.regular12.copyWith(
                       color: AppColors.grey,
                     ),
                   );
@@ -46,7 +46,7 @@ class InstructorName extends StatelessWidget {
                 if (state is InstructorError) {
                   return Text(
                     state.failure.errMessage,
-                    style: context.appTheme.regular12.copyWith(
+                    style: context.typography.regular12.copyWith(
                       color: AppColors.grey,
                     ),
                   );

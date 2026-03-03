@@ -31,7 +31,7 @@ class FavoruiteButtonAndBestSeller extends StatelessWidget {
             ),
             child: Text(
               LocaleKeys.best_sellers.tr(),
-              style: context.appTheme.medium14.copyWith(
+              style: context.typography.medium14.copyWith(
                 color: AppColors.primary,
               ),
             ),

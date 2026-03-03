@@ -54,7 +54,7 @@ abstract class AppDilagos {
         duration: Duration(seconds: secondes),
         content: Text(
           errMessage,
-          style: context.appTheme.regular12.copyWith(color: AppColors.light),
+          style: context.typography.regular12.copyWith(color: AppColors.light),
         ),
       ),
     );

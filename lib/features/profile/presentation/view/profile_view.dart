@@ -3,6 +3,7 @@ import 'package:courses_app/core/di/di.dart';
 import 'package:flutter/widget_previews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/service_locator.dart';
+import '../../../../core/utils/previews/preview_utils.dart';
 import '../view_model/update_user_profile_image_cubit/update_user_profile_image_cubit.dart';
 import '../widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,10 @@ import 'package:flutter/material.dart';
 class ProfileView extends StatelessWidget {
   @Preview(
     group: 'profile_view',
+    wrapper: previewWrapper,
+    size: Size(390, 844),
+    name: 'Profile View',
+    brightness: Brightness.light,
   )
   const ProfileView({super.key});
   @override

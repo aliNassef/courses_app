@@ -25,25 +25,25 @@ class TermsAndConditionsWithCheckBox extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               text: LocaleKeys.terms_agreement_start.tr(),
-              style: context.appTheme.bold12.copyWith(
+              style: context.typography.bold12.copyWith(
                 color: AppColors.grey,
               ),
               children: [
                 TextSpan(
                   text: LocaleKeys.terms_and_conditions.tr(),
-                  style: context.appTheme.bold12.copyWith(
+                  style: context.typography.bold12.copyWith(
                     color: AppColors.primary,
                   ),
                 ),
                 TextSpan(
                   text: LocaleKeys.and.tr(),
-                  style: context.appTheme.bold12.copyWith(
+                  style: context.typography.bold12.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
                 TextSpan(
                   text: LocaleKeys.privacy_policy.tr(),
-                  style: context.appTheme.bold12.copyWith(
+                  style: context.typography.bold12.copyWith(
                     color: AppColors.primary,
                   ),
                 ),

@@ -41,7 +41,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return AdaptiveTextFormField(
       keyboardType: widget.keyboardType,
       focusNode: widget.focusNode,
-      style: context.appTheme.regular14.copyWith(
+      style: context.typography.regular14.copyWith(
         color: AppColors.black,
       ),
       obscureText: isSecure,
@@ -69,10 +69,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               )
             : null,
         hintText: widget.hintText,
-        hintStyle: context.appTheme.regular12.copyWith(
+        hintStyle: context.typography.regular12.copyWith(
           color: const Color(0xff617589),
         ),
-        errorStyle: context.appTheme.bold10.copyWith(
+        errorStyle: context.typography.bold10.copyWith(
           color: AppColors.red,
         ),
         border: _buildBorder(),

@@ -46,20 +46,20 @@ class Message extends StatelessWidget {
                 ),
                 title: Text(
                   "John Doe",
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.primary,
                   ),
                 ),
                 subtitle: Text(
                   "2 days ago",
-                  style: context.appTheme.medium12.copyWith(
+                  style: context.typography.medium12.copyWith(
                     color: AppColors.primary.withValues(alpha: 0.5),
                   ),
                 ),
               ),
               Text(
                 discussion.message,
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.mediumGrey,
                 ),
               ).withHorizontalPadding(Constants.hp16),

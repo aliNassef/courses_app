@@ -33,11 +33,11 @@ class InstructorInfo extends StatelessWidget {
           return AdaptiveListTile(
             title: Text(
               state.instructor.name,
-              style: context.appTheme.bold14,
+              style: context.typography.bold14,
             ),
             subtitle: Text(
               state.instructor.position,
-              style: context.appTheme.regular12.copyWith(
+              style: context.typography.regular12.copyWith(
                 color: AppColors.grey,
               ),
             ),
@@ -86,11 +86,11 @@ class InstructorInfo extends StatelessWidget {
       child: AdaptiveListTile(
         title: Text(
           'Ali Nassef',
-          style: context.appTheme.bold14,
+          style: context.typography.bold14,
         ),
         subtitle: Text(
           'Senior Mobile Developer @Google',
-          style: context.appTheme.regular12.copyWith(
+          style: context.typography.regular12.copyWith(
             color: AppColors.grey,
           ),
         ),

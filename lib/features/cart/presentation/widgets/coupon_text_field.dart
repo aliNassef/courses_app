@@ -13,7 +13,7 @@ class CouponTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTextField(
-      style: context.appTheme.regular14.copyWith(
+      style: context.typography.regular14.copyWith(
         color: AppColors.primary,
       ),
       decoration: InputDecoration(
@@ -61,7 +61,7 @@ class CouponTextField extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'Apply',
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.primary,
                   ),
                 ),

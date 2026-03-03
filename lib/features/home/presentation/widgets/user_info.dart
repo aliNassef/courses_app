@@ -38,13 +38,13 @@ class UserInfo extends StatelessWidget {
               padding: EdgeInsets.zero,
               title: Text(
                 LocaleKeys.welcome_back.tr(),
-                style: context.appTheme.regular12.copyWith(
+                style: context.typography.regular12.copyWith(
                   color: AppColors.grey,
                 ),
               ),
               subtitle: Text(
                 'Ali Nassef',
-                style: context.appTheme.bold16.copyWith(
+                style: context.typography.bold16.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -75,13 +75,13 @@ class UserInfo extends StatelessWidget {
             padding: EdgeInsets.zero,
             title: Text(
               LocaleKeys.welcome_back.tr(),
-              style: context.appTheme.regular12.copyWith(
+              style: context.typography.regular12.copyWith(
                 color: AppColors.grey,
               ),
             ),
             subtitle: Text(
               state.user.name,
-              style: context.appTheme.bold16.copyWith(
+              style: context.typography.bold16.copyWith(
                 color: AppColors.black,
               ),
             ),

@@ -58,11 +58,11 @@ class _LayoutViewState extends State<LayoutView> {
           builder: (context) => AlertDialog.adaptive(
             title: Text(
               LocaleKeys.exit_app.tr(),
-              style: context.appTheme.bold16.copyWith(color: AppColors.red),
+              style: context.typography.bold16.copyWith(color: AppColors.red),
             ),
             content: Text(
               LocaleKeys.are_you_sure_you_want_to_exit.tr(),
-              style: context.appTheme.bold12.copyWith(color: AppColors.primary),
+              style: context.typography.bold12.copyWith(color: AppColors.primary),
             ),
             actions: [
               TextButton(
@@ -72,7 +72,7 @@ class _LayoutViewState extends State<LayoutView> {
                 ),
                 child: Text(
                   LocaleKeys.cancel.tr(),
-                  style: context.appTheme.bold12,
+                  style: context.typography.bold12,
                 ),
               ),
               TextButton(
@@ -82,7 +82,7 @@ class _LayoutViewState extends State<LayoutView> {
                 ),
                 child: Text(
                   LocaleKeys.exit.tr(),
-                  style: context.appTheme.bold12,
+                  style: context.typography.bold12,
                 ),
               ),
             ],

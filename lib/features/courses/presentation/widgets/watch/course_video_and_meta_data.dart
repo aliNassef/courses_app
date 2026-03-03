@@ -47,7 +47,7 @@ class CourseVideoAndMetaData extends StatelessWidget {
               const Gap(20),
               Text(
                 lesson.name,
-                style: context.appTheme.bold20.copyWith(
+                style: context.typography.bold20.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -61,20 +61,20 @@ class CourseVideoAndMetaData extends StatelessWidget {
                   const Gap(5),
                   Text(
                     lesson.duration.toHours,
-                    style: context.appTheme.regular14.copyWith(
+                    style: context.typography.regular14.copyWith(
                       color: AppColors.grey,
                     ),
                   ),
                   Text(
                     '  -  ',
-                    style: context.appTheme.bold20.copyWith(
+                    style: context.typography.bold20.copyWith(
                       color: AppColors.grey,
                     ),
                   ),
                   const Gap(5),
                   Text(
                     LocaleKeys.in_progress.tr(),
-                    style: context.appTheme.regular14.copyWith(
+                    style: context.typography.regular14.copyWith(
                       color: AppColors.primary,
                     ),
                   ),
@@ -92,13 +92,13 @@ class CourseVideoAndMetaData extends StatelessWidget {
                 child: AdaptiveListTile(
                   title: Text(
                     LocaleKeys.mark_as_completed.tr(),
-                    style: context.appTheme.bold16.copyWith(
+                    style: context.typography.bold16.copyWith(
                       color: AppColors.black,
                     ),
                   ),
                   subtitle: Text(
                     LocaleKeys.track_your_progress.tr(),
-                    style: context.appTheme.regular14.copyWith(
+                    style: context.typography.regular14.copyWith(
                       color: AppColors.grey,
                     ),
                   ),

@@ -57,13 +57,13 @@ class _ChapterTileItemState extends State<ChapterTileItem> {
                     return ListTile(
                       title: Text(
                         "Chapter ${entry.key + 1}",
-                        style: context.appTheme.medium14.copyWith(
+                        style: context.typography.medium14.copyWith(
                           color: AppColors.grey,
                         ),
                       ),
                       subtitle: Text(
                         entry.value.title,
-                        style: context.appTheme.bold16.copyWith(
+                        style: context.typography.bold16.copyWith(
                           color: AppColors.black,
                         ),
                       ),

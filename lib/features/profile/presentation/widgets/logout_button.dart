@@ -47,7 +47,7 @@ class LogoutButton extends StatelessWidget {
         color: const Color(0xfffef2f2),
         child: Text(
           'Log Out',
-          style: context.appTheme.bold16.copyWith(color: AppColors.red),
+          style: context.typography.bold16.copyWith(color: AppColors.red),
         ),
         onPressed: () {
           context.read<AuthCubit>().signOut();

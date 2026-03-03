@@ -40,7 +40,7 @@ class MyLearningView extends StatelessWidget {
         backgroundColor: AppColors.white,
         title: Text(
           LocaleKeys.my_learning.tr(),
-          style: context.appTheme.semiBold20,
+          style: context.typography.semiBold20,
         ),
 
         actions: [
@@ -58,7 +58,7 @@ class MyLearningView extends StatelessWidget {
         backgroundColor: AppColors.white,
         middle: Text(
           LocaleKeys.my_learning.tr(),
-          style: context.appTheme.semiBold20,
+          style: context.typography.semiBold20,
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

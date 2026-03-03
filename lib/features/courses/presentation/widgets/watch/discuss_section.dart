@@ -102,7 +102,7 @@ class _DiscussSectionState extends State<DiscussSection> {
                         children: [
                           Text(
                             'Replying to ${replyState.replyingTo?.userName}',
-                            style: context.appTheme.medium12.copyWith(
+                            style: context.typography.medium12.copyWith(
                               color: AppColors.primary,
                               fontWeight: FontWeight.bold,
                             ),
@@ -111,7 +111,7 @@ class _DiscussSectionState extends State<DiscussSection> {
                             replyState.replyingTo?.message ?? "",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: context.appTheme.medium12.copyWith(
+                            style: context.typography.medium12.copyWith(
                               color: AppColors.mediumGrey,
                             ),
                           ),

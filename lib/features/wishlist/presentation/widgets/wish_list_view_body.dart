@@ -59,7 +59,7 @@ class WishListViewBody extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'No courses in wishlist',
-                          style: context.appTheme.semiBold16,
+                          style: context.typography.semiBold16,
                         ),
                       ),
                     ),

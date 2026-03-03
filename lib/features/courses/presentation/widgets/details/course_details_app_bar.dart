@@ -23,7 +23,7 @@ AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
       centerTitle: true,
       title: Text(
         LocaleKeys.course_details.tr(),
-        style: context.appTheme.bold14.copyWith(
+        style: context.typography.bold14.copyWith(
           color: AppColors.black,
         ),
       ),
@@ -46,7 +46,7 @@ AdaptiveAppBar buildCourseDetailsAppBar(BuildContext context) {
       ),
       middle: Text(
         LocaleKeys.course_details.tr(),
-        style: context.appTheme.bold14.copyWith(
+        style: context.typography.bold14.copyWith(
           color: AppColors.black,
         ),
       ),

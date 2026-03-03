@@ -27,14 +27,14 @@ class ForgetPasswordViewBody extends StatelessWidget {
         const Gap(20),
         Text(
           LocaleKeys.forgot_password_title.tr(),
-          style: context.appTheme.bold24.copyWith(
+          style: context.typography.bold24.copyWith(
             color: AppColors.black,
           ),
         ),
         const Gap(20),
         Text(
           LocaleKeys.forgot_password_description.tr(),
-          style: context.appTheme.medium14.copyWith(
+          style: context.typography.medium14.copyWith(
             color: AppColors.grey,
           ),
           textAlign: TextAlign.center,
@@ -45,7 +45,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
           children: [
             Text(
               LocaleKeys.email_address.tr(),
-              style: context.appTheme.medium14.copyWith(
+              style: context.typography.medium14.copyWith(
                 color: AppColors.black,
               ),
             ),

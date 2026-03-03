@@ -32,13 +32,13 @@ class RecentAchivementItem extends StatelessWidget {
               children: [
                 Text(
                   'Fast Learner',
-                  style: context.appTheme.bold14.copyWith(
+                  style: context.typography.bold14.copyWith(
                     color: AppColors.black,
                   ),
                 ),
                 Text(
                   'Fast Learner',
-                  style: context.appTheme.regular12.copyWith(
+                  style: context.typography.regular12.copyWith(
                     color: AppColors.grey,
                   ),
                 ),

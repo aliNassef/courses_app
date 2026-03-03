@@ -22,14 +22,14 @@ class HaveAccount extends StatelessWidget {
         Text.rich(
           TextSpan(
             text: question,
-            style: context.appTheme.bold12.copyWith(
+            style: context.typography.bold12.copyWith(
               color: AppColors.grey,
             ),
             children: [
               TextSpan(
                 recognizer: TapGestureRecognizer()..onTap = onTap,
                 text: action,
-                style: context.appTheme.bold12.copyWith(
+                style: context.typography.bold12.copyWith(
                   color: AppColors.primary,
                 ),
               ),

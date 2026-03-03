@@ -3,6 +3,7 @@ import 'package:courses_app/features/courses/data/models/discuss_model.dart';
 
 import '../../../features/courses/data/models/chapter_model.dart';
 import '../../../features/courses/data/models/reply_model.dart';
+import '../../models/search_model.dart';
 
 abstract class Database {
   Future<void> createUser({
@@ -190,4 +191,8 @@ abstract class Database {
   Future<bool> hasUserReviewed(String courseId, String userId);
 
   Future<List<DocumentSnapshot>> getUserCourses(String userId);
+  Future<List<SearchModel>> searchOnCourses(
+    String query,
+    String userId,
+  );
 }

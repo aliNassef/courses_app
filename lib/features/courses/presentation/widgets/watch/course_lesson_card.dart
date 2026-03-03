@@ -26,7 +26,7 @@ class CourseLessonCard extends StatelessWidget {
       child: AdaptiveListTile(
         title: Text(
           lesson.name,
-          style: context.appTheme.medium16.copyWith(
+          style: context.typography.medium16.copyWith(
             color: isCompleted ? AppColors.grey : AppColors.black,
             decoration: isCompleted ? TextDecoration.lineThrough : null,
             decorationThickness: 2,
@@ -35,7 +35,7 @@ class CourseLessonCard extends StatelessWidget {
         ),
         subtitle: Text(
           lesson.duration.toHM,
-          style: context.appTheme.regular14.copyWith(
+          style: context.typography.regular14.copyWith(
             color: AppColors.grey,
           ),
         ),

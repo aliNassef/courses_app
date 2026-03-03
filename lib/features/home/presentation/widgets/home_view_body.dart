@@ -57,7 +57,7 @@ class HomeViewBody extends StatelessWidget {
                           const Gap(30),
                           Text(
                             LocaleKeys.continue_learning.tr(),
-                            style: context.appTheme.bold20,
+                            style: context.typography.bold20,
                           ),
                           const Gap(16),
                           ContinuedLearningCardItem(
@@ -90,7 +90,7 @@ class HomeViewBody extends StatelessWidget {
                         const Gap(30),
                         Text(
                           LocaleKeys.continue_learning.tr(),
-                          style: context.appTheme.bold20,
+                          style: context.typography.bold20,
                         ),
                         const Gap(16),
                         ContinuedLearningCardItem(
@@ -119,7 +119,7 @@ class HomeViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Text(
             LocaleKeys.browse_categories.tr(),
-            style: context.appTheme.bold20,
+            style: context.typography.bold20,
           ).withHorizontalPadding(Constants.hp16),
         ),
         const SliverGap(16),

@@ -15,7 +15,7 @@ class CourseAboutSection extends StatelessWidget {
       children: [
         Text(
           LocaleKeys.about_this_course.tr(),
-          style: context.appTheme.bold16,
+          style: context.typography.bold16,
         ),
         const Gap(8),
         ExpandableText(

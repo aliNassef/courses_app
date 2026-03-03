@@ -7,7 +7,7 @@ import '../../../../../core/extensions/padding_extension.dart';
 import '../../../../../core/navigation/navigation.dart';
 import '../../../../../core/utils/utils.dart';
 
-AdaptiveAppBar buildCourseAppBar(BuildContext context , String courseTitle) {
+AdaptiveAppBar buildCourseAppBar(BuildContext context, String courseTitle) {
   return AdaptiveAppBar(
     appBar: AppBar(
       leading: GestureDetector(
@@ -22,7 +22,7 @@ AdaptiveAppBar buildCourseAppBar(BuildContext context , String courseTitle) {
       centerTitle: true,
       title: Text(
         courseTitle,
-        style: context.appTheme.bold14.copyWith(
+        style: context.typography.bold14.copyWith(
           color: AppColors.black,
         ),
       ),
@@ -45,7 +45,7 @@ AdaptiveAppBar buildCourseAppBar(BuildContext context , String courseTitle) {
       ),
       middle: Text(
         courseTitle,
-        style: context.appTheme.bold14.copyWith(
+        style: context.typography.bold14.copyWith(
           color: AppColors.black,
         ),
       ),

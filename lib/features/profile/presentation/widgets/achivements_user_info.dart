@@ -28,13 +28,13 @@ class AchivementUserInfo extends StatelessWidget {
           children: [
             Text(
               number,
-              style: context.appTheme.bold20.copyWith(
+              style: context.typography.bold20.copyWith(
                 color: AppColors.primary,
               ),
             ),
             Text(
               text,
-              style: context.appTheme.medium14.copyWith(
+              style: context.typography.medium14.copyWith(
                 color: AppColors.grey,
               ),
             ),

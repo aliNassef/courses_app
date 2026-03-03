@@ -48,7 +48,7 @@ class ContinueLearningSectionItem extends StatelessWidget {
                       ),
                       child: Text(
                         learning.duration.toDuration,
-                        style: context.appTheme.regular12.copyWith(
+                        style: context.typography.regular12.copyWith(
                           color: AppColors.white,
                         ),
                       ),
@@ -59,14 +59,14 @@ class ContinueLearningSectionItem extends StatelessWidget {
               const Gap(8),
               Text(
                 learning.name,
-                style: context.appTheme.semiBold16,
+                style: context.typography.semiBold16,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ).withHorizontalPadding(Constants.hp16),
               const Gap(8),
               Text(
                 learning.description,
-                style: context.appTheme.regular10.copyWith(
+                style: context.typography.regular10.copyWith(
                   color: AppColors.grey,
                 ),
                 maxLines: 2,

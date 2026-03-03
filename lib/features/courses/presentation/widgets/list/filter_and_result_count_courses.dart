@@ -38,7 +38,7 @@ class FilterAndResultCountCourses extends StatelessWidget {
               children: [
                 Text(
                   'data',
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
@@ -56,7 +56,7 @@ class FilterAndResultCountCourses extends StatelessWidget {
             children: [
               Text(
                 '${state.courses.length} ${LocaleKeys.results.tr()}',
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.grey,
                 ),
               ),

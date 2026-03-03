@@ -50,7 +50,7 @@ class ProfileViewBody extends StatelessWidget {
                       const Gap(32),
                       Text(
                         LocaleKeys.profile.tr(),
-                        style: context.appTheme.bold16.copyWith(
+                        style: context.typography.bold16.copyWith(
                           color: AppColors.black,
                         ),
                         textAlign: TextAlign.center,
@@ -72,7 +72,7 @@ class ProfileViewBody extends StatelessWidget {
                     children: [
                       Text(
                         state.user.name,
-                        style: context.appTheme.bold20.copyWith(
+                        style: context.typography.bold20.copyWith(
                           color: AppColors.black,
                         ),
                         textAlign: TextAlign.center,
@@ -87,7 +87,7 @@ class ProfileViewBody extends StatelessWidget {
                         state.user.description.isNullOrEmpty
                             ? LocaleKeys.student.tr()
                             : state.user.description!,
-                        style: context.appTheme.regular14.copyWith(
+                        style: context.typography.regular14.copyWith(
                           color: AppColors.grey,
                         ),
                         textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class ProfileViewBody extends StatelessWidget {
                   const Gap(16),
                   Text(
                     LocaleKeys.recent_achievements.tr(),
-                    style: context.appTheme.bold16.copyWith(
+                    style: context.typography.bold16.copyWith(
                       color: AppColors.black,
                     ),
                   ),
@@ -108,7 +108,7 @@ class ProfileViewBody extends StatelessWidget {
                   const Gap(16),
                   Text(
                     LocaleKeys.account.tr(),
-                    style: context.appTheme.bold16.copyWith(
+                    style: context.typography.bold16.copyWith(
                       color: AppColors.black,
                     ),
                   ),
@@ -140,7 +140,7 @@ class ProfileViewBody extends StatelessWidget {
               const Gap(32),
               Text(
                 LocaleKeys.profile.tr(),
-                style: context.appTheme.bold16.copyWith(
+                style: context.typography.bold16.copyWith(
                   color: AppColors.black,
                 ),
                 textAlign: TextAlign.center,
@@ -162,7 +162,7 @@ class ProfileViewBody extends StatelessWidget {
             children: [
               Text(
                 'Ali Nassef',
-                style: context.appTheme.bold20.copyWith(
+                style: context.typography.bold20.copyWith(
                   color: AppColors.black,
                 ),
                 textAlign: TextAlign.center,
@@ -175,7 +175,7 @@ class ProfileViewBody extends StatelessWidget {
             children: [
               Text(
                 'Computer Science Student',
-                style: context.appTheme.regular14.copyWith(
+                style: context.typography.regular14.copyWith(
                   color: AppColors.grey,
                 ),
                 textAlign: TextAlign.center,
@@ -203,7 +203,7 @@ class ProfileViewBody extends StatelessWidget {
           const Gap(16),
           Text(
             LocaleKeys.recent_achievements.tr(),
-            style: context.appTheme.bold16.copyWith(
+            style: context.typography.bold16.copyWith(
               color: AppColors.black,
             ),
           ),
@@ -212,7 +212,7 @@ class ProfileViewBody extends StatelessWidget {
           const Gap(16),
           Text(
             LocaleKeys.account.tr(),
-            style: context.appTheme.bold16.copyWith(
+            style: context.typography.bold16.copyWith(
               color: AppColors.black,
             ),
           ),

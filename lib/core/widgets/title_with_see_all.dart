@@ -21,7 +21,7 @@ class TitleWithSeeAll extends StatelessWidget {
       children: [
         Text(
           title,
-          style: context.appTheme.bold20,
+          style: context.typography.bold20,
         ),
         GestureDetector(
           onTap: onTap,
@@ -29,7 +29,7 @@ class TitleWithSeeAll extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.see_all.tr(),
-                style: context.appTheme.bold16.copyWith(
+                style: context.typography.bold16.copyWith(
                   color: AppColors.primary,
                 ),
               ),

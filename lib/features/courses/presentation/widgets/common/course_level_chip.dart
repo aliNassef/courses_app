@@ -43,7 +43,7 @@ class _CourseLevelChipState extends State<CourseLevelChip> {
           });
         },
         child: Chip(
-          labelStyle: context.appTheme.semiBold12.copyWith(
+          labelStyle: context.typography.semiBold12.copyWith(
             color: selectedChipIndex == index
                 ? AppColors.white
                 : AppColors.black,

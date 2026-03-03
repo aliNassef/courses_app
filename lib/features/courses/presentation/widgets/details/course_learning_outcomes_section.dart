@@ -26,7 +26,7 @@ class CourseLearningOutcomesSection extends StatelessWidget {
         children: [
           Text(
             LocaleKeys.what_you_will_learn.tr(),
-            style: context.appTheme.bold16,
+            style: context.typography.bold16,
           ),
           const Gap(16),
           ListView.separated(
@@ -55,7 +55,7 @@ class CourseLearningOutcomesSection extends StatelessWidget {
                   Flexible(
                     child: Text(
                       learningOutcomes[index],
-                      style: context.appTheme.medium12.copyWith(
+                      style: context.typography.medium12.copyWith(
                         color: AppColors.black,
                       ),
                     ),

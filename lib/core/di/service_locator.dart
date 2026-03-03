@@ -1,3 +1,6 @@
+import 'package:courses_app/core/controller/bloc/search_on_courses_bloc.dart';
+import 'package:courses_app/core/repo/search_repo.dart';
+import 'package:courses_app/core/repo/search_repo_impl.dart';
 import 'package:courses_app/core/services/image_picker/image_picker_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +22,16 @@ Future<void> setupServiceLocator() async {
   _setupWishlistFeature();
   _setupMyLearningFeature();
   _setupProfileFeature();
+  _setupSearch();
+}
+
+void _setupSearch() {
+  injector.registerFactory(
+    () => SearchOnCoursesBloc(searchRepo: injector<SearchRepo>()),
+  );
+  injector.registerLazySingleton<SearchRepo>(
+    () => SearchRepoImpl(database: injector<Database>()),
+  );
 }
 
 void _setupProfileFeature() {

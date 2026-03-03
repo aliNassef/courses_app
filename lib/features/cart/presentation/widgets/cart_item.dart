@@ -42,7 +42,7 @@ class CartItem extends StatelessWidget {
                     Flexible(
                       child: Text(
                         cart.title,
-                        style: context.appTheme.bold16,
+                        style: context.typography.bold16,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -75,14 +75,14 @@ class CartItem extends StatelessWidget {
                     const Gap(8),
                     Text(
                       cart.rating.toString(),
-                      style: context.appTheme.regular14.copyWith(
+                      style: context.typography.regular14.copyWith(
                         color: const Color(0xffFFC107),
                       ),
                     ),
                     const Spacer(),
                     Text(
                       '\$${cart.price}',
-                      style: context.appTheme.bold16.copyWith(
+                      style: context.typography.bold16.copyWith(
                         color: AppColors.primary,
                       ),
                     ),

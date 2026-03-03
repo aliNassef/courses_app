@@ -32,7 +32,7 @@ class NoInternetBanner extends StatelessWidget {
             Expanded(
               child: Text(
                 "",
-                style: context.appTheme.bold16.copyWith(color: Colors.white),
+                style: context.typography.bold16.copyWith(color: Colors.white),
               ),
             ),
           ],

@@ -42,13 +42,13 @@ class TotalPriceAndCheckoutButton extends StatelessWidget {
                 children: [
                   Text(
                     LocaleKeys.total_price.tr(),
-                    style: context.appTheme.medium12.copyWith(
+                    style: context.typography.medium12.copyWith(
                       color: AppColors.grey,
                     ),
                   ),
                   Text(
                     '\$100',
-                    style: context.appTheme.bold20.copyWith(
+                    style: context.typography.bold20.copyWith(
                       color: AppColors.black,
                     ),
                   ),
@@ -66,7 +66,7 @@ class TotalPriceAndCheckoutButton extends StatelessWidget {
                       children: [
                         Text(
                           LocaleKeys.proceed_to_checkout.tr(),
-                          style: context.appTheme.bold16.copyWith(
+                          style: context.typography.bold16.copyWith(
                             color: AppColors.white,
                           ),
                         ),
@@ -88,13 +88,13 @@ class TotalPriceAndCheckoutButton extends StatelessWidget {
               children: [
                 Text(
                   LocaleKeys.total_price.tr(),
-                  style: context.appTheme.medium12.copyWith(
+                  style: context.typography.medium12.copyWith(
                     color: AppColors.grey,
                   ),
                 ),
                 Text(
                   state.totalPrice.toStringAsFixed(2),
-                  style: context.appTheme.bold20.copyWith(
+                  style: context.typography.bold20.copyWith(
                     color: AppColors.black,
                   ),
                 ),
@@ -112,7 +112,7 @@ class TotalPriceAndCheckoutButton extends StatelessWidget {
                     children: [
                       Text(
                         LocaleKeys.proceed_to_checkout.tr(),
-                        style: context.appTheme.bold16.copyWith(
+                        style: context.typography.bold16.copyWith(
                           color: AppColors.white,
                         ),
                       ),

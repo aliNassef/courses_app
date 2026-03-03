@@ -27,7 +27,7 @@ class CategoryCardItem extends StatelessWidget {
           Flexible(
             child: Text(
               category.name,
-              style: context.appTheme.bold16,
+              style: context.typography.bold16,
             ),
           ),
         ],

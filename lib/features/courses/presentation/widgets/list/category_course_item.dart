@@ -39,7 +39,7 @@ class CategoryCourseItem extends StatelessWidget {
                     Flexible(
                       child: Text(
                         course.title,
-                        style: context.appTheme.medium14.copyWith(
+                        style: context.typography.medium14.copyWith(
                           color: AppColors.black,
                         ),
                         maxLines: 2,
@@ -66,14 +66,14 @@ class CategoryCourseItem extends StatelessWidget {
                     const Gap(8),
                     Text(
                       course.rating.toString(),
-                      style: context.appTheme.regular14.copyWith(
+                      style: context.typography.regular14.copyWith(
                         color: const Color(0xffFFC107),
                       ),
                     ),
                     const Spacer(),
                     Text(
                       '${course.price} ${LocaleKeys.egp.tr()}',
-                      style: context.appTheme.bold14.copyWith(
+                      style: context.typography.bold14.copyWith(
                         color: AppColors.primary,
                       ),
                     ),

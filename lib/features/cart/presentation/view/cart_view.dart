@@ -49,7 +49,7 @@ class CartView extends StatelessWidget {
                   child: CupertinoNavigationBar(
                     middle: Text(
                       'My Cart (0 Items)',
-                      style: context.appTheme.bold16,
+                      style: context.typography.bold16,
                     ),
                     leading: IconButton(
                       icon: const Icon(CupertinoIcons.back),
@@ -65,7 +65,7 @@ class CartView extends StatelessWidget {
               return CupertinoNavigationBar(
                 middle: Text(
                   'My Cart (${state.cart.length} Items)',
-                  style: context.appTheme.bold16,
+                  style: context.typography.bold16,
                 ),
                 leading: IconButton(
                   icon: const Icon(CupertinoIcons.back),
@@ -113,7 +113,7 @@ class CartView extends StatelessWidget {
                 centerTitle: true,
                 title: Text(
                   'My Cart (${state.cart.length} Items)',
-                  style: context.appTheme.bold16,
+                  style: context.typography.bold16,
                 ),
               );
             },

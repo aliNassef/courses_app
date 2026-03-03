@@ -26,7 +26,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
           Tab(
             child: Text(
               LocaleKeys.lessons.tr(),
-              style: context.appTheme.medium12.copyWith(
+              style: context.typography.medium12.copyWith(
                 color: AppColors.primary,
               ),
             ),
@@ -34,7 +34,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
           Tab(
             child: Text(
               LocaleKeys.notes.tr(),
-              style: context.appTheme.medium12.copyWith(
+              style: context.typography.medium12.copyWith(
                 color: AppColors.primary,
               ),
             ),
@@ -42,7 +42,7 @@ class TabsLessonsNotesDiscuss extends StatelessWidget {
           Tab(
             child: Text(
               LocaleKeys.discuss.tr(),
-              style: context.appTheme.medium12.copyWith(
+              style: context.typography.medium12.copyWith(
                 color: AppColors.primary,
               ),
             ),

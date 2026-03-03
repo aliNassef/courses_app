@@ -47,7 +47,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           Center(
             child: Text(
               LocaleKeys.welcome_back_title.tr(),
-              style: context.appTheme.bold32.copyWith(
+              style: context.typography.bold32.copyWith(
                 color: AppColors.black,
               ),
             ),
@@ -56,7 +56,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           Center(
             child: Text(
               LocaleKeys.continue_your_learning_journey.tr(),
-              style: context.appTheme.regular12.copyWith(
+              style: context.typography.regular12.copyWith(
                 color: AppColors.grey,
               ),
             ),
@@ -64,7 +64,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           const Gap(16),
           Text(
             LocaleKeys.email_address.tr(),
-            style: context.appTheme.medium14.copyWith(
+            style: context.typography.medium14.copyWith(
               color: AppColors.black,
             ),
           ),
@@ -78,7 +78,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           const Gap(12),
           Text(
             LocaleKeys.password.tr(),
-            style: context.appTheme.medium14.copyWith(
+            style: context.typography.medium14.copyWith(
               color: AppColors.black,
             ),
           ),
@@ -99,7 +99,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 onPressed: () => _goToForgetPassword(context),
                 child: Text(
                   LocaleKeys.forgot_password_question.tr(),
-                  style: context.appTheme.regular12.copyWith(
+                  style: context.typography.regular12.copyWith(
                     color: AppColors.primary,
                   ),
                 ),

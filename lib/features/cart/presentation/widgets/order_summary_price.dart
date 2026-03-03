@@ -19,7 +19,7 @@ class OrderSummaryPrice extends StatelessWidget {
         children: [
           Text(
             LocaleKeys.order_summary.tr(),
-            style: context.appTheme.bold14,
+            style: context.typography.bold14,
           ),
           const Gap(10),
           Row(
@@ -27,13 +27,13 @@ class OrderSummaryPrice extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.sub_total.tr(),
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.grey,
                 ),
               ),
               Text(
                 '\$10.00',
-                style: context.appTheme.medium12.copyWith(
+                style: context.typography.medium12.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -45,13 +45,13 @@ class OrderSummaryPrice extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.discount.tr(),
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.grey,
                 ),
               ),
               Text(
                 '\$10.00',
-                style: context.appTheme.medium12.copyWith(
+                style: context.typography.medium12.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -63,13 +63,13 @@ class OrderSummaryPrice extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.tax.tr(),
-                style: context.appTheme.medium12.copyWith(
+                style: context.typography.medium12.copyWith(
                   color: AppColors.grey,
                 ),
               ),
               Text(
                 '\$10.00',
-                style: context.appTheme.medium12.copyWith(
+                style: context.typography.medium12.copyWith(
                   color: AppColors.black,
                 ),
               ),

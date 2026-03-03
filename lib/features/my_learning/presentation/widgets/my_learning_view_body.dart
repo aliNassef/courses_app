@@ -120,7 +120,7 @@ class MyLearningViewBody extends StatelessWidget {
                 children: [
                   Text(
                     LocaleKeys.in_progress.tr(),
-                    style: context.appTheme.bold20,
+                    style: context.typography.bold20,
                   ).withHorizontalPadding(Constants.hp16),
                   const Gap(16),
                 ],
@@ -153,7 +153,7 @@ class MyLearningViewBody extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "No courses found",
-                            style: context.appTheme.bold20.copyWith(
+                            style: context.typography.bold20.copyWith(
                               color: AppColors.grey,
                             ),
                           ),

@@ -35,7 +35,7 @@ class WishListCardItem extends StatelessWidget {
             padding: EdgeInsets.zero,
             title: Text(
               course.title,
-              style: context.appTheme.semiBold16,
+              style: context.typography.semiBold16,
             ),
             subtitle: InstructorName(instructorId: course.instructorId),
             trailing: const Icon(
@@ -54,11 +54,11 @@ class WishListCardItem extends StatelessWidget {
               ),
               Text(
                 course.rating.toString(),
-                style: context.appTheme.bold10,
+                style: context.typography.bold10,
               ),
               Text(
                 course.numOfRating.toString(),
-                style: context.appTheme.bold10.copyWith(
+                style: context.typography.bold10.copyWith(
                   color: AppColors.grey,
                 ),
               ),
@@ -70,7 +70,7 @@ class WishListCardItem extends StatelessWidget {
             children: [
               Text(
                 '${course.price} EGP',
-                style: context.appTheme.bold16.copyWith(
+                style: context.typography.bold16.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -80,7 +80,7 @@ class WishListCardItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: Text(
                   'Add to Cart',
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.white,
                   ),
                 ),

@@ -40,7 +40,7 @@ class CoursesByCategoryView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           categoryNavArgs.categoryName,
-          style: context.appTheme.bold16.copyWith(
+          style: context.typography.bold16.copyWith(
             color: AppColors.black,
           ),
         ),
@@ -75,7 +75,7 @@ class CoursesByCategoryView extends StatelessWidget {
       cupertinoNavigationBar: CupertinoNavigationBar(
         middle: Text(
           categoryNavArgs.categoryName,
-          style: context.appTheme.bold16.copyWith(
+          style: context.typography.bold16.copyWith(
             color: AppColors.black,
           ),
         ),

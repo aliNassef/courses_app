@@ -57,7 +57,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
                 ids.contains(discussion.id)
                     ? (discussion.likes! + 1).toString()
                     : discussion.likes.toString(),
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.primary,
                 ),
               ),
@@ -74,7 +74,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
               const Gap(8),
               Text(
                 "10",
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.primary,
                 ),
               ),
@@ -94,7 +94,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
                 const Gap(8),
                 Text(
                   discussion.likes.toString(),
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.primary,
                   ),
                 ),
@@ -106,7 +106,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
                 const Gap(8),
                 Text(
                   "10",
-                  style: context.appTheme.medium14.copyWith(
+                  style: context.typography.medium14.copyWith(
                     color: AppColors.primary,
                   ),
                 ),
@@ -131,7 +131,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
               const Gap(8),
               Text(
                 discussion.likes.toString(),
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.primary,
                 ),
               ),
@@ -151,7 +151,7 @@ class LikesRepliesBlocListener extends StatelessWidget {
               const Gap(8),
               Text(
                 "10",
-                style: context.appTheme.medium14.copyWith(
+                style: context.typography.medium14.copyWith(
                   color: AppColors.primary,
                 ),
               ),

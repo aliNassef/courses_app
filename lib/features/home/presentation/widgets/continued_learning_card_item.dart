@@ -56,14 +56,14 @@ class ContinuedLearningCardItem extends StatelessWidget {
                     children: [
                       Text(
                         course.courseTitle,
-                        style: context.appTheme.bold16.copyWith(
+                        style: context.typography.bold16.copyWith(
                           color: AppColors.primary,
                         ),
                       ),
                       const Gap(4),
                       Text(
                         course.description,
-                        style: context.appTheme.regular14.copyWith(
+                        style: context.typography.regular14.copyWith(
                           color: AppColors.black,
                         ),
                       ),
@@ -86,7 +86,7 @@ class ContinuedLearningCardItem extends StatelessWidget {
                 const Gap(16),
                 Text(
                   '${course.progress.toStringAsFixed(2)}%',
-                  style: context.appTheme.bold14.copyWith(
+                  style: context.typography.bold14.copyWith(
                     color: AppColors.black,
                   ),
                 ),

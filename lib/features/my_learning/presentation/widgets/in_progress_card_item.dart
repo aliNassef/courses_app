@@ -33,7 +33,7 @@ class InProgreeCardItem extends StatelessWidget {
               children: [
                 Text(
                   learning.courseTitle,
-                  style: context.appTheme.bold16,
+                  style: context.typography.bold16,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
@@ -49,7 +49,7 @@ class InProgreeCardItem extends StatelessWidget {
                     const Gap(4),
                     Text(
                       '${learning.progress.toStringAsFixed(2)}%',
-                      style: context.appTheme.bold10,
+                      style: context.typography.bold10,
                     ),
                   ],
                 ),

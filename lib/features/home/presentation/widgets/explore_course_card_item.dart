@@ -61,11 +61,11 @@ class _ExploreCourseCardItemState extends State<ExploreCourseCardItem> {
                   ),
                   Text(
                     '${widget.course.rating}',
-                    style: context.appTheme.bold10,
+                    style: context.typography.bold10,
                   ),
                   Text(
                     '(${widget.course.numOfRating})',
-                    style: context.appTheme.bold10.copyWith(
+                    style: context.typography.bold10.copyWith(
                       color: AppColors.grey,
                     ),
                   ),
@@ -74,7 +74,7 @@ class _ExploreCourseCardItemState extends State<ExploreCourseCardItem> {
               const Gap(8),
               Text(
                 widget.course.title,
-                style: context.appTheme.bold16,
+                style: context.typography.bold16,
               ).withHorizontalPadding(10),
               const Gap(8),
               InstructorName(
@@ -86,7 +86,7 @@ class _ExploreCourseCardItemState extends State<ExploreCourseCardItem> {
                 children: [
                   Text(
                     '${widget.course.price} EGP',
-                    style: context.appTheme.bold16.copyWith(
+                    style: context.typography.bold16.copyWith(
                       color: AppColors.primary,
                     ),
                   ),

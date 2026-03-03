@@ -34,7 +34,7 @@ class AccountTile extends StatelessWidget {
       ),
       title: Text(
         text,
-        style: context.appTheme.bold14.copyWith(
+        style: context.typography.bold14.copyWith(
           color: AppColors.grey,
         ),
       ),
@@ -44,7 +44,7 @@ class AccountTile extends StatelessWidget {
           ?type != null
               ? Text(
                   type!,
-                  style: context.appTheme.medium12.copyWith(
+                  style: context.typography.medium12.copyWith(
                     color: AppColors.grey,
                   ),
                 )

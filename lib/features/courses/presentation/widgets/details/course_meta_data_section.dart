@@ -29,7 +29,7 @@ class CourseMetaDataSection extends StatelessWidget {
             Flexible(
               child: Text(
                 course.title,
-                style: context.appTheme.bold20.copyWith(
+                style: context.typography.bold20.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -51,11 +51,11 @@ class CourseMetaDataSection extends StatelessWidget {
             ),
             Text(
               course.rating.toString(),
-              style: context.appTheme.bold10,
+              style: context.typography.bold10,
             ),
             Text(
               '(${course.numOfRating})',
-              style: context.appTheme.bold10.copyWith(
+              style: context.typography.bold10.copyWith(
                 color: AppColors.grey,
               ),
             ),
@@ -66,7 +66,7 @@ class CourseMetaDataSection extends StatelessWidget {
             ),
             Text(
               '${course.subscribersCount} ${LocaleKeys.students.tr()}',
-              style: context.appTheme.regular12.copyWith(
+              style: context.typography.regular12.copyWith(
                 color: AppColors.grey,
               ),
             ),
@@ -82,7 +82,7 @@ class CourseMetaDataSection extends StatelessWidget {
             const Gap(8),
             Text(
               course.duration.toHours,
-              style: context.appTheme.regular14.copyWith(
+              style: context.typography.regular14.copyWith(
                 color: AppColors.grey,
               ),
             ),
