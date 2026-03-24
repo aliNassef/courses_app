@@ -195,4 +195,7 @@ abstract class Database {
     String query,
     String userId,
   );
+
+  Future<int> getUserAchivements(String userId);
+  Future<int> getUserCertificates(String userId);
 }

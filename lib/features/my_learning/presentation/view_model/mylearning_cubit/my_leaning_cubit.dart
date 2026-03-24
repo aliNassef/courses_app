@@ -14,6 +14,8 @@ class MyLearningCubit extends Cubit<MyLearningState> {
   MyLearningCubit(this.myLearningRepo) : super(MyLearningInitial());
   final MyLearningRepo myLearningRepo;
 
+  Set<String> _lessonsIds = {};
+
   Future<void> getAllLearning(String userId) async {
     emit(MyLearningLoading());
     final getMyLearningCoursesOrFailure = await myLearningRepo
@@ -46,10 +48,9 @@ class MyLearningCubit extends Cubit<MyLearningState> {
     updateCourseProgressOrFailure.fold(
       (failure) => emit(UpdateCourseProgressFailure(failure: failure)),
       (success) {
+        _lessonsIds.add(progressRequestModel.lessonId);
         emit(
-          OpenNextLesson(
-            lessonId: progressRequestModel.lessonId,
-          ),
+          GetCompletedLessonsIdsSuccess(lessonsIds: _lessonsIds),
         );
       },
     );
@@ -82,8 +83,10 @@ class MyLearningCubit extends Cubit<MyLearningState> {
     );
     lessonsIdsOrFailure.fold(
       (failure) => emit(GetCompletedLessonsIdsError(failure: failure)),
-      (lessonsIds) =>
-          emit(GetCompletedLessonsIdsSuccess(lessonsIds: lessonsIds)),
+      (lessonsIds) {
+        _lessonsIds = lessonsIds;
+        emit(GetCompletedLessonsIdsSuccess(lessonsIds: _lessonsIds));
+      },
     );
   }
 

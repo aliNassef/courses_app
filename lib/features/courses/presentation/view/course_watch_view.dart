@@ -1,7 +1,6 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
 import 'package:courses_app/core/di/di.dart';
 import '../../../../core/di/service_locator.dart';
-import '../view_model/review_cubit/review_cubit.dart';
 import '../widgets/common/review_dialog.dart';
 import '../widgets/watch/course_app_bar.dart';
 import 'package:flutter/material.dart';

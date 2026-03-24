@@ -5,6 +5,8 @@ abstract class ProfileRemoteDataSource {
   Future<void> getUserProfile(String userId);
   Future<void> updateProfile(String userId, Map<String, dynamic> data);
   Future<void> updateProfileImage(String userId, String imageUrl);
+  Future<int> getUserAchivements(String userId);
+  Future<int> getUserCertificates(String userId);
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -20,18 +22,26 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<void> getUserProfile(String userId) {
-    // TODO: implement getUserProfile
     throw UnimplementedError();
   }
 
   @override
   Future<void> updateProfile(String userId, Map<String, dynamic> data) {
-    // TODO: implement updateProfile
     throw UnimplementedError();
   }
 
   @override
   Future<void> updateProfileImage(String userId, String imageUrl) async {
     await _database.updateUserProfileImage(userId, imageUrl);
+  }
+
+  @override
+  Future<int> getUserAchivements(String userId) =>
+      _database.getUserAchivements(userId);
+
+  @override
+  Future<int> getUserCertificates(String userId) {
+    // TODO: implement getUserCertificates
+    throw UnimplementedError();
   }
 }

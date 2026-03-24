@@ -78,6 +78,11 @@ final class GetCompletedLessonsIdsLoading extends MyLearningState {}
 final class GetCompletedLessonsIdsSuccess extends MyLearningState {
   final Set<String> lessonsIds;
   const GetCompletedLessonsIdsSuccess({required this.lessonsIds});
+  GetCompletedLessonsIdsSuccess copyWith({
+    Set<String>? lessonsIds,
+  }) {
+    return GetCompletedLessonsIdsSuccess(lessonsIds: lessonsIds ?? this.lessonsIds);
+  }
 
   @override
   List<Object> get props => [lessonsIds];

@@ -608,8 +608,12 @@ class FirestoreDBImpl implements Database {
 
         final data = courseSnapshot.data()!;
         final int completedLessons = data['completedLessons'] + 1;
-        final int totalLessons = data['totalLessons'];
-
+        final totalLessons = (await getChaptersByCourseId(
+          courseId,
+        )).expand((chapter) => chapter.lessons).length;
+        if (totalLessons == 0) {
+          throw ServerException('Course has no lessons');
+        }
         final double progress = (completedLessons / totalLessons) * 100;
 
         transaction.set(completedLessonRef, {
@@ -1131,5 +1135,33 @@ class FirestoreDBImpl implements Database {
     } catch (e) {
       throw ServerException(e.toString());
     }
+  }
+
+  @override
+  Future<int> getUserAchivements(String userId) async {
+    try {
+      int achivements = 0;
+      final userCourses = await getMyLearningCourses(userId);
+      for (var course in userCourses) {
+        final courseData = course.data() as Map<String, dynamic>;
+        final totalLessons = (await getChaptersByCourseId(
+          course.id,
+        )).expand((chapter) => chapter.lessons).length;
+        final completedLessons = courseData['completedLessons'] as int;
+
+        if (completedLessons == totalLessons) {
+          achivements++;
+        }
+      }
+      return achivements;
+    } on Exception catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<int> getUserCertificates(String userId) {
+    // TODO: implement getUserCertificates
+    throw UnimplementedError();
   }
 }

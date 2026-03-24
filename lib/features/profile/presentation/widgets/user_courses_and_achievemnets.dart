@@ -41,23 +41,24 @@ class UserCoursesAndAchievemnets extends StatelessWidget {
           UserCoursesFailure(:final failure) => CustomFailureWidget(
             meesage: failure.errMessage,
           ),
-          UserCoursesSuccess(count: final coursesCount) => Row(
-            mainAxisAlignment: .spaceAround,
-            children: [
-              AchivementUserInfo(
-                number: coursesCount.toString(),
-                text: LocaleKeys.courses.tr(),
-              ),
-              AchivementUserInfo(
-                number: '0',
-                text: LocaleKeys.achievements.tr(),
-              ),
-              AchivementUserInfo(
-                number: '0',
-                text: LocaleKeys.certs.tr(),
-              ),
-            ],
-          ),
+          UserCoursesSuccess(:final coursesCount, :final achivementsCount) =>
+            Row(
+              mainAxisAlignment: .spaceAround,
+              children: [
+                AchivementUserInfo(
+                  number: coursesCount?.toString() ?? '0',
+                  text: LocaleKeys.courses.tr(),
+                ),
+                AchivementUserInfo(
+                  number: achivementsCount?.toString() ?? '0',
+                  text: LocaleKeys.achievements.tr(),
+                ),
+                AchivementUserInfo(
+                  number: '0',
+                  text: LocaleKeys.certs.tr(),
+                ),
+              ],
+            ),
           UserCoursesInitial() => const SizedBox.shrink(),
         };
       },

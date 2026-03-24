@@ -1,4 +1,4 @@
- 
+import 'package:courses_app/core/logging/app_logger.dart';
 import 'package:courses_app/features/profile/data/repo/profile_repo.dart';
 import 'package:courses_app/features/profile/data/source/profile_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
@@ -19,7 +19,9 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<Either<Failure, int>> getUserSubscriptions(String userId) async {
     try {
-      final result = await _profileRemoteDataSource.getUserSubscriptions(userId);
+      final result = await _profileRemoteDataSource.getUserSubscriptions(
+        userId,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(Failure(errMessage: e.message));
@@ -36,7 +38,10 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateProfileImage(String userId, String imageUrl) async{
+  Future<Either<Failure, void>> updateProfileImage(
+    String userId,
+    String imageUrl,
+  ) async {
     try {
       final result = await _profileRemoteDataSource.updateProfileImage(
         userId,
@@ -46,5 +51,22 @@ class ProfileRepoImpl implements ProfileRepo {
     } on ServerException catch (e) {
       return Left(Failure(errMessage: e.message));
     }
+  }
+
+  @override
+  Future<Either<Failure, int>> getUserAchivements(String userId) async {
+    try {
+      final result = await _profileRemoteDataSource.getUserAchivements(userId);
+      AppLogger.info('User Achivements: $result');
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(Failure(errMessage: e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> getUserCertificates(String userId) {
+    // TODO: implement getUserCertificates
+    throw UnimplementedError();
   }
 }

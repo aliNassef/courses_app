@@ -6,3 +6,6 @@ dart run easy_localization:generate -S assets/translations -f keys -o locale_key
 - [ 
     fix problem in my learning get data when no collection of last lessons id 
 ] 
+
+
+when toggle switch to un watched 

@@ -1,4 +1,5 @@
 import 'package:adaptive_platform_ui/adaptive_platform_ui.dart';
+import 'package:courses_app/core/logging/app_logger.dart';
 import 'package:courses_app/features/my_learning/data/model/progress_request_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -124,6 +125,7 @@ class CourseVideoAndMetaData extends StatelessWidget {
                         return CustomSwitch(
                           value: state.lessonsIds.contains(lesson.id),
                           onChanged: (value) {
+                            AppLogger.warning("Switch toggled $value");
                             final progressRequestModel = ProgressRequestModel(
                               courseId: courseId,
                               lessonId: lesson.id,

@@ -12,4 +12,6 @@ abstract class ProfileRepo {
     Map<String, dynamic> data,
   );
   Future<Either<Failure, void>> updateProfileImage(String userId, String imageUrl);
+  Future<Either<Failure, int>> getUserAchivements(String userId);
+  Future<Either<Failure, int>> getUserCertificates(String userId);
 }

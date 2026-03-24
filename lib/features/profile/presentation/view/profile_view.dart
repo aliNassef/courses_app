@@ -25,8 +25,9 @@ class ProfileView extends StatelessWidget {
         child: MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) =>
-                  injector<UserCoursesCubit>()..getUserCoursesCount(userId),
+              create: (context) => injector<UserCoursesCubit>()
+                ..getUserCoursesCount(userId)
+                ..getUserAchivements(userId),
             ),
             BlocProvider(
               create: (context) => injector<UpdateUserProfileImageCubit>(),

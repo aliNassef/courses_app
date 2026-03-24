@@ -12,8 +12,21 @@ final class UserCoursesInitial extends UserCoursesState {}
 final class UserCoursesLoading extends UserCoursesState {}
 
 final class UserCoursesSuccess extends UserCoursesState {
-  final int count;
-  const UserCoursesSuccess({required this.count});
+  final int? coursesCount;
+  final int? achivementsCount;
+  UserCoursesSuccess copyWith({
+    int? coursesCount,
+    int? achivementsCount,
+  }) => UserCoursesSuccess(
+    coursesCount: coursesCount ?? this.coursesCount,
+    achivementsCount: achivementsCount ?? this.achivementsCount,
+  );
+  const UserCoursesSuccess({
+    this.coursesCount,
+    this.achivementsCount,
+  });
+  @override
+  List<Object> get props => [coursesCount ?? 0, achivementsCount ?? 0];
 }
 
 final class UserCoursesFailure extends UserCoursesState {

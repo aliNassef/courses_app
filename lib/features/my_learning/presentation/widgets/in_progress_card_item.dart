@@ -43,12 +43,12 @@ class InProgreeCardItem extends StatelessWidget {
                 Row(
                   children: [
                     CustomSlider(
-                      value: learning.progress,
+                      value: learning.progress / 100,
                       onChanged: (value) {},
                     ),
                     const Gap(4),
                     Text(
-                      '${learning.progress.toStringAsFixed(2)}%',
+                      '${learning.progress}%',
                       style: context.typography.bold10,
                     ),
                   ],

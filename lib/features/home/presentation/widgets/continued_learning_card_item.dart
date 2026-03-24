@@ -79,13 +79,13 @@ class ContinuedLearningCardItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: CustomSlider(
-                    value: course.progress,
+                    value: course.progress / 100,
                     onChanged: (value) {},
                   ),
                 ),
                 const Gap(16),
                 Text(
-                  '${course.progress.toStringAsFixed(2)}%',
+                  '${course.progress}%',
                   style: context.typography.bold14.copyWith(
                     color: AppColors.black,
                   ),

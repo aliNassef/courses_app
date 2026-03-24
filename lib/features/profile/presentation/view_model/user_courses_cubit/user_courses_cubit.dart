@@ -15,7 +15,26 @@ class UserCoursesCubit extends Cubit<UserCoursesState> {
     final userCoursesCountOrfailure = await _repo.getUserSubscriptions(userId);
     userCoursesCountOrfailure.fold(
       (failure) => emit(UserCoursesFailure(failure: failure)),
-      (count) => emit(UserCoursesSuccess(count: count)),
+      (count) => emit(UserCoursesSuccess(coursesCount: count)),
+    );
+  }
+
+  void getUserAchivements(String userId) async {
+    final userAchivementsOrfailure = await _repo.getUserAchivements(userId);
+    userAchivementsOrfailure.fold(
+      (failure) => emit(UserCoursesFailure(failure: failure)),
+      (count) {
+        final currentState = state;
+
+        if (currentState is UserCoursesSuccess) {
+          emit(
+            currentState.copyWith(
+              coursesCount: currentState.coursesCount!,
+              achivementsCount: count,
+            ),
+          );
+        }
+      },
     );
   }
 }
